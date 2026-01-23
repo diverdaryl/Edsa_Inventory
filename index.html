@@ -32,9 +32,17 @@
         overflow: hidden; margin-bottom: 25px; border: 1px solid #dadce0;
     }
 
-    .photo-side { flex: 1.2; position: relative; cursor: pointer; }
-    .photo-side img { width: 100%; height: 100%; object-fit: cover; }
+    .photo-side { flex: 1.2; position: relative; cursor: pointer; overflow: hidden; }
+    .photo-side img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+    .photo-side:hover img { transform: scale(1.05); }
     
+    .image-overlay {
+        position: absolute; bottom: 0; background: rgba(0, 0, 0, 0.6);
+        color: white; width: 100%; text-align: center; padding: 10px;
+        font-size: 12px; opacity: 0; transition: 0.3s;
+    }
+    .photo-side:hover .image-overlay { opacity: 1; }
+
     .info-side { flex: 1; padding: 20px; display: flex; flex-direction: column; }
     
     .btn-inquire {
@@ -43,29 +51,21 @@
         font-weight: bold; margin-top: 15px;
     }
 
+    .price { font-size: 20px; font-weight: bold; color: var(--success); }
+
     /* Modal Styling */
     .modal-overlay {
         position: fixed; top:0; left:0; width:100%; height:100%;
         background: var(--overlay); display: none; align-items: center;
         justify-content: center; z-index: 1000;
     }
-
-    .modal-content {
-        background: white; padding: 30px; border-radius: 12px;
-        width: 100%; max-width: 400px; position: relative;
-    }
-
-    .modal-content h2 { margin-top: 0; }
-    
+    .modal-content { background: white; padding: 30px; border-radius: 12px; width: 90%; max-width: 400px; position: relative; }
     .form-group { margin-bottom: 15px; }
     .form-group label { display: block; margin-bottom: 5px; font-size: 14px; }
-    .form-group input, .form-group textarea {
-        width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;
-        box-sizing: border-box;
-    }
-
+    .form-group input, .form-group textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
     .close-btn { position: absolute; top: 15px; right: 15px; cursor: pointer; font-size: 20px; }
-    .hidden { display: none; }
+
+    @media (max-width: 768px) { .billboard-card { flex-direction: column; } }
 </style>
 </head>
 <body>
@@ -77,36 +77,54 @@
 </div>
 
 <div class="billboard-grid">
+    
     <div class="billboard-card" data-segment="north">
-        <a href="https://maps.google.com" target="_blank" class="photo-side">
+        <a href="https://maps.app.goo.gl/35U9WunhRzN39v447" target="_blank" class="photo-side">
             <img src="https://images.unsplash.com/photo-1541535881962-3bb380b08458?w=500">
+            <div class="image-overlay">📍 Click to view on Google Maps</div>
         </a>
         <div class="info-side">
             <span style="color:var(--primary); font-weight:bold; font-size:12px;">EDSA NORTH</span>
             <h3>Site: Cloverleaf A1</h3>
             <p>Size: 40' x 60'</p>
-            <div style="font-size:20px; font-weight:bold; color:var(--success);">₱350,000</div>
+            <div class="price">₱350,000</div>
             <button class="btn-inquire" onclick="openModal('Cloverleaf A1')">Inquire Now</button>
         </div>
     </div>
 
+    <div class="billboard-card" data-segment="north">
+        <a href="https://maps.app.goo.gl/Vf6z7T7XvY5vT5X77" target="_blank" class="photo-side">
+            <img src="monumento_billboard.jpg" alt="EDSA Monumento Billboard">
+            <div class="image-overlay">📍 Click to view on Google Maps</div>
+        </a>
+        <div class="info-side">
+            <span style="color:var(--primary); font-weight:bold; font-size:12px;">EDSA NORTH</span>
+            <h3>Site: Monumento Circle A1</h3>
+            <p>Size: 40' x 60'</p>
+            <div class="price">₱350,000</div>
+            <button class="btn-inquire" onclick="openModal('Monumento Circle A1')">Inquire Now</button>
+        </div>
+    </div>
+
     <div class="billboard-card" data-segment="central">
-        <a href="https://maps.google.com" target="_blank" class="photo-side">
+        <a href="https://maps.app.goo.gl/YourGuadalupeLink" target="_blank" class="photo-side">
             <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=500">
+            <div class="image-overlay">📍 Click to view on Google Maps</div>
         </a>
         <div class="info-side">
             <span style="color:var(--primary); font-weight:bold; font-size:12px;">EDSA CENTRAL</span>
             <h3>Site: Guadalupe LED</h3>
             <p>Size: 50' x 100'</p>
-            <div style="font-size:20px; font-weight:bold; color:var(--success);">₱850,000</div>
+            <div class="price">₱850,000</div>
             <button class="btn-inquire" onclick="openModal('Guadalupe LED')">Inquire Now</button>
         </div>
     </div>
+
 </div>
 
 <div id="inquiryModal" class="modal-overlay">
     <div class="modal-content">
-        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <span class="close-btn" onclick="closeModal()">×</span>
         <h2>Inquire About Site</h2>
         <form action="#">
             <div class="form-group">
@@ -155,7 +173,6 @@
         document.getElementById('inquiryModal').style.display = 'none';
     }
 
-    // Close modal if user clicks outside of it
     window.onclick = function(event) {
         let modal = document.getElementById('inquiryModal');
         if (event.target == modal) { closeModal(); }
