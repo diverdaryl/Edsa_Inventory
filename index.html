@@ -11,16 +11,6 @@
         position: relative;
     }
 
-    /* Status Badge */
-    .status-badge {
-        position: absolute; top: 15px; left: 15px; background: #2e7d32;
-        color: white; padding: 6px 12px; border-radius: 20px;
-        font-size: 12px; font-weight: bold; z-index: 10;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.2); display: flex; align-items: center; gap: 5px;
-    }
-    .dot { height: 8px; width: 8px; background-color: #fff; border-radius: 50%; display: inline-block; animation: blink 1s infinite; }
-    @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
-
     .map-window { width: 100%; height: 350px; border: none; display: block; }
 
     .details { padding: 25px; }
@@ -54,8 +44,6 @@
 <body>
 
 <div class="billboard-container">
-    <div class="status-badge"><span class="dot"></span> AVAILABLE NOW</div>
-
     <iframe class="map-window" 
         src="https://www.google.com/maps/embed?pb=!4v1769134260797!6m8!1m7!1s-DIdqB2pYvUv9H6_39S-pw!2m2!1d14.657512!2d120.9840331!3f31.76!4f0!5f0.7820865974627469" 
         allowfullscreen="" loading="lazy">
@@ -76,10 +64,10 @@
         
         <div class="button-group">
             <a href="mailto:your-email@example.com?subject=Inquiry: Monumento Circle A1" class="btn-contact">
-                Inquire via Email
+                Inquire Now
             </a>
-            <a href="https://maps.app.goo.gl/Vf6z7T7XvY5vT5X77" target="_blank" class="btn-maps">
-                📍 Open in Google Maps App
+            <a href="https://www.google.com/maps/@14.657512,120.9840331,3a,75y,31.76h,90t/data=!3m6!1e1!3m4!1s-DIdqB2pYvUv9H6_39S-pw!2e0!7i16384!8i8192" target="_blank" class="btn-maps">
+                📍 Open in Google Maps
             </a>
         </div>
     </div>
