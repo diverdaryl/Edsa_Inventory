@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>EDSA Billboard Inventory</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; background: #f7f7f7; }
+    h1 { color: #b30000; }
+    table { width: 100%; border-collapse: collapse; background: #fff; }
+    th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+    th { background: #b30000; color: #fff; }
+    tr:nth-child(even) { background: #f2f2f2; }
+    img { width: 160px; height: auto; border-radius: 6px; }
+    .note { margin-top: 10px; font-size: 12px; color: #555; }
+  </style>
+</head>
+<body>
+  <h1>EDSA Billboard Inventory</h1>
+  <p>This page lists all billboard sites along EDSA with Google Maps photos and indicative rates.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Location</th>
+        <th>Format</th>
+        <th>Size (sqm)</th>
+        <th>Traffic Direction</th>
+        <th>Photo (Google Maps)</th>
+        <th>Monthly Rate (₱)</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- SAMPLE ROW 1 -->
+      <tr>
+        <td>EDSA-001</td>
+        <td>EDSA corner Ortigas Ave</td>
+        <td>Static Billboard</td>
+        <td>240</td>
+        <td>Northbound</td>
+        <td>
+          <a href="https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=14.5869,121.0563" target="_blank">
+            <img src="https://via.placeholder.com/160x90.png?text=Open+Street+View" alt="EDSA Billboard 1">
+          </a>
+        </td>
+        <td>₱1,200,000</td>
+        <td>High visibility, near business district</td>
+      </tr>
+
+      <!-- SAMPLE ROW 2 -->
+      <tr>
+        <td>EDSA-002</td>
+        <td>EDSA corner Ayala Ave</td>
+        <td>LED Billboard</td>
+        <td>300</td>
+        <td>Southbound</td>
+        <td>
+          <a href="https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=14.5535,121.0203" target="_blank">
+            <img src="https://via.placeholder.com/160x90.png?text=Open+Street+View" alt="EDSA Billboard 2">
+          </a>
+        </td>
+        <td>₱2,000,000</td>
+        <td>Premium CBD location</td>
+      </tr>
+
+      <!-- ADD MORE ROWS BELOW -->
+
+    </tbody>
+  </table>
+
+  <div class="note">
+    <strong>Note:</strong> Rates are indicative only and subject to validation. Google Maps images should be used for reference and internal research purposes.
+  </div>
+</body>
+</html>
