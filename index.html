@@ -6,61 +6,90 @@
     <title>OOHPhilippines.ph | Billboard Inventory</title>
     <style>
         :root { --p-blue: #1565c0; --bg: #f8fbff; }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, sans-serif; }
-        body { background: var(--bg); color: #333; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background: var(--bg); color: #333; min-height: 100vh; }
         
-        /* Nav */
-        .nav { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; padding: 20px; align-items: center; }
-        .logo { font-size: 22px; font-weight: 900; color: var(--p-blue); text-decoration: none; }
+        /* Navigation */
+        .nav { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; padding: 25px; align-items: center; }
+        .logo { font-size: 22px; font-weight: 900; color: var(--p-blue); cursor: pointer; text-decoration: none; }
+        .nav-btn { background: white; color: var(--p-blue); padding: 10px 20px; border-radius: 10px; text-decoration: none; font-weight: 700; box-shadow: 0 4px 10px rgba(0,0,0,0.05); cursor: pointer; }
 
-        /* Container */
-        .page { display: flex; flex-direction: column; align-items: center; padding: 20px; }
-        .grid { width: 100%; max-width: 700px; }
+        /* Page Logic */
+        .page { display: none; flex-direction: column; align-items: center; padding: 20px; }
+        .active { display: flex; }
+
+        /* Home/Hero Section */
+        .hero { text-align: center; padding: 80px 20px; max-width: 900px; }
+        .hero h1 { font-size: 52px; font-weight: 900; color: var(--p-blue); margin-bottom: 15px; letter-spacing: -1px; }
+        .hero h2 { font-size: 30px; font-weight: 700; color: #1a73e8; margin-bottom: 20px; }
+        .hero p { font-size: 18px; color: #5f6368; margin-bottom: 40px; }
+
+        /* Search Bar */
+        .search-wrapper { background: white; border-radius: 50px; padding: 8px 8px 8px 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); display: flex; align-items: center; width: 100%; max-width: 700px; margin: 0 auto 30px; border: 1px solid #eee; }
+        .search-input { flex: 1; border: none; outline: none; font-size: 18px; background: transparent; }
+        .search-btn { background: var(--p-blue); color: white; border: none; padding: 14px 40px; border-radius: 40px; font-weight: 700; cursor: pointer; }
+
+        /* Pills */
+        .pill-container { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+        .pill { background: white; border: 1px solid #d1e3f8; padding: 10px 22px; border-radius: 30px; color: var(--p-blue); font-weight: 600; font-size: 14px; cursor: pointer; transition: 0.2s; }
+        .pill:hover { background: var(--p-blue); color: white; }
+
+        /* Inventory Grid */
+        .grid { width: 100%; max-width: 700px; margin-top: 40px; }
 
         /* Card Design */
-        .card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.04); margin-bottom: 30px; border: 1px solid #edf2f7; }
-        
-        /* The Image Box */
-        .photo-box { width: 100%; height: 350px; background: #e2e8f0; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; }
+        .card { background: white; border-radius: 24px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.04); margin-bottom: 30px; border: 1px solid #edf2f7; }
+        .photo-box { width: 100%; height: 380px; background: #e2e8f0; }
         .photo-box img { width: 100%; height: 100%; object-fit: cover; }
-        .photo-label { position: absolute; bottom: 15px; left: 15px; background: rgba(0,0,0,0.6); color: white; padding: 5px 12px; border-radius: 5px; font-size: 12px; }
-
-        .card-content { padding: 25px; }
+        .card-content { padding: 30px; }
         .tag { font-size: 11px; font-weight: 800; color: var(--p-blue); text-transform: uppercase; letter-spacing: 1px; }
-        .title { font-size: 22px; font-weight: 800; margin: 8px 0 15px; color: #1a202c; }
-        
-        .specs { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; }
-        .spec-item div:first-child { font-weight: 700; font-size: 14px; color: #4a5568; }
-        .spec-item div:last-child { color: #718096; font-size: 14px; }
-        
-        .price { font-size: 26px; font-weight: 800; color: #2f855a; margin-bottom: 20px; }
-        .price span { font-size: 15px; color: #718096; font-weight: 400; }
-        
-        .btn-group { display: flex; flex-direction: column; gap: 10px; }
-        .btn { display: block; width: 100%; padding: 16px; text-align: center; text-decoration: none; border-radius: 12px; font-weight: 700; font-size: 15px; transition: 0.2s; }
-        .btn-dark { background: #1a202c; color: white; }
-        .btn-outline { background: white; color: #1565c0; border: 1px solid #1565c0; }
+        .title { font-size: 24px; font-weight: 800; margin: 10px 0 20px; color: #1a202c; }
+        .specs { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 25px; }
+        .spec-item div:first-child { font-weight: 700; font-size: 15px; color: #4a5568; }
+        .spec-item div:last-child { color: #718096; font-size: 14px; margin-top: 4px; }
+        .price { font-size: 28px; font-weight: 800; color: #2f855a; margin-bottom: 25px; }
+        .price span { font-size: 16px; color: #718096; font-weight: 400; }
+        .btn-dark { display: block; width: 100%; padding: 18px; background: #1a202c; color: white; text-align: center; text-decoration: none; border-radius: 12px; font-weight: 700; font-size: 16px; }
     </style>
 </head>
 <body>
 
 <div class="nav">
-    <a href="#" class="logo">OOHPhilippines.ph</a>
+    <div class="logo" onclick="showPage('home')">OOHPhilippines.ph</div>
+    <div class="nav-btn" onclick="showPage('inventory')">View Inventory</div>
 </div>
 
-<div class="page">
+<div id="homePage" class="page active">
+    <div class="hero">
+        <h1>OOHPhilippines.ph</h1>
+        <h2>Find the best billboards in the Philippines, fast.</h2>
+        <p>Browse premium locations, compare sites, and plan your campaign.</p>
+        
+        <div class="search-wrapper">
+            <input type="text" id="mainSearch" class="search-input" placeholder="Search by location (Monumento, Balintawak...)">
+            <button class="search-btn" onclick="executeSearch()">Search</button>
+        </div>
+
+        <div class="pill-container">
+            <div class="pill" onclick="pillSearch('Monumento')">Monumento</div>
+            <div class="pill" onclick="pillSearch('Balintawak')">Balintawak</div>
+            <div class="pill" onclick="pillSearch('EDSA')">EDSA North</div>
+        </div>
+    </div>
+</div>
+
+<div id="inventoryPage" class="page">
     <div class="grid" id="mainGrid">
         </div>
 </div>
 
 <script>
-    // Site Data A1 - A15
     const inventory = [
-        { id: "A1", loc: "Monumento Circle", area: "EDSA North • Caloocan", size: "40ft x 60ft", face: "Southbound", price: "350,000", img: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80" },
-        { id: "A14", loc: "Balintawak", area: "EDSA North • Caloocan", size: "40ft x 60ft", face: "Southbound", price: "Please Inquire", img: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=80" }
+        { id: "A1", loc: "Monumento Circle", area: "EDSA North • Caloocan", size: "40ft x 60ft", face: "Southbound", price: "350,000", img: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=80" },
+        { id: "A14", loc: "Balintawak", area: "EDSA North • Caloocan", size: "40ft x 60ft", face: "Southbound", price: "Please Inquire", img: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80" }
     ];
 
-    // Auto-fill A2-A13 and A15
+    // Auto-generate A2-A13 and A15
     for (let i = 2; i <= 15; i++) {
         if (i === 14) continue;
         inventory.push({
@@ -70,40 +99,59 @@
             size: "40ft x 60ft",
             face: "TBD",
             price: "Please Inquire",
-            img: "https://via.placeholder.com/800x450.png?text=Site+" + "A" + i + "+Street+View"
+            img: "https://via.placeholder.com/800x450.png?text=Site+" + "A" + i
         });
     }
 
     inventory.sort((a, b) => parseInt(a.id.substring(1)) - parseInt(b.id.substring(1)));
 
-    function render() {
-        document.getElementById('mainGrid').innerHTML = inventory.map(site => `
+    function showPage(pageId) {
+        document.getElementById('homePage').classList.remove('active');
+        document.getElementById('inventoryPage').classList.remove('active');
+        document.getElementById(pageId + 'Page').classList.add('active');
+        window.scrollTo(0,0);
+    }
+
+    function renderCards(filter = "") {
+        const container = document.getElementById('mainGrid');
+        const filtered = inventory.filter(s => 
+            s.loc.toLowerCase().includes(filter.toLowerCase()) || 
+            s.id.toLowerCase().includes(filter.toLowerCase()) ||
+            s.area.toLowerCase().includes(filter.toLowerCase())
+        );
+
+        container.innerHTML = filtered.map(site => `
             <div class="card">
-                <div class="photo-box">
-                    <img src="${site.img}" alt="Billboard Photo">
-                    <div class="photo-label">Street View / Site Photo</div>
-                </div>
+                <div class="photo-box"><img src="${site.img}"></div>
                 <div class="card-content">
                     <span class="tag">${site.area}</span>
                     <h2 class="title">Site: ${site.id} - ${site.loc}</h2>
                     <div class="specs">
                         <div class="spec-item"><div>Size</div><div>${site.size}</div></div>
-                        <div class="spec-item"><div>Type</div><div>Static Billboard</div></div>
+                        <div class="spec-item"><div>Type</div><div>Static</div></div>
                         <div class="spec-item"><div>Facing</div><div>${site.face}</div></div>
-                        <div class="spec-item"><div>Light</div><div>Illuminated</div></div>
+                        <div class="spec-item"><div>Illumination</div><div>Yes</div></div>
                     </div>
-                    <div class="price">
-                        ${site.price === "Please Inquire" ? site.price : '₱' + site.price + ' <span>/ month</span>'}
-                    </div>
-                    <div class="btn-group">
-                        <a href="mailto:darylabueva@gmail.com?subject=Inquiry: ${site.id}" class="btn btn-dark">Inquire Now</a>
-                        <a href="https://www.google.com/maps" target="_blank" class="btn btn-outline">📍 View on Google Maps</a>
-                    </div>
+                    <div class="price">${site.price === "Please Inquire" ? site.price : '₱' + site.price + ' <span>/ month</span>'}</div>
+                    <a href="mailto:darylabueva@gmail.com?subject=Inquiry: ${site.id}" class="btn-dark">Inquire Now</a>
                 </div>
             </div>
         `).join('');
     }
-    render();
+
+    function executeSearch() {
+        const query = document.getElementById('mainSearch').value;
+        renderCards(query);
+        showPage('inventory');
+    }
+
+    function pillSearch(term) {
+        renderCards(term);
+        showPage('inventory');
+    }
+
+    // Initial render
+    renderCards();
 </script>
 </body>
 </html>
