@@ -1,79 +1,137 @@
-<div class="card" data-tags="edsa north monumento caloocan">
-    <iframe class="map-frame" src="https://www.google.com/maps/embed?pb=!4v1769134260797!6m8!1m7!1s-DIdqB2pYvUv9H6_39S-pw!2m2!1d14.657512!2d120.9840331!3f31.76!4f0!5f0.7820865974627469" allowfullscreen="" loading="lazy"></iframe>
-    <div class="card-body">
-        <span class="card-tag">EDSA North • Caloocan</span>
-        <h3 class="card-title">Site: Monumento Circle A1</h3>
-        <div class="card-specs">
-            <div class="spec-item"><div>Size</div><div>40ft x 60ft</div></div>
-            <div class="spec-item"><div>Type</div><div>Static Billboard</div></div>
-            <div class="spec-item"><div>Facing</div><div>Southbound</div></div>
-            <div class="spec-item"><div>Illumination</div><div>Yes</div></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OOHPhilippines.ph | Billboard Inventory</title>
+    <style>
+        :root {
+            --primary-blue: #1565c0;
+            --bg-gradient: linear-gradient(180deg, #e3f2fd 0%, #ffffff 100%);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg-gradient); min-height: 100vh; color: #333; }
+        
+        /* Navigation */
+        .nav-bar { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 25px 30px; }
+        .nav-logo { font-size: 22px; font-weight: 800; color: #1565c0; cursor: pointer; text-decoration: none; }
+        .nav-link-btn { background: #fff; color: #1565c0; text-decoration: none; font-weight: 700; padding: 10px 20px; border-radius: 10px; font-size: 14px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+
+        /* Page Logic */
+        .page { display: none; width: 100%; flex-direction: column; align-items: center; }
+        .page.active { display: flex; }
+
+        /* Hero */
+        .hero { text-align: center; padding: 60px 20px; max-width: 900px; }
+        .hero h1 { font-size: 52px; font-weight: 900; color: #1565c0; margin-bottom: 10px; }
+        .hero h2 { font-size: 28px; color: #1a73e8; margin-bottom: 15px; }
+        .hero p { color: #5f6368; margin-bottom: 30px; }
+
+        /* Search Bar */
+        .search-wrapper { background: white; border-radius: 50px; padding: 8px 8px 8px 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); display: flex; align-items: center; width: 100%; max-width: 700px; margin-bottom: 20px; }
+        .search-input { flex: 1; border: none; outline: none; font-size: 16px; }
+        .search-btn { background: #1565c0; color: white; border: none; padding: 12px 30px; border-radius: 40px; font-weight: 700; cursor: pointer; }
+
+        /* Pills */
+        .pill-container { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+        .pill { background: white; border: 1px solid #eef2f6; padding: 8px 20px; border-radius: 30px; color: #1565c0; font-weight: 600; font-size: 13px; cursor: pointer; }
+
+        /* Cards */
+        .inventory-grid { width: 100%; max-width: 800px; padding: 20px; }
+        .card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.05); margin-bottom: 30px; }
+        .map-frame { width: 100%; height: 350px; border: none; background: #eaeced; }
+        .card-body { padding: 25px; }
+        .card-tag { font-size: 12px; font-weight: 700; color: #1a73e8; text-transform: uppercase; }
+        .card-title { font-size: 22px; font-weight: 800; margin: 10px 0 20px 0; }
+        .card-specs { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; }
+        .spec-item b { display: block; font-size: 14px; }
+        .spec-item span { font-size: 13px; color: #666; }
+        .price-tag { font-size: 24px; font-weight: 800; color: #2e7d32; margin-bottom: 20px; }
+        .btn-inquire { display: block; width: 100%; padding: 15px; background: #202124; color: white; text-align: center; text-decoration: none; border-radius: 10px; font-weight: 700; }
+    </style>
+</head>
+<body>
+
+<div class="nav-bar">
+    <div class="nav-logo" onclick="showPage('home')">OOHPhilippines.ph</div>
+    <a href="#" class="nav-link-btn" onclick="showPage('inventory')">View Inventory</a>
+</div>
+
+<div id="homePage" class="page active">
+    <div class="hero">
+        <h1>OOHPhilippines.ph</h1>
+        <h2>Find the best billboards in the Philippines, fast.</h2>
+        <p>Browse real locations, compare sites, and plan your next OOH campaign.</p>
+        <div class="search-wrapper">
+            <input type="text" id="mainSearch" class="search-input" placeholder="Search by location, highway, or area...">
+            <button class="search-btn" onclick="runSearch()">Search</button>
         </div>
-        <div class="price-tag">₱350,000 <span>/ month</span></div>
-        <a href="mailto:darylabueva@gmail.com?subject=Inquiry: Monumento A1" class="btn-inquire">Inquire Now</a>
+        <div class="pill-container">
+            <div class="pill" onclick="pillSearch('Monumento')">Monumento</div>
+            <div class="pill" onclick="pillSearch('Balintawak')">Balintawak</div>
+            <div class="pill" onclick="pillSearch('EDSA')">EDSA North</div>
+        </div>
     </div>
 </div>
 
-<div class="card" data-tags="edsa north monumento caloocan">
-    <iframe class="map-frame" src="https://maps.google.com/?cid=3024385248369057674&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ8" allowfullscreen="" loading="lazy"></iframe>
-    <div class="card-body">
-        <span class="card-tag">EDSA North • Caloocan</span>
-        <h3 class="card-title">Site: Monumento Circle A2</h3>
-        <div class="card-specs">
-            <div class="spec-item"><div>Size</div><div>40ft x 60ft</div></div>
-            <div class="spec-item"><div>Type</div><div>Static Billboard</div></div>
-            <div class="spec-item"><div>Facing</div><div>Northbound</div></div>
-            <div class="spec-item"><div>Illumination</div><div>Yes</div></div>
+<div id="inventoryPage" class="page">
+    <div class="inventory-grid" id="cardContainer">
         </div>
-        <div class="price-tag">Please Inquire <span>/ month</span></div>
-        <a href="mailto:darylabueva@gmail.com?subject=Inquiry: Monumento A2" class="btn-inquire">Inquire Now</a>
-    </div>
 </div>
 
-<div class="card" data-tags="edsa north caloocan">
-    <iframe class="map-frame" src="google.com/maps/embed" allowfullscreen="" loading="lazy"></iframe>
-    <div class="card-body">
-        <span class="card-tag">EDSA North • Caloocan</span>
-        <h3 class="card-title">Site: EDSA North A3-A13 Series</h3>
-        <div class="card-specs">
-            <div class="spec-item"><div>Size</div><div>Various</div></div>
-            <div class="spec-item"><div>Type</div><div>Static Billboard</div></div>
-            <div class="spec-item"><div>Facing</div><div>Mixed North/South</div></div>
-            <div class="spec-item"><div>Illumination</div><div>Yes</div></div>
-        </div>
-        <div class="price-tag">Please Inquire <span>/ month</span></div>
-        <a href="mailto:darylabueva@gmail.com?subject=Inquiry: EDSA North Series" class="btn-inquire">Inquire Now</a>
-    </div>
-</div>
+<script>
+    const sites = [
+        { id: "A1", loc: "Monumento Circle", area: "EDSA North • Caloocan", size: "40ft x 60ft", type: "Static", facing: "Southbound", price: "₱350,000", mapId: "PbvC0Xo99_2f09m2" },
+        { id: "A2", loc: "Monumento Circle", area: "EDSA North • Caloocan", size: "40ft x 60ft", type: "Static", facing: "Northbound", price: "Please Inquire", mapId: "PbvC0Xo99_2f09m2" },
+        { id: "A14", loc: "Balintawak", area: "EDSA Balintawak", size: "40ft x 60ft", type: "Static", facing: "Southbound", price: "Please Inquire", mapId: "PbvC0Xo99_2f09m2" },
+        { id: "A15", loc: "Balintawak", area: "EDSA Balintawak", size: "40ft x 60ft", type: "Static", facing: "Southbound", price: "Please Inquire", mapId: "PbvC0Xo99_2f09m2" }
+        // Add A3-A13 here following the same pattern
+    ];
 
-<div class="card" data-tags="edsa north balintawak caloocan">
-    <iframe class="map-frame" src="https://www.google.com/maps/embed?pb=!4v1769155443254!6m8!1m7!1s12-XsDmuLXN6zCLV9rKxDg!2m2!1d14.65722813981926!2d121.0004493094966!3f114.89695175350796!4f11.661848652428446!5f2.60612525853334" allowfullscreen="" loading="lazy"></iframe>
-    <div class="card-body">
-        <span class="card-tag">EDSA Balintawak • Caloocan</span>
-        <h3 class="card-title">Site: Balintawak A14</h3>
-        <div class="card-specs">
-            <div class="spec-item"><div>Size</div><div>40ft x 60ft</div></div>
-            <div class="spec-item"><div>Type</div><div>Static Billboard</div></div>
-            <div class="spec-item"><div>Facing</div><div>Southbound</div></div>
-            <div class="spec-item"><div>Illumination</div><div>Yes</div></div>
-        </div>
-        <div class="price-tag">Please Inquire <span>/ month</span></div>
-        <a href="mailto:darylabueva@gmail.com?subject=Inquiry: Balintawak A14" class="btn-inquire">Inquire Now</a>
-    </div>
-</div>
+    function showPage(p) {
+        document.getElementById('homePage').classList.remove('active');
+        document.getElementById('inventoryPage').classList.remove('active');
+        document.getElementById(p + 'Page').classList.add('active');
+    }
 
-<div class="card" data-tags="edsa north balintawak caloocan">
-    <iframe class="map-frame" src="https://www.google.com/maps/embed?pb=!4v1737630000000!6m8!1m7!1s-DIdqB2pYvUv9H6_39S-pw!2m2!1d14.657512!2d120.9840331!3f31.76!4f0!5f0.7820865974627469" allowfullscreen="" loading="lazy"></iframe>
-    <div class="card-body">
-        <span class="card-tag">EDSA Balintawak • Caloocan</span>
-        <h3 class="card-title">Site: Balintawak A15</h3>
-        <div class="card-specs">
-            <div class="spec-item"><div>Size</div><div>40ft x 60ft</div></div>
-            <div class="spec-item"><div>Type</div><div>Static Billboard</div></div>
-            <div class="spec-item"><div>Facing</div><div>Southbound</div></div>
-            <div class="spec-item"><div>Illumination</div><div>Yes</div></div>
-        </div>
-        <div class="price-tag">Please Inquire <span>/ month</span></div>
-        <a href="mailto:darylabueva@gmail.com?subject=Inquiry: Balintawak A15" class="btn-inquire">Inquire Now</a>
-    </div>
-</div>
+    function renderCards(filter = "") {
+        const container = document.getElementById('cardContainer');
+        container.innerHTML = "";
+        sites.forEach(site => {
+            if (site.loc.toLowerCase().includes(filter.toLowerCase()) || site.id.toLowerCase().includes(filter.toLowerCase())) {
+                container.innerHTML += `
+                <div class="card">
+                    <iframe class="map-frame" src="https://www.google.com/maps/embed?pb=!4v1700000000000!6m8!1m2!1s-YOUR_PANORAMA_ID_HERE-!2s!7i16384!8i8192" allowfullscreen></iframe>
+                    <div class="card-body">
+                        <span class="card-tag">${site.area}</span>
+                        <h3 class="card-title">Site: ${site.loc} ${site.id}</h3>
+                        <div class="card-specs">
+                            <div class="spec-item"><b>Size</b><span>${site.size}</span></div>
+                            <div class="spec-item"><b>Type</b><span>${site.type}</span></div>
+                            <div class="spec-item"><b>Facing</b><span>${site.facing}</span></div>
+                            <div class="spec-item"><b>Illumination</b><span>Yes</span></div>
+                        </div>
+                        <div class="price-tag">${site.price} ${site.price.includes('₱') ? '<span>/ month</span>' : ''}</div>
+                        <a href="mailto:darylabueva@gmail.com?subject=Inquiry: ${site.id}" class="btn-inquire">Inquire Now</a>
+                    </div>
+                </div>`;
+            }
+        });
+    }
+
+    function runSearch() {
+        const val = document.getElementById('mainSearch').value;
+        showPage('inventory');
+        renderCards(val);
+    }
+
+    function pillSearch(term) {
+        showPage('inventory');
+        renderCards(term);
+    }
+
+    // Initial Load
+    renderCards();
+</script>
+</body>
+</html>
