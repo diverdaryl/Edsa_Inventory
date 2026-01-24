@@ -1,178 +1,79 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OOHPhilippines.ph | Billboard Inventory</title>
-<style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Segoe UI', sans-serif; background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); min-height: 100vh; }
-    
-    /* Nav */
-    .nav-bar { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 20px 30px; }
-    .nav-logo { font-size: 24px; font-weight: 700; color: #1565c0; cursor: pointer; }
-    .nav-link { color: #1565c0; text-decoration: none; font-weight: 600; padding: 10px 20px; border-radius: 8px; background: rgba(255, 255, 255, 0.7); }
-
-    /* Page Logic */
-    .page { display: none; }
-    .page.active { display: flex; flex-direction: column; align-items: center; }
-
-    /* Home */
-    .hero-container { max-width: 800px; width: 100%; text-align: center; margin: 80px auto; padding: 20px; }
-    .logo-large { font-size: 48px; font-weight: 700; color: #1565c0; margin-bottom: 20px; }
-    .search-container { background: white; border-radius: 60px; padding: 8px; box-shadow: 0 10px 40px rgba(0,0,0,0.15); display: flex; align-items: center; max-width: 650px; margin: 0 auto; }
-    .search-input { flex: 1; border: none; outline: none; font-size: 18px; padding: 15px 25px; background: transparent; }
-    .search-btn { background: #1565c0; color: white; border: none; padding: 15px 35px; border-radius: 50px; font-weight: 600; cursor: pointer; }
-
-    /* Inventory */
-    .inventory-container { max-width: 1200px; margin: 0 auto; width: 100%; padding: 0 20px 50px 20px; }
-    .search-filter-container { background: white; border-radius: 15px; padding: 20px; margin-bottom: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 100%; max-width: 600px; }
-    .search-box { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 15px; }
-    .filter-group { display: flex; gap: 10px; flex-wrap: wrap; }
-    .filter-select { flex: 1; padding: 10px; border-radius: 8px; border: 1px solid #ddd; min-width: 120px; }
-
-    /* Cards */
-    .billboard-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-bottom: 40px; width: 100%; max-width: 600px; }
-    .map-window { width: 100%; height: 350px; border: none; background: #eee; }
-    .details { padding: 25px; }
-    .tag { color: #1a73e8; font-weight: bold; font-size: 12px; text-transform: uppercase; }
-    h2 { margin: 10px 0; color: #202124; font-size: 22px; }
-    .spec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; font-size: 14px; }
-    .button-group { display: flex; flex-direction: column; gap: 10px; }
-    .btn-contact { display: block; padding: 16px; background: #202124; color: white; text-align: center; text-decoration: none; border-radius: 8px; font-weight: bold; }
-    .btn-maps { display: block; padding: 12px; background: white; color: #1a73e8; text-align: center; text-decoration: none; border-radius: 8px; font-weight: bold; border: 1px solid #1a73e8; }
-</style>
-</head>
-<body>
-
-<div class="nav-bar">
-    <div class="nav-logo" onclick="showPage('home')">OOHPhilippines.ph</div>
-    <a href="#" class="nav-link" onclick="showPage('inventory'); return false;">View Inventory</a>
-</div>
-
-<div id="homePage" class="page active">
-    <div class="hero-container">
-        <h1 class="logo-large">OOHPhilippines.ph</h1>
-        <p style="margin-bottom: 30px; color: #455a64;">Premium Out-of-Home Advertising Locations</p>
-        <div class="search-container">
-            <input type="text" class="search-input" id="mainSearch" placeholder="Search (Monumento, Balintawak...)">
-            <button class="search-btn" onclick="searchFromHome()">Search</button>
+<div class="card" data-tags="edsa north monumento caloocan">
+    <iframe class="map-frame" src="https://www.google.com/maps/embed?pb=!4v1769134260797!6m8!1m7!1s-DIdqB2pYvUv9H6_39S-pw!2m2!1d14.657512!2d120.9840331!3f31.76!4f0!5f0.7820865974627469" allowfullscreen="" loading="lazy"></iframe>
+    <div class="card-body">
+        <span class="card-tag">EDSA North • Caloocan</span>
+        <h3 class="card-title">Site: Monumento Circle A1</h3>
+        <div class="card-specs">
+            <div class="spec-item"><div>Size</div><div>40ft x 60ft</div></div>
+            <div class="spec-item"><div>Type</div><div>Static Billboard</div></div>
+            <div class="spec-item"><div>Facing</div><div>Southbound</div></div>
+            <div class="spec-item"><div>Illumination</div><div>Yes</div></div>
         </div>
+        <div class="price-tag">₱350,000 <span>/ month</span></div>
+        <a href="mailto:darylabueva@gmail.com?subject=Inquiry: Monumento A1" class="btn-inquire">Inquire Now</a>
     </div>
 </div>
 
-<div id="inventoryPage" class="page">
-    <div class="inventory-container">
-        <h1 style="text-align: center; margin: 20px 0; color: #1565c0;">Billboard Inventory</h1>
-
-        <div class="search-filter-container">
-            <input type="text" class="search-box" id="searchInput" placeholder="🔍 Search site ID or area...">
-            <div class="filter-group">
-                <select class="filter-select" id="locationFilter">
-                    <option value="">All Locations</option>
-                    <option value="Monumento">Monumento</option>
-                    <option value="Balintawak">Balintawak</option>
-                </select>
-                <button class="filter-select" onclick="clearFilters()">Clear</button>
-            </div>
+<div class="card" data-tags="edsa north monumento caloocan">
+    <iframe class="map-frame" src="https://maps.google.com/?cid=3024385248369057674&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ8" allowfullscreen="" loading="lazy"></iframe>
+    <div class="card-body">
+        <span class="card-tag">EDSA North • Caloocan</span>
+        <h3 class="card-title">Site: Monumento Circle A2</h3>
+        <div class="card-specs">
+            <div class="spec-item"><div>Size</div><div>40ft x 60ft</div></div>
+            <div class="spec-item"><div>Type</div><div>Static Billboard</div></div>
+            <div class="spec-item"><div>Facing</div><div>Northbound</div></div>
+            <div class="spec-item"><div>Illumination</div><div>Yes</div></div>
         </div>
-
-        <div class="billboard-card" data-location="Monumento">
-            <iframe class="map-window" src="https://www.google.com/maps/embed?pb=!4v1769134260797!6m8!1m7!1s-DIdqB2pYvUv9H6_39S-pw!2m2!1d14.657512!2d120.9840331!3f31.76!4f0!5f0.7820865974627469" allowfullscreen="" loading="lazy"></iframe>
-            <div class="details">
-                <span class="tag">EDSA North • Caloocan</span>
-                <h2>Site: Monumento Circle A1</h2>
-                <div class="spec-grid">
-                    <div><strong>Size</strong> 40ft x 60ft</div>
-                    <div><strong>Facing</strong> Southbound</div>
-                </div>
-                <div class="button-group">
-                    <a href="mailto:darylabueva@gmail.com?subject=Inquiry: Monumento A1" class="btn-contact">Inquire Now</a>
-                    <a href="https://maps.app.goo.gl/Vf6z7T7XvY5vT5X77" target="_blank" class="btn-maps">📍 Open in Maps</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="billboard-card" data-location="Monumento">
-            <iframe class="map-window" src="https://maps.google.com/?cid=3024385248369057674&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ8" allowfullscreen="" loading="lazy"></iframe>
-            <div class="details">
-                <span class="tag">EDSA North • Caloocan</span>
-                <h2>Site: Monumento Circle A2</h2>
-                <div class="spec-grid">
-                    <div><strong>Facing</strong> Northbound</div>
-                    <div><strong>Type</strong> Static</div>
-                </div>
-                <div class="button-group">
-                    <a href="mailto:darylabueva@gmail.com?subject=Inquiry: Monumento A2" class="btn-contact">Inquire Now</a>
-                    <a href="https://www.google.com/maps/contrib/113661915112533334655/reviews" target="_blank" class="btn-maps">📍 Open in Maps</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="billboard-card" data-location="Balintawak">
-            <iframe class="map-window" src="https://www.google.com/maps/embed?pb=!4v1769155443254!6m8!1m7!1s12-XsDmuLXN6zCLV9rKxDg!2m2!1d14.65722813981926!2d121.0004493094966!3f114.89695175350796!4f11.661848652428446!5f2.60612525853334" allowfullscreen="" loading="lazy"></iframe>
-            <div class="details">
-                <span class="tag">EDSA Balintawak • Caloocan</span>
-                <h2>Site: Balintawak A14</h2>
-                <div class="spec-grid">
-                    <div><strong>Facing</strong> Southbound</div>
-                    <div><strong>Type</strong> Static</div>
-                </div>
-                <div class="button-group">
-                    <a href="mailto:darylabueva@gmail.com?subject=Inquiry: Balintawak A14" class="btn-contact">Inquire Now</a>
-                    <a href="https://maps.app.goo.gl/BalintawakLink" target="_blank" class="btn-maps">📍 Open in Maps</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="billboard-card" data-location="Balintawak">
-            <iframe class="map-window" src="https://www.google.com/maps/embed?pb=!4v1737630000000!6m8!1m7!1s-DIdqB2pYvUv9H6_39S-pw!2m2!1d14.657512!2d120.9840331!3f31.76!4f0!5f0.7820865974627469" allowfullscreen="" loading="lazy"></iframe>
-            <div class="details">
-                <span class="tag">EDSA Balintawak • Caloocan</span>
-                <h2>Site: Balintawak A15</h2>
-                <div class="spec-grid">
-                    <div><strong>Facing</strong> Southbound</div>
-                    <div><strong>Type</strong> Static</div>
-                </div>
-                <div class="button-group">
-                    <a href="mailto:darylabueva@gmail.com?subject=Inquiry: Balintawak A15" class="btn-contact">Inquire Now</a>
-                    <a href="https://www.google.com/maps?q=14.6571,120.98380" target="_blank" class="btn-maps">📍 Open in Maps</a>
-                </div>
-            </div>
-        </div>
-
+        <div class="price-tag">Please Inquire <span>/ month</span></div>
+        <a href="mailto:darylabueva@gmail.com?subject=Inquiry: Monumento A2" class="btn-inquire">Inquire Now</a>
     </div>
 </div>
 
-<script>
-function showPage(p) {
-    document.getElementById('homePage').classList.remove('active');
-    document.getElementById('inventoryPage').classList.remove('active');
-    document.getElementById(p + 'Page').classList.add('active');
-    window.scrollTo(0,0);
-}
-function searchFromHome() {
-    let t = document.getElementById('mainSearch').value;
-    showPage('inventory');
-    document.getElementById('searchInput').value = t;
-    filterCards();
-}
-function filterCards() {
-    let search = document.getElementById('searchInput').value.toLowerCase();
-    let loc = document.getElementById('locationFilter').value.toLowerCase();
-    let cards = document.querySelectorAll('.billboard-card');
-    cards.forEach(c => {
-        let text = c.textContent.toLowerCase();
-        let cLoc = c.getAttribute('data-location').toLowerCase();
-        c.style.display = (text.includes(search) && (!loc || cLoc.includes(loc))) ? 'block' : 'none';
-    });
-}
-function clearFilters() {
-    document.getElementById('searchInput').value = '';
-    document.getElementById('locationFilter').value = '';
-    filterCards();
-}
-document.getElementById('searchInput').addEventListener('input', filterCards);
-document.getElementById('locationFilter').addEventListener('change', filterCards);
-</script>
-</body>
-</html>
+<div class="card" data-tags="edsa north caloocan">
+    <iframe class="map-frame" src="google.com/maps/embed" allowfullscreen="" loading="lazy"></iframe>
+    <div class="card-body">
+        <span class="card-tag">EDSA North • Caloocan</span>
+        <h3 class="card-title">Site: EDSA North A3-A13 Series</h3>
+        <div class="card-specs">
+            <div class="spec-item"><div>Size</div><div>Various</div></div>
+            <div class="spec-item"><div>Type</div><div>Static Billboard</div></div>
+            <div class="spec-item"><div>Facing</div><div>Mixed North/South</div></div>
+            <div class="spec-item"><div>Illumination</div><div>Yes</div></div>
+        </div>
+        <div class="price-tag">Please Inquire <span>/ month</span></div>
+        <a href="mailto:darylabueva@gmail.com?subject=Inquiry: EDSA North Series" class="btn-inquire">Inquire Now</a>
+    </div>
+</div>
+
+<div class="card" data-tags="edsa north balintawak caloocan">
+    <iframe class="map-frame" src="https://www.google.com/maps/embed?pb=!4v1769155443254!6m8!1m7!1s12-XsDmuLXN6zCLV9rKxDg!2m2!1d14.65722813981926!2d121.0004493094966!3f114.89695175350796!4f11.661848652428446!5f2.60612525853334" allowfullscreen="" loading="lazy"></iframe>
+    <div class="card-body">
+        <span class="card-tag">EDSA Balintawak • Caloocan</span>
+        <h3 class="card-title">Site: Balintawak A14</h3>
+        <div class="card-specs">
+            <div class="spec-item"><div>Size</div><div>40ft x 60ft</div></div>
+            <div class="spec-item"><div>Type</div><div>Static Billboard</div></div>
+            <div class="spec-item"><div>Facing</div><div>Southbound</div></div>
+            <div class="spec-item"><div>Illumination</div><div>Yes</div></div>
+        </div>
+        <div class="price-tag">Please Inquire <span>/ month</span></div>
+        <a href="mailto:darylabueva@gmail.com?subject=Inquiry: Balintawak A14" class="btn-inquire">Inquire Now</a>
+    </div>
+</div>
+
+<div class="card" data-tags="edsa north balintawak caloocan">
+    <iframe class="map-frame" src="https://www.google.com/maps/embed?pb=!4v1737630000000!6m8!1m7!1s-DIdqB2pYvUv9H6_39S-pw!2m2!1d14.657512!2d120.9840331!3f31.76!4f0!5f0.7820865974627469" allowfullscreen="" loading="lazy"></iframe>
+    <div class="card-body">
+        <span class="card-tag">EDSA Balintawak • Caloocan</span>
+        <h3 class="card-title">Site: Balintawak A15</h3>
+        <div class="card-specs">
+            <div class="spec-item"><div>Size</div><div>40ft x 60ft</div></div>
+            <div class="spec-item"><div>Type</div><div>Static Billboard</div></div>
+            <div class="spec-item"><div>Facing</div><div>Southbound</div></div>
+            <div class="spec-item"><div>Illumination</div><div>Yes</div></div>
+        </div>
+        <div class="price-tag">Please Inquire <span>/ month</span></div>
+        <a href="mailto:darylabueva@gmail.com?subject=Inquiry: Balintawak A15" class="btn-inquire">Inquire Now</a>
+    </div>
+</div>
