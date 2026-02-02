@@ -307,60 +307,6 @@
         transform: translateY(-2px);
     }
     
-    /* Star Rating Styles */
-    .rating-container {
-        margin: 15px 0;
-        padding: 15px;
-        background: #f8f9fa;
-        border-radius: 8px;
-    }
-    
-    .rating-display {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-bottom: 8px;
-    }
-    
-    .stars {
-        display: flex;
-        gap: 4px;
-        font-size: 20px;
-        cursor: pointer;
-    }
-    
-    .star {
-        color: #ddd;
-        transition: color 0.2s;
-    }
-    
-    .star.filled {
-        color: #ffc107;
-    }
-    
-    .star:hover,
-    .star.hover {
-        color: #ffc107;
-    }
-    
-    .rating-info {
-        font-size: 14px;
-        color: #666;
-        font-weight: 600;
-    }
-    
-    .review-count {
-        font-size: 12px;
-        color: #999;
-        margin-left: 5px;
-    }
-    
-    .rating-prompt {
-        font-size: 12px;
-        color: #666;
-        font-style: italic;
-    }
-    
     /* Feedback Floating Button */
     .feedback-float {
         position: fixed;
@@ -574,14 +520,14 @@
 
 <!-- Navigation Bar -->
 <div class="nav-bar">
-    <div class="nav-logo" onclick="showPage('home')">OOHPhilippines.ph</div>
+    <div class="nav-logo" onclick="showPage('home')">OOHPhilippines.com</div>
     <a href="#" class="nav-link" onclick="showPage('inventory'); return false;">View Inventory</a>
 </div>
 
 <!-- Home Page -->
 <div id="homePage" class="page active">
     <div class="hero-container">
-        <h1 class="logo">OOHPhilippines.ph</h1>
+        <h1 class="logo">OOHPhilippines.com</h1>
         <h2 class="tagline">Find the best billboards in the Philippines, fast.</h2>
         <p class="description">Browse real locations, compare sites, and plan your next OOH campaign with confidence.</p>
         
@@ -648,23 +594,6 @@
                 </div>
                 <div class="price">Please Inquire</div>
                 
-                <div class="rating-container">
-                    <div class="rating-display">
-                        <div class="stars" data-billboard="balintawak-a15">
-                            <span class="star" data-value="1">★</span>
-                            <span class="star" data-value="2">★</span>
-                            <span class="star" data-value="3">★</span>
-                            <span class="star" data-value="4">★</span>
-                            <span class="star" data-value="5">★</span>
-                        </div>
-                        <span class="rating-info">
-                            <span class="avg-rating">0.0</span>
-                            <span class="review-count">(0 reviews)</span>
-                        </span>
-                    </div>
-                    <div class="rating-prompt">Click to rate this billboard</div>
-                </div>
-                
                 <div class="button-group">
                     <a href="mailto:darylabueva@gmail.com?subject=Inquiry: Balintawak A15" class="btn-contact">📧 Email Inquiry</a>
                     <a href="viber://contact?number=%2B639178316041" class="btn-viber">💬 Message on Viber</a>
@@ -690,23 +619,6 @@
                 </div>
                 <div class="price">Please Inquire</div>
                 
-                <div class="rating-container">
-                    <div class="rating-display">
-                        <div class="stars" data-billboard="monumento-a2">
-                            <span class="star" data-value="1">★</span>
-                            <span class="star" data-value="2">★</span>
-                            <span class="star" data-value="3">★</span>
-                            <span class="star" data-value="4">★</span>
-                            <span class="star" data-value="5">★</span>
-                        </div>
-                        <span class="rating-info">
-                            <span class="avg-rating">0.0</span>
-                            <span class="review-count">(0 reviews)</span>
-                        </span>
-                    </div>
-                    <div class="rating-prompt">Click to rate this billboard</div>
-                </div>
-                
                 <div class="button-group">
                     <a href="mailto:darylabueva@gmail.com?subject=Inquiry: Monumento A2" class="btn-contact">📧 Email Inquiry</a>
                     <a href="viber://contact?number=%2B639178316041" class="btn-viber">💬 Message on Viber</a>
@@ -729,25 +641,6 @@
                     <div class="spec-item"><strong>Type</strong> Static</div>
                     <div class="spec-item"><strong>Facing</strong> Northbound</div>
                     <div class="spec-item"><strong>Illumination</strong> Yes</div>
-                </div>
-                <div class="price">Please Inquire</div>
-                
-                <div class="rating-container">
-                    <div class="rating-display">
-                        <div class="stars" data-billboard="monumento-a3">
-                            <span class="star" data-value="1">★</span>
-                            <span class="star" data-value="2">★</span>
-                            <span class="star" data-value="3">★</span>
-                            <span class="star" data-value="4">★</span>
-                            <span class="star" data-value="5">★</span>
-                        </div>
-                        <span class="rating-info">
-                            <span class="avg-rating">0.0</span>
-                            <span class="review-count">(0 reviews)</span>
-                        </span>
-                    </div>
-                    <div class="rating-prompt">Click to rate this billboard</div>
-                </div>
                 
                 <div class="button-group">
                     <a href="mailto:darylabueva@gmail.com?subject=Inquiry: Monumento A3" class="btn-contact">📧 Email Inquiry</a>
@@ -1406,84 +1299,6 @@ searchInput.addEventListener('input', filterCards);
 locationFilter.addEventListener('change', filterCards);
 facingFilter.addEventListener('change', filterCards);
 typeFilter.addEventListener('change', filterCards);
-
-// Star Rating System
-function initializeRatings() {
-    const allStarContainers = document.querySelectorAll('.stars');
-    
-    allStarContainers.forEach(container => {
-        const billboardId = container.dataset.billboard;
-        const stars = container.querySelectorAll('.star');
-        const ratingInfo = container.parentElement.querySelector('.avg-rating');
-        const reviewCount = container.parentElement.querySelector('.review-count');
-        
-        // Load saved ratings from localStorage
-        const ratings = JSON.parse(localStorage.getItem(`billboard-ratings-${billboardId}`) || '[]');
-        updateDisplay(ratings, ratingInfo, reviewCount, stars);
-        
-        // Hover effect
-        stars.forEach((star, index) => {
-            star.addEventListener('mouseenter', () => {
-                stars.forEach((s, i) => {
-                    if (i <= index) {
-                        s.classList.add('hover');
-                    } else {
-                        s.classList.remove('hover');
-                    }
-                });
-            });
-        });
-        
-        container.addEventListener('mouseleave', () => {
-            stars.forEach(s => s.classList.remove('hover'));
-        });
-        
-        // Click to rate
-        stars.forEach((star, index) => {
-            star.addEventListener('click', () => {
-                const rating = index + 1;
-                ratings.push(rating);
-                localStorage.setItem(`billboard-ratings-${billboardId}`, JSON.stringify(ratings));
-                updateDisplay(ratings, ratingInfo, reviewCount, stars);
-                
-                // Show thank you message briefly
-                const prompt = container.parentElement.parentElement.querySelector('.rating-prompt');
-                const originalText = prompt.textContent;
-                prompt.textContent = 'Thank you for your rating!';
-                prompt.style.color = '#2e7d32';
-                setTimeout(() => {
-                    prompt.textContent = originalText;
-                    prompt.style.color = '';
-                }, 2000);
-            });
-        });
-    });
-}
-
-function updateDisplay(ratings, ratingInfo, reviewCount, stars) {
-    if (ratings.length === 0) {
-        ratingInfo.textContent = '0.0';
-        reviewCount.textContent = '(0 reviews)';
-        return;
-    }
-    
-    const avg = (ratings.reduce((a, b) => a + b, 0) / ratings.length).toFixed(1);
-    ratingInfo.textContent = avg;
-    reviewCount.textContent = `(${ratings.length} ${ratings.length === 1 ? 'review' : 'reviews'})`;
-    
-    // Fill stars based on average
-    const fullStars = Math.floor(avg);
-    stars.forEach((star, index) => {
-        if (index < fullStars) {
-            star.classList.add('filled');
-        } else {
-            star.classList.remove('filled');
-        }
-    });
-}
-
-// Initialize ratings when page loads
-initializeRatings();
 
 // Feedback Functions
 function openFeedbackModal() {
