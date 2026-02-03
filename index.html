@@ -40,6 +40,1242 @@
     
     /* Navigation */
     .nav-bar {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 30px;
+    }
+    
+    .nav-logo {
+        font-size: 24px;
+        font-weight: 700;
+        color: #1565c0;
+        cursor: pointer;
+        letter-spacing: -0.5px;
+    }
+    
+    .nav-buttons {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+    }
+    
+    .nav-link {
+        color: #1565c0;
+        text-decoration: none;
+        font-weight: 600;
+        padding: 10px 20px;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.7);
+        transition: all 0.3s;
+        border: none;
+        cursor: pointer;
+        font-size: 14px;
+    }
+    
+    .nav-link:hover {
+        background: white;
+        transform: translateY(-2px);
+    }
+    
+    .nav-link.list-site {
+        background: #4caf50;
+        color: white;
+    }
+    
+    .nav-link.list-site:hover {
+        background: #45a049;
+    }
+    
+    /* Home Page Styles */
+    .page {
+        display: none;
+    }
+    
+    .page.active {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .hero-container {
+        max-width: 800px;
+        width: 100%;
+        text-align: center;
+        margin: 80px auto;
+        padding-bottom: 50px;
+    }
+    
+    .logo {
+        font-size: 48px;
+        font-weight: 700;
+        color: #1565c0;
+        margin-bottom: 20px;
+        letter-spacing: -1px;
+    }
+    
+    .tagline {
+        font-size: 28px;
+        color: #1976d2;
+        margin-bottom: 15px;
+        font-weight: 600;
+        line-height: 1.3;
+    }
+    
+    .description {
+        font-size: 18px;
+        color: #455a64;
+        margin-bottom: 50px;
+        line-height: 1.6;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .search-container {
+        background: white;
+        border-radius: 60px;
+        padding: 8px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+        display: flex;
+        align-items: center;
+        max-width: 650px;
+        margin: 0 auto;
+        transition: box-shadow 0.3s;
+    }
+    
+    .search-container:hover,
+    .search-container:focus-within {
+        box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+    }
+    
+    .search-input {
+        flex: 1;
+        border: none;
+        outline: none;
+        font-size: 18px;
+        padding: 20px 30px;
+        background: transparent;
+        font-family: 'Segoe UI', sans-serif;
+        color: #202124;
+    }
+    
+    .search-input::placeholder {
+        color: #9aa0a6;
+    }
+    
+    .search-btn {
+        background: #1565c0;
+        color: white;
+        border: none;
+        padding: 18px 40px;
+        border-radius: 50px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+        white-space: nowrap;
+    }
+    
+    .search-btn:hover {
+        background: #0d47a1;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(13, 71, 161, 0.3);
+    }
+    
+    .quick-links {
+        margin-top: 30px;
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .quick-link {
+        color: #1565c0;
+        text-decoration: none;
+        font-size: 15px;
+        font-weight: 500;
+        padding: 10px 20px;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.7);
+        transition: all 0.3s;
+        cursor: pointer;
+    }
+    
+    .quick-link:hover {
+        background: white;
+        transform: translateY(-2px);
+    }
+    
+    /* Owner CTA Section */
+    .owner-cta {
+        background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+        color: white;
+        text-align: center;
+        padding: 50px 30px;
+        margin: 40px auto 60px;
+        border-radius: 20px;
+        box-shadow: 0 8px 30px rgba(76, 175, 80, 0.3);
+        max-width: 800px;
+    }
+    
+    .owner-cta h3 {
+        font-size: 32px;
+        margin-bottom: 12px;
+    }
+    
+    .owner-cta p {
+        font-size: 17px;
+        margin-bottom: 25px;
+        opacity: 0.95;
+        line-height: 1.5;
+    }
+    
+    .owner-cta button {
+        background: white;
+        color: #4caf50;
+        border: none;
+        padding: 15px 35px;
+        border-radius: 50px;
+        font-size: 17px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    
+    .owner-cta button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+    
+    /* Inventory Page Styles - FIXED LAYOUT */
+    .inventory-wrapper {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 20px 50px 20px;
+    }
+    
+    .inventory-title {
+        margin: 20px 0;
+        color: #1565c0;
+        text-align: center;
+    }
+    
+    .search-filter-container {
+        background: white;
+        border-radius: 15px;
+        padding: 25px;
+        margin-bottom: 30px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    
+    .search-box {
+        width: 100%;
+        padding: 14px 20px;
+        font-size: 16px;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        font-family: 'Segoe UI', sans-serif;
+        transition: border-color 0.3s;
+    }
+    
+    .search-box:focus {
+        outline: none;
+        border-color: #1a73e8;
+    }
+    
+    .filter-group {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 10px;
+    }
+    
+    .filter-select {
+        padding: 12px 15px;
+        font-size: 14px;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        background: white;
+        font-family: 'Segoe UI', sans-serif;
+        cursor: pointer;
+        transition: border-color 0.3s;
+    }
+    
+    .filter-select:focus {
+        outline: none;
+        border-color: #1a73e8;
+    }
+    
+    .clear-btn {
+        padding: 12px 20px;
+        background: #f1f3f4;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.3s;
+        font-size: 14px;
+    }
+    
+    .clear-btn:hover {
+        background: #e8eaed;
+    }
+    
+    /* NEW: Grid Layout with Sidebar */
+    .inventory-grid {
+        display: grid;
+        grid-template-columns: 1fr 320px;
+        gap: 30px;
+        align-items: start;
+    }
+    
+    .cards-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
+        gap: 30px;
+    }
+    
+    /* Sidebar Ads - FIXED */
+    .sidebar-ads {
+        position: sticky;
+        top: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .sidebar-ad {
+        background: white;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        text-align: center;
+    }
+    
+    .sidebar-ad h4 {
+        color: #999;
+        font-size: 11px;
+        text-transform: uppercase;
+        margin-bottom: 15px;
+        letter-spacing: 1.5px;
+        font-weight: 600;
+    }
+    
+    .sidebar-ad-content {
+        height: 250px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        background: #f8f9fa;
+        border-radius: 8px;
+        border: 2px dashed #ddd;
+        padding: 20px;
+        color: #666;
+        font-size: 13px;
+        line-height: 1.6;
+    }
+    
+    .sidebar-ad-content strong {
+        font-size: 16px;
+        color: #333;
+        margin-bottom: 10px;
+    }
+    
+    .billboard-card {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        transition: all 0.3s;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .billboard-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+    }
+    
+    .card-image {
+        height: 280px;
+        background: #f0f0f0;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .card-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    .card-tag {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: rgba(0, 0, 0, 0.6);
+        color: white;
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    
+    .card-content {
+        padding: 25px;
+    }
+    
+    .card-location {
+        font-size: 14px;
+        color: #1a73e8;
+        font-weight: 600;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    
+    .card-title {
+        font-size: 22px;
+        font-weight: 700;
+        color: #202124;
+        margin-bottom: 12px;
+        line-height: 1.3;
+    }
+    
+    .card-specs {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        margin-bottom: 25px;
+        background: #f8f9fa;
+        padding: 15px;
+        border-radius: 10px;
+    }
+    
+    .spec-item {
+        font-size: 13px;
+        color: #5f6368;
+    }
+    
+    .spec-label {
+        display: block;
+        font-weight: 600;
+        color: #202124;
+        margin-bottom: 3px;
+    }
+    
+    .card-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 15px;
+        border-top: 1px solid #eee;
+    }
+    
+    .price {
+        font-size: 20px;
+        font-weight: 700;
+        color: #1565c0;
+    }
+    
+    .price span {
+        font-size: 12px;
+        color: #70757a;
+        font-weight: 400;
+    }
+    
+    .view-details {
+        background: #1565c0;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+    
+    .view-details:hover {
+        background: #0d47a1;
+    }
+    
+    /* Footer */
+    .site-footer {
+        background: white;
+        padding: 40px 20px;
+        margin-top: 60px;
+        text-align: center;
+        border-top: 1px solid #ddd;
+    }
+    
+    .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin-bottom: 20px;
+    }
+    
+    .footer-links a {
+        color: #5f6368;
+        text-decoration: none;
+        font-size: 14px;
+    }
+    
+    .copyright {
+        color: #9aa0a6;
+        font-size: 13px;
+    }
+    
+    /* Modal Styles */
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.8);
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+    
+    .modal.active {
+        display: flex;
+    }
+    
+    .modal-content {
+        background: white;
+        border-radius: 20px;
+        max-width: 900px;
+        width: 100%;
+        max-height: 90vh;
+        overflow-y: auto;
+        position: relative;
+    }
+    
+    .close-modal {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 30px;
+        cursor: pointer;
+        color: #666;
+        z-index: 10;
+        background: white;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .modal-hero {
+        height: 400px;
+        background: #f0f0f0;
+    }
+    
+    .modal-hero img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    .modal-body {
+        padding: 40px;
+    }
+    
+    .modal-header {
+        margin-bottom: 30px;
+    }
+    
+    .modal-location {
+        color: #1a73e8;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 10px;
+    }
+    
+    .modal-title {
+        font-size: 32px;
+        color: #202124;
+    }
+    
+    .modal-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 40px;
+    }
+    
+    .info-section h3 {
+        margin-bottom: 15px;
+        color: #202124;
+    }
+    
+    .info-section p {
+        color: #5f6368;
+        line-height: 1.6;
+        margin-bottom: 30px;
+    }
+    
+    .specs-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+    
+    .spec-detail .label {
+        display: block;
+        font-size: 13px;
+        color: #70757a;
+        margin-bottom: 5px;
+    }
+    
+    .spec-detail .value {
+        font-weight: 600;
+        color: #202124;
+    }
+    
+    .cta-box {
+        background: #f8f9fa;
+        padding: 30px;
+        border-radius: 15px;
+        text-align: center;
+    }
+    
+    .cta-price {
+        font-size: 28px;
+        font-weight: 700;
+        color: #1565c0;
+        margin-bottom: 20px;
+    }
+    
+    .cta-button {
+        width: 100%;
+        padding: 15px;
+        background: #1565c0;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-weight: 700;
+        font-size: 16px;
+        cursor: pointer;
+        margin-bottom: 15px;
+    }
+    
+    /* Listing Modal Specific */
+    .listing-form {
+        padding: 40px;
+    }
+    
+    .form-group {
+        margin-bottom: 20px;
+    }
+    
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: #333;
+    }
+    
+    .form-group input, .form-group select, .form-group textarea {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        font-family: inherit;
+    }
+    
+    /* Feedback Modal Styles */
+    .feedback-modal-content {
+        max-width: 500px !important;
+    }
+    
+    .feedback-form {
+        padding: 30px;
+    }
+    
+    .feedback-textarea {
+        width: 100%;
+        height: 150px;
+        padding: 15px;
+        border: 2px solid #e0e0e0;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        font-family: inherit;
+        font-size: 15px;
+        resize: none;
+    }
+    
+    .feedback-textarea:focus {
+        outline: none;
+        border-color: #1a73e8;
+    }
+    
+    .submit-feedback-btn {
+        width: 100%;
+        background: #1565c0;
+        color: white;
+        border: none;
+        padding: 14px;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+    
+    .submit-feedback-btn:hover {
+        background: #0d47a1;
+    }
+    
+    /* Mobile Responsive */
+    @media (max-width: 1000px) {
+        .inventory-grid {
+            grid-template-columns: 1fr;
+        }
+        .sidebar-ads {
+            display: none;
+        }
+        .cards-container {
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .logo { font-size: 36px; }
+        .tagline { font-size: 22px; }
+        .nav-bar { flex-direction: column; gap: 15px; }
+        .search-container { flex-direction: column; border-radius: 20px; padding: 15px; }
+        .search-btn { width: 100%; margin-top: 10px; }
+        .modal-grid { grid-template-columns: 1fr; }
+        .cards-container { grid-template-columns: 1fr; }
+        .card-image { height: 220px; }
+    }
+</style>
+</head>
+<body>
+
+<div class="top-banner-ad">
+    <div class="ad-placeholder">
+        <strong>ADVERTISEMENT</strong><br>
+        Advertise on OOHPhilippines.com! Reach outdoor media buyers and agency planners directly.
+    </div>
+</div>
+
+<nav class="nav-bar">
+    <div class="nav-logo" onclick="showPage('home')">OOHPhilippines</div>
+    <div class="nav-buttons">
+        <button class="nav-link" onclick="showPage('inventory')">Browse Inventory</button>
+        <button class="nav-link list-site" onclick="openListingModal()">List Your Site</button>
+        <button class="nav-link" onclick="openFeedbackModal()">Feedback</button>
+    </div>
+</nav>
+
+<div id="homePage" class="page active">
+    <div class="hero-container">
+        <div class="logo">OOHPhilippines.com</div>
+        <div class="tagline">The Philippines' Leading Out-of-Home Advertising Directory</div>
+        <div class="description">Find the perfect billboard, LED screen, or transit ad for your brand. Direct contact with site owners, updated pricing, and detailed traffic insights.</div>
+        
+        <div class="search-container">
+            <input type="text" class="search-input" id="homeSearch" placeholder="Search by location, city, or site type...">
+            <button class="search-btn" onclick="searchFromHome()">Find Sites</button>
+        </div>
+        
+        <div class="quick-links">
+            <span class="quick-link" onclick="quickSearch('EDSA')">EDSA</span>
+            <span class="quick-link" onclick="quickSearch('LED Billboard')">LED Billboards</span>
+            <span class="quick-link" onclick="quickSearch('Makati')">Makati City</span>
+            <span class="quick-link" onclick="quickSearch('BGC')">BGC</span>
+            <span class="quick-link" onclick="quickSearch('Cebu')">Cebu City</span>
+        </div>
+    </div>
+
+    <div class="owner-cta">
+        <h3>Are you a Media Owner?</h3>
+        <p>List your billboards and digital screens on the Philippines' fastest growing OOH marketplace. Get your sites in front of thousands of brands and agencies.</p>
+        <button onclick="openListingModal()">Register Your Sites Today</button>
+    </div>
+</div>
+
+<div id="inventoryPage" class="page">
+    <div class="inventory-wrapper">
+        <h1 class="inventory-title">Billboard & Media Inventory</h1>
+        
+        <div class="search-filter-container">
+            <input type="text" class="search-box" id="invSearch" placeholder="Search locations, keywords, or site IDs..." onkeyup="filterInventory()">
+            
+            <div class="filter-group">
+                <select class="filter-select" id="typeFilter" onchange="filterInventory()">
+                    <option value="">All Types</option>
+                    <option value="Static Billboard">Static Billboards</option>
+                    <option value="Digital/LED">Digital / LED</option>
+                    <option value="Wall Mural">Wall Murals</option>
+                    <option value="Transit Media">Transit Media</option>
+                </select>
+                
+                <select class="filter-select" id="cityFilter" onchange="filterInventory()">
+                    <option value="">All Cities</option>
+                    <option value="Makati">Makati</option>
+                    <option value="Quezon City">Quezon City</option>
+                    <option value="Mandaluyong">Mandaluyong</option>
+                    <option value="Taguig/BGC">Taguig / BGC</option>
+                    <option value="Cebu">Cebu</option>
+                </select>
+                
+                <select class="filter-select" id="priceFilter" onchange="filterInventory()">
+                    <option value="">Any Price</option>
+                    <option value="budget">Under 150k /mo</option>
+                    <option value="mid">150k - 300k /mo</option>
+                    <option value="premium">300k+ /mo</option>
+                </select>
+                
+                <button class="clear-btn" onclick="clearFilters()">Clear Filters</button>
+            </div>
+        </div>
+
+        <div class="inventory-grid">
+            <div class="cards-container" id="cardsContainer">
+                </div>
+            
+            <div class="sidebar-ads">
+                <div class="sidebar-ad">
+                    <h4>Sponsored</h4>
+                    <div class="sidebar-ad-content">
+                        <strong>Prime EDSA LED</strong>
+                        <p>High exposure location at Guadalupe bridge. 24/7 visibility.</p>
+                        <button class="view-details" style="margin-top: 15px; width: 100%;" onclick="openListingModal()">Inquire Now</button>
+                    </div>
+                </div>
+                
+                <div class="sidebar-ad">
+                    <h4>Direct Link</h4>
+                    <div class="sidebar-ad-content">
+                        <strong>New Market Entry?</strong>
+                        <p>Reach out to our strategy team for a free media planning session.</p>
+                        <a href="mailto:darylabueva@gmail.com" style="color: #1565c0; margin-top: 10px; font-weight: 600;">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="listingModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeListingModal()">&times;</span>
+        <div id="modalData"></div>
+    </div>
+</div>
+
+<div id="ownerModal" class="modal">
+    <div class="modal-content" style="max-width: 600px;">
+        <span class="close-modal" onclick="closeOwnerModal()">&times;</span>
+        <div class="listing-form">
+            <h2 style="margin-bottom: 10px;">List Your Site</h2>
+            <p style="color: #666; margin-bottom: 30px;">Fill in your details and our team will contact you to verify your listing.</p>
+            
+            <div class="form-group">
+                <label>Company Name</label>
+                <input type="text" id="ownerCompany" placeholder="e.g. Metro Media Corp">
+            </div>
+            
+            <div class="form-group">
+                <label>Contact Person</label>
+                <input type="text" id="ownerName" placeholder="Full Name">
+            </div>
+            
+            <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" id="ownerEmail" placeholder="email@company.com">
+            </div>
+            
+            <div class="form-group">
+                <label>Media Type</label>
+                <select id="ownerType">
+                    <option>Static Billboard</option>
+                    <option>Digital LED</option>
+                    <option>Transit Media</option>
+                    <option>Others</option>
+                </select>
+            </div>
+            
+            <button class="submit-feedback-btn" onclick="submitOwnerForm()">Submit Listing Request</button>
+        </div>
+    </div>
+</div>
+
+<div id="feedbackModal" class="modal">
+    <div class="modal-content feedback-modal-content">
+        <span class="close-modal" onclick="closeFeedbackModal()">&times;</span>
+        <div class="feedback-form">
+            <h2 style="margin-bottom: 10px;">Website Feedback</h2>
+            <p style="color: #666; margin-bottom: 20px;">Help us improve OOHPhilippines. What features would you like to see?</p>
+            
+            <textarea class="feedback-textarea" id="modalFeedback" placeholder="Enter your suggestions or report an issue..."></textarea>
+            
+            <button class="submit-feedback-btn" onclick="submitModalFeedback()">Send Feedback</button>
+        </div>
+    </div>
+</div>
+
+<footer class="site-footer">
+    <div class="footer-links">
+        <a href="#" onclick="showPage('home')">Home</a>
+        <a href="#" onclick="showPage('inventory')">Inventory</a>
+        <a href="#" onclick="openListingModal()">List a Site</a>
+        <a href="mailto:darylabueva@gmail.com">Contact</a>
+    </div>
+    <div class="copyright">&copy; 2024 OOHPhilippines.com - The Philippine Outdoor Media Directory</div>
+</footer>
+
+<script>
+const inventory = [
+    {
+        id: "EDSA-001",
+        title: "North EDSA - Veterans Memorial Giant",
+        type: "Static Billboard",
+        city: "Quezon City",
+        location: "EDSA Northbound, Quezon City",
+        size: "40ft x 60ft",
+        price: 185000,
+        priceTag: "mid",
+        traffic: "150,000+ daily",
+        description: "Massive static billboard facing commuters heading towards SM North and Trinoma. Prime visibility during heavy rush hour congestion.",
+        image: "https://images.unsplash.com/photo-1541535650810-10d26f5c2abb?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+        id: "MAK-005",
+        title: "Makati Avenue Digital Icon",
+        type: "Digital/LED",
+        city: "Makati",
+        location: "Makati Ave corner Gil Puyat",
+        size: "30ft x 40ft",
+        price: 450000,
+        priceTag: "premium",
+        traffic: "High Net Worth / Professionals",
+        description: "High-definition LED screen at the heart of Makati CBD. Captures both vehicular and pedestrian traffic from high-end residents and workers.",
+        image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+        id: "MAN-012",
+        title: "Shaw Blvd Overpass",
+        type: "Static Billboard",
+        city: "Mandaluyong",
+        location: "Shaw Boulevard, Mandaluyong",
+        size: "20ft x 40ft",
+        price: 120000,
+        priceTag: "budget",
+        traffic: "80,000+ daily",
+        description: "Cost-effective location targeting shoppers and office workers in the Mandaluyong area. Excellent dwell time during peak hours.",
+        image: "https://images.unsplash.com/photo-1565551328001-f0951662d004?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+        id: "BGC-008",
+        title: "BGC 5th Avenue Wall Mural",
+        type: "Wall Mural",
+        city: "Taguig/BGC",
+        location: "5th Avenue, BGC",
+        size: "80ft x 100ft",
+        price: 600000,
+        priceTag: "premium",
+        traffic: "Lifestyle / Gen Z / Affluent",
+        description: "Iconic wall mural location in BGC. Perfect for lifestyle brands and creative 'Instagrammable' campaigns.",
+        image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+        id: "CEB-021",
+        title: "Cebu IT Park Entrance LED",
+        type: "Digital/LED",
+        city: "Cebu",
+        location: "Salinas Drive, Cebu City",
+        size: "20ft x 30ft",
+        price: 250000,
+        priceTag: "mid",
+        traffic: "24/7 BPO population",
+        description: "Strategic LED location at the primary entrance of Cebu IT Park. Captures the high-spending tech and BPO workforce.",
+        image: "https://images.unsplash.com/photo-1570126688035-1e0adbefb282?auto=format&fit=crop&w=800&q=80"
+    }
+];
+
+function showPage(pageId) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById(pageId + 'Page').classList.add('active');
+    window.scrollTo(0,0);
+    
+    if(pageId === 'inventory') {
+        renderInventory(inventory);
+    }
+}
+
+function renderInventory(items) {
+    const container = document.getElementById('cardsContainer');
+    if (items.length === 0) {
+        container.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 50px; color: #666;">No sites found matching your criteria. Try adjusting your filters.</div>';
+        return;
+    }
+    
+    container.innerHTML = items.map(site => `
+        <div class="billboard-card">
+            <div class="card-image">
+                <img src="${site.image}" alt="${site.title}">
+                <div class="card-tag">${site.type}</div>
+            </div>
+            <div class="card-content">
+                <div class="card-location">${site.city}</div>
+                <div class="card-title">${site.title}</div>
+                <div class="card-specs">
+                    <div class="spec-item">
+                        <span class="spec-label">Dimensions</span>
+                        ${site.size}
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Traffic</span>
+                        ${site.traffic}
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="price">₱${site.price.toLocaleString()}<span> /mo</span></div>
+                    <button class="view-details" onclick="openDetails('${site.id}')">Details</button>
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
+
+function filterInventory() {
+    const search = document.getElementById('invSearch').value.toLowerCase();
+    const type = document.getElementById('typeFilter').value;
+    const city = document.getElementById('cityFilter').value;
+    const price = document.getElementById('priceFilter').value;
+    
+    const filtered = inventory.filter(item => {
+        const matchesSearch = item.title.toLowerCase().includes(search) || 
+                              item.location.toLowerCase().includes(search) ||
+                              item.id.toLowerCase().includes(search);
+        const matchesType = type === "" || item.type === type;
+        const matchesCity = city === "" || item.city === city;
+        const matchesPrice = price === "" || item.priceTag === price;
+        
+        return matchesSearch && matchesType && matchesCity && matchesPrice;
+    });
+    
+    renderInventory(filtered);
+}
+
+function searchFromHome() {
+    const query = document.getElementById('homeSearch').value;
+    showPage('inventory');
+    document.getElementById('invSearch').value = query;
+    filterInventory();
+}
+
+function quickSearch(tag) {
+    showPage('inventory');
+    document.getElementById('invSearch').value = tag;
+    filterInventory();
+}
+
+function clearFilters() {
+    document.getElementById('invSearch').value = '';
+    document.getElementById('typeFilter').value = '';
+    document.getElementById('cityFilter').value = '';
+    document.getElementById('priceFilter').value = '';
+    renderInventory(inventory);
+}
+
+function openDetails(id) {
+    const site = inventory.find(s => s.id === id);
+    const modal = document.getElementById('listingModal');
+    const modalData = document.getElementById('modalData');
+    
+    modalData.innerHTML = `
+        <div class="modal-hero">
+            <img src="${site.image}" alt="${site.title}">
+        </div>
+        <div class="modal-body">
+            <div class="modal-header">
+                <div class="modal-location">${site.location}</div>
+                <h2 class="modal-title">${site.title}</h2>
+            </div>
+            
+            <div class="modal-grid">
+                <div class="info-section">
+                    <h3>Description</h3>
+                    <p>${site.description}</p>
+                    
+                    <h3>Technical Specifications</h3>
+                    <div class="specs-list">
+                        <div class="spec-detail">
+                            <span class="label">Site ID</span>
+                            <span class="value">${site.id}</span>
+                        </div>
+                        <div class="spec-detail">
+                            <span class="label">Media Type</span>
+                            <span class="value">${site.type}</span>
+                        </div>
+                        <div class="spec-detail">
+                            <span class="label">Size</span>
+                            <span class="value">${site.size}</span>
+                        </div>
+                        <div class="spec-detail">
+                            <span class="label">Orientation</span>
+                            <span class="value">Portrait/Vertical</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sidebar-section">
+                    <div class="cta-box">
+                        <div class="cta-price">₱${site.price.toLocaleString()}<span>/mo</span></div>
+                        <button class="cta-button" onclick="openListingModal()">Request Proposal</button>
+                        <p style="font-size: 12px; color: #777;">Pricing is subject to agency commission and VAT.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeListingModal() {
+    document.getElementById('listingModal').classList.remove('active');
+    document.body.style.overflow = 'auto';
+}
+
+// Owner & Feedback Modals
+function openListingModal() {
+    document.getElementById('ownerModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeOwnerModal() {
+    document.getElementById('ownerModal').classList.remove('active');
+    document.body.style.overflow = 'auto';
+}
+
+function submitOwnerForm() {
+    const company = document.getElementById('ownerCompany').value;
+    if(!company) {
+        alert('Please fill in your company details.');
+        return;
+    }
+    alert('Thank you! Our account manager will contact you within 24 hours to set up your media dashboard.');
+    closeOwnerModal();
+}
+
+function openFeedbackModal() {
+    document.getElementById('feedbackModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeFeedbackModal() {
+    document.getElementById('feedbackModal').classList.remove('active');
+    document.body.style.overflow = 'auto';
+    document.getElementById('modalFeedback').value = '';
+}
+
+function submitModalFeedback() {
+    const feedback = document.getElementById('modalFeedback').value.trim();
+    if (!feedback) {
+        alert('Please enter your feedback before submitting.');
+        return;
+    }
+    
+    const subject = 'Website Feedback - OOHPhilippines.com';
+    const body = `Feedback:\n\n${feedback}\n\n---\nSubmitted from: ${window.location.href}`;
+    const mailtoLink = `mailto:darylabueva@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    
+    window.location.href = mailtoLink;
+    
+    setTimeout(() => {
+        closeFeedbackModal();
+        alert('Thank you for your feedback!');
+    }, 500);
+}
+
+// Close modals when clicking outside
+document.getElementById('listingModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeListingModal();
+    }
+});
+
+document.getElementById('feedbackModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeFeedbackModal();
+    }
+});
+
+// Close modals with Escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeListingModal();
+        closeFeedbackModal();
+    }
+});
+</script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+        min-height: 100vh;
+        padding: 0;
+    }
+    
+    /* Top Banner Ad */
+    .top-banner-ad {
+        background: linear-gradient(90deg, #f5f5f5 0%, #e8e8e8 100%);
+        padding: 12px 20px;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    
+    .ad-placeholder {
+        background: white;
+        border: 2px dashed #bbb;
+        padding: 15px 20px;
+        border-radius: 8px;
+        color: #666;
+        font-size: 13px;
+        max-width: 728px;
+        margin: 0 auto;
+        display: inline-block;
+    }
+    
+    .ad-placeholder strong {
+        color: #333;
+        font-size: 14px;
+    }
+    
+    /* Navigation */
+    .nav-bar {
         max-width: 1200px;
         margin: 0 auto;
         display: flex;
