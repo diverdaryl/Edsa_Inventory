@@ -12,6 +12,32 @@
         padding: 0;
     }
     
+    /* Top Banner Ad */
+    .top-banner-ad {
+        background: linear-gradient(90deg, #f5f5f5 0%, #e8e8e8 100%);
+        padding: 12px 20px;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    
+    .ad-placeholder {
+        background: white;
+        border: 2px dashed #bbb;
+        padding: 15px 20px;
+        border-radius: 8px;
+        color: #666;
+        font-size: 13px;
+        max-width: 728px;
+        margin: 0 auto;
+        display: inline-block;
+    }
+    
+    .ad-placeholder strong {
+        color: #333;
+        font-size: 14px;
+    }
+    
     /* Navigation */
     .nav-bar {
         max-width: 1200px;
@@ -30,6 +56,12 @@
         letter-spacing: -0.5px;
     }
     
+    .nav-buttons {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+    }
+    
     .nav-link {
         color: #1565c0;
         text-decoration: none;
@@ -38,11 +70,23 @@
         border-radius: 8px;
         background: rgba(255, 255, 255, 0.7);
         transition: all 0.3s;
+        border: none;
+        cursor: pointer;
+        font-size: 14px;
     }
     
     .nav-link:hover {
         background: white;
         transform: translateY(-2px);
+    }
+    
+    .nav-link.list-site {
+        background: #4caf50;
+        color: white;
+    }
+    
+    .nav-link.list-site:hover {
+        background: #45a049;
     }
     
     /* Home Page Styles */
@@ -166,15 +210,61 @@
         transform: translateY(-2px);
     }
     
+    /* Owner CTA Section */
+    .owner-cta {
+        background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+        color: white;
+        text-align: center;
+        padding: 50px 30px;
+        margin: 40px auto 60px;
+        border-radius: 20px;
+        box-shadow: 0 8px 30px rgba(76, 175, 80, 0.3);
+        max-width: 800px;
+    }
+    
+    .owner-cta h3 {
+        font-size: 32px;
+        margin-bottom: 12px;
+    }
+    
+    .owner-cta p {
+        font-size: 17px;
+        margin-bottom: 25px;
+        opacity: 0.95;
+        line-height: 1.5;
+    }
+    
+    .owner-cta button {
+        background: white;
+        color: #4caf50;
+        border: none;
+        padding: 15px 35px;
+        border-radius: 50px;
+        font-size: 17px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    
+    .owner-cta button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+    
     /* Inventory Page Styles */
     .inventory-container {
-        max-width: 1200px;
+        max-width: 1400px;
         margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 0 20px 50px 20px;
+        display: grid;
+        grid-template-columns: 1fr 300px;
+        gap: 30px;
+        padding: 0 30px 50px 30px;
         width: 100%;
+    }
+    
+    .main-inventory {
+        min-width: 0;
     }
     
     .inventory-title {
@@ -182,16 +272,17 @@
         color: #1565c0;
         text-align: center;
         width: 100%;
+        grid-column: 1 / -1;
     }
     
     .search-filter-container {
         background: white;
         border-radius: 15px;
         padding: 25px;
-        max-width: 600px;
-        width: 100%;
         margin-bottom: 30px;
         box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        grid-column: 1 / -1;
+        max-width: 100%;
     }
     
     .search-box {
@@ -247,14 +338,61 @@
         background: #e8eaed;
     }
     
+    /* Sidebar Ads */
+    .sidebar-ads {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        position: sticky;
+        top: 20px;
+        height: fit-content;
+    }
+    
+    .sidebar-ad {
+        background: white;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        text-align: center;
+    }
+    
+    .sidebar-ad h4 {
+        color: #999;
+        font-size: 11px;
+        text-transform: uppercase;
+        margin-bottom: 15px;
+        letter-spacing: 1.5px;
+        font-weight: 600;
+    }
+    
+    .sidebar-ad-content {
+        height: 250px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        background: #f8f9fa;
+        border-radius: 8px;
+        border: 2px dashed #ddd;
+        padding: 20px;
+        color: #666;
+        font-size: 13px;
+        line-height: 1.6;
+    }
+    
+    .sidebar-ad-content strong {
+        font-size: 16px;
+        color: #333;
+        margin-bottom: 10px;
+    }
+    
     .billboard-card {
         background: white;
         border-radius: 15px;
         overflow: hidden;
         box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        max-width: 600px;
         width: 100%;
-        margin: 0 auto 40px auto;
+        margin: 0 0 40px 0;
     }
     
     .map-window { width: 100%; height: 350px; border: none; background: #eee; }
@@ -337,60 +475,199 @@
         box-shadow: 0 6px 20px rgba(21, 101, 192, 0.4);
     }
     
-    /* Feedback Modal */
-    .feedback-modal {
+    /* Modal Base Styles */
+    .modal {
         display: none;
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.5);
+        background: rgba(0, 0, 0, 0.6);
         z-index: 2000;
         justify-content: center;
         align-items: center;
         padding: 20px;
+        overflow-y: auto;
     }
     
-    .feedback-modal.active {
+    .modal.active {
         display: flex;
     }
     
-    .feedback-content {
+    .modal-content {
         background: white;
         border-radius: 15px;
-        padding: 30px;
-        max-width: 500px;
+        max-width: 600px;
         width: 100%;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        max-height: 90vh;
+        overflow-y: auto;
+        animation: slideIn 0.3s ease-out;
     }
     
-    .feedback-header {
+    @keyframes slideIn {
+        from {
+            transform: translateY(-50px);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+    
+    .modal-header {
+        padding: 25px 30px;
+        border-bottom: 2px solid #f0f0f0;
         display: flex;
         justify-content: space-between;
-        align-items: center;
-        margin-bottom: 20px;
+        align-items: flex-start;
     }
     
-    .feedback-header h3 {
-        color: #1565c0;
-        font-size: 20px;
+    .modal-header.green {
+        background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+        color: white;
+        border-bottom: none;
+        border-radius: 15px 15px 0 0;
+    }
+    
+    .modal-header h3 {
+        font-size: 22px;
         margin: 0;
+    }
+    
+    .modal-header p {
+        margin: 8px 0 0 0;
+        opacity: 0.9;
+        font-size: 14px;
     }
     
     .close-btn {
         background: none;
         border: none;
-        font-size: 24px;
+        font-size: 28px;
         color: #999;
         cursor: pointer;
         padding: 0;
         width: 30px;
         height: 30px;
+        line-height: 1;
+        transition: color 0.3s;
+    }
+    
+    .modal-header.green .close-btn {
+        color: white;
     }
     
     .close-btn:hover {
         color: #333;
+    }
+    
+    .modal-header.green .close-btn:hover {
+        color: rgba(255,255,255,0.8);
+    }
+    
+    .modal-body {
+        padding: 30px;
+    }
+    
+    /* List Your Site Modal Specific */
+    .pricing-info {
+        background: #f0f7f0;
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 25px;
+        border-left: 4px solid #4caf50;
+    }
+    
+    .pricing-info h4 {
+        color: #4caf50;
+        margin-bottom: 12px;
+        font-size: 16px;
+    }
+    
+    .pricing-info ul {
+        list-style: none;
+        padding: 0;
+    }
+    
+    .pricing-info li {
+        padding: 6px 0;
+        color: #333;
+        font-size: 14px;
+    }
+    
+    .pricing-info li:before {
+        content: "✓ ";
+        color: #4caf50;
+        font-weight: bold;
+        margin-right: 8px;
+    }
+    
+    .form-group {
+        margin-bottom: 20px;
+    }
+    
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        color: #333;
+        font-weight: 600;
+        font-size: 14px;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        width: 100%;
+        padding: 12px 15px;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        font-size: 15px;
+        font-family: 'Segoe UI', sans-serif;
+        transition: border-color 0.3s;
+    }
+    
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+        outline: none;
+        border-color: #4caf50;
+    }
+    
+    .form-group textarea {
+        resize: vertical;
+        min-height: 100px;
+    }
+    
+    .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+    
+    .submit-btn {
+        width: 100%;
+        padding: 16px;
+        background: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 17px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+    
+    .submit-btn:hover {
+        background: #45a049;
+        transform: translateY(-2px);
+    }
+    
+    /* Feedback Modal Specific */
+    .feedback-modal .modal-header h3 {
+        color: #1565c0;
     }
     
     .feedback-form textarea {
@@ -400,7 +677,7 @@
         border: 2px solid #e0e0e0;
         border-radius: 8px;
         font-family: 'Segoe UI', sans-serif;
-        font-size: 14px;
+        font-size: 15px;
         resize: vertical;
         margin-bottom: 15px;
     }
@@ -425,62 +702,25 @@
     
     .feedback-form button:hover {
         background: #0d47a1;
-    }
-    
-    /* Footer Feedback Section */
-    .feedback-footer {
-        background: white;
-        padding: 40px 20px;
-        margin-top: 50px;
-        border-top: 2px solid #e3f2fd;
-        text-align: center;
-    }
-    
-    .feedback-footer h3 {
-        color: #1565c0;
-        margin-bottom: 10px;
-        font-size: 22px;
-    }
-    
-    .feedback-footer p {
-        color: #666;
-        margin-bottom: 20px;
-    }
-    
-    .feedback-footer textarea {
-        max-width: 600px;
-        width: 100%;
-        min-height: 100px;
-        padding: 15px;
-        border: 2px solid #e0e0e0;
-        border-radius: 8px;
-        font-family: 'Segoe UI', sans-serif;
-        font-size: 14px;
-        resize: vertical;
-        margin-bottom: 15px;
-    }
-    
-    .feedback-footer textarea:focus {
-        outline: none;
-        border-color: #1565c0;
-    }
-    
-    .feedback-footer button {
-        background: #1565c0;
-        color: white;
-        border: none;
-        padding: 15px 40px;
-        border-radius: 8px;
-        font-weight: 600;
-        font-size: 16px;
-        cursor: pointer;
-        transition: all 0.3s;
-    }
-    
-    .feedback-footer button:hover {
-        background: #0d47a1;
         transform: translateY(-2px);
-    }  
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+        .inventory-container {
+            grid-template-columns: 1fr;
+        }
+        
+        .sidebar-ads {
+            flex-direction: row;
+            overflow-x: auto;
+            position: static;
+        }
+        
+        .sidebar-ad {
+            min-width: 280px;
+        }
+    }
     
     @media (max-width: 768px) {
         .logo {
@@ -513,15 +753,61 @@
             flex-direction: column;
             gap: 15px;
         }
+        
+        .nav-buttons {
+            width: 100%;
+            flex-direction: column;
+        }
+        
+        .nav-link {
+            width: 100%;
+            text-align: center;
+        }
+        
+        .owner-cta h3 {
+            font-size: 26px;
+        }
+        
+        .owner-cta p {
+            font-size: 15px;
+        }
+        
+        .form-row {
+            grid-template-columns: 1fr;
+        }
+        
+        .inventory-container {
+            padding: 0 15px 50px 15px;
+        }
+        
+        .top-banner-ad {
+            padding: 10px;
+        }
+        
+        .ad-placeholder {
+            font-size: 11px;
+            padding: 12px;
+        }
     }
 </style>
 </head>
 <body>
 
+<!-- Top Banner Ad -->
+<div class="top-banner-ad">
+    <div class="ad-placeholder">
+        <strong>Premium Ad Space (728x90)</strong><br>
+        Reach advertisers nationwide • Contact: advertise@oohphilippines.com
+    </div>
+</div>
+
 <!-- Navigation Bar -->
 <div class="nav-bar">
     <div class="nav-logo" onclick="showPage('home')">OOHPhilippines.com</div>
-    <a href="#" class="nav-link" onclick="showPage('inventory'); return false;">View Inventory</a>
+    <div class="nav-buttons">
+        <button class="nav-link" onclick="showPage('inventory')">View Inventory</button>
+        <button class="nav-link list-site" onclick="openListingModal()">List Your Site</button>
+    </div>
 </div>
 
 <!-- Home Page -->
@@ -548,6 +834,13 @@
             <span class="quick-link" onclick="goToInventory('nlex')">NLEX</span>
             <span class="quick-link" onclick="goToInventory('metro')">Metro Manila</span>
         </div>
+    </div>
+    
+    <!-- Owner CTA Section -->
+    <div class="owner-cta">
+        <h3>💼 Own a Billboard?</h3>
+        <p>List your OOH sites and reach thousands of advertisers looking for premium locations</p>
+        <button onclick="openListingModal()">List Your Sites Now</button>
     </div>
 </div>
 
@@ -5047,13 +5340,35 @@
    </div>
 </div>
 
-        <!-- Footer Feedback Section -->
-        <div class="feedback-footer">
-            <h3>💡 Help Us Improve This Website</h3>
-            <p>Your feedback helps us make OOHPhilippines.com better for everyone</p>
-            <textarea id="footerFeedback" placeholder="Share your suggestions, report issues, or tell us what you'd like to see..."></textarea>
-            <button onclick="submitFooterFeedback()">Send Feedback</button>
-        </div>
+             <!-- Sidebar Ads -->
+        <aside class="sidebar-ads">
+            <div class="sidebar-ad">
+                <h4>Partner Spotlight</h4>
+                <div class="sidebar-ad-content">
+                    <strong>Billboard Printing Services</strong>
+                    <p>High-quality printing<br>Fast turnaround</p>
+                    <small style="color: #999; margin-top: 15px;">Ad Space Available<br>300×250</small>
+                </div>
+            </div>
+
+            <div class="sidebar-ad">
+                <h4>Featured Service</h4>
+                <div class="sidebar-ad-content">
+                    <strong>Installation Experts</strong>
+                    <p>Professional billboard<br>installation services</p>
+                    <small style="color: #999; margin-top: 15px;">Ad Space Available<br>300×250</small>
+                </div>
+            </div>
+
+            <div class="sidebar-ad">
+                <h4>Industry Partner</h4>
+                <div class="sidebar-ad-content">
+                    <strong>LED Billboard Solutions</strong>
+                    <p>Modern digital displays<br>for maximum impact</p>
+                    <small style="color: #999; margin-top: 15px;">Ad Space Available<br>300×250</small>
+                </div>
+            </div>
+        </aside>
     </div>
 </div>
 
@@ -5064,17 +5379,101 @@
     </button>
 </div>
 
+<!-- List Your Site Modal -->
+<div id="listingModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header green">
+            <div>
+                <h3>List Your Billboard Sites</h3>
+                <p>Join hundreds of billboard owners reaching advertisers nationwide</p>
+            </div>
+            <button class="close-btn" onclick="closeListingModal()">×</button>
+        </div>
+        <div class="modal-body">
+            <div class="pricing-info">
+                <h4>Choose Your Plan:</h4>
+                <ul>
+                    <li><strong>Free Basic:</strong> Up to 3 listings</li>
+                    <li><strong>Pro (₱4,500/mo):</strong> Unlimited listings + Analytics</li>
+                    <li><strong>Featured (₱2,700/site):</strong> Top placement in search</li>
+                    <li><strong>Commission:</strong> Pay 5% only when you get bookings</li>
+                </ul>
+            </div>
+
+            <form id="listingForm">
+                <div class="form-group">
+                    <label>Company/Owner Name *</label>
+                    <input type="text" required placeholder="Your company name">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Contact Person *</label>
+                        <input type="text" required placeholder="Full name">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number *</label>
+                        <input type="tel" required placeholder="+63 XXX XXX XXXX">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Email Address *</label>
+                    <input type="email" required placeholder="your@email.com">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Number of Sites</label>
+                        <select>
+                            <option>1-5 sites</option>
+                            <option>6-10 sites</option>
+                            <option>11-20 sites</option>
+                            <option>20+ sites</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Preferred Plan</label>
+                        <select>
+                            <option>Free Basic (3 listings)</option>
+                            <option>Pro (₱4,500/month)</option>
+                            <option>Featured Listings</option>
+                            <option>Commission-based</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Primary Locations</label>
+                    <input type="text" placeholder="e.g., EDSA, SLEX, Metro Manila">
+                </div>
+
+                <div class="form-group">
+                    <label>Additional Information</label>
+                    <textarea placeholder="Tell us about your billboard sites, locations, sizes, etc."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Submit Listing Request</button>
+            </form>
+        </div>
+    </div>
+</div>
+
 <!-- Feedback Modal -->
-<div class="feedback-modal" id="feedbackModal">
-    <div class="feedback-content">
-        <div class="feedback-header">
-            <h3>💡 Help Us Improve</h3>
+<div class="feedback-modal modal" id="feedbackModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <div>
+                <h3>💡 Help Us Improve</h3>
+            </div>
             <button class="close-btn" onclick="closeFeedbackModal()">×</button>
         </div>
-        <form class="feedback-form">
-            <textarea id="modalFeedback" placeholder="Share your thoughts, suggestions, or report any issues..."></textarea>
-            <button type="button" onclick="submitModalFeedback()">Send Feedback</button>
-        </form>
+        <div class="modal-body">
+            <form class="feedback-form">
+                <textarea id="modalFeedback" placeholder="Share your thoughts, suggestions, or report any issues..."></textarea>
+                <button type="button" onclick="submitModalFeedback()">Send Feedback</button>
+            </form>
+        </div>
     </div>
 </div>
 
@@ -5161,13 +5560,47 @@ locationFilter.addEventListener('change', filterCards);
 facingFilter.addEventListener('change', filterCards);
 typeFilter.addEventListener('change', filterCards);
 
-// Feedback Functions
+// List Your Site Modal Functions
+function openListingModal() {
+    document.getElementById('listingModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeListingModal() {
+    document.getElementById('listingModal').classList.remove('active');
+    document.body.style.overflow = 'auto';
+    document.getElementById('listingForm').reset();
+}
+
+document.getElementById('listingForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const formData = new FormData(this);
+    const subject = 'New Billboard Listing Request - OOHPhilippines.com';
+    let body = 'New listing request:\n\n';
+    
+    for (let [key, value] of formData.entries()) {
+        body += `${key}: ${value}\n`;
+    }
+    
+    const mailtoLink = `mailto:darylabueva@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoLink;
+    
+    setTimeout(() => {
+        alert('Thank you! Your listing request has been submitted. Our team will contact you within 24 hours.');
+        closeListingModal();
+    }, 500);
+});
+
+// Feedback Modal Functions
 function openFeedbackModal() {
     document.getElementById('feedbackModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
 }
 
 function closeFeedbackModal() {
     document.getElementById('feedbackModal').classList.remove('active');
+    document.body.style.overflow = 'auto';
     document.getElementById('modalFeedback').value = '';
 }
 
@@ -5190,28 +5623,23 @@ function submitModalFeedback() {
     }, 500);
 }
 
-function submitFooterFeedback() {
-    const feedback = document.getElementById('footerFeedback').value.trim();
-    if (!feedback) {
-        alert('Please enter your feedback before submitting.');
-        return;
+// Close modals when clicking outside
+document.getElementById('listingModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeListingModal();
     }
-    
-    const subject = 'Website Feedback - OOHPhilippines.com';
-    const body = `Feedback:\n\n${feedback}\n\n---\nSubmitted from: ${window.location.href}`;
-    const mailtoLink = `mailto:darylabueva@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    
-    window.location.href = mailtoLink;
-    
-    setTimeout(() => {
-        document.getElementById('footerFeedback').value = '';
-        alert('Thank you for your feedback!');
-    }, 500);
-}
+});
 
-// Close modal when clicking outside
 document.getElementById('feedbackModal').addEventListener('click', function(e) {
     if (e.target === this) {
+        closeFeedbackModal();
+    }
+});
+
+// Close modals with Escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeListingModal();
         closeFeedbackModal();
     }
 });
