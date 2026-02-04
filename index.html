@@ -11,38 +11,6 @@
         min-height: 100vh;
         padding: 0;
     }
-
-    /* Banner Ad Styles */
-    .banner-ad {
-        width: 100%;
-        background: #0d47a1; /* Dark blue background */
-        color: white;
-        text-align: center;
-        padding: 15px;
-        font-size: 14px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        font-weight: bold;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 90px;
-    }
-
-    .banner-ad a {
-        color: #ffeb3b; /* Yellow for visibility */
-        text-decoration: none;
-        border: 1px solid #ffeb3b;
-        padding: 5px 15px;
-        margin-left: 15px;
-        border-radius: 4px;
-        transition: 0.3s;
-    }
-
-    .banner-ad a:hover {
-        background: #ffeb3b;
-        color: #0d47a1;
-    }
     
     /* Navigation */
     .nav-bar {
@@ -52,6 +20,8 @@
         justify-content: space-between;
         align-items: center;
         padding: 20px 30px;
+        flex-wrap: wrap;
+        gap: 15px;
     }
     
     .nav-logo {
@@ -62,6 +32,12 @@
         letter-spacing: -0.5px;
     }
     
+    .nav-links {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+    
     .nav-link {
         color: #1565c0;
         text-decoration: none;
@@ -70,11 +46,21 @@
         border-radius: 8px;
         background: rgba(255, 255, 255, 0.7);
         transition: all 0.3s;
+        white-space: nowrap;
     }
     
     .nav-link:hover {
         background: white;
         transform: translateY(-2px);
+    }
+    
+    .nav-link.primary {
+        background: #1565c0;
+        color: white;
+    }
+    
+    .nav-link.primary:hover {
+        background: #0d47a1;
     }
     
     /* Home Page Styles */
@@ -459,6 +445,61 @@
         background: #0d47a1;
     }
     
+    /* Footer Feedback Section */
+    .feedback-footer {
+        background: white;
+        padding: 40px 20px;
+        margin-top: 50px;
+        border-top: 2px solid #e3f2fd;
+        text-align: center;
+    }
+    
+    .feedback-footer h3 {
+        color: #1565c0;
+        margin-bottom: 10px;
+        font-size: 22px;
+    }
+    
+    .feedback-footer p {
+        color: #666;
+        margin-bottom: 20px;
+    }
+    
+    .feedback-footer textarea {
+        max-width: 600px;
+        width: 100%;
+        min-height: 100px;
+        padding: 15px;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        font-family: 'Segoe UI', sans-serif;
+        font-size: 14px;
+        resize: vertical;
+        margin-bottom: 15px;
+    }
+    
+    .feedback-footer textarea:focus {
+        outline: none;
+        border-color: #1565c0;
+    }
+    
+    .feedback-footer button {
+        background: #1565c0;
+        color: white;
+        border: none;
+        padding: 15px 40px;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+    
+    .feedback-footer button:hover {
+        background: #0d47a1;
+        transform: translateY(-2px);
+    }  
+    
     @media (max-width: 768px) {
         .logo {
             font-size: 36px;
@@ -487,30 +528,28 @@
         }
         
         .nav-bar {
-            flex-direction: column;
-            gap: 15px;
+            justify-content: center;
         }
-
-        .banner-ad {
-            flex-direction: column;
-            gap: 10px;
-            padding: 20px;
+        
+        .nav-links {
+            justify-content: center;
         }
     }
 </style>
 </head>
 <body>
 
-<div class="banner-ad">
-    <div>🚀 ADVERTISE YOUR BRAND HERE - 1M+ MONTHLY IMPRESSIONS</div>
-    <a href="mailto:darylabueva@gmail.com?subject=Advertising Inquiry">Book Now</a>
-</div>
-
+<!-- Navigation Bar -->
 <div class="nav-bar">
     <div class="nav-logo" onclick="showPage('home')">OOHPhilippines.com</div>
-    <a href="#" class="nav-link" onclick="showPage('inventory'); return false;">View Inventory</a>
+    <div class="nav-links">
+        <a href="#" class="nav-link" onclick="showPage('inventory'); return false;">View Inventory</a>
+        <a href="mailto:info@oohphilippines.com?subject=Advertiser Inquiry" class="nav-link">Looking For Sites?</a>
+        <a href="mailto:info@oohphilippines.com?subject=Billboard Operator - Upload Sites Here" class="nav-link primary">For Operators</a>
+    </div>
 </div>
 
+<!-- Home Page -->
 <div id="homePage" class="page active">
     <div class="hero-container">
         <h1 class="logo">OOHPhilippines.com</h1>
@@ -537,6 +576,7 @@
     </div>
 </div>
 
+<!-- Inventory Page -->
 <div id="inventoryPage" class="page">
     <div class="inventory-container">
         <h1 class="inventory-title">EDSA Billboard Inventory</h1>
@@ -564,9 +604,10 @@
             </div>
         </div>
 
+        <!-- Billboard Card Example (only showing first one, rest would follow same pattern) -->
         <div class="billboard-card">
             <iframe class="map-window" 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15440.0!2d120.98!3d14.65!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTTCsDM5JzAwLjAiTiAxMjDCsDU4JzQ4LjAiRQ!5e0!3m2!1sen!2sph!4v1" 
+                src="https://www.google.com/maps/embed?pb=!4v1737630000000!6m8!1m7!1s-DIdqB2pYvUv9H6_39S-pw!2m2!1d14.657512!2d120.9840331!3f31.76!4f0!5f0.7820865974627469" 
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
@@ -580,25 +621,24 @@
                 </div>
                 <div class="price">Please Call for Rates</div>
                 <div class="button-group">
-                    <a href="mailto:darylabueva@gmail.com" class="btn-contact">📧 Email Inquiry</a>
+                    <a href="mailto:darylabueva@gmail.com?subject=Inquiry: EDSA Monumento Circle AU1 AL1" class="btn-contact">📧 Email Inquiry</a>
                     <a href="viber://chat?number=639178316041" class="btn-viber">💬 Message on Viber</a>
+                    <a href="https://wa.me/639178316041" target="_blank" class="btn-whatsapp">📱 WhatsApp</a>
+                    <a href="https://hddigitalsigns.com/" target="_blank" class="btn-website">🌐 Visit Website</a>
                 </div>
             </div>
         </div>
-    </div>
 </div>
+        </div>
 
-<div class="banner-ad" style="margin-top: 50px; background: #202124;">
-    <div>📈 WANT TO LIST YOUR BILLBOARD INVENTORY?</div>
-    <a href="mailto:darylabueva@gmail.com" style="border-color: #4285f4; color: #4285f4;">Partner with Us</a>
-</div>
-
+<!-- Floating Feedback Button -->
 <div class="feedback-float">
     <button class="feedback-btn" onclick="openFeedbackModal()">
         💬 Feedback
     </button>
 </div>
 
+<!-- Feedback Modal -->
 <div class="feedback-modal" id="feedbackModal">
     <div class="feedback-content">
         <div class="feedback-header">
@@ -606,29 +646,36 @@
             <button class="close-btn" onclick="closeFeedbackModal()">×</button>
         </div>
         <form class="feedback-form">
-            <textarea id="modalFeedback" placeholder="Share your thoughts..."></textarea>
+            <textarea id="modalFeedback" placeholder="Share your thoughts, suggestions, or report any issues..."></textarea>
             <button type="button" onclick="submitModalFeedback()">Send Feedback</button>
         </form>
     </div>
 </div>
 
 <script>
+// Page Navigation
 function showPage(pageName) {
     document.getElementById('homePage').classList.remove('active');
     document.getElementById('inventoryPage').classList.remove('active');
+    
     if (pageName === 'home') {
         document.getElementById('homePage').classList.add('active');
-    } else {
+        window.scrollTo(0, 0);
+    } else if (pageName === 'inventory') {
         document.getElementById('inventoryPage').classList.add('active');
+        window.scrollTo(0, 0);
     }
-    window.scrollTo(0, 0);
 }
 
 function searchFromHome() {
     const searchTerm = document.getElementById('mainSearch').value;
-    showPage('inventory');
-    document.getElementById('searchInput').value = searchTerm;
-    filterCards();
+    if (searchTerm.trim()) {
+        showPage('inventory');
+        document.getElementById('searchInput').value = searchTerm;
+        filterCards();
+    } else {
+        showPage('inventory');
+    }
 }
 
 function goToInventory(area) {
@@ -637,17 +684,111 @@ function goToInventory(area) {
     filterCards();
 }
 
+// Allow Enter key on home search
+document.getElementById('mainSearch').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        searchFromHome();
+    }
+});
+
+// Inventory Filtering
+const searchInput = document.getElementById('searchInput');
+const locationFilter = document.getElementById('locationFilter');
+const facingFilter = document.getElementById('facingFilter');
+const typeFilter = document.getElementById('typeFilter');
+const cards = document.querySelectorAll('.billboard-card');
+
 function filterCards() {
-    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-    const cards = document.querySelectorAll('.billboard-card');
+    const searchTerm = searchInput.value.toLowerCase();
+    const location = locationFilter.value.toLowerCase();
+    const facing = facingFilter.value.toLowerCase();
+    const type = typeFilter.value.toLowerCase();
+    
     cards.forEach(card => {
-        const text = card.textContent.toLowerCase();
-        card.style.display = text.includes(searchTerm) ? 'block' : 'none';
+        const cardText = card.textContent.toLowerCase();
+        const tag = card.querySelector('.tag').textContent.toLowerCase();
+        const specs = card.querySelector('.spec-grid').textContent.toLowerCase();
+        
+        const matchesSearch = cardText.includes(searchTerm);
+        const matchesLocation = !location || tag.includes(location);
+        const matchesFacing = !facing || specs.includes(facing);
+        const matchesType = !type || specs.includes(type);
+        
+        if (matchesSearch && matchesLocation && matchesFacing && matchesType) {
+            card.style.display = 'block';
+        } else {
+            card.style.display = 'none';
+        }
     });
 }
 
-function openFeedbackModal() { document.getElementById('feedbackModal').classList.add('active'); }
-function closeFeedbackModal() { document.getElementById('feedbackModal').classList.remove('active'); }
+function clearFilters() {
+    searchInput.value = '';
+    locationFilter.value = '';
+    facingFilter.value = '';
+    typeFilter.value = '';
+    filterCards();
+}
+
+searchInput.addEventListener('input', filterCards);
+locationFilter.addEventListener('change', filterCards);
+facingFilter.addEventListener('change', filterCards);
+typeFilter.addEventListener('change', filterCards);
+
+// Feedback Functions
+function openFeedbackModal() {
+    document.getElementById('feedbackModal').classList.add('active');
+}
+
+function closeFeedbackModal() {
+    document.getElementById('feedbackModal').classList.remove('active');
+    document.getElementById('modalFeedback').value = '';
+}
+
+function submitModalFeedback() {
+    const feedback = document.getElementById('modalFeedback').value.trim();
+    if (!feedback) {
+        alert('Please enter your feedback before submitting.');
+        return;
+    }
+    
+    const subject = 'Website Feedback - OOHPhilippines.com';
+    const body = `Feedback:\n\n${feedback}\n\n---\nSubmitted from: ${window.location.href}`;
+    const mailtoLink = `mailto:darylabueva@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    
+    window.location.href = mailtoLink;
+    
+    setTimeout(() => {
+        closeFeedbackModal();
+        alert('Thank you for your feedback!');
+    }, 500);
+}
+
+function submitFooterFeedback() {
+    const feedback = document.getElementById('footerFeedback').value.trim();
+    if (!feedback) {
+        alert('Please enter your feedback before submitting.');
+        return;
+    }
+    
+    const subject = 'Website Feedback - OOHPhilippines.com';
+    const body = `Feedback:\n\n${feedback}\n\n---\nSubmitted from: ${window.location.href}`;
+    const mailtoLink = `mailto:darylabueva@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    
+    window.location.href = mailtoLink;
+    
+    setTimeout(() => {
+        document.getElementById('footerFeedback').value = '';
+        alert('Thank you for your feedback!');
+    }, 500);
+}
+
+// Close modal when clicking outside
+document.getElementById('feedbackModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeFeedbackModal();
+    }
+});
 </script>
 
 </body>
