@@ -953,11 +953,7 @@
         }
     }
 
-<!-- ===================================================================== -->
-<!-- ADD THIS CSS TO YOUR <style> SECTION (before the closing </style>)  -->
-<!-- ===================================================================== -->
-
-    /* Footer Styles */
+  /* Footer Styles */
     .site-footer {
         background: linear-gradient(135deg, #1565c0 0%, #0d47a1 100%);
         color: white;
@@ -1147,7 +1143,7 @@
         .legal-header h2 {
             font-size: 22px;
         }
-    }   
+    }  
 </style>
 </head>
 <body>
@@ -1624,10 +1620,19 @@
     </button>
 </div>
 
-<!-- ===================================================================== -->
-<!-- ADD THIS HTML BEFORE THE CLOSING </body> TAG                         -->
-<!-- Place it after the Feedback Modal and before the <script> section    -->
-<!-- ===================================================================== -->
+<!-- Feedback Modal -->
+<div class="feedback-modal" id="feedbackModal">
+    <div class="feedback-content">
+        <div class="feedback-header">
+            <h3>💡 Help Us Improve</h3>
+            <button class="close-btn" onclick="closeFeedbackModal()">×</button>
+        </div>
+        <form class="feedback-form">
+            <textarea id="modalFeedback" placeholder="Share your thoughts, suggestions, or report any issues..."></textarea>
+            <button type="button" onclick="submitModalFeedback()">Send Feedback</button>
+        </form>
+    </div>
+</div>
 
 <!-- Site Footer -->
 <footer class="site-footer">
@@ -1909,21 +1914,7 @@
             </ul>
         </div>
     </div>
-</div>
-   
-<!-- Feedback Modal -->
-<div class="feedback-modal" id="feedbackModal">
-    <div class="feedback-content">
-        <div class="feedback-header">
-            <h3>💡 Help Us Improve</h3>
-            <button class="close-btn" onclick="closeFeedbackModal()">×</button>
-        </div>
-        <form class="feedback-form">
-            <textarea id="modalFeedback" placeholder="Share your thoughts, suggestions, or report any issues..."></textarea>
-            <button type="button" onclick="submitModalFeedback()">Send Feedback</button>
-        </form>
-    </div>
-</div>
+</div>   
 
 <script>
 // ===== GOOGLE SHEETS CONFIGURATION =====
