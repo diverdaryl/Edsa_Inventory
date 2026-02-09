@@ -569,6 +569,218 @@
         box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
     }
 
+   /* Advertiser Inquiries Page */
+    .inquiries-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        width: 100%;
+    }
+
+    .inquiries-header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .inquiries-header h1 {
+        color: #1565c0;
+        font-size: 36px;
+        margin-bottom: 10px;
+    }
+
+    .inquiries-header p {
+        color: #666;
+        font-size: 18px;
+    }
+
+    .two-column-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        margin-bottom: 50px;
+    }
+
+    /* Submit Form Styles */
+    .submit-inquiry-section {
+        background: white;
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .submit-inquiry-section h2 {
+        color: #1565c0;
+        margin-bottom: 20px;
+        font-size: 24px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: block;
+        color: #202124;
+        font-weight: 600;
+        margin-bottom: 8px;
+        font-size: 14px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        width: 100%;
+        padding: 12px 15px;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        font-family: 'Segoe UI', sans-serif;
+        font-size: 14px;
+        transition: border-color 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+        outline: none;
+        border-color: #1565c0;
+    }
+
+    .form-group textarea {
+        min-height: 100px;
+        resize: vertical;
+    }
+
+    .submit-btn {
+        width: 100%;
+        padding: 16px;
+        background: #1565c0;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    .submit-btn:hover {
+        background: #0d47a1;
+        transform: translateY(-2px);
+    }
+
+    .submit-btn:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+        transform: none;
+    }
+
+    /* Inquiries Display Section */
+    .inquiries-display-section {
+        background: white;
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        max-height: 700px;
+        overflow-y: auto;
+    }
+
+    .inquiries-display-section h2 {
+        color: #1565c0;
+        margin-bottom: 20px;
+        font-size: 24px;
+        position: sticky;
+        top: 0;
+        background: white;
+        padding-bottom: 10px;
+        z-index: 10;
+    }
+
+    .inquiry-card {
+        background: #f8f9fa;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 15px;
+        border-left: 4px solid #1565c0;
+    }
+
+    .inquiry-card h3 {
+        color: #202124;
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .inquiry-meta {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 10px;
+        flex-wrap: wrap;
+    }
+
+    .inquiry-meta span {
+        color: #666;
+        font-size: 13px;
+        background: white;
+        padding: 4px 10px;
+        border-radius: 5px;
+    }
+
+    .inquiry-description {
+        color: #455a64;
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+
+    .inquiry-contact {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .contact-btn {
+        padding: 8px 16px;
+        background: #1565c0;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+        font-size: 13px;
+        font-weight: 600;
+        transition: all 0.3s;
+    }
+
+    .contact-btn:hover {
+        background: #0d47a1;
+    }
+
+    .loading-spinner {
+        text-align: center;
+        padding: 40px;
+        color: #666;
+    }
+
+    .no-inquiries {
+        text-align: center;
+        padding: 40px;
+        color: #999;
+    }
+
+    .success-message {
+        background: #4caf50;
+        color: white;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        display: none;
+    }
+
+    .error-message {
+        background: #f44336;
+        color: white;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        display: none;
+    } 
+
     /* About/Legal Pages Container */
     .about-container {
         max-width: 900px;
@@ -1113,6 +1325,218 @@
         </div>
     </div>
 </div>
+
+<!-- Submit Inquiry CTA -->
+        <div class="add-promo-section">
+            <h2>Advertiser?</h2>
+            <p>Post your billboard requirements and let operators reach out to you</p>
+            <button class="add-promo-btn" onclick="toggleInquiryForm()">
+                ➕ Post Your Requirements
+            </button>
+        </div>
+
+        <!-- Inquiry Form (Hidden by Default) -->
+        <div id="inquiryFormSection" style="display: none;">
+            <div class="promo-card" style="max-width: 700px; margin: 0 auto 40px auto;">
+                <div class="promo-header" style="background: linear-gradient(135deg, #1565c0 0%, #0d47a1 100%);">
+                    <div class="promo-operator">Post Your Requirements</div>
+                    <div class="promo-title">Fill out the form below to connect with billboard operators</div>
+                </div>
+                <div class="promo-body">
+                    <div class="success-message" id="successMessage" style="background: #4caf50; color: white; padding: 15px; border-radius: 8px; margin-bottom: 20px; display: none;">
+                        ✓ Your inquiry has been submitted successfully! Operators will contact you directly.
+                    </div>
+                    <div class="error-message" id="errorMessage" style="background: #f44336; color: white; padding: 15px; border-radius: 8px; margin-bottom: 20px; display: none;">
+                        ✗ Something went wrong. Please try again or email us directly.
+                    </div>
+                    
+                    <form id="inquiryForm">
+                        <div class="form-group">
+                            <label>Company/Brand Name *</label>
+                            <input type="text" id="companyName" required placeholder="Enter your company name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Contact Person *</label>
+                            <input type="text" id="contactPerson" required placeholder="Your name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Email *</label>
+                            <input type="email" id="email" required placeholder="your@email.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Phone Number *</label>
+                            <input type="tel" id="phone" required placeholder="+63 XXX XXX XXXX">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Preferred Location *</label>
+                            <select id="location" required>
+                                <option value="">Select location</option>
+                                <option value="Metro Manila">Metro Manila</option>
+                                <option value="EDSA">EDSA</option>
+                                <option value="C5">C5 Road</option>
+                                <option value="SLEX">SLEX</option>
+                                <option value="NLEX">NLEX</option>
+                                <option value="Provincial">Provincial</option>
+                                <option value="Nationwide">Nationwide</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Billboard Type *</label>
+                            <select id="billboardType" required>
+                                <option value="">Select type</option>
+                                <option value="Static">Static Billboard</option>
+                                <option value="Digital">Digital Billboard</option>
+                                <option value="Both">Both Static & Digital</option>
+                                <option value="Any">Any Type</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Budget Range</label>
+                            <select id="budget">
+                                <option value="">Select budget range</option>
+                                <option value="Under 100K">Under ₱100,000/month</option>
+                                <option value="100K-300K">₱100,000 - ₱300,000/month</option>
+                                <option value="300K-500K">₱300,000 - ₱500,000/month</option>
+                                <option value="500K+">₱500,000+/month</option>
+                                <option value="To Discuss">Prefer to Discuss</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Campaign Details *</label>
+                            <textarea id="details" required placeholder="Tell us about your campaign, timeline, specific requirements, etc."></textarea>
+                        </div>
+                        
+                        <div style="display: flex; gap: 10px;">
+                            <button type="submit" class="submit-btn" id="submitBtn" style="flex: 1;">Submit Requirements</button>
+                            <button type="button" class="submit-btn" onclick="toggleInquiryForm()" style="flex: 1; background: #666;">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Inquiries Section -->
+        <div style="text-align: center; margin: 40px 0 30px 0;">
+            <h2 style="color: #1565c0; font-size: 32px; margin-bottom: 10px;">Recent Advertiser Requirements</h2>
+            <p style="color: #666; font-size: 16px;">Billboard operators: Connect with advertisers looking for your sites</p>
+        </div>
+
+        <div id="inquiriesList">
+            <!-- Inquiries will be loaded here dynamically -->
+        </div>
+
+        <!-- Sample Static Inquiries (will be replaced when Google Sheets is configured) -->
+        <div class="static-inquiries">
+            <!-- Sample Inquiry 1 -->
+            <div class="promo-card">
+                <div class="promo-badge" style="background: linear-gradient(135deg, #4caf50, #66bb6a);">ACTIVE</div>
+                <div class="promo-header" style="background: linear-gradient(135deg, #1565c0 0%, #0d47a1 100%);">
+                    <div class="promo-operator">ABC Corporation</div>
+                    <div class="promo-title">Looking for EDSA Digital Billboards</div>
+                    <div class="promo-validity">📅 Posted: Feb 4, 2026</div>
+                </div>
+                <div class="promo-body">
+                    <div class="promo-description">
+                        Seeking digital billboard placements along EDSA for a 3-month campaign launching in March. Prefer southbound traffic visibility with high-resolution LED displays.
+                    </div>
+                    
+                    <div style="background: #f8f9fa; border-radius: 10px; padding: 20px; margin-bottom: 25px;">
+                        <h3 style="color: #1565c0; font-size: 16px; margin-bottom: 15px;">📋 Requirements:</h3>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; color: #455a64; font-size: 14px;">
+                            <div><strong style="color: #202124; display: block; margin-bottom: 3px;">📍 Location:</strong> EDSA</div>
+                            <div><strong style="color: #202124; display: block; margin-bottom: 3px;">🎯 Type:</strong> Digital Billboard</div>
+                            <div><strong style="color: #202124; display: block; margin-bottom: 3px;">💰 Budget:</strong> ₱300K - ₱500K/month</div>
+                            <div><strong style="color: #202124; display: block; margin-bottom: 3px;">⏱️ Duration:</strong> 3 months</div>
+                        </div>
+                    </div>
+
+                    <div class="promo-contact">
+                        <a href="mailto:contact@abccorp.com?subject=Billboard Proposal - EDSA Digital" class="promo-btn promo-btn-primary">
+                            📧 Send Proposal
+                        </a>
+                        <a href="tel:+639171234567" class="promo-btn promo-btn-secondary">
+                            📱 Call Advertiser
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sample Inquiry 2 -->
+            <div class="promo-card">
+                <div class="promo-badge" style="background: linear-gradient(135deg, #4caf50, #66bb6a);">ACTIVE</div>
+                <div class="promo-header" style="background: linear-gradient(135deg, #1565c0 0%, #0d47a1 100%);">
+                    <div class="promo-operator">XYZ Retail Inc</div>
+                    <div class="promo-title">Metro Manila Multi-Site Campaign</div>
+                    <div class="promo-validity">📅 Posted: Feb 3, 2026</div>
+                </div>
+                <div class="promo-body">
+                    <div class="promo-description">
+                        Planning a major product launch requiring multiple billboard locations across Metro Manila. Looking for a mix of static and digital billboards in high-traffic areas.
+                    </div>
+                    
+                    <div style="background: #f8f9fa; border-radius: 10px; padding: 20px; margin-bottom: 25px;">
+                        <h3 style="color: #1565c0; font-size: 16px; margin-bottom: 15px;">📋 Requirements:</h3>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; color: #455a64; font-size: 14px;">
+                            <div><strong style="color: #202124; display: block; margin-bottom: 3px;">📍 Location:</strong> Metro Manila</div>
+                            <div><strong style="color: #202124; display: block; margin-bottom: 3px;">🎯 Type:</strong> Static & Digital</div>
+                            <div><strong style="color: #202124; display: block; margin-bottom: 3px;">💰 Budget:</strong> ₱100K - ₱300K/month</div>
+                            <div><strong style="color: #202124; display: block; margin-bottom: 3px;">⏱️ Duration:</strong> 6+ months</div>
+                        </div>
+                    </div>
+
+                    <div class="promo-contact">
+                        <a href="mailto:marketing@xyzretail.ph?subject=Billboard Proposal - Metro Manila Campaign" class="promo-btn promo-btn-primary">
+                            📧 Send Proposal
+                        </a>
+                        <a href="tel:+639189876543" class="promo-btn promo-btn-secondary">
+                            📱 Call Advertiser
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sample Inquiry 3 -->
+            <div class="promo-card">
+                <div class="promo-badge" style="background: linear-gradient(135deg, #4caf50, #66bb6a);">ACTIVE</div>
+                <div class="promo-header" style="background: linear-gradient(135deg, #1565c0 0%, #0d47a1 100%);">
+                    <div class="promo-operator">Premium Motors</div>
+                    <div class="promo-title">NLEX Highway Billboard Campaign</div>
+                    <div class="promo-validity">📅 Posted: Feb 2, 2026</div>
+                </div>
+                <div class="promo-body">
+                    <div class="promo-description">
+                        Luxury vehicle brand seeking premium billboard locations along NLEX. Interested in large format static billboards with excellent visibility. Long-term partnership opportunity.
+                    </div>
+                    
+                    <div style="background: #f8f9fa; border-radius: 10px; padding: 20px; margin-bottom: 25px;">
+                        <h3 style="color: #1565c0; font-size: 16px; margin-bottom: 15px;">📋 Requirements:</h3>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; color: #455a64; font-size: 14px;">
+                            <div><strong style="color: #202124; display: block; margin-bottom: 3px;">📍 Location:</strong> NLEX</div>
+                            <div><strong style="color: #202124; display: block; margin-bottom: 3px;">🎯 Type:</strong> Static Billboard</div>
+                            <div><strong style="color: #202124; display: block; margin-bottom: 3px;">💰 Budget:</strong> ₱500K+/month</div>
+                            <div><strong style="color: #202124; display: block; margin-bottom: 3px;">⏱️ Duration:</strong> 12+ months</div>
+                        </div>
+                    </div>
+
+                    <div class="promo-contact">
+                        <a href="mailto:advertising@premiummotors.com?subject=Billboard Proposal - NLEX Campaign" class="promo-btn promo-btn-primary">
+                            📧 Send Proposal
+                        </a>
+                        <a href="tel:+639123456789" class="promo-btn promo-btn-secondary">
+                            📱 Call Advertiser
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+   
 
 <!-- About Us Page -->
 <div id="aboutPage" class="page">
