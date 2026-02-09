@@ -952,6 +952,202 @@
             min-width: 100%;
         }
     }
+
+<!-- ===================================================================== -->
+<!-- ADD THIS CSS TO YOUR <style> SECTION (before the closing </style>)  -->
+<!-- ===================================================================== -->
+
+    /* Footer Styles */
+    .site-footer {
+        background: linear-gradient(135deg, #1565c0 0%, #0d47a1 100%);
+        color: white;
+        margin-top: 80px;
+        padding: 50px 20px 20px 20px;
+    }
+    
+    .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        margin-bottom: 40px;
+    }
+    
+    .footer-section h3 {
+        font-size: 18px;
+        margin-bottom: 15px;
+        font-weight: 600;
+    }
+    
+    .footer-section p {
+        font-size: 14px;
+        line-height: 1.6;
+        opacity: 0.9;
+    }
+    
+    .footer-links {
+        list-style: none;
+        padding: 0;
+    }
+    
+    .footer-links li {
+        margin-bottom: 10px;
+    }
+    
+    .footer-links a {
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
+        opacity: 0.9;
+        transition: opacity 0.3s;
+        cursor: pointer;
+    }
+    
+    .footer-links a:hover {
+        opacity: 1;
+        text-decoration: underline;
+    }
+    
+    .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        padding-top: 20px;
+        text-align: center;
+        font-size: 14px;
+        opacity: 0.9;
+    }
+    
+    .footer-privacy-notice {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 15px;
+        border-radius: 8px;
+        font-size: 13px;
+        line-height: 1.6;
+        margin-bottom: 20px;
+    }
+    
+    .footer-privacy-notice a {
+        color: white;
+        text-decoration: underline;
+        font-weight: 600;
+    }
+    
+    /* Legal Pages Modal */
+    .legal-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 3000;
+        padding: 20px;
+        overflow-y: auto;
+    }
+    
+    .legal-modal.active {
+        display: block;
+    }
+    
+    .legal-content {
+        background: white;
+        border-radius: 15px;
+        padding: 40px;
+        max-width: 900px;
+        margin: 40px auto;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        color: #333;
+    }
+    
+    .legal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #1565c0;
+        padding-bottom: 20px;
+    }
+    
+    .legal-header h2 {
+        color: #1565c0;
+        font-size: 28px;
+        margin: 0;
+    }
+    
+    .legal-close {
+        background: #f1f3f4;
+        border: none;
+        font-size: 28px;
+        color: #666;
+        cursor: pointer;
+        padding: 5px 15px;
+        border-radius: 8px;
+        transition: all 0.3s;
+    }
+    
+    .legal-close:hover {
+        background: #e8eaed;
+        color: #333;
+    }
+    
+    .legal-body {
+        line-height: 1.8;
+        font-size: 15px;
+    }
+    
+    .legal-body h3 {
+        color: #1565c0;
+        font-size: 20px;
+        margin-top: 30px;
+        margin-bottom: 15px;
+    }
+    
+    .legal-body p {
+        margin-bottom: 15px;
+    }
+    
+    .legal-body ul {
+        margin: 15px 0;
+        padding-left: 25px;
+    }
+    
+    .legal-body li {
+        margin-bottom: 8px;
+    }
+    
+    .legal-body strong {
+        color: #202124;
+    }
+    
+    .legal-updated {
+        background: #f8f9fa;
+        padding: 10px 15px;
+        border-radius: 8px;
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 20px;
+    }
+
+    /* Add to existing mobile media query */
+    @media (max-width: 768px) {
+        .footer-grid {
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+        
+        .legal-content {
+            padding: 25px;
+            margin: 20px auto;
+        }
+        
+        .legal-header h2 {
+            font-size: 22px;
+        }
+    }   
 </style>
 </head>
 <body>
@@ -1428,6 +1624,293 @@
     </button>
 </div>
 
+<!-- ===================================================================== -->
+<!-- ADD THIS HTML BEFORE THE CLOSING </body> TAG                         -->
+<!-- Place it after the Feedback Modal and before the <script> section    -->
+<!-- ===================================================================== -->
+
+<!-- Site Footer -->
+<footer class="site-footer">
+    <div class="footer-content">
+        <!-- Privacy Notice -->
+        <div class="footer-privacy-notice">
+            <strong>🔒 Privacy:</strong> We respect your data. We only collect basic info to respond to inquiries and improve the site. We do not sell your personal data. 
+            <a onclick="openLegalModal('privacy')">Read our Privacy Policy</a>
+        </div>
+
+        <!-- Footer Grid -->
+        <div class="footer-grid">
+            <!-- About Section -->
+            <div class="footer-section">
+                <h3>OOHPhilippines.com</h3>
+                <p>Your one-stop platform for finding the best billboard and out-of-home advertising solutions across the Philippines.</p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a onclick="showPage('home')">Home</a></li>
+                    <li><a onclick="showPage('inventory')">View Inventory</a></li>
+                    <li><a onclick="showPage('promos')">Promotions</a></li>
+                    <li><a onclick="showPage('inquiries')">Post Requirements</a></li>
+                </ul>
+            </div>
+
+            <!-- Legal -->
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <ul class="footer-links">
+                    <li><a onclick="openLegalModal('privacy')">Privacy Policy</a></li>
+                    <li><a onclick="openLegalModal('terms')">Terms & Conditions</a></li>
+                    <li><a onclick="openLegalModal('disclaimer')">Disclaimer</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <ul class="footer-links">
+                    <li>📧 <a href="mailto:info@oohphilippines.com">info@oohphilippines.com</a></li>
+                    <li>🌐 <a href="https://www.oohphilippines.com" target="_blank">www.oohphilippines.com</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <p>&copy; 2026 OOHPhilippines.com. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Privacy Policy Modal -->
+<div class="legal-modal" id="privacyModal">
+    <div class="legal-content">
+        <div class="legal-header">
+            <h2>Privacy Policy</h2>
+            <button class="legal-close" onclick="closeLegalModal('privacy')">×</button>
+        </div>
+        <div class="legal-body">
+            <div class="legal-updated">Last updated: February 9, 2026</div>
+            
+            <p>At OOHPhilippines.com, your privacy matters. This page explains what info we collect, how we use it, and how we keep it safe.</p>
+            <p><strong>By using this website, you agree to this Privacy Policy.</strong></p>
+
+            <h3>1. Information We Collect</h3>
+            <p>We may collect basic info when you:</p>
+            <ul>
+                <li>Fill out a contact form</li>
+                <li>Send us an email</li>
+                <li>Sign up for updates or newsletters</li>
+                <li>Submit a listing or inquiry</li>
+            </ul>
+            <p>This may include:</p>
+            <ul>
+                <li>Name</li>
+                <li>Email address</li>
+                <li>Company name</li>
+                <li>Phone number</li>
+                <li>Any message you choose to share</li>
+            </ul>
+            <p>We also collect non-personal info such as:</p>
+            <ul>
+                <li>Browser type</li>
+                <li>Device type</li>
+                <li>Pages visited</li>
+                <li>Time and date of visits</li>
+            </ul>
+            <p>This helps us improve the site.</p>
+
+            <h3>2. How We Use Your Information</h3>
+            <p>We use your info to:</p>
+            <ul>
+                <li>Reply to your messages or inquiries</li>
+                <li>Connect you with the right OOH partners</li>
+                <li>Improve our website and content</li>
+                <li>Share updates, if you choose to receive them</li>
+                <li>Keep the site safe and running smooth</li>
+            </ul>
+            <p><strong>We do not sell your personal data.</strong></p>
+
+            <h3>3. Cookies</h3>
+            <p>OOHPhilippines.com may use cookies to:</p>
+            <ul>
+                <li>Understand how visitors use the site</li>
+                <li>Improve user experience</li>
+                <li>Track basic site traffic</li>
+            </ul>
+            <p>You can turn off cookies in your browser settings if you prefer.</p>
+
+            <h3>4. How We Protect Your Data</h3>
+            <p>We take reasonable steps to protect your data using:</p>
+            <ul>
+                <li>Secure systems</li>
+                <li>Limited access to stored info</li>
+                <li>Standard safety practices</li>
+            </ul>
+            <p>No system is 100% secure, but we work hard to keep your info safe.</p>
+
+            <h3>5. Sharing of Information</h3>
+            <p>We only share your info when:</p>
+            <ul>
+                <li>You ask us to connect you with a media owner, supplier, or partner</li>
+                <li>It is needed to provide a service you requested</li>
+                <li>The law requires it</li>
+            </ul>
+            <p><strong>We do not share your data with random third parties.</strong></p>
+
+            <h3>6. Third-Party Links</h3>
+            <p>Our site may link to other websites. We are not responsible for their privacy rules or content. Please check their privacy policies too.</p>
+
+            <h3>7. Your Rights</h3>
+            <p>You may:</p>
+            <ul>
+                <li>Ask what data we have about you</li>
+                <li>Request corrections</li>
+                <li>Ask us to delete your info</li>
+                <li>Opt out of emails anytime</li>
+            </ul>
+            <p>Just contact us and we will act within a reasonable time.</p>
+
+            <h3>8. Changes to This Policy</h3>
+            <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page with a new date.</p>
+
+            <h3>9. Contact Us</h3>
+            <p>For privacy concerns or questions, contact:</p>
+            <ul>
+                <li><strong>Email:</strong> info@oohphilippines.com</li>
+                <li><strong>Website:</strong> www.oohphilippines.com</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Terms and Conditions Modal -->
+<div class="legal-modal" id="termsModal">
+    <div class="legal-content">
+        <div class="legal-header">
+            <h2>Terms and Conditions</h2>
+            <button class="legal-close" onclick="closeLegalModal('terms')">×</button>
+        </div>
+        <div class="legal-body">
+            <div class="legal-updated">Last updated: February 9, 2026</div>
+            
+            <p>Welcome to OOHPhilippines.com. By using this website, you agree to these Terms and Conditions. If you do not agree, please stop using the site.</p>
+
+            <h3>1. Purpose of the Website</h3>
+            <p>OOHPhilippines.com is a platform created to help:</p>
+            <ul>
+                <li>Advertisers</li>
+                <li>Media practitioners</li>
+                <li>Out-of-Home suppliers</li>
+                <li>Industry partners</li>
+            </ul>
+            <p>find OOH-related services, contacts, and industry information in one place.</p>
+
+            <h3>2. Use of Content</h3>
+            <p>All content on this site is for general information only.</p>
+            <p><strong>You may:</strong></p>
+            <ul>
+                <li>View pages</li>
+                <li>Share links</li>
+                <li>Use content for personal or business reference</li>
+            </ul>
+            <p><strong>You may not:</strong></p>
+            <ul>
+                <li>Copy or republish content without permission</li>
+                <li>Use this site for illegal activities</li>
+                <li>Misuse any listings, data, or contact info</li>
+            </ul>
+
+            <h3>3. Accuracy of Information</h3>
+            <p>We aim to keep listings and articles accurate and updated. However, we do not guarantee that all info is complete, current, or error-free.</p>
+            <p><strong>Users should always verify details directly with suppliers, media owners, or partners.</strong></p>
+
+            <h3>4. Third-Party Listings and Links</h3>
+            <p>OOHPhilippines.com may feature third-party businesses, links, and services.</p>
+            <p>We do not control these third parties and are not responsible for:</p>
+            <ul>
+                <li>Their services</li>
+                <li>Their pricing</li>
+                <li>Their actions</li>
+                <li>Their policies</li>
+            </ul>
+            <p><strong>Any transaction is between you and them.</strong></p>
+
+            <h3>5. User Submissions</h3>
+            <p>If you submit content, listings, or inquiries:</p>
+            <ul>
+                <li>You confirm the info is accurate</li>
+                <li>You allow us to display it on the site</li>
+                <li>You agree not to post harmful or misleading content</li>
+            </ul>
+            <p>We reserve the right to remove content that violates these terms.</p>
+
+            <h3>6. Limitation of Liability</h3>
+            <p>OOHPhilippines.com is not liable for:</p>
+            <ul>
+                <li>Any loss or damage from using this site</li>
+                <li>Business losses</li>
+                <li>Errors or downtime</li>
+                <li>Third-party actions</li>
+            </ul>
+            <p><strong>Use the site at your own risk.</strong></p>
+
+            <h3>7. Changes to Terms</h3>
+            <p>We may update these Terms and Conditions anytime. Updates will be posted on this page with a new date.</p>
+
+            <h3>8. Contact</h3>
+            <ul>
+                <li><strong>Email:</strong> info@oohphilippines.com</li>
+                <li><strong>Website:</strong> www.oohphilippines.com</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Disclaimer Modal -->
+<div class="legal-modal" id="disclaimerModal">
+    <div class="legal-content">
+        <div class="legal-header">
+            <h2>Disclaimer</h2>
+            <button class="legal-close" onclick="closeLegalModal('disclaimer')">×</button>
+        </div>
+        <div class="legal-body">
+            <div class="legal-updated">Last updated: February 9, 2026</div>
+            
+            <p>The content on OOHPhilippines.com is for general industry information only.</p>
+            
+            <p><strong>We do not provide legal, financial, or professional advice.</strong> Any decision you make based on content from this site is your responsibility.</p>
+
+            <h3>OOHPhilippines.com is not responsible for:</h3>
+            <ul>
+                <li>Errors or omissions</li>
+                <li>Actions taken based on site content</li>
+                <li>Third-party services or outcomes</li>
+            </ul>
+
+            <p><strong>Always do your own checks before engaging any supplier, media owner, or service provider.</strong></p>
+
+            <h3>No Warranties</h3>
+            <p>This website is provided "as is" without any warranties, express or implied. We make no guarantees about the accuracy, completeness, or reliability of any information on this site.</p>
+
+            <h3>External Links</h3>
+            <p>OOHPhilippines.com may contain links to external websites. We are not responsible for the content, accuracy, or practices of third-party sites.</p>
+
+            <h3>Use at Your Own Risk</h3>
+            <p>You acknowledge that any reliance on material on this site is at your own risk. We recommend conducting your own research and due diligence before making any business decisions.</p>
+
+            <h3>Contact</h3>
+            <p>If you have questions about this disclaimer:</p>
+            <ul>
+                <li><strong>Email:</strong> info@oohphilippines.com</li>
+                <li><strong>Website:</strong> www.oohphilippines.com</li>
+            </ul>
+        </div>
+    </div>
+</div>
+   
 <!-- Feedback Modal -->
 <div class="feedback-modal" id="feedbackModal">
     <div class="feedback-content">
@@ -1932,6 +2415,50 @@ document.addEventListener('DOMContentLoaded', function() {
     // You can add any initialization code here
     console.log('OOHPhilippines.com loaded successfully!');
 });
+
+// ===== LEGAL MODAL FUNCTIONS =====
+function openLegalModal(type) {
+    if (type === 'privacy') {
+        document.getElementById('privacyModal').classList.add('active');
+    } else if (type === 'terms') {
+        document.getElementById('termsModal').classList.add('active');
+    } else if (type === 'disclaimer') {
+        document.getElementById('disclaimerModal').classList.add('active');
+    }
+    // Prevent body scroll when modal is open
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLegalModal(type) {
+    if (type === 'privacy') {
+        document.getElementById('privacyModal').classList.remove('active');
+    } else if (type === 'terms') {
+        document.getElementById('termsModal').classList.remove('active');
+    } else if (type === 'disclaimer') {
+        document.getElementById('disclaimerModal').classList.remove('active');
+    }
+    // Restore body scroll
+    document.body.style.overflow = 'auto';
+}
+
+// Close legal modals when clicking outside
+document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('legal-modal')) {
+        e.target.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+});
+
+// Close legal modals with Escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        const modals = document.querySelectorAll('.legal-modal.active');
+        modals.forEach(modal => {
+            modal.classList.remove('active');
+        });
+        document.body.style.overflow = 'auto';
+    }
+});   
 </script>
 
 </body>
