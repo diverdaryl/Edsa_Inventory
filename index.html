@@ -1922,31 +1922,6 @@ const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
 // For Promos - you can use the same URL or a different one
 const PROMOS_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
 
-// ===== PAGE NAVIGATION =====
-function showPage(pageName) {
-    // Hide all pages
-    document.getElementById('homePage').classList.remove('active');
-    document.getElementById('inventoryPage').classList.remove('active');
-    document.getElementById('promosPage').classList.remove('active');
-    document.getElementById('inquiriesPage').classList.remove('active');
-    
-    // Show selected page
-    if (pageName === 'home') {
-        document.getElementById('homePage').classList.add('active');
-    } else if (pageName === 'inventory') {
-        document.getElementById('inventoryPage').classList.add('active');
-    } else if (pageName === 'promos') {
-        document.getElementById('promosPage').classList.add('active');
-        loadPromos(); // Load promos when page is shown
-    } else if (pageName === 'inquiries') {
-        document.getElementById('inquiriesPage').classList.add('active');
-        loadInquiries(); // Load inquiries when page is shown
-    }
-    
-    // Scroll to top
-    window.scrollTo(0, 0);
-}
-
 function searchFromHome() {
     const searchTerm = document.getElementById('mainSearch').value;
     if (searchTerm.trim()) {
