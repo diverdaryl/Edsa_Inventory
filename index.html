@@ -1216,7 +1216,7 @@
             </div>
         </div>      
 
-<!-- Billboard Card Example (only showing first one, rest would follow same pattern) -->
+        <!-- Billboard Card Example -->
         <div class="billboard-card">
             <iframe class="map-window" 
                 src="https://www.google.com/maps/embed?pb=!4v1737630000000!6m8!1m7!1s-DIdqB2pYvUv9H6_39S-pw!2m2!1d14.657512!2d120.9840331!3f31.76!4f0!5f0.7820865974627469" 
@@ -1240,6 +1240,8 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
 
 <!-- Promos Page -->
 <div id="promosPage" class="page">
@@ -1301,7 +1303,7 @@
             </div>
         </div>
 
-        <!-- Promo Card 2 - Example -->
+        <!-- Promo Card 2 -->
         <div class="promo-card">
             <div class="promo-badge">HOT DEAL</div>
             <div class="promo-header">
@@ -1341,7 +1343,7 @@
             </div>
         </div>
 
-        <!-- Promo Card 3 - Example -->
+        <!-- Promo Card 3 -->
         <div class="promo-card">
             <div class="promo-badge">FLASH SALE</div>
             <div class="promo-header">
@@ -1381,7 +1383,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 
@@ -1410,10 +1411,10 @@
                     <div class="promo-title">Fill out the form below to connect with billboard operators</div>
                 </div>
                 <div class="promo-body">
-                    <div class="success-message" id="successMessage" style="background: #4caf50; color: white; padding: 15px; border-radius: 8px; margin-bottom: 20px; display: none;">
+                    <div class="success-message" id="successMessage">
                         ✓ Your inquiry has been submitted successfully! Operators will contact you directly.
                     </div>
-                    <div class="error-message" id="errorMessage" style="background: #f44336; color: white; padding: 15px; border-radius: 8px; margin-bottom: 20px; display: none;">
+                    <div class="error-message" id="errorMessage">
                         ✗ Something went wrong. Please try again or email us directly.
                     </div>
                     
@@ -1499,7 +1500,7 @@
             <!-- Inquiries will be loaded here dynamically -->
         </div>
 
-        <!-- Sample Static Inquiries (will be replaced when Google Sheets is configured) -->
+        <!-- Sample Static Inquiries -->
         <div class="static-inquiries">
             <!-- Sample Inquiry 1 -->
             <div class="promo-card">
@@ -1599,13 +1600,13 @@
                         <a href="tel:+639123456789" class="promo-btn promo-btn-secondary">
                             📱 Call Advertiser
                         </a>
-                   </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
-</div>
-       
+
 <!-- TERMS & CONDITIONS PAGE -->
 <div id="termsPage" class="page">
     <div class="about-container">
@@ -1870,7 +1871,7 @@
             </div>
         </div>
     </div>
-</div>       
+</div>
 
 <!-- FOOTER - APPEARS ON ALL PAGES -->
 <footer class="site-footer">
@@ -1893,7 +1894,7 @@
         <p>🍪 This website uses cookies to improve your experience. By using this site, you agree to our <button class="cookie-link" onclick="showPage('privacy'); closeCookieBanner();">Privacy Policy</button>.</p>
         <button class="cookie-accept" onclick="closeCookieBanner()">Accept</button>
     </div>
-</div>   
+</div>
 
 <!-- Floating Feedback Button -->
 <div class="feedback-float">
@@ -1918,11 +1919,42 @@
 
 <script>
 // ===== GOOGLE SHEETS CONFIGURATION =====
-// IMPORTANT: Replace this with your actual Google Apps Script Web App URL after deployment
 const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
-
-// For Promos - you can use the same URL or a different one
 const PROMOS_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+
+// ===== PAGE NAVIGATION =====
+function showPage(pageName) {
+    // Hide all pages
+    document.getElementById('homePage').classList.remove('active');
+    document.getElementById('inventoryPage').classList.remove('active');
+    document.getElementById('promosPage').classList.remove('active');
+    document.getElementById('inquiriesPage').classList.remove('active');
+    document.getElementById('termsPage').classList.remove('active');
+    document.getElementById('privacyPage').classList.remove('active');
+    document.getElementById('aboutPage').classList.remove('active');
+    
+    // Show selected page
+    if (pageName === 'home') {
+        document.getElementById('homePage').classList.add('active');
+    } else if (pageName === 'inventory') {
+        document.getElementById('inventoryPage').classList.add('active');
+    } else if (pageName === 'promos') {
+        document.getElementById('promosPage').classList.add('active');
+        loadPromos();
+    } else if (pageName === 'inquiries') {
+        document.getElementById('inquiriesPage').classList.add('active');
+        loadInquiries();
+    } else if (pageName === 'terms') {
+        document.getElementById('termsPage').classList.add('active');
+    } else if (pageName === 'privacy') {
+        document.getElementById('privacyPage').classList.add('active');
+    } else if (pageName === 'about') {
+        document.getElementById('aboutPage').classList.add('active');
+    }
+    
+    // Scroll to top
+    window.scrollTo(0, 0);
+}
 
 function searchFromHome() {
     const searchTerm = document.getElementById('mainSearch').value;
@@ -1993,22 +2025,17 @@ facingFilter.addEventListener('change', filterCards);
 typeFilter.addEventListener('change', filterCards);
 
 // ===== ADVERTISER INQUIRIES FUNCTIONALITY =====
-
-// Toggle inquiry form visibility
 function toggleInquiryForm() {
     const formSection = document.getElementById('inquiryFormSection');
     if (formSection.style.display === 'none') {
         formSection.style.display = 'block';
-        // Scroll to form
         formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     } else {
         formSection.style.display = 'none';
-        // Scroll to top
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 }
 
-// Submit Inquiry Form
 document.getElementById('inquiryForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     
@@ -2016,15 +2043,12 @@ document.getElementById('inquiryForm').addEventListener('submit', async function
     const successMsg = document.getElementById('successMessage');
     const errorMsg = document.getElementById('errorMessage');
     
-    // Hide messages
     successMsg.style.display = 'none';
     errorMsg.style.display = 'none';
     
-    // Disable button
     submitBtn.disabled = true;
     submitBtn.textContent = 'Submitting...';
     
-    // Collect form data
     const formData = {
         timestamp: new Date().toISOString(),
         companyName: document.getElementById('companyName').value,
@@ -2038,9 +2062,7 @@ document.getElementById('inquiryForm').addEventListener('submit', async function
         status: 'Pending'
     };
     
-    // Check if Google Script URL is configured
     if (GOOGLE_SCRIPT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
-        // Simulate submission with mailto
         const subject = 'New Billboard Inquiry - ' + formData.companyName;
         const body = `New inquiry received:
 
@@ -2058,7 +2080,6 @@ ${formData.details}`;
         const mailtoLink = `mailto:info@oohphilippines.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         window.location.href = mailtoLink;
         
-        // Show success message
         successMsg.style.display = 'block';
         document.getElementById('inquiryForm').reset();
         
@@ -2082,13 +2103,9 @@ ${formData.details}`;
             body: JSON.stringify(formData)
         });
         
-        // Show success message
         successMsg.style.display = 'block';
-        
-        // Reset form
         document.getElementById('inquiryForm').reset();
         
-        // Reload inquiries and hide form after 2 seconds
         setTimeout(() => {
             loadInquiries();
             successMsg.style.display = 'none';
@@ -2105,18 +2122,14 @@ ${formData.details}`;
     }
 });
 
-// Load Inquiries from Google Sheets
 async function loadInquiries() {
     const inquiriesList = document.getElementById('inquiriesList');
     const staticInquiries = document.querySelector('.static-inquiries');
     
-    // Check if Google Script URL is configured
     if (GOOGLE_SCRIPT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
-        // Keep static inquiries visible
         return;
     }
     
-    // Hide static inquiries
     if (staticInquiries) {
         staticInquiries.style.display = 'none';
     }
@@ -2128,17 +2141,16 @@ async function loadInquiries() {
         const data = await response.json();
         
         if (data.inquiries && data.inquiries.length > 0) {
-            // Filter only approved inquiries
             const approvedInquiries = data.inquiries.filter(inq => inq.status === 'Approved');
             
             if (approvedInquiries.length === 0) {
-                inquiriesList.innerHTML = '<div class="no-inquiries" style="text-align: center; padding: 40px; color: #999;"><p style="font-size: 18px;">No active inquiries yet. Be the first to post!</p></div>';
+                inquiriesList.innerHTML = '<div class="no-inquiries"><p style="font-size: 18px;">No active inquiries yet. Be the first to post!</p></div>';
                 return;
             }
             
             inquiriesList.innerHTML = approvedInquiries.map(inquiry => createInquiryCard(inquiry)).join('');
         } else {
-            inquiriesList.innerHTML = '<div class="no-inquiries" style="text-align: center; padding: 40px; color: #999;"><p style="font-size: 18px;">No inquiries yet. Be the first to post!</p></div>';
+            inquiriesList.innerHTML = '<div class="no-inquiries"><p style="font-size: 18px;">No inquiries yet. Be the first to post!</p></div>';
         }
     } catch (error) {
         console.error('Error loading inquiries:', error);
@@ -2150,7 +2162,6 @@ async function loadInquiries() {
     }
 }
 
-// Create inquiry card HTML
 function createInquiryCard(inquiry) {
     const date = new Date(inquiry.timestamp);
     const formattedDate = date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
@@ -2191,7 +2202,6 @@ function createInquiryCard(inquiry) {
     `;
 }
 
-// Helper function to escape HTML to prevent XSS
 function escapeHtml(text) {
     const div = document.createElement('div');
     div.textContent = text;
@@ -2199,23 +2209,17 @@ function escapeHtml(text) {
 }
 
 // ===== PROMOS FUNCTIONALITY =====
-
-// Load Promos from Google Sheets
 async function loadPromos() {
     const promosContainer = document.querySelector('.promos-container');
     const addPromoSection = promosContainer.querySelector('.add-promo-section');
     
-    // Check if Google Script URL is configured
     if (PROMOS_SCRIPT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
-        // Show static example promos if not configured
-        return; // Keep the hardcoded examples visible
+        return;
     }
     
-    // Remove existing dynamic promos (keep add-promo section)
     const existingPromos = promosContainer.querySelectorAll('.promo-card');
     existingPromos.forEach(card => card.remove());
     
-    // Add loading indicator after add-promo section
     const loadingDiv = document.createElement('div');
     loadingDiv.className = 'loading-spinner';
     loadingDiv.textContent = 'Loading promotions...';
@@ -2226,18 +2230,15 @@ async function loadPromos() {
         const response = await fetch(PROMOS_SCRIPT_URL + '?action=getPromos');
         const data = await response.json();
         
-        // Remove loading indicator
         const loader = document.getElementById('promosLoading');
         if (loader) loader.remove();
         
         if (data.promos && data.promos.length > 0) {
-            // Create promo cards from Google Sheets data
             data.promos.forEach(promo => {
                 const promoCard = createPromoCard(promo);
                 promosContainer.appendChild(promoCard);
             });
         } else {
-            // No active promos
             const noPromosDiv = document.createElement('div');
             noPromosDiv.className = 'no-inquiries';
             noPromosDiv.innerHTML = '<p style="font-size: 18px; color: #666;">No active promotions at the moment. Check back soon!</p>';
@@ -2246,11 +2247,9 @@ async function loadPromos() {
     } catch (error) {
         console.error('Error loading promos:', error);
         
-        // Remove loading indicator
         const loader = document.getElementById('promosLoading');
         if (loader) loader.remove();
         
-        // Show error message
         const errorDiv = document.createElement('div');
         errorDiv.className = 'error-message';
         errorDiv.style.display = 'block';
@@ -2261,12 +2260,10 @@ async function loadPromos() {
     }
 }
 
-// Create a promo card element from promo data
 function createPromoCard(promo) {
     const card = document.createElement('div');
     card.className = 'promo-card';
     
-    // Build features list HTML
     let featuresHTML = '';
     if (promo.features && promo.features.length > 0) {
         const featuresList = promo.features.map(feature => 
@@ -2281,7 +2278,6 @@ function createPromoCard(promo) {
         `;
     }
     
-    // Build contact buttons HTML
     let contactHTML = '';
     const buttons = [];
     
@@ -2313,7 +2309,6 @@ function createPromoCard(promo) {
     
     contactHTML = `<div class="promo-contact">${buttons.join('')}</div>`;
     
-    // Build the complete card HTML
     card.innerHTML = `
         <div class="promo-badge">${escapeHtml(promo.badge || 'SPECIAL OFFER')}</div>
         <div class="promo-header">
@@ -2368,21 +2363,13 @@ function submitModalFeedback() {
     }, 500);
 }
 
-// Close modal when clicking outside
 document.getElementById('feedbackModal').addEventListener('click', function(e) {
     if (e.target === this) {
         closeFeedbackModal();
     }
 });
 
-// ===== INITIALIZE =====
-// Load inquiries on page load if on inquiries page
-document.addEventListener('DOMContentLoaded', function() {
-    // You can add any initialization code here
-    console.log('OOHPhilippines.com loaded successfully!');
-});
-
-// Cookie Banner Functions
+// ===== COOKIE BANNER =====
 function showCookieBanner() {
     const banner = document.getElementById('cookieBanner');
     const accepted = localStorage.getItem('cookiesAccepted');
@@ -2399,78 +2386,11 @@ function closeCookieBanner() {
     }
 }
 
-// Feedback Modal Functions
-function openFeedbackModal() {
-    document.getElementById('feedbackModal').classList.add('active');
-}
-
-function closeFeedbackModal() {
-    document.getElementById('feedbackModal').classList.remove('active');
-    document.getElementById('modalFeedback').value = '';
-}
-
-function submitModalFeedback() {
-    const feedback = document.getElementById('modalFeedback').value.trim();
-    if (!feedback) {
-        alert('Please enter your feedback before submitting.');
-        return;
-    }
-    
-    // Send feedback via email
-    window.location.href = `mailto:info@oohphilippines.com?subject=Website Feedback&body=${encodeURIComponent(feedback)}`;
-    
-    // Close modal after short delay
-    setTimeout(() => {
-        closeFeedbackModal();
-        alert('Thank you for your feedback! Your email client should open now.');
-    }, 500);
-}
-
-// Close modal when clicking outside
-document.getElementById('feedbackModal').addEventListener('click', function(e) {
-    if (e.target === this) {
-        closeFeedbackModal();
-    }
-});
-
-// Initialize on page load
+// ===== INITIALIZE =====
 document.addEventListener('DOMContentLoaded', function() {
     showCookieBanner();
     console.log('OOHPhilippines.com loaded successfully!');
 });
-
-function showPage(pageName) {
-    // Hide all pages
-    document.getElementById('homePage').classList.remove('active');
-    document.getElementById('inventoryPage').classList.remove('active');
-    document.getElementById('promosPage').classList.remove('active');
-    document.getElementById('inquiriesPage').classList.remove('active');
-    document.getElementById('termsPage').classList.remove('active');
-    document.getElementById('privacyPage').classList.remove('active');
-    document.getElementById('aboutPage').classList.remove('active');
-    
-    // Show selected page
-    if (pageName === 'home') {
-        document.getElementById('homePage').classList.add('active');
-    } else if (pageName === 'inventory') {
-        document.getElementById('inventoryPage').classList.add('active');
-    } else if (pageName === 'promos') {
-        document.getElementById('promosPage').classList.add('active');
-        loadPromos();
-    } else if (pageName === 'inquiries') {
-        document.getElementById('inquiriesPage').classList.add('active');
-        loadInquiries();
-    } else if (pageName === 'terms') {
-        document.getElementById('termsPage').classList.add('active');
-    } else if (pageName === 'privacy') {
-        document.getElementById('privacyPage').classList.add('active');
-    } else if (pageName === 'about') {
-        document.getElementById('aboutPage').classList.add('active');
-    }
-    
-    // Scroll to top
-    window.scrollTo(0, 0);
-}   
 </script>
 
 </body>
