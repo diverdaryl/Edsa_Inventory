@@ -2050,35 +2050,98 @@ document.getElementById('mainSearch').addEventListener('keypress', function(e) {
     }
 });
 
-// ===== INVENTORY FILTERING =====
+// ===== INVENTORY FILTERING WITH PAGINATION =====
 const searchInput = document.getElementById('searchInput');
 const locationFilter = document.getElementById('locationFilter');
 const facingFilter = document.getElementById('facingFilter');
 const typeFilter = document.getElementById('typeFilter');
-const cards = document.querySelectorAll('.billboard-card');
+const allCards = Array.from(document.querySelectorAll('.billboard-card'));
+
+const CARDS_PER_PAGE = 10;
+let currentPage = 1;
+let visibleCards = [];
 
 function filterCards() {
     const searchTerm = searchInput.value.toLowerCase();
     const location = locationFilter.value.toLowerCase();
     const facing = facingFilter.value.toLowerCase();
     const type = typeFilter.value.toLowerCase();
-    
-    cards.forEach(card => {
+
+    // Hide all cards first
+    allCards.forEach(card => card.style.display = 'none');
+
+    // Filter
+    visibleCards = allCards.filter(card => {
         const cardText = card.textContent.toLowerCase();
-        const tag = card.querySelector('.tag').textContent.toLowerCase();
-        const specs = card.querySelector('.spec-grid').textContent.toLowerCase();
-        
-        const matchesSearch = cardText.includes(searchTerm);
-        const matchesLocation = !location || tag.includes(location);
-        const matchesFacing = !facing || specs.includes(facing);
-        const matchesType = !type || specs.includes(type);
-        
-        if (matchesSearch && matchesLocation && matchesFacing && matchesType) {
-            card.style.display = 'block';
-        } else {
-            card.style.display = 'none';
-        }
+        const tag = card.querySelector('.tag') ? card.querySelector('.tag').textContent.toLowerCase() : '';
+        const specs = card.querySelector('.spec-grid') ? card.querySelector('.spec-grid').textContent.toLowerCase() : '';
+
+        return (
+            cardText.includes(searchTerm) &&
+            (!location || tag.includes(location)) &&
+            (!facing || specs.includes(facing)) &&
+            (!type || specs.includes(type))
+        );
     });
+
+    currentPage = 1;
+    renderPage();
+}
+
+function renderPage() {
+    // Hide all
+    allCards.forEach(card => card.style.display = 'none');
+
+    // Show only current page slice
+    const start = (currentPage - 1) * CARDS_PER_PAGE;
+    const end = start + CARDS_PER_PAGE;
+    visibleCards.slice(start, end).forEach(card => card.style.display = 'block');
+
+    // Update pagination controls
+    updatePaginationControls();
+}
+
+function updatePaginationControls() {
+    const totalPages = Math.ceil(visibleCards.length / CARDS_PER_PAGE);
+    let paginationDiv = document.getElementById('paginationControls');
+
+    if (!paginationDiv) {
+        paginationDiv = document.createElement('div');
+        paginationDiv.id = 'paginationControls';
+        paginationDiv.style.cssText = 'text-align:center; margin: 20px 0; display:flex; justify-content:center; gap:10px; flex-wrap:wrap;';
+        document.querySelector('.inventory-container').appendChild(paginationDiv);
+    }
+
+    if (totalPages <= 1) {
+        paginationDiv.innerHTML = `<p style="color:#666;">Showing ${visibleCards.length} site(s)</p>`;
+        return;
+    }
+
+    let html = `<p style="color:#666; width:100%; margin-bottom:5px;">Showing page ${currentPage} of ${totalPages} (${visibleCards.length} sites)</p>`;
+
+    if (currentPage > 1) {
+        html += `<button onclick="changePage(${currentPage - 1})" style="padding:10px 20px; background:#1565c0; color:white; border:none; border-radius:8px; cursor:pointer; font-weight:600;">← Previous</button>`;
+    }
+
+    // Page number buttons (show max 5)
+    const startPage = Math.max(1, currentPage - 2);
+    const endPage = Math.min(totalPages, startPage + 4);
+    for (let i = startPage; i <= endPage; i++) {
+        const isActive = i === currentPage;
+        html += `<button onclick="changePage(${i})" style="padding:10px 15px; background:${isActive ? '#0d47a1' : '#e3f2fd'}; color:${isActive ? 'white' : '#1565c0'}; border:none; border-radius:8px; cursor:pointer; font-weight:600;">${i}</button>`;
+    }
+
+    if (currentPage < totalPages) {
+        html += `<button onclick="changePage(${currentPage + 1})" style="padding:10px 20px; background:#1565c0; color:white; border:none; border-radius:8px; cursor:pointer; font-weight:600;">Next →</button>`;
+    }
+
+    paginationDiv.innerHTML = html;
+}
+
+function changePage(page) {
+    currentPage = page;
+    renderPage();
+    document.querySelector('.inventory-container').scrollIntoView({ behavior: 'smooth' });
 }
 
 function clearFilters() {
@@ -2088,6 +2151,10 @@ function clearFilters() {
     typeFilter.value = '';
     filterCards();
 }
+
+// Initialize
+visibleCards = [...allCards];
+renderPage();
 
 searchInput.addEventListener('input', filterCards);
 locationFilter.addEventListener('change', filterCards);
