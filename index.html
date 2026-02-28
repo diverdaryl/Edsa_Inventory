@@ -1566,29 +1566,12 @@
 </div>
 
 <div class="quick-links" style="margin-top: 0; margin-bottom: 30px;">
-    <select class="filter-select" id="locationFilter" style="border-radius: 20px; background: rgba(255,255,255,0.85); border: none; box-shadow: 0 2px 8px rgba(0,0,0,0.08); color: #1565c0; font-weight: 500; padding: 10px 18px; font-size: 15px;">
-        <option value="">All Locations</option>
-        <option value="EDSA">EDSA</option>
-        <option value="C5">C5</option>
-        <option value="SLEX">SLEX</option>
-        <option value="NLEX">NLEX</option>
-        <option value="Metro Manila">Metro Manila</option>
-        <option value="Provincial">Provinical</option> 
-    </select>
-    <select class="filter-select" id="facingFilter" style="border-radius: 20px; background: rgba(255,255,255,0.85); border: none; box-shadow: 0 2px 8px rgba(0,0,0,0.08); color: #1565c0; font-weight: 500; padding: 10px 18px; font-size: 15px;">
-        <option value="">All Directions</option>
-        <option value="Northbound">Northbound</option>
-        <option value="Southbound">Southbound</option>
-        <option value="Eastbound">Eastbound</option>
-        <option value="Westbound">Westbound</option>
-    </select>
-    <select class="filter-select" id="typeFilter" style="border-radius: 20px; background: rgba(255,255,255,0.85); border: none; box-shadow: 0 2px 8px rgba(0,0,0,0.08); color: #1565c0; font-weight: 500; padding: 10px 18px; font-size: 15px;">
-        <option value="">All Types</option>
-        <option value="Static">Static</option>
-        <option value="Digital">Digital</option>
-        <option value="Lamp Post Banners">LPB</option>
-    </select>
-    <span class="quick-link" onclick="clearFilters()" style="background: rgba(255,255,255,0.85);">Clear All</span>
+    <span class="quick-link" onclick="filterByTag('EDSA')">EDSA</span>
+    <span class="quick-link" onclick="filterByTag('C5')">C5</span>
+    <span class="quick-link" onclick="filterByTag('NLEX')">NLEX</span>
+    <span class="quick-link" onclick="filterByTag('SLEX')">SLEX</span>
+    <span class="quick-link" onclick="filterByTag('METRO MANILA')">METRO MANILA</span>
+    <span class="quick-link" onclick="filterByTag('PROVINCIAL')">PROVINCIAL</span>
 </div>      
 
 <!-- Billboard Card Example (only showing first one, rest would follow same pattern) -->
@@ -2369,33 +2352,36 @@ function escapeHtml(text) {
      
 // ===== INVENTORY FILTERING =====
 const searchInput = document.getElementById('searchInput');
-const locationFilter = document.getElementById('locationFilter');
-const facingFilter = document.getElementById('facingFilter');
-const typeFilter = document.getElementById('typeFilter');
 const cards = document.querySelectorAll('.billboard-card');
 
 function filterCards() {
     const searchTerm = searchInput.value.toLowerCase();
-    const location = locationFilter.value.toLowerCase();
-    const facing = facingFilter.value.toLowerCase();
-    const type = typeFilter.value.toLowerCase();
-    
     cards.forEach(card => {
         const cardText = card.textContent.toLowerCase();
-        const tag = card.querySelector('.tag').textContent.toLowerCase();
-        const specs = card.querySelector('.spec-grid').textContent.toLowerCase();
-        
-        const matchesSearch = cardText.includes(searchTerm);
-        const matchesLocation = !location || tag.includes(location);
-        const matchesFacing = !facing || specs.includes(facing);
-        const matchesType = !type || specs.includes(type);
-        
-        if (matchesSearch && matchesLocation && matchesFacing && matchesType) {
-            card.style.display = 'block';
-        } else {
-            card.style.display = 'none';
-        }
+        card.style.display = cardText.includes(searchTerm) ? 'block' : 'none';
     });
+}
+
+function filterByTag(tag) {
+    document.querySelectorAll('.quick-link').forEach(btn => {
+        btn.style.background = 'rgba(255,255,255,0.7)';
+        btn.style.fontWeight = '500';
+    });
+    event.target.style.background = 'white';
+    event.target.style.fontWeight = '700';
+    cards.forEach(card => {
+        const cardText = card.textContent.toLowerCase();
+        card.style.display = cardText.includes(tag) ? 'block' : 'none';
+    });
+}
+
+function clearFilters() {
+    searchInput.value = '';
+    document.querySelectorAll('.quick-link').forEach(btn => {
+        btn.style.background = 'rgba(255,255,255,0.7)';
+        btn.style.fontWeight = '500';
+    });
+    cards.forEach(card => card.style.display = 'block');
 }
 
 function clearFilters() {
@@ -2407,9 +2393,7 @@ function clearFilters() {
 }
 
 searchInput.addEventListener('input', filterCards);
-locationFilter.addEventListener('change', filterCards);
 facingFilter.addEventListener('change', filterCards);
-typeFilter.addEventListener('change', filterCards);
 
 // ===== FEEDBACK FUNCTIONS =====
 function openFeedbackModal() {
