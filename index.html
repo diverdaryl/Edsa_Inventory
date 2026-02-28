@@ -1563,6 +1563,7 @@
         placeholder="Search by location, highway, or area..."
     >
     <button class="search-btn" onclick="filterCards()">Search</button>
+<button class="search-btn" onclick="clearFilters()" style="background: #fff; color: #1565c0; border: 2px solid #1565c0; margin-left: 8px;">Clear All</button>
 </div>
 
 <div class="quick-links" style="margin-top: 0; margin-bottom: 30px;">
@@ -2420,7 +2421,8 @@ function filterByTag(tag) {
     event.target.style.fontWeight = '700';
     cards.forEach(card => {
         const cardText = card.textContent.toLowerCase();
-        card.style.display = cardText.includes(tag) ? 'block' : 'none';
+        const tagLower = tag.toLowerCase();
+        card.style.display = cardText.includes(tagLower) ? 'block' : 'none';
     });
 }
 
@@ -2431,14 +2433,6 @@ function clearFilters() {
         btn.style.fontWeight = '500';
     });
     cards.forEach(card => card.style.display = 'block');
-}
-
-function clearFilters() {
-    searchInput.value = '';
-    locationFilter.value = '';
-    facingFilter.value = '';
-    typeFilter.value = '';
-    filterCards();
 }
 
 searchInput.addEventListener('input', filterCards);
