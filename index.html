@@ -1457,6 +1457,50 @@
         </div>
     </div>
 </div>
+
+<!-- FOOTER - APPEARS ON ALL PAGES -->
+<footer class="site-footer">
+    <div class="footer-content">
+        <div class="footer-links">
+            <button class="footer-link" onclick="showPage('about')">About Us</button>
+            <button class="footer-link" onclick="showPage('terms')">Terms & Conditions</button>
+            <button class="footer-link" onclick="showPage('privacy')">Privacy Policy</button>
+            <a href="mailto:info@oohphilippines.com" class="footer-link">Contact</a>
+        </div>
+        <div class="footer-copyright">
+            © 2026 OOHPhilippines.com. All rights reserved.
+        </div>
+    </div>
+</footer>
+
+<!-- Cookie Banner -->
+<div class="cookie-banner" id="cookieBanner">
+    <div class="cookie-content">
+        <p>🍪 This website uses cookies to improve your experience. By using this site, you agree to our <button class="cookie-link" onclick="showPage('privacy'); closeCookieBanner();">Privacy Policy</button>.</p>
+        <button class="cookie-accept" onclick="closeCookieBanner()">Accept</button>
+    </div>
+</div>
+
+<!-- Floating Feedback Button -->
+<div class="feedback-float">
+    <button class="feedback-btn" onclick="openFeedbackModal()">
+        💬 Feedback
+    </button>
+</div>
+
+<!-- Feedback Modal -->
+<div class="feedback-modal" id="feedbackModal">
+    <div class="feedback-content">
+        <div class="feedback-header">
+            <h3>💡 Help Us Improve</h3>
+            <button class="close-btn" onclick="closeFeedbackModal()">×</button>
+        </div>
+        <form class="feedback-form">
+            <textarea id="modalFeedback" placeholder="Share your thoughts, suggestions, or report any issues..."></textarea>
+            <button type="button" onclick="submitModalFeedback()">Send Feedback</button>
+        </form>
+    </div>
+</div>
      
 <!-- Promos Page -->
 <div id="promosPage" class="page">
@@ -2024,50 +2068,6 @@
 </div>
    </div>
    </div>
-
-<!-- FOOTER - APPEARS ON ALL PAGES -->
-<footer class="site-footer">
-    <div class="footer-content">
-        <div class="footer-links">
-            <button class="footer-link" onclick="showPage('about')">About Us</button>
-            <button class="footer-link" onclick="showPage('terms')">Terms & Conditions</button>
-            <button class="footer-link" onclick="showPage('privacy')">Privacy Policy</button>
-            <a href="mailto:info@oohphilippines.com" class="footer-link">Contact</a>
-        </div>
-        <div class="footer-copyright">
-            © 2026 OOHPhilippines.com. All rights reserved.
-        </div>
-    </div>
-</footer>
-
-<!-- Cookie Banner -->
-<div class="cookie-banner" id="cookieBanner">
-    <div class="cookie-content">
-        <p>🍪 This website uses cookies to improve your experience. By using this site, you agree to our <button class="cookie-link" onclick="showPage('privacy'); closeCookieBanner();">Privacy Policy</button>.</p>
-        <button class="cookie-accept" onclick="closeCookieBanner()">Accept</button>
-    </div>
-</div>
-
-<!-- Floating Feedback Button -->
-<div class="feedback-float">
-    <button class="feedback-btn" onclick="openFeedbackModal()">
-        💬 Feedback
-    </button>
-</div>
-
-<!-- Feedback Modal -->
-<div class="feedback-modal" id="feedbackModal">
-    <div class="feedback-content">
-        <div class="feedback-header">
-            <h3>💡 Help Us Improve</h3>
-            <button class="close-btn" onclick="closeFeedbackModal()">×</button>
-        </div>
-        <form class="feedback-form">
-            <textarea id="modalFeedback" placeholder="Share your thoughts, suggestions, or report any issues..."></textarea>
-            <button type="button" onclick="submitModalFeedback()">Send Feedback</button>
-        </form>
-    </div>
-</div>
 
 <script>
 // ===== GOOGLE SHEETS CONFIGURATION =====
