@@ -16275,10 +16275,11 @@ function filterByTag(tag) {
     });
     event.target.style.background = 'white';
     event.target.style.fontWeight = '700';
+    const tagLower = tag.toLowerCase();
     cards.forEach(card => {
-        const cardText = card.textContent.toLowerCase();
-        const tagLower = tag.toLowerCase();
-        card.style.display = cardText.includes(tagLower) ? 'block' : 'none';
+        const tagSpan = card.querySelector('.tag');
+        const tagText = tagSpan ? tagSpan.textContent.toLowerCase() : '';
+        card.style.display = tagText.includes(tagLower) ? 'block' : 'none';
     });
 }
 
