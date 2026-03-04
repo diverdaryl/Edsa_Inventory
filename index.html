@@ -1907,7 +1907,66 @@
 </div>      
 
 <!-- Billboard Card Example (only showing first one, rest would follow same pattern) -->
-        <div class="billboard-card">
+      <div class="billboard-card">
+    <!-- Dual Face Tab Switcher -->
+    <div style="display:flex; background:#e3f2fd; border-radius:8px 8px 0 0; overflow:hidden;">
+        <button id="tab-nlex-a" onclick="
+            document.getElementById('face-nlex-a').style.display='block';
+            document.getElementById('face-nlex-b').style.display='none';
+            document.getElementById('tab-nlex-a').style.background='#1565c0';
+            document.getElementById('tab-nlex-a').style.color='white';
+            document.getElementById('tab-nlex-b').style.background='transparent';
+            document.getElementById('tab-nlex-b').style.color='#1565c0';
+        " style="flex:1; padding:10px; border:none; background:#1565c0; color:white; font-weight:700; cursor:pointer; font-size:13px;">
+            📍 Face A – Northbound
+        </button>
+        <button id="tab-nlex-b" onclick="
+            document.getElementById('face-nlex-b').style.display='block';
+            document.getElementById('face-nlex-a').style.display='none';
+            document.getElementById('tab-nlex-b').style.background='#1565c0';
+            document.getElementById('tab-nlex-b').style.color='white';
+            document.getElementById('tab-nlex-a').style.background='transparent';
+            document.getElementById('tab-nlex-a').style.color='#1565c0';
+        " style="flex:1; padding:10px; border:none; background:transparent; color:#1565c0; font-weight:700; cursor:pointer; font-size:13px;">
+            📍 Face B – Southbound
+        </button>
+    </div>
+
+    <!-- Face A -->
+    <iframe id="face-nlex-a" class="map-window"
+        src="https://www.google.com/maps/embed?pb=!4v1772445176980!6m8!1m7!1sUnlM31XRvm9zK0zmrbqEMw!2m2!1d14.65849212739765!2d121.0002279901104!3f308.15520742900696!4f16.74638914809644!5f1.5334730082838446"
+        allowfullscreen="" loading="lazy">
+    </iframe>
+
+    <!-- Face B -->
+    <iframe id="face-nlex-b" class="map-window"
+        src="https://www.google.com/maps/embed?pb=!4v1772595522305!6m8!1m7!1sRl_yNrmRUvKcCRPEsKlD9g!2m2!1d14.65908651138908!2d121.0001195618412!3f207.58244141545157!4f10.986946692090811!5f0.7820865974627469"
+        allowfullscreen="" loading="lazy" style="display:none;">
+    </iframe>
+
+    <div class="details">
+        <span class="tag">NLEX • Balintawak • Malinta • Meycauayan • Marilao • Bocaue • Northbound</span>
+        <h2>Site: NLEX D676</h2>
+        <span style="display:inline-block; background:#e3f2fd; color:#1565c0; font-size:12px; font-weight:700; padding:4px 10px; border-radius:20px; margin-bottom:10px;">🔄 Double Face</span>
+        <div class="spec-grid">
+            <div class="spec-item"><strong>Size</strong> Please Inquire</div>
+            <div class="spec-item"><strong>Type</strong> Static</div>
+            <div class="spec-item"><strong>Facing</strong> Both Directions</div>
+            <div class="spec-item"><strong>Illumination</strong> Yes</div>
+        </div>
+        <div class="price">Please Call for Rates</div>
+        <div class="button-group">
+            <a href="mailto:darylabueva@gmail.com?subject=Inquiry: NLEX D676" class="btn-contact">📧 Email Inquiry</a>
+            <a href="sms:+639178316041?body=I%20saw%20your%20site%20in%20OOHPhilippines.com.%20Is%20it%20available%3F" target="_blank" class="btn-viber">💬 Send SMS</a>
+            <a href="sms:+639178751992?body=I%20saw%20your%20site%20in%20OOHPhilippines.com.%20Is%20it%20available%3F" target="_blank" class="btn-viber">💬 Send SMS</a>
+            <a href="viber://chat?number=+639178316041" target="_blank" class="btn-viber">💬 Message on Viber</a>
+            <a href="https://api.whatsapp.com/send?phone=639178316041&text=I%20saw%20your%20site%20in%20OOHPhilippines.com.%20Is%20it%20available%3F" target="_blank" class="btn-whatsapp">📱 WhatsApp</a>
+            <a href="https://hddigitalsigns.com/" target="_blank" class="btn-website">🌐 Visit Website</a>
+        </div>
+    </div>
+</div>  
+         
+      <div class="billboard-card">
             <iframe class="map-window" 
                 src="https://www.google.com/maps/embed?pb=!4v1737630000000!6m8!1m7!1s-DIdqB2pYvUv9H6_39S-pw!2m2!1d14.657512!2d120.9840331!3f31.76!4f0!5f0.7820865974627469" 
                 allowfullscreen="" loading="lazy">
