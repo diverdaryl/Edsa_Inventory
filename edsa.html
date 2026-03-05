@@ -8674,7 +8674,7 @@
                 </div>
             </div>
         </div>
-        
+
     <div class="no-results" id="noResults">
         <p>No billboards found. Try a different search.</p>
     </div>
@@ -8691,6 +8691,51 @@
 </footer>
 
 <script>
+var currentPage = 1;
+var cardsPerPage = 20;
+
+function initPagination() {
+    var allCards = document.querySelectorAll('.billboard-card');
+    var totalPages = Math.ceil(allCards.length / cardsPerPage);
+
+    // Create pagination controls if not exists
+    var oldPag = document.getElementById('paginationControls');
+    if (oldPag) oldPag.remove();
+
+    var pagination = document.createElement('div');
+    pagination.id = 'paginationControls';
+    pagination.style.cssText = 'display:flex; justify-content:center; align-items:center; gap:15px; padding:30px;';
+    pagination.innerHTML = '<button onclick="changePage(-1)" style="background:#1565c0;color:white;border:none;padding:12px 25px;border-radius:8px;font-weight:700;cursor:pointer;font-size:15px;">← Previous</button><span id="pageInfo" style="color:#1565c0;font-weight:700;font-size:15px;"></span><button onclick="changePage(1)" style="background:#1565c0;color:white;border:none;padding:12px 25px;border-radius:8px;font-weight:700;cursor:pointer;font-size:15px;">Next →</button>';
+    document.getElementById('inventoryContainer').appendChild(pagination);
+
+    showCurrentPage();
+}
+
+function showCurrentPage() {
+    var allCards = document.querySelectorAll('.billboard-card');
+    var totalPages = Math.ceil(allCards.length / cardsPerPage);
+    var start = (currentPage - 1) * cardsPerPage;
+    var end = start + cardsPerPage;
+
+    allCards.forEach(function(card, i) {
+        card.style.display = (i >= start && i < end) ? 'block' : 'none';
+    });
+
+    document.getElementById('pageInfo').textContent = 'Page ' + currentPage + ' of ' + totalPages;
+    document.getElementById('paginationControls').querySelector('button:first-child').disabled = currentPage === 1;
+    document.getElementById('paginationControls').querySelector('button:last-child').disabled = currentPage === totalPages;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function changePage(direction) {
+    var allCards = document.querySelectorAll('.billboard-card');
+    var totalPages = Math.ceil(allCards.length / cardsPerPage);
+    currentPage += direction;
+    if (currentPage < 1) currentPage = 1;
+    if (currentPage > totalPages) currentPage = totalPages;
+    showCurrentPage();
+}
+
 function filterCards() {
     var searchTerm = document.getElementById('searchInput').value.toLowerCase();
     var cards = document.querySelectorAll('.billboard-card');
@@ -8706,16 +8751,27 @@ function filterCards() {
         }
     });
 
+    // Hide pagination when searching
+    var pag = document.getElementById('paginationControls');
+    if (pag) pag.style.display = searchTerm ? 'none' : 'flex';
     document.getElementById('noResults').style.display = visibleCount === 0 ? 'block' : 'none';
 }
 
-// Search on Enter key
 document.getElementById('searchInput').addEventListener('keypress', function(e) {
     if (e.key === 'Enter') filterCards();
 });
 
-// Live search as you type
-document.getElementById('searchInput').addEventListener('input', filterCards);
+document.getElementById('searchInput').addEventListener('input', function() {
+    if (this.value === '') {
+        currentPage = 1;
+        initPagination();
+    } else {
+        filterCards();
+    }
+});
+
+// Start pagination on load
+window.addEventListener('DOMContentLoaded', initPagination);
 </script>
 
 </body>
