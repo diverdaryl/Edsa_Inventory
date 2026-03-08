@@ -1256,6 +1256,8 @@
                 placeholder="Search by location, highway, or area..."
             >
             <button class="search-btn" onclick="searchFromHome()">Search</button>
+            <button class="search-btn" onclick="searchFromHome()">Search Billboards</button>
+            <button class="search-btn" onclick="clearFilters(); document.getElementById('mainSearch').value='';" style="background:#e53935;">✕ Clear</button> 
         </div>
         
         <div class="quick-links">
@@ -1956,10 +1958,6 @@
         </div>
         <p id="searchPrompt" style="text-align:center;color:#1565c0;font-size:16px;margin-bottom:30px;">Use the search bar on the home page to find billboard sites.</p>
         <div id="resultCount" style="text-align:center;color:#1565c0;font-weight:600;font-size:14px;margin-bottom:12px;"></div>
-
-<div style="text-align:center;margin-bottom:20px;">
-  <button onclick="clearFilters()" style="padding:10px 25px;background:#e53935;color:white;border:none;border-radius:50px;font-size:14px;font-weight:600;cursor:pointer;">✕ Clear Search</button>
-</div>
          
    <div class="billboard-card">
             <iframe class="map-window" 
