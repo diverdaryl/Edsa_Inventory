@@ -1957,6 +1957,10 @@
         </div>
         <p id="searchPrompt" style="text-align:center;color:#1565c0;font-size:16px;margin-bottom:30px;">Use the search bar on the home page to find billboard sites.</p>
         <div id="resultCount" style="text-align:center;color:#1565c0;font-weight:600;font-size:14px;margin-bottom:12px;"></div>
+
+     <div style="text-align:center; margin:20px 0;">
+     <button id="loadMoreBtn" onclick="showMore()" style="display:none; padding:12px 35px; background:#1565c0; color:white; border:none; border-radius:50px; font-size:15px; font-weight:600; cursor:pointer;">Load More ↓</button>
+     </div>       
          
    <div class="billboard-card">
             <iframe class="map-window" 
@@ -20719,6 +20723,7 @@
 </div>
 
 <script>
+<script>
 // PAGE SWITCHING
 function showPage(pageId) {
   document.querySelectorAll('.page').forEach(function(p) { p.classList.remove('active'); });
@@ -20730,6 +20735,23 @@ function goToSearch() {
   setTimeout(function(){ var i=document.getElementById('mainSearch'); if(i) i.focus(); },100);
 }
 
+// LOAD MORE
+var allMatches = [];
+var visibleCount = 0;
+var LOAD_MORE_COUNT = 10;
+
+function showMore() {
+  var end = Math.min(visibleCount + LOAD_MORE_COUNT, allMatches.length);
+  for (var i = visibleCount; i < end; i++) {
+    allMatches[i].classList.add('card-visible');
+  }
+  visibleCount = end;
+  var btn = document.getElementById('loadMoreBtn');
+  if (btn) {
+    btn.style.display = visibleCount < allMatches.length ? 'block' : 'none';
+  }
+}
+
 // SEARCH
 function filterCards(query) {
   query = (query||'').toLowerCase().trim();
@@ -20738,23 +20760,27 @@ function filterCards(query) {
 
   var prompt = document.getElementById('searchPrompt');
   var counter = document.getElementById('resultCount');
+  var btn = document.getElementById('loadMoreBtn');
 
   if (!query) {
     if(prompt) prompt.style.display = '';
     if(counter) counter.textContent = '';
+    if(btn) btn.style.display = 'none';
+    allMatches = []; visibleCount = 0;
     return;
   }
 
   var keywords = query.split(' ').filter(function(k){ return k.length > 0; });
-  var matches = Array.from(all).filter(function(c){
+  allMatches = Array.from(all).filter(function(c){
     var text = c.textContent.toLowerCase();
     return keywords.every(function(k){ return text.indexOf(k) !== -1; });
   });
 
-  matches.forEach(function(c){ c.classList.add('card-visible'); });
+  visibleCount = 0;
+  showMore();
 
   if(prompt) prompt.style.display = 'none';
-  if(counter) counter.textContent = matches.length + ' result(s) for "' + query + '"';
+  if(counter) counter.textContent = allMatches.length + ' result(s) for "' + query + '"';
 }
 
 function filterByTag(tag) { filterCards(tag); }
@@ -20765,6 +20791,9 @@ function clearFilters() {
   if(counter) counter.textContent = '';
   var prompt = document.getElementById('searchPrompt');
   if(prompt) prompt.style.display = '';
+  var btn = document.getElementById('loadMoreBtn');
+  if(btn) btn.style.display = 'none';
+  allMatches = []; visibleCount = 0;
 }
 
 function searchFromHome() {
@@ -20780,8 +20809,6 @@ function goToInventory(tag) {
 }
 
 // MISC
-function updateResultCount(){}
-function loadMap(){}
 function closeCookieBanner(){
   var b=document.getElementById('cookieBanner');
   if(b) b.style.display='none';
@@ -20802,6 +20829,7 @@ document.addEventListener('DOMContentLoaded', function(){
     }
   }catch(e){}
 });
+
 </script>
 
 </body>
