@@ -1956,11 +1956,7 @@
             <button onclick="goToSearch()" style="padding: 12px 28px; background: #1565c0; color: white; border: none; border-radius: 50px; font-size: 15px; font-weight: 600; cursor: pointer; box-shadow: 0 4px 14px rgba(21,101,192,0.3); transition: all 0.3s;" onmouseover="this.style.background='#0d47a1';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#1565c0';this.style.transform='translateY(0)'">🔍 Search Billboards</button>
         </div>
         <p id="searchPrompt" style="text-align:center;color:#1565c0;font-size:16px;margin-bottom:30px;">Use the search bar on the home page to find billboard sites.</p>
-        <div id="resultCount" style="text-align:center;color:#1565c0;font-weight:600;font-size:14px;margin-bottom:12px;"></div>
-
-     <div style="text-align:center; margin:20px 0;">
-     <button id="loadMoreBtn" onclick="showMore()" style="display:none; padding:12px 35px; background:#1565c0; color:white; border:none; border-radius:50px; font-size:15px; font-weight:600; cursor:pointer;">Load More ↓</button>
-     </div>       
+        <div id="resultCount" style="text-align:center;color:#1565c0;font-weight:600;font-size:14px;margin-bottom:12px;"></div>       
          
    <div class="billboard-card">
             <iframe class="map-window" 
@@ -20721,6 +20717,10 @@
 
     </div>
 </div>
+
+  <div style="text-align:center; margin:30px 0 50px 0;">
+            <button id="loadMoreBtn" onclick="showMore()" style="display:none; padding:12px 35px; background:#1565c0; color:white; border:none; border-radius:50px; font-size:15px; font-weight:600; cursor:pointer;">Load More ↓</button>
+        </div>
 
 <script>
 // PAGE SWITCHING
