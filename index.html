@@ -20727,8 +20727,10 @@ function filterCards(query) {
     return;
   }
 
+  var keywords = query.split(' ').filter(function(k){ return k.length > 0; });
   var matches = Array.from(all).filter(function(c){
-    return c.textContent.toLowerCase().indexOf(query) !== -1;
+    var text = c.textContent.toLowerCase();
+    return keywords.every(function(k){ return text.indexOf(k) !== -1; });
   });
 
   matches.forEach(function(c){ c.classList.add('card-visible'); });
