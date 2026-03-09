@@ -2096,15 +2096,7 @@
                 </div>
             </div>
         </div>      
-
-        <!-- Lightbox -->
-        <div id="lightbox" 
-         onclick="this.style.display='none'"
-         style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:9999; justify-content:center; align-items:center; cursor:pointer;">
-         <img src="Edsa A5.png" 
-         style="max-width:90%; max-height:90vh; border-radius:8px; box-shadow:0 0 30px rgba(0,0,0,0.5);">
-        </div>
-             
+     
         <div class="billboard-card">
             <iframe class="map-window" 
                 src="https://www.google.com/maps/embed?pb=!4v1769151939422!6m8!1m7!1s7H5bMMQqq4RDmMj7_HZq6A!2m2!1d14.65734445751181!2d120.9882527744313!3f270.4123844900574!4f8.703139503484351!5f0.7820865974627469"
@@ -2918,15 +2910,7 @@
                 </div>
             </div>
         </div>
-    
-         <!-- Lightbox -->
-<div id="lightbox" 
-     onclick="this.style.display='none'"
-     style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:9999; justify-content:center; align-items:center; cursor:pointer;">
-    <img src="Edsa A39.jpeg" 
-         style="max-width:90%; max-height:90vh; border-radius:8px; box-shadow:0 0 30px rgba(0,0,0,0.5);">
-</div>
-         
+       
     <div class="billboard-card">
             <iframe class="map-window" 
                      src="https://www.google.com/maps/embed?pb=!4v1769570733254!6m8!1m7!1sTdDlFAodq0mMKNJaXjmmjg!2m2!1d14.65687587450172!2d121.0238569082703!3f100.7537759135331!4f8.691978555879672!5f2.1105073113089428"   
@@ -7603,15 +7587,7 @@
                 </div>
             </div>
          </div>
-
-         <!-- Lightbox -->
-<div id="lightbox" 
-     onclick="this.style.display='none'"
-     style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:9999; justify-content:center; align-items:center; cursor:pointer;">
-    <img src="Edsa A237.jpeg" 
-         style="max-width:90%; max-height:90vh; border-radius:8px; box-shadow:0 0 30px rgba(0,0,0,0.5);">
-</div>
-         
+     
       <div class="billboard-card">
             <iframe class="map-window" 
                                 src="https://www.google.com/maps/embed?pb=!4v1770097620424!6m8!1m7!1srpT1SHR8gxgjxyzj7n9oTg!2m2!1d14.57018508180159!2d121.0462760945635!3f274.13540690147687!4f4.964213976220492!5f0.9340862571628538"                         
@@ -20742,6 +20718,13 @@
     </div>
 </div>
 
+<div id="lightbox" 
+     onclick="this.style.display='none'"
+     style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:9999; justify-content:center; align-items:center; cursor:pointer;">
+    <img id="lightboxImg" 
+         style="max-width:90%; max-height:90vh; border-radius:8px; box-shadow:0 0 30px rgba(0,0,0,0.5);">
+</div>
+     
   <div style="text-align:center; margin:30px 0 50px 0;">
             <button id="loadMoreBtn" onclick="showMore()" style="display:none; padding:12px 35px; background:#1565c0; color:white; border:none; border-radius:50px; font-size:15px; font-weight:600; cursor:pointer;">Load More ↓</button>
         </div>
@@ -20791,6 +20774,10 @@
 </div>     
      
 <script>
+function openLightbox(src) {
+    document.getElementById('lightboxImg').src = src;
+    document.getElementById('lightbox').style.display = 'flex';
+}     
 // HAMBURGER MENU
 function toggleMobileMenu() {
   document.getElementById('hamburgerBtn').classList.toggle('open');
