@@ -20771,6 +20771,11 @@
 </div>
      
 <script>
+function openLightbox(src) {
+    document.getElementById('lightboxImg').src = src;
+    document.getElementById('lightbox').style.display = 'flex';
+}
+     
 function toggleMobileMenu() {
   document.getElementById('hamburgerBtn').classList.toggle('open');
   document.getElementById('mobileDropdown').classList.toggle('open');
