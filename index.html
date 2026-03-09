@@ -1961,50 +1961,6 @@
         </div>
     </div>
 </div>
-
-<!-- FOOTER - APPEARS ON ALL PAGES -->
-<footer class="site-footer">
-    <div class="footer-content">
-        <div class="footer-links">
-            <button class="footer-link" onclick="showPage('about')">About Us</button>
-            <button class="footer-link" onclick="showPage('terms')">Terms & Conditions</button>
-            <button class="footer-link" onclick="showPage('privacy')">Privacy Policy</button>
-            <a href="/cdn-cgi/l/email-protection#365f5850597659595e465e5f5a5f46465f5853451855595b" class="footer-link">Contact</a>
-        </div>
-        <div class="footer-copyright">
-            © 2026 OOHPhilippines.com. All rights reserved.
-        </div>
-    </div>
-</footer>
-
-<!-- Cookie Banner -->
-<div class="cookie-banner" id="cookieBanner">
-    <div class="cookie-content">
-        <p>🍪 This website uses cookies to improve your experience. By using this site, you agree to our <button class="cookie-link" onclick="showPage('privacy'); closeCookieBanner();">Privacy Policy</button>.</p>
-        <button class="cookie-accept" onclick="closeCookieBanner()">Accept</button>
-    </div>
-</div>
-
-<!-- Floating Feedback Button -->
-<div class="feedback-float">
-    <button class="feedback-btn" onclick="openFeedbackModal()">
-        💬 Feedback
-    </button>
-</div>
-
-<!-- Feedback Modal -->
-<div class="feedback-modal" id="feedbackModal">
-    <div class="feedback-content">
-        <div class="feedback-header">
-            <h3>💡 Help Us Improve</h3>
-            <button class="close-btn" onclick="closeFeedbackModal()">×</button>
-        </div>
-        <form class="feedback-form">
-            <textarea id="modalFeedback" placeholder="Share your thoughts, suggestions, or report any issues..."></textarea>
-            <button type="button" onclick="submitModalFeedback()">Send Feedback</button>
-        </form>
-    </div>
-</div>
      
 <!-- Inventory Page -->
 <div id="inventoryPage" class="page">
@@ -2938,15 +2894,11 @@
         </div>
 
     <div class="billboard-card">
-    <iframe 
-        src="Edsa A39.pdf"
-        style="width:100%; height:350px; border:none; display:block;"
-        type="application/pdf">
-        <p style="text-align:center; padding:20px;">
-            <a href="Edsa A39.pdf" target="_blank">📄 Click here to view PDF</a>
-        </p>
-    </iframe>
-
+    <img class="map-window" 
+         src="Edsa A39.jpeg" 
+         alt="Edsa A39"
+         style="width:100%; height:100%; object-fit:cover; display:block; cursor:pointer;"
+         onclick="document.getElementById('lightbox').style.display='flex'">
     <div class="details">
                 <span class="tag">EDSA • Project 7 • Southbound</span>
                 <h2>Site: EDSA A39</h2>
@@ -2956,7 +2908,6 @@
                     <div class="spec-item"><strong>Facing</strong> Northbound</div>
                     <div class="spec-item"><strong>Illumination</strong> Yes</div>
                 </div>
-            <a href="Edsa A39.pdf" target="_blank" class="btn-website">📄 View PDF</a>
                     <div class="price">Please Call for Rates</div>
                     <div class="button-group">
                     <a href="mailto:inquiry@unmg.com.ph?subject=Inquiry: Edsa Proj. 7 A39&body=I%20saw%20your%20site%20in%20OOHPhilippines.com.%20Is%20it%20available%3F" class="btn-contact">📧 Email Inquiry</a>
@@ -2967,7 +2918,15 @@
                 </div>
             </div>
         </div>
-
+    
+         <!-- Lightbox -->
+<div id="lightbox" 
+     onclick="this.style.display='none'"
+     style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:9999; justify-content:center; align-items:center; cursor:pointer;">
+    <img src="Edsa A39.jpeg" 
+         style="max-width:90%; max-height:90vh; border-radius:8px; box-shadow:0 0 30px rgba(0,0,0,0.5);">
+</div>
+         
     <div class="billboard-card">
             <iframe class="map-window" 
                      src="https://www.google.com/maps/embed?pb=!4v1769570733254!6m8!1m7!1sTdDlFAodq0mMKNJaXjmmjg!2m2!1d14.65687587450172!2d121.0238569082703!3f100.7537759135331!4f8.691978555879672!5f2.1105073113089428"   
@@ -7619,15 +7578,11 @@
         </div>
 
    <div class="billboard-card">
-    <iframe 
-        src="Edsa A237.pdf"
-        style="width:100%; height:350px; border:none; display:block;"
-        type="application/pdf">
-        <p style="text-align:center; padding:20px;">
-            <a href="Edsa A237.pdf" target="_blank">📄 Click here to view PDF</a>
-        </p>
-    </iframe>
-
+    <img class="map-window" 
+         src="Edsa A237.jpeg" 
+         alt="Edsa A237"
+         style="width:100%; height:100%; object-fit:cover; display:block; cursor:pointer;"
+         onclick="document.getElementById('lightbox').style.display='flex'">
     <div class="details">
                 <span class="tag">EDSA • Caloocan •  Monumento • Southbound</span>
                 <h2>Site: EDSA A237</h2>
@@ -7649,6 +7604,14 @@
             </div>
          </div>
 
+         <!-- Lightbox -->
+<div id="lightbox" 
+     onclick="this.style.display='none'"
+     style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:9999; justify-content:center; align-items:center; cursor:pointer;">
+    <img src="Edsa A237.jpeg" 
+         style="max-width:90%; max-height:90vh; border-radius:8px; box-shadow:0 0 30px rgba(0,0,0,0.5);">
+</div>
+         
       <div class="billboard-card">
             <iframe class="map-window" 
                                 src="https://www.google.com/maps/embed?pb=!4v1770097620424!6m8!1m7!1srpT1SHR8gxgjxyzj7n9oTg!2m2!1d14.57018508180159!2d121.0462760945635!3f274.13540690147687!4f4.964213976220492!5f0.9340862571628538"                         
@@ -20783,6 +20746,50 @@
             <button id="loadMoreBtn" onclick="showMore()" style="display:none; padding:12px 35px; background:#1565c0; color:white; border:none; border-radius:50px; font-size:15px; font-weight:600; cursor:pointer;">Load More ↓</button>
         </div>
 
+<!-- FOOTER - APPEARS ON ALL PAGES -->
+<footer class="site-footer">
+    <div class="footer-content">
+        <div class="footer-links">
+            <button class="footer-link" onclick="showPage('about')">About Us</button>
+            <button class="footer-link" onclick="showPage('terms')">Terms & Conditions</button>
+            <button class="footer-link" onclick="showPage('privacy')">Privacy Policy</button>
+            <a href="/cdn-cgi/l/email-protection#365f5850597659595e465e5f5a5f46465f5853451855595b" class="footer-link">Contact</a>
+        </div>
+        <div class="footer-copyright">
+            © 2026 OOHPhilippines.com. All rights reserved.
+        </div>
+    </div>
+</footer>
+
+<!-- Cookie Banner -->
+<div class="cookie-banner" id="cookieBanner">
+    <div class="cookie-content">
+        <p>🍪 This website uses cookies to improve your experience. By using this site, you agree to our <button class="cookie-link" onclick="showPage('privacy'); closeCookieBanner();">Privacy Policy</button>.</p>
+        <button class="cookie-accept" onclick="closeCookieBanner()">Accept</button>
+    </div>
+</div>
+
+<!-- Floating Feedback Button -->
+<div class="feedback-float">
+    <button class="feedback-btn" onclick="openFeedbackModal()">
+        💬 Feedback
+    </button>
+</div>
+
+<!-- Feedback Modal -->
+<div class="feedback-modal" id="feedbackModal">
+    <div class="feedback-content">
+        <div class="feedback-header">
+            <h3>💡 Help Us Improve</h3>
+            <button class="close-btn" onclick="closeFeedbackModal()">×</button>
+        </div>
+        <form class="feedback-form">
+            <textarea id="modalFeedback" placeholder="Share your thoughts, suggestions, or report any issues..."></textarea>
+            <button type="button" onclick="submitModalFeedback()">Send Feedback</button>
+        </form>
+    </div>
+</div>     
+     
 <script>
 // HAMBURGER MENU
 function toggleMobileMenu() {
