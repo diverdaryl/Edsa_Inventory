@@ -78,7 +78,7 @@
     .nav-link.primary:hover {
         background: #0d47a1;
     }
-
+    
     .hamburger-btn {
     display: none;
     flex-direction: column;
@@ -104,7 +104,7 @@
 .hamburger-btn.open span:nth-child(2) { opacity: 0; }
 .hamburger-btn.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 .mobile-dropdown { display: none; }
-    
+
     /* Home Page Styles */
     .page {
         display: none;
@@ -754,7 +754,7 @@
         margin: 0 auto 40px auto;
     }
     
-.map-window { width: 100%; height: 500px; border: none; background: #eee; }
+    .map-window { width: 100%; height: 500px; border: none; background: #eee; }
     .details { padding: 25px; }
     .tag { color: #1a73e8; font-weight: bold; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
     h2 { margin: 10px 0; color: #202124; font-size: 22px; }
@@ -1011,7 +1011,7 @@
 
         .promo-btn {
             min-width: 100%;
-        }     
+        }
     }
 
   /* About/Legal Pages Container */
@@ -1297,8 +1297,8 @@
     <button onclick="showPage('about'); closeMobileMenu()">About Us</button>
     <a href="YOUR_EMAIL_LINK" class="primary">Upload your Sites Here</a>
 </div>
-</div>
- 
+</div>     
+
 <!-- Home Page -->
 <div id="homePage" class="page active">
     <div class="hero-container">
@@ -1314,7 +1314,7 @@
                 placeholder="Search by location, highway, or area..."
             >
             <button class="search-btn" onclick="searchFromHome()">Search</button>
-            <button class="search-btn" onclick="clearFilters(); document.getElementById('mainSearch').value='';" style="background:#e53935;">Clear all</button> 
+            <button class="search-btn" onclick="clearFilters(); document.getElementById('mainSearch').value='';" style="background:#e53935;">Clear all</button>
         </div>
         
         <div class="quick-links">
@@ -2004,7 +2004,7 @@
             <button type="button" onclick="submitModalFeedback()">Send Feedback</button>
         </form>
     </div>
-</div> 
+</div>
      
 <!-- Inventory Page -->
 <div id="inventoryPage" class="page">
@@ -2014,8 +2014,8 @@
             <button onclick="goToSearch()" style="padding: 12px 28px; background: #1565c0; color: white; border: none; border-radius: 50px; font-size: 15px; font-weight: 600; cursor: pointer; box-shadow: 0 4px 14px rgba(21,101,192,0.3); transition: all 0.3s;" onmouseover="this.style.background='#0d47a1';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#1565c0';this.style.transform='translateY(0)'">🔍 Search Billboards</button>
         </div>
         <p id="searchPrompt" style="text-align:center;color:#1565c0;font-size:16px;margin-bottom:30px;">Use the search bar on the home page to find billboard sites.</p>
-        <div id="resultCount" style="text-align:center;color:#1565c0;font-weight:600;font-size:14px;margin-bottom:12px;"></div>       
-         
+        <div id="resultCount" style="text-align:center;color:#1565c0;font-weight:600;font-size:14px;margin-bottom:12px;"></div>
+
    <div class="billboard-card">
             <iframe class="map-window" 
                 src="https://www.google.com/maps/embed?pb=!4v1737630000000!6m8!1m7!1s-DIdqB2pYvUv9H6_39S-pw!2m2!1d14.657512!2d120.9840331!3f31.76!4f0!5f0.7820865974627469" 
@@ -2116,11 +2116,15 @@
         </div>
 
         <div class="billboard-card">
-    <img class="map-window" 
-         src="Edsa A5.png" 
-         alt="Edsa A5"
-         style="width:100%; height:100%; object-fit:cover; display:block; cursor:pointer;"
-         onclick="openLightbox('Edsa A5.png')"
+    <iframe 
+        src="Edsa A5.pdf"
+        style="width:100%; height:350px; border:none; display:block;"
+        type="application/pdf">
+        <p style="text-align:center; padding:20px;">
+            <a href="Edsa A5.pdf" target="_blank">📄 Click here to view PDF</a>
+        </p>
+    </iframe>
+
     <div class="details">
                 <span class="tag">EDSA • Caloocan •  Monumento • Southbound</span>
                 <h2>Site: EDSA A5</h2>
@@ -2131,6 +2135,7 @@
                     <div class="spec-item"><strong>Illumination</strong> Yes</div>
                 </div>
                     <div class="price">Please Call for Rates</div>
+                    <a href="Edsa A5.pdf" target="_blank" class="btn-website">📄 View PDF</a>
                     <div class="button-group">
                     <a href="mailto:inquiry@unmg.com.ph?subject=Inquiry: Monumento A5 AR3&body=I%20saw%20your%20site%20in%20OOHPhilippines.com.%20Is%20it%20available%3F" class="btn-contact">📧 Email Inquiry</a>
                     <a href="sms:+639175376543?body=I%20saw%20your%20site%20in%20OOHPhilippines.com.%20Is%20it%20available%3F" target="_blank" class="btn-viber">💬 Send SMS</a>
@@ -2139,8 +2144,8 @@
                     <a href="https://unmg.com.ph/" target="_blank" class="btn-website">🌐 Visit Website</a>
                 </div>
             </div>
-        </div>      
-     
+        </div>
+
         <div class="billboard-card">
             <iframe class="map-window" 
                 src="https://www.google.com/maps/embed?pb=!4v1769151939422!6m8!1m7!1s7H5bMMQqq4RDmMj7_HZq6A!2m2!1d14.65734445751181!2d120.9882527744313!3f270.4123844900574!4f8.703139503484351!5f0.7820865974627469"
@@ -2843,7 +2848,7 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">EDSA • Muñoz • Southbound</span>
+                <span class="tag">EDSA Muñoz Southbound • Muñoz</span>
                 <h2>Site: Edsa Balintawak A35</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
@@ -2865,7 +2870,7 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">EDSA • Balintawak • Southbound • Muñoz</span>
+                <span class="tag">EDSA Balintawak Southbound • Muñoz</span>
                 <h2>Site: Edsa Muñoz A36</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
@@ -2890,7 +2895,7 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">EDSA • Balintawak • Southbound • Muñoz</span>
+                <span class="tag">EDSA Balintawak Southbound • Muñoz</span>
                 <h2>Site: Edsa Muñoz A37</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
@@ -2912,7 +2917,7 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">EDSA • Balintawak • Southbound • Muñoz</span>
+                <span class="tag">EDSA Balintawak Southbound • Muñoz</span>
                 <h2>Site: Edsa Muñoz A38</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
@@ -2930,11 +2935,15 @@
         </div>
 
     <div class="billboard-card">
-    <img class="map-window" 
-         src="Edsa A39.jpeg" 
-         alt="Edsa A39"
-         style="width:100%; height:100%; object-fit:cover; display:block; cursor:pointer;"
-         onclick="openLightbox('Edsa A39.jpeg')"
+    <iframe 
+        src="Edsa A39.pdf"
+        style="width:100%; height:350px; border:none; display:block;"
+        type="application/pdf">
+        <p style="text-align:center; padding:20px;">
+            <a href="Edsa A39.pdf" target="_blank">📄 Click here to view PDF</a>
+        </p>
+    </iframe>
+
     <div class="details">
                 <span class="tag">EDSA • Project 7 • Southbound</span>
                 <h2>Site: EDSA A39</h2>
@@ -2944,6 +2953,7 @@
                     <div class="spec-item"><strong>Facing</strong> Northbound</div>
                     <div class="spec-item"><strong>Illumination</strong> Yes</div>
                 </div>
+            <a href="Edsa A39.pdf" target="_blank" class="btn-website">📄 View PDF</a>
                     <div class="price">Please Call for Rates</div>
                     <div class="button-group">
                     <a href="mailto:inquiry@unmg.com.ph?subject=Inquiry: Edsa Proj. 7 A39&body=I%20saw%20your%20site%20in%20OOHPhilippines.com.%20Is%20it%20available%3F" class="btn-contact">📧 Email Inquiry</a>
@@ -2954,7 +2964,7 @@
                 </div>
             </div>
         </div>
-       
+
     <div class="billboard-card">
             <iframe class="map-window" 
                      src="https://www.google.com/maps/embed?pb=!4v1769570733254!6m8!1m7!1sTdDlFAodq0mMKNJaXjmmjg!2m2!1d14.65687587450172!2d121.0238569082703!3f100.7537759135331!4f8.691978555879672!5f2.1105073113089428"   
@@ -3280,7 +3290,7 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">EDSA • West Ave • Edsa North • Southbound • SM North • Trinoma</span>
+                <span class="tag">EDSA • West Ave • Quezon Ave • Southbound • SM North • Trinoma</span>
                 <h2>Site: Edsa A54</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
@@ -3305,7 +3315,7 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">EDSA • West Ave • Edsa North • Southbound • SM North • Trinoma</span>
+                <span class="tag">EDSA • West Ave • Quezon Ave • Southbound • SM North • Trinoma</span>
                 <h2>Site: Edsa A55</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
@@ -3330,7 +3340,7 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">EDSA • West Ave • Edsa North • Southbound • SM North • Trinoma</span>
+                <span class="tag">EDSA • West Ave • Quezon Ave • Southbound • SM North • Trinoma</span>
                 <h2>Site: Edsa A56</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
@@ -3353,7 +3363,7 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">EDSA • West Ave • Edsa North • Southbound • SM North • Trinoma</span>
+                <span class="tag">EDSA • West Ave • Quezon Ave • Southbound • SM North • Trinoma</span>
                 <h2>Site: Edsa A57</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
@@ -3377,7 +3387,7 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">EDSA • West Ave • Edsa North • Southbound • SM North • Trinoma</span>
+                <span class="tag">EDSA • West Ave • Quezon Ave • Southbound • SM North • Trinoma</span>
                 <h2>Site: Edsa A58</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
@@ -3402,7 +3412,7 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">EDSA • West Ave • Edsa North • Southbound • SM North • Trinoma</span>
+                <span class="tag">EDSA • West Ave • Quezon Ave • Southbound • SM North • Trinoma</span>
                 <h2>Site: Edsa A59</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
@@ -3427,7 +3437,7 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">EDSA • West Ave • Edsa North • Southbound • SM North • Trinoma</span>
+                <span class="tag">EDSA • West Ave • Quezon Ave • Southbound • SM North • Trinoma</span>
                 <h2>Site: Edsa Trinoma to Quezon Ave A60</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
@@ -3452,7 +3462,7 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">EDSA • West Ave • Edsa North • Southbound • SM North • Trinoma</span>
+                <span class="tag">EDSA • West Ave • Quezon Ave • Southbound • SM North • Trinoma</span>
                 <h2>Site: Edsa Trinoma to Quezon Ave AL61 AC61 AR61</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
@@ -3476,7 +3486,7 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">EDSA • West Ave • Edsa North • Southbound • SM North • Trinoma</span>
+                <span class="tag">EDSA • West Ave • Quezon Ave • Southbound • SM North • Trinoma</span>
                 <h2>Site: Edsa Trinoma to Quezon Ave A62</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
@@ -3501,7 +3511,7 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">EDSA • West Ave • Edsa North • Southbound • SM North • Trinoma</span>
+                <span class="tag">EDSA • West Ave • Quezon Ave • Southbound • SM North • Trinoma</span>
                 <h2>Site: Edsa Trinoma to Quezon Ave A63</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
@@ -3524,7 +3534,7 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">EDSA • West Ave • Edsa North • Southbound • SM North • Trinoma</span>
+                <span class="tag">EDSA • West Ave • Quezon Ave • Southbound • SM North • Trinoma</span>
                 <h2>Site: Edsa Trinoma to Quezon Ave A64</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
@@ -3547,7 +3557,7 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">EDSA • West Ave • Edsa North • Northbound • SM North • Trinoma</span>
+                <span class="tag">EDSA • West Ave • Quezon Ave • Northbound • SM North • Trinoma</span>
                 <h2>Site: Edsa Trinoma to Quezon Ave A65</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
@@ -3570,7 +3580,7 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">EDSA • West Ave • Edsa North • Northbound • SM North • Trinoma</span>
+                <span class="tag">EDSA • West Ave • Quezon Ave • Northbound • SM North • Trinoma</span>
                 <h2>Site: Edsa Trinoma to Quezon Ave A67</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
@@ -3595,7 +3605,7 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">EDSA • West Ave • Edsa North • Northbound • SM North • Trinoma</span>
+                <span class="tag">EDSA • West Ave • Quezon Ave • Northbound • SM North • Trinoma</span>
                 <h2>Site: Edsa Trinoma to Quezon Ave A68</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
@@ -3619,7 +3629,7 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">EDSA • West Ave • Edsa North • Northbound • SM North • Trinoma</span>
+                <span class="tag">EDSA • West Ave • Quezon Ave • Northbound • SM North • Trinoma</span>
                 <h2>Site: Edsa Trinoma to Quezon Ave A69</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
@@ -3644,7 +3654,7 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">EDSA • West Ave • Edsa North • Northbound • SM North • Trinoma</span>
+                <span class="tag">EDSA • West Ave • Quezon Ave • Northbound • SM North • Trinoma</span>
                 <h2>Site: Edsa Trinoma to Quezon Ave A70</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
@@ -3667,7 +3677,7 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">EDSA • West Ave • Edsa North • Northbound • SM North • Trinoma</span>
+                <span class="tag">EDSA • West Ave • Quezon Ave • Northbound • SM North • Trinoma</span>
                 <h2>Site: Edsa Trinoma to Quezon Ave A71</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
@@ -3690,7 +3700,7 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">EDSA • West Ave • Edsa North • Northbound • SM North • Trinoma</span>
+                <span class="tag">EDSA • West Ave • Quezon Ave • Northbound • SM North • Trinoma</span>
                 <h2>Site: Edsa Trinoma to Quezon Ave A72</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
@@ -3714,7 +3724,7 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">EDSA • West Ave • Edsa North • Northbound • SM North • Trinoma</span>
+                <span class="tag">EDSA • West Ave • Quezon Ave • Northbound • SM North • Trinoma</span>
                 <h2>Site: Edsa Trinoma to Quezon Ave A73</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
@@ -3738,7 +3748,7 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">EDSA • West Ave • Edsa North • Northbound • SM North • Trinoma</span>
+                <span class="tag">EDSA • West Ave • Quezon Ave • Northbound • SM North • Trinoma</span>
                 <h2>Site: Edsa Trinoma to Quezon Ave A74</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
@@ -3761,7 +3771,7 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">EDSA • West Ave • Edsa North • Northbound • SM North • Trinoma</span>
+                <span class="tag">EDSA • West Ave • Quezon Ave • Northbound • SM North • Trinoma</span>
                 <h2>Site: Edsa Trinoma to Quezon Ave A75</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
@@ -3784,7 +3794,7 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">EDSA • Edsa North • Southbound • GMA • Kamuning</span>
+                <span class="tag">EDSA • Quezon Ave • Southbound • GMA • Kamuning</span>
                 <h2>Site: Edsa Quezon Ave A76</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
@@ -3807,7 +3817,7 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">EDSA • Edsa North • Southbound • GMA • Kamuning</span>
+                <span class="tag">EDSA • Quezon Ave • Southbound • GMA • Kamuning</span>
                 <h2>Site: Edsa Quezon Ave to GMA Kamuning A77</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
@@ -3831,7 +3841,7 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">EDSA • Edsa North • Southbound • GMA • Kamuning</span>
+                <span class="tag">EDSA • Quezon Ave • Southbound • GMA • Kamuning</span>
                 <h2>Site: Edsa Quezon Ave to GMA Kamuning A78</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
@@ -3856,7 +3866,7 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">EDSA • Edsa North • Southbound • GMA • Kamuning</span>
+                <span class="tag">EDSA • Quezon Ave • Southbound • GMA • Kamuning</span>
                 <h2>Site: Edsa Quezon Ave to GMA Kamuning A79</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
@@ -3881,7 +3891,7 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">EDSA • Edsa North • Southbound • GMA • Kamuning</span>
+                <span class="tag">EDSA • Quezon Ave • Southbound • GMA • Kamuning</span>
                 <h2>Site: Edsa Quezon Ave to GMA Kamuning A80</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
@@ -3904,7 +3914,7 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">EDSA • Edsa North • Southbound • GMA • Kamuning</span>
+                <span class="tag">EDSA • Quezon Ave • Southbound • GMA • Kamuning</span>
                 <h2>Site: Edsa Quezon Ave to GMA Kamuning A81</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
@@ -3929,7 +3939,7 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">EDSA • Edsa North • Southbound • GMA • Kamuning</span>
+                <span class="tag">EDSA • Quezon Ave • Southbound • GMA • Kamuning</span>
                 <h2>Site: Edsa Quezon Ave to GMA Kamuning A82</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
@@ -3954,7 +3964,7 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">EDSA • Edsa North • Southbound • GMA • Kamuning</span>
+                <span class="tag">EDSA • Quezon Ave • Southbound • GMA • Kamuning</span>
                 <h2>Site: Edsa Quezon Ave to GMA Kamuning A83</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
@@ -3979,7 +3989,7 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">EDSA • Edsa North • Southbound • GMA • Kamuning</span>
+                <span class="tag">EDSA • Quezon Ave • Southbound • GMA • Kamuning</span>
                 <h2>Site: Edsa Quezon Ave to GMA Kamuning A84</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
@@ -4004,7 +4014,7 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">EDSA • Edsa North • Southbound • GMA • Kamuning</span>
+                <span class="tag">EDSA • Quezon Ave • Southbound • GMA • Kamuning</span>
                 <h2>Site: Edsa Quezon Ave to GMA Kamuning A85</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
@@ -4028,7 +4038,7 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">EDSA • Edsa North • Southbound • GMA • Kamuning</span>
+                <span class="tag">EDSA • Quezon Ave • Southbound • GMA • Kamuning</span>
                 <h2>Site: Edsa Quezon Ave to GMA Kamuning A86</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
@@ -4053,7 +4063,7 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">EDSA • Edsa North • Southbound • GMA • Kamuning</span>
+                <span class="tag">EDSA • Quezon Ave • Southbound • GMA • Kamuning</span>
                 <h2>Site: Edsa Quezon Ave to GMA Kamuning AL87 AR87</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
@@ -4078,7 +4088,7 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">EDSA • Edsa North • Southbound • GMA • Kamuning</span>
+                <span class="tag">EDSA • Quezon Ave • Southbound • GMA • Kamuning</span>
                 <h2>Site: Edsa Quezon Ave to GMA Kamuning A88</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
@@ -4101,7 +4111,7 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">EDSA • Edsa North • Northbound • GMA • Kamuning</span>
+                <span class="tag">EDSA • Quezon Ave • Northbound • GMA • Kamuning</span>
                 <h2>Site: Edsa Quezon Ave to GMA Kamuning A89</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
@@ -4124,7 +4134,7 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">EDSA • Edsa North • Northbound • GMA • Kamuning</span>
+                <span class="tag">EDSA • Quezon Ave • Northbound • GMA • Kamuning</span>
                 <h2>Site: Edsa Quezon Ave to GMA Kamuning A90</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
@@ -4146,7 +4156,7 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">EDSA • Edsa North • Northbound • GMA • Kamuning</span>
+                <span class="tag">EDSA • Quezon Ave • Northbound • GMA • Kamuning</span>
                 <h2>Site: Edsa Quezon Ave to GMA Kamuning A91</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
@@ -4171,7 +4181,7 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">EDSA • Edsa North • Northbound • GMA • Kamuning</span>
+                <span class="tag">EDSA • Quezon Ave • Northbound • GMA • Kamuning</span>
                 <h2>Site: Edsa Quezon Ave to GMA Kamuning A92</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
@@ -4196,7 +4206,7 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">EDSA • Edsa North • Northbound • GMA • Kamuning</span>
+                <span class="tag">EDSA • Quezon Ave • Northbound • GMA • Kamuning</span>
                 <h2>Site: Edsa Quezon Ave to GMA Kamuning A93</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
@@ -4219,7 +4229,7 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">EDSA • Edsa North • Northbound • GMA • Kamuning</span>
+                <span class="tag">EDSA • Quezon Ave • Northbound • GMA • Kamuning</span>
                 <h2>Site: Edsa Quezon Ave to GMA Kamuning A95</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
@@ -4242,7 +4252,7 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">EDSA • Edsa North • Northbound • GMA • Kamuning</span>
+                <span class="tag">EDSA • Quezon Ave • Northbound • GMA • Kamuning</span>
                 <h2>Site: Edsa Quezon Ave to GMA Kamuning A96</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
@@ -4267,7 +4277,7 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">EDSA • Edsa North • Northbound • GMA • Kamuning</span>
+                <span class="tag">EDSA • Quezon Ave • Northbound • GMA • Kamuning</span>
                 <h2>Site: Edsa Quezon Ave to GMA Kamuning A97</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
@@ -4291,7 +4301,7 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">EDSA • Edsa North • Northbound • GMA • Kamuning</span>
+                <span class="tag">EDSA • Quezon Ave • Northbound • GMA • Kamuning</span>
                 <h2>Site: Edsa Quezon Ave to GMA Kamuning A98</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
@@ -4314,7 +4324,7 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">EDSA • Edsa North • Northbound • GMA • Kamuning</span>
+                <span class="tag">EDSA • Quezon Ave • Northbound • GMA • Kamuning</span>
                 <h2>Site: Edsa Quezon Ave to GMA Kamuning A99</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
@@ -4337,7 +4347,7 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">EDSA • Edsa North • Northbound • GMA • Kamuning</span>
+                <span class="tag">EDSA • Quezon Ave • Northbound • GMA • Kamuning</span>
                 <h2>Site: Edsa Quezon Ave to GMA Kamuning A100</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
@@ -4360,7 +4370,7 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">EDSA • Edsa North • Northbound • GMA • Kamuning</span>
+                <span class="tag">EDSA • Quezon Ave • Northbound • GMA • Kamuning</span>
                 <h2>Site: Edsa Quezon Ave to GMA Kamuning A101</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
@@ -4383,7 +4393,7 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">EDSA • Edsa North • Northbound • GMA • Kamuning</span>
+                <span class="tag">EDSA • Quezon Ave • Northbound • GMA • Kamuning</span>
                 <h2>Site: Edsa Quezon Ave to GMA Kamuning A102</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
@@ -4406,7 +4416,7 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">EDSA • Edsa North • Northbound • GMA • Kamuning</span>
+                <span class="tag">EDSA • Quezon Ave • Northbound • GMA • Kamuning</span>
                 <h2>Site: Edsa Quezon Ave to GMA Kamuninge A103</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
@@ -4429,7 +4439,7 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">EDSA • Edsa North • Northbound • GMA • Kamuning</span>
+                <span class="tag">EDSA • Quezon Ave • Northbound • GMA • Kamuning</span>
                 <h2>Site: Edsa Quezon Ave to GMA Kamuning A104</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
@@ -7606,11 +7616,15 @@
         </div>
 
    <div class="billboard-card">
-    <img class="map-window" 
-         src="Edsa A237.jpeg" 
-         alt="Edsa A237"
-         style="width:100%; height:100%; object-fit:cover; display:block; cursor:pointer;"
-         onclick="openLightbox('Edsa A237.jpeg')"
+    <iframe 
+        src="Edsa A237.pdf"
+        style="width:100%; height:350px; border:none; display:block;"
+        type="application/pdf">
+        <p style="text-align:center; padding:20px;">
+            <a href="Edsa A237.pdf" target="_blank">📄 Click here to view PDF</a>
+        </p>
+    </iframe>
+
     <div class="details">
                 <span class="tag">EDSA • Caloocan •  Monumento • Southbound</span>
                 <h2>Site: EDSA A237</h2>
@@ -7620,6 +7634,7 @@
                     <div class="spec-item"><strong>Facing</strong> Northbound</div>
                     <div class="spec-item"><strong>Illumination</strong> Yes</div>
                 </div>
+            <a href="Edsa A237.pdf" target="_blank" class="btn-website">📄 View PDF</a>
                     <div class="price">Please Call for Rates</div>
                     <div class="button-group">
                     <a href="mailto:inquiry@unmg.com.ph?subject=Inquiry: Edsa A237&body=I%20saw%20your%20site%20in%20OOHPhilippines.com.%20Is%20it%20available%3F" class="btn-contact">📧 Email Inquiry</a>
@@ -7630,7 +7645,7 @@
                 </div>
             </div>
          </div>
-     
+
       <div class="billboard-card">
             <iframe class="map-window" 
                                 src="https://www.google.com/maps/embed?pb=!4v1770097620424!6m8!1m7!1srpT1SHR8gxgjxyzj7n9oTg!2m2!1d14.57018508180159!2d121.0462760945635!3f274.13540690147687!4f4.964213976220492!5f0.9340862571628538"                         
@@ -7672,7 +7687,7 @@
                 </div>
                 <div class="price">Please Call for Rates</div>
                 <div class="button-group">
-                    <a href="mailto:inquiry@unmg.com.ph?subject=Inquiry: Edsa A239&body=I%20saw%20your%20site%20in%20OOHPhilippines.com.%20Is%20it%20available%3F" class="btn-contact">📧 Email Inquiry</a>
+                    <a href="mailto:inquiry@unmg.com.ph?subject=Inquiry: Edsa A237&body=I%20saw%20your%20site%20in%20OOHPhilippines.com.%20Is%20it%20available%3F" class="btn-contact">📧 Email Inquiry</a>
                     <a href="sms:+639175376543?body=I%20saw%20your%20site%20in%20OOHPhilippines.com.%20Is%20it%20available%3F" target="_blank" class="btn-viber">💬 Send SMS</a>
                     <a href="viber://chat?number=+639175376543" target="_blank" class="btn-viber">💬 Message on Viber</a>
                     <a href="https://api.whatsapp.com/send?phone=639175376543&text=I%20saw%20your%20site%20in%20OOHPhilippines.com.%20Is%20it%20available%3F" target="_blank" class="btn-whatsapp">📱 WhatsApp</a>
@@ -18199,8 +18214,8 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">NLEX • Balintawak • Malinta • Meycauayan • Marilao • Bocaue • Northbound</span>
-                <h2>Site: NLEX C676</h2>
+                <span class="tag">España Blvd • Ubelt • Morayta • Quiapo • Northbound</span>
+                <h2>Site: España C676</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
                     <div class="spec-item"><strong>Type</strong> Static</div>
@@ -18225,8 +18240,8 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">NLEX • Balintawak • Malinta • Meycauayan • Marilao • Bocaue • Northbound</span>
-                <h2>Site: NLEX C677</h2>
+                <span class="tag">España Blvd • Ubelt • Morayta • Quiapo • Northbound</span>
+                <h2>Site: España C677</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
                     <div class="spec-item"><strong>Type</strong> Static</div>
@@ -18250,8 +18265,8 @@
                 allowfullscreen="" loading="lazy">
             </iframe>
             <div class="details">
-                <span class="tag">NLEX • Balintawak • Malinta • Meycauayan • Marilao • Bocaue • Northbound</span>
-                <h2>Site: NLEX C678</h2>
+                <span class="tag">España Blvd • Ubelt • Morayta • Quiapo • Northbound</span>
+                <h2>Site: España C678</h2>
                 <div class="spec-grid">
                     <div class="spec-item"><strong>Size</strong> Please Inquire</div>
                     <div class="spec-item"><strong>Type</strong> Static</div>
@@ -20757,15 +20772,15 @@
     </div>
 </div>
 
+
     </div>
 </div>
-   
-  <div style="text-align:center; margin:30px 0 50px 0;">
+
+     <div style="text-align:center; margin:30px 0 50px 0;">
             <button id="loadMoreBtn" onclick="showMore()" style="display:none; padding:12px 35px; background:#1565c0; color:white; border:none; border-radius:50px; font-size:15px; font-weight:600; cursor:pointer;">Load More ↓</button>
         </div>
-     
+
 <script>
-// HAMBURGER MENU
 function toggleMobileMenu() {
   document.getElementById('hamburgerBtn').classList.toggle('open');
   document.getElementById('mobileDropdown').classList.toggle('open');
@@ -20774,8 +20789,7 @@ function closeMobileMenu() {
   document.getElementById('hamburgerBtn').classList.remove('open');
   document.getElementById('mobileDropdown').classList.remove('open');
 }
-     
-// PAGE SWITCHING
+
 function showPage(pageId) {
   document.querySelectorAll('.page').forEach(function(p) { p.classList.remove('active'); });
   var t = document.getElementById(pageId + 'Page');
@@ -20786,7 +20800,6 @@ function goToSearch() {
   setTimeout(function(){ var i=document.getElementById('mainSearch'); if(i) i.focus(); },100);
 }
 
-// LOAD MORE
 var allMatches = [];
 var visibleCount = 0;
 var LOAD_MORE_COUNT = 10;
@@ -20803,7 +20816,6 @@ function showMore() {
   }
 }
 
-// SEARCH
 function filterCards(query) {
   query = (query||'').toLowerCase().trim();
   var all = document.querySelectorAll('#inventoryPage .billboard-card');
@@ -20859,7 +20871,6 @@ function goToInventory(tag) {
   setTimeout(function(){ filterCards(tag); }, 200);
 }
 
-// MISC
 function closeCookieBanner(){
   var b=document.getElementById('cookieBanner');
   if(b) b.style.display='none';
@@ -20869,7 +20880,6 @@ function openFeedbackModal(){ var m=document.getElementById('feedbackModal'); if
 function closeFeedbackModal(){ var m=document.getElementById('feedbackModal'); if(m) m.classList.remove('active'); }
 function submitModalFeedback(){ closeFeedbackModal(); alert('Thank you for your feedback!'); }
 
-// INIT
 document.addEventListener('DOMContentLoaded', function(){
   var hi = document.getElementById('mainSearch');
   if(hi){ hi.addEventListener('keydown', function(e){ if(e.key==='Enter') searchFromHome(); }); }
@@ -20880,8 +20890,9 @@ document.addEventListener('DOMContentLoaded', function(){
     }
   }catch(e){}
 });
-
 </script>
 
 </body>
 </html>
+
+
