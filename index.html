@@ -1891,7 +1891,7 @@
     <div class="nav-logo" onclick="showPage('home')" style="display:flex;align-items:center;gap:8px;">OOHPhilippines.com</div>
     <div class="nav-links">
         <button class="nav-link" onclick="showPage('home')">🔍 Search</button>
-        <button class="nav-link" onclick="showPage('promos')" id="promosNavBtn">🎉 Promos <span id="promosBadge" style="display:none;background:#e65100;color:white;font-size:10px;font-weight:700;padding:2px 7px;border-radius:10px;margin-left:4px;vertical-align:middle;"></span></button>
+        <button class="nav-link" onclick="showPage('promos')">🎉 Promos</button>
         <button class="nav-link" onclick="showPage('inquiries')">Looking For Sites?</button>
         <button class="nav-link" onclick="showPage('pricing')">💎 Pricing</button>
         <a href="/guides.html" class="nav-link">📖 Guides</a>
@@ -1924,7 +1924,7 @@
 </div>
 <div class="mobile-dropdown" id="mobileDropdown">
     <button onclick="showPage('home'); closeMobileMenu()">🔍 Search</button>
-    <button onclick="showPage('promos'); closeMobileMenu()">🎉 Promos <span id="promosBadgeMobile" style="display:none;background:#e65100;color:white;font-size:10px;font-weight:700;padding:2px 7px;border-radius:10px;margin-left:4px;vertical-align:middle;"></span></button>
+    <button onclick="showPage('promos'); closeMobileMenu()">🎉 Promos</button>
     <button onclick="showPage('inquiries'); closeMobileMenu()">Looking For Sites?</button>
     <button onclick="showPage('pricing'); closeMobileMenu()">💎 Pricing</button>
     <a href="/guides.html" class="nav-link" style="display:block;text-align:left;">📖 Guides</a>
@@ -2143,6 +2143,38 @@
                 <div class="form-group">
                     <label>Campaign Details *</label>
                     <textarea name="details" id="details" required placeholder="Tell us about your campaign, timeline, specific requirements, etc."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Campaign Start Date *</label>
+                    <input type="date" name="start_date" id="startDate" required>
+                </div>
+                <div class="form-group">
+                    <label>Number of Sites Needed</label>
+                    <select name="num_sites" id="numSites">
+                        <option value="">Select number</option>
+                        <option value="1">1 site</option>
+                        <option value="2-3">2-3 sites</option>
+                        <option value="4-5">4-5 sites</option>
+                        <option value="6-10">6-10 sites</option>
+                        <option value="10+">10+ sites</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Specific Billboard Site Codes</label>
+                    <input type="text" name="site_codes" id="siteCodes" placeholder="e.g. EDSA-A311, C5-B22, SLEX-C01 (optional)">
+                    <small style="color:#888;font-size:12px;margin-top:4px;display:block;">📍 Find site codes on billboard cards in our directory. Operators respond faster when specific sites are mentioned.</small>
+                </div>
+                <div class="form-group">
+                    <label>Target Audience</label>
+                    <select name="target_audience" id="targetAudience">
+                        <option value="">Select target audience</option>
+                        <option value="Commuters">Commuters</option>
+                        <option value="Motorists">Motorists</option>
+                        <option value="Mall Shoppers">Mall Shoppers</option>
+                        <option value="General Public">General Public</option>
+                        <option value="Business District">Business District Workers</option>
+                        <option value="Mixed">Mixed Audience</option>
+                    </select>
                 </div>
                 <div style="display: flex; gap: 10px;">
                     <button type="button" class="submit-btn" id="submitBtn" style="flex: 1;" onclick="submitInquiry()">Submit Requirements</button>
@@ -2894,6 +2926,38 @@
                 <div class="form-group">
                     <label>Campaign Details *</label>
                     <textarea name="details" id="details" required placeholder="Tell us about your campaign, timeline, specific requirements, etc."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Campaign Start Date *</label>
+                    <input type="date" name="start_date" id="startDate" required>
+                </div>
+                <div class="form-group">
+                    <label>Number of Sites Needed</label>
+                    <select name="num_sites" id="numSites">
+                        <option value="">Select number</option>
+                        <option value="1">1 site</option>
+                        <option value="2-3">2-3 sites</option>
+                        <option value="4-5">4-5 sites</option>
+                        <option value="6-10">6-10 sites</option>
+                        <option value="10+">10+ sites</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Specific Billboard Site Codes</label>
+                    <input type="text" name="site_codes" id="siteCodes" placeholder="e.g. EDSA-A311, C5-B22, SLEX-C01 (optional)">
+                    <small style="color:#888;font-size:12px;margin-top:4px;display:block;">📍 Find site codes on billboard cards in our directory. Operators respond faster when specific sites are mentioned.</small>
+                </div>
+                <div class="form-group">
+                    <label>Target Audience</label>
+                    <select name="target_audience" id="targetAudience">
+                        <option value="">Select target audience</option>
+                        <option value="Commuters">Commuters</option>
+                        <option value="Motorists">Motorists</option>
+                        <option value="Mall Shoppers">Mall Shoppers</option>
+                        <option value="General Public">General Public</option>
+                        <option value="Business District">Business District Workers</option>
+                        <option value="Mixed">Mixed Audience</option>
+                    </select>
                 </div>
                 <div style="display: flex; gap: 10px;">
                     <button type="button" class="submit-btn" id="submitBtn" style="flex: 1;" onclick="submitInquiry()">Submit Requirements</button>
@@ -4243,15 +4307,15 @@ async function submitInquiry() {
     var type=(document.getElementById('billboardType').value||'').trim();
     var budget=(document.getElementById('budget').value||'').trim();
     var details=(document.getElementById('details').value||'').trim();
-    var startDate=(document.getElementById('startDate')?document.getElementById('startDate').value:'');
-    var numSites=(document.getElementById('numSites')?document.getElementById('numSites').value:'');
-    var siteCodes=(document.getElementById('siteCodes')?document.getElementById('siteCodes').value:'');
-    var targetAudience=(document.getElementById('targetAudience')?document.getElementById('targetAudience').value:'');
-    if(!company||!contact||!email||!phone||!location||!type||!details){alert('Please fill in all required fields.');return;}
+    var startDate=(document.getElementById('startDate').value||'').trim();
+    var numSites=(document.getElementById('numSites').value||'').trim();
+    var siteCodes=(document.getElementById('siteCodes').value||'').trim();
+    var targetAudience=(document.getElementById('targetAudience').value||'').trim();
+    if(!company||!contact||!email||!phone||!location||!type||!details||!startDate){alert('Please fill in all required fields.');return;}
     var btn=document.getElementById('submitBtn');
     if(btn){btn.textContent='Submitting...';btn.disabled=true;}
     var exp=new Date();exp.setDate(exp.getDate()+30);
-    var fullDetails=details+(siteCodes?'\nSpecific Sites: '+siteCodes:'')+(numSites?'\nNumber of Sites: '+numSites:'')+(targetAudience?'\nTarget Audience: '+targetAudience:'')+(startDate?'\nCampaign Start: '+startDate:'');
+    var fullDetails=details+(siteCodes?'\n\nSpecific Sites: '+siteCodes:'')+(numSites?'\nNumber of Sites: '+numSites:'')+(targetAudience?'\nTarget Audience: '+targetAudience:'')+(startDate?'\nCampaign Start: '+startDate:'');
     var {data,error}=await _supabase.from('inquiries').insert([{
         company:company,title:'Looking for '+type+' Billboard in '+location,
         location:location,type:type,budget:budget,duration:'',
@@ -4264,7 +4328,78 @@ async function submitInquiry() {
     toggleInquiryForm();
     if(btn){btn.textContent='Submit Requirements';btn.disabled=false;}
     loadInquiries();
-    updateInquiriesBadge();
+}
+async function loadInquiries(){
+    var display=document.getElementById('inquiriesDisplay');
+    var container=document.getElementById('inquiriesList');
+    if(!container)return;
+    if(display)display.style.display='block';
+    container.innerHTML='<p style="text-align:center;color:#888;padding:30px;">Loading requirements...</p>';
+    var now=new Date().toISOString();
+    var {data,error}=await _supabase.from('inquiries').select('*').eq('status','active').gt('expires_at',now).order('created_at',{ascending:false});
+    if(error||!data||data.length===0){container.innerHTML='<p style="text-align:center;color:#888;padding:20px;">No active inquiries yet. Be the first to post your requirements!</p>';return;}
+    container.innerHTML=data.map(function(q){
+        var posted=new Date(q.created_at).toLocaleDateString('en-PH',{year:'numeric',month:'short',day:'numeric'});
+        return '<div class="promo-card">'+
+            '<div class="promo-badge" style="background:linear-gradient(135deg,#4caf50,#66bb6a);">ACTIVE</div>'+
+            '<div class="promo-header" style="background:linear-gradient(135deg,#1565c0,#0d47a1);">'+
+                '<div class="promo-operator">'+(q.company||'')+'</div>'+
+                '<div class="promo-title">'+(q.title||'')+'</div>'+
+                '<div class="promo-validity">Posted: '+posted+'</div>'+
+            '</div>'+
+            '<div class="promo-body">'+
+                '<div class="promo-description">'+(q.description||'').replace(/\n/g,'<br>')+'</div>'+
+                '<div style="background:#f8f9fa;border-radius:10px;padding:20px;margin-bottom:25px;">'+
+                    '<h3 style="color:#1565c0;font-size:16px;margin-bottom:15px;">Requirements:</h3>'+
+                    '<div style="display:grid;grid-template-columns:1fr 1fr;gap:15px;color:#455a64;font-size:14px;">'+
+                        '<div><strong>Location:</strong> '+(q.location||'N/A')+'</div>'+
+                        '<div><strong>Type:</strong> '+(q.type||'N/A')+'</div>'+
+                        '<div><strong>Budget:</strong> '+(q.budget||'To Discuss')+'</div>'+
+                        '<div><strong>Duration:</strong> '+(q.duration||'To Discuss')+'</div>'+
+                    '</div>'+
+                '</div>'+
+                '<div class="promo-contact">'+
+                    (q.contact_email?'<a href="mailto:'+q.contact_email+'" class="promo-btn">📧 Email Advertiser</a>':'')+
+                    (q.contact_phone?'<a href="tel:'+q.contact_phone+'" class="promo-btn promo-btn-secondary">📱 Call Advertiser</a>':'')+
+                '</div>'+
+            '</div></div>';
+    }).join('');
+}
+async function loadPromos(){
+    var display=document.getElementById('promosDisplay');
+    var container=document.getElementById('promosList');
+    if(!container)return;
+    if(display)display.style.display='block';
+    container.innerHTML='<p style="text-align:center;color:#888;padding:30px;">Loading promos...</p>';
+    var {data,error}=await _supabase.from('promos').select('*').eq('status','active').order('created_at',{ascending:false});
+    if(error||!data||data.length===0){container.innerHTML='<p style="text-align:center;color:#888;padding:20px;">No active promos yet.</p>';return;}
+    container.innerHTML=data.map(function(p){
+        var inclList='';
+        if(p.inclusions){
+            var items=p.inclusions.split('\n').filter(function(s){return s.trim();});
+            inclList='<div class="promo-features"><h3>Package Includes:</h3><ul>'+items.map(function(item){return '<li>'+item.trim()+'</li>';}).join('')+'</ul></div>';
+        }
+        return '<div class="promo-card">'+
+            '<div class="promo-badge">'+(p.badge||'PROMO')+'</div>'+
+            '<div class="promo-header">'+
+                '<div class="promo-operator">'+(p.operator||'')+'</div>'+
+                '<div class="promo-title">'+(p.title||'')+'</div>'+
+                '<div class="promo-validity">Valid until: '+(p.validity||'')+'</div>'+
+            '</div>'+
+            '<div class="promo-body">'+
+                '<div class="promo-description">'+(p.description||'')+'</div>'+
+                '<div class="promo-discount">'+
+                    '<div class="discount-amount">'+(p.discount||'')+'</div>'+
+                    '<div class="discount-text">'+(p.discount_desc||'')+'</div>'+
+                '</div>'+
+                inclList+
+                '<div class="promo-contact">'+
+                    (p.email?'<a href="mailto:'+p.email+'" class="promo-btn promo-btn-primary">📧 Get This Deal</a>':'')+
+                    (p.phone?'<a href="tel:'+p.phone+'" class="promo-btn promo-btn-secondary">📱 Call Now</a>':'')+
+                    (p.website?'<a href="'+p.website+'" target="_blank" class="promo-btn promo-btn-secondary">🌐 Visit Website</a>':'')+
+                '</div>'+
+            '</div></div>';
+    }).join('');
 }
 function submitSiteUpload() {
     var operator = document.getElementById('operatorName').value;
@@ -4281,33 +4416,22 @@ function submitSiteUpload() {
     var body = 'Company/Operator: ' + operator + '\nContact Person: ' + contact + '\nEmail: ' + email + '\nPhone: ' + phone + '\nBillboard Location: ' + location + '\nBillboard Size: ' + size + '\nBillboard Type: ' + type + '\nIllumination: ' + illumination + '\nRate: ' + rate + '\nAdditional Details: ' + details + '\n\nPlease see attached photos of the billboard site.';
     window.location.href = 'mailto:info@oohphilippines.com?subject=Billboard Site Upload - ' + encodeURIComponent(operator) + '&body=' + encodeURIComponent(body);
 }
-async function submitPromo() {
-    var operator=(document.getElementById('promoOperator').value||'').trim();
-    var contact=(document.getElementById('promoContact').value||'').trim();
-    var email=(document.getElementById('promoEmail').value||'').trim();
-    var phone=(document.getElementById('promoPhone').value||'').trim();
-    var title=(document.getElementById('promoTitle').value||'').trim();
-    var badge=(document.getElementById('promoBadge').value||'').trim();
-    var discount=(document.getElementById('promoDiscount').value||'').trim();
-    var discountDesc=(document.getElementById('promoDiscountDesc').value||'').trim();
-    var validity=(document.getElementById('promoValidity').value||'').trim();
-    var description=(document.getElementById('promoDescription').value||'').trim();
-    var inclusions=(document.getElementById('promoInclusions').value||'').trim();
-    var website=(document.getElementById('promoWebsite').value||'').trim();
-    if(!operator||!contact||!email||!phone||!title||!badge||!discount||!discountDesc||!validity||!description){alert('Please fill in all required fields.');return;}
-    var exp=new Date();exp.setFullYear(exp.getFullYear()+1);
-    var {data,error}=await _supabase.from('promos').insert([{
-        operator:operator,contact:contact,email:email,phone:phone,
-        title:title,badge:badge,discount:discount,discount_desc:discountDesc,
-        validity:validity,description:description,inclusions:inclusions,
-        website:website,status:'active',expires_at:exp.toISOString()
-    }]);
-    if(error){alert('Submission failed. Please try again.');console.error(error);return;}
-    alert('Your promo is now live!');
-    document.getElementById('submitPromoForm').reset();
-    showPage('promos');
-    loadPromos();
-    updatePromosBadge();
+function submitPromo() {
+    var operator = document.getElementById('promoOperator').value;
+    var contact = document.getElementById('promoContact').value;
+    var email = document.getElementById('promoEmail').value;
+    var phone = document.getElementById('promoPhone').value;
+    var title = document.getElementById('promoTitle').value;
+    var badge = document.getElementById('promoBadge').value;
+    var discount = document.getElementById('promoDiscount').value;
+    var discountDesc = document.getElementById('promoDiscountDesc').value;
+    var validity = document.getElementById('promoValidity').value;
+    var description = document.getElementById('promoDescription').value;
+    var inclusions = document.getElementById('promoInclusions').value;
+    var website = document.getElementById('promoWebsite').value;
+    if (!operator || !contact || !email || !phone || !title || !badge || !discount || !discountDesc || !validity || !description) { alert('Please fill in all required fields.'); return; }
+    var body = 'Company/Operator: ' + operator + '\nContact Person: ' + contact + '\nEmail: ' + email + '\nPhone: ' + phone + '\nPromo Title: ' + title + '\nPromo Badge: ' + badge + '\nDiscount: ' + discount + '\nDiscount Description: ' + discountDesc + '\nValid Until: ' + validity + '\nPromo Description: ' + description + '\nPackage Inclusions: ' + inclusions + '\nWebsite: ' + website;
+    window.location.href = 'mailto:info@oohphilippines.com?subject=Promo Submission - ' + encodeURIComponent(operator) + '&body=' + encodeURIComponent(body);
 }
 function toggleLoginMenu() {
     var menu = document.getElementById('navLoginMenu');
@@ -4809,12 +4933,20 @@ function opSetFilter(f) {
 // --- Patch showPage ---
 var _origShowPage = showPage;
 showPage = function(pageId) {
-    var promosDisp=document.getElementById('promosDisplay');
-    var inqDisp=document.getElementById('inquiriesDisplay');
-    if(promosDisp)promosDisp.style.display='none';
-    if(inqDisp)inqDisp.style.display='none';
-    if(pageId==='promos'){_origShowPage(pageId);setTimeout(function(){loadPromos();},200);return;}
-    if(pageId==='inquiries'){_origShowPage(pageId);setTimeout(function(){loadInquiries();},200);return;}
+    var promosDisp = document.getElementById('promosDisplay');
+    var inqDisp = document.getElementById('inquiriesDisplay');
+    if (promosDisp) promosDisp.style.display = 'none';
+    if (inqDisp) inqDisp.style.display = 'none';
+    if (pageId === 'promos') {
+        _origShowPage(pageId);
+        setTimeout(function(){ loadPromos(); }, 200);
+        return;
+    }
+    if (pageId === 'inquiries') {
+        _origShowPage(pageId);
+        setTimeout(function(){ loadInquiries(); }, 200);
+        return;
+    }
     if (pageId === 'operatorLogin') {
         if (opCurrentUser) { showPage('operatorDash'); return; }
     }
@@ -5872,96 +6004,6 @@ goToInventory = function(tag) {
     incrementFreeSearch();
     _origGoToInventory(tag);
 };
-
-
-async function updatePromosBadge() {
-    var {data, error} = await _supabase.from('promos').select('id').eq('status','active');
-    if (error || !data) return;
-    var count = data.length;
-    var badge = document.getElementById('promosBadge');
-    var badgeMobile = document.getElementById('promosBadgeMobile');
-    if (count > 0) {
-        if (badge) { badge.textContent = count; badge.style.display = 'inline-block'; }
-        if (badgeMobile) { badgeMobile.textContent = count; badgeMobile.style.display = 'inline-block'; }
-    } else {
-        if (badge) badge.style.display = 'none';
-        if (badgeMobile) badgeMobile.style.display = 'none';
-    }
-}
-async function updateInquiriesBadge() {
-    var now = new Date().toISOString();
-    var {data, error} = await _supabase.from('inquiries').select('id').eq('status','active').gt('expires_at',now);
-    if (error || !data) return;
-    var count = data.length;
-    var badge = document.getElementById('inquiriesBadge');
-    var badgeMobile = document.getElementById('inquiriesBadgeMobile');
-    if (count > 0) {
-        if (badge) { badge.textContent = count; badge.style.display = 'inline-block'; }
-        if (badgeMobile) { badgeMobile.textContent = count; badgeMobile.style.display = 'inline-block'; }
-    } else {
-        if (badge) badge.style.display = 'none';
-        if (badgeMobile) badgeMobile.style.display = 'none';
-    }
-}
-
-
-async function loadPromos(){
-    var display=document.getElementById('promosDisplay');
-    var container=document.getElementById('promosList');
-    if(!container)return;
-    if(display)display.style.display='block';
-    container.innerHTML='<p style="text-align:center;color:#888;padding:30px;">Loading promos...</p>';
-    var {data,error}=await _supabase.from('promos').select('*').eq('status','active').order('created_at',{ascending:false});
-    if(error||!data||data.length===0){container.innerHTML='<p style="text-align:center;color:#888;padding:20px;">No active promos yet. Be the first to submit a promo!</p>';return;}
-    container.innerHTML=data.map(function(p){
-        var inclList='';
-        if(p.inclusions){var items=p.inclusions.split('\n').filter(function(s){return s.trim();});inclList='<div class="promo-features"><h3>Package Includes:</h3><ul>'+items.map(function(item){return '<li>'+item.trim()+'</li>';}).join('')+'</ul></div>';}
-        return '<div class="promo-card">'+
-            '<div class="promo-badge">'+(p.badge||'PROMO')+'</div>'+
-            '<div class="promo-header"><div class="promo-operator">'+(p.operator||'')+'</div><div class="promo-title">'+(p.title||'')+'</div><div class="promo-validity">Valid until: '+(p.validity||'')+'</div></div>'+
-            '<div class="promo-body"><div class="promo-description">'+(p.description||'')+'</div>'+
-            '<div class="promo-discount"><div class="discount-amount">'+(p.discount||'')+'</div><div class="discount-text">'+(p.discount_desc||'')+'</div></div>'+
-            inclList+
-            '<div class="promo-contact">'+
-                (p.email?'<a href="mailto:'+p.email+'" class="promo-btn promo-btn-primary">📧 Get This Deal</a>':'')+
-                (p.phone?'<a href="tel:'+p.phone+'" class="promo-btn promo-btn-secondary">📱 Call Now</a>':'')+
-                (p.website?'<a href="'+p.website+'" target="_blank" class="promo-btn promo-btn-secondary">🌐 Visit Website</a>':'')+
-            '</div></div></div>';
-    }).join('');
-}
-async function loadInquiries(){
-    var display=document.getElementById('inquiriesDisplay');
-    var container=document.getElementById('inquiriesList');
-    if(!container)return;
-    if(display)display.style.display='block';
-    container.innerHTML='<p style="text-align:center;color:#888;padding:30px;">Loading requirements...</p>';
-    var now=new Date().toISOString();
-    var {data,error}=await _supabase.from('inquiries').select('*').eq('status','active').gt('expires_at',now).order('created_at',{ascending:false});
-    if(error||!data||data.length===0){container.innerHTML='<p style="text-align:center;color:#888;padding:20px;">No active inquiries yet. Be the first to post your requirements!</p>';return;}
-    container.innerHTML=data.map(function(q){
-        var posted=new Date(q.created_at).toLocaleDateString('en-PH',{year:'numeric',month:'short',day:'numeric'});
-        return '<div class="promo-card">'+
-            '<div class="promo-badge" style="background:linear-gradient(135deg,#4caf50,#66bb6a);">ACTIVE</div>'+
-            '<div class="promo-header" style="background:linear-gradient(135deg,#1565c0,#0d47a1);">'+
-                '<div class="promo-operator">'+(q.company||'')+'</div>'+
-                '<div class="promo-title">'+(q.title||'')+'</div>'+
-                '<div class="promo-validity">Posted: '+posted+'</div>'+
-            '</div>'+
-            '<div class="promo-body"><div class="promo-description">'+(q.description||'').replace(/\n/g,'<br>')+'</div>'+
-            '<div style="background:#f8f9fa;border-radius:10px;padding:20px;margin-bottom:25px;">'+
-                '<h3 style="color:#1565c0;font-size:16px;margin-bottom:15px;">Requirements:</h3>'+
-                '<div style="display:grid;grid-template-columns:1fr 1fr;gap:15px;color:#455a64;font-size:14px;">'+
-                    '<div><strong>Location:</strong> '+(q.location||'N/A')+'</div>'+
-                    '<div><strong>Type:</strong> '+(q.type||'N/A')+'</div>'+
-                    '<div><strong>Budget:</strong> '+(q.budget||'To Discuss')+'</div>'+
-                    '<div><strong>Duration:</strong> '+(q.duration||'To Discuss')+'</div>'+
-                '</div></div>'+
-            '<div class="promo-contact">'+
-                (q.contact_email?'<a href="mailto:'+q.contact_email+'" class="promo-btn">📧 Email Advertiser</a>':'')+
-                (q.contact_phone?'<a href="tel:'+q.contact_phone+'" class="promo-btn promo-btn-secondary">📱 Call Advertiser</a>':'')+
-            '</div></div></div>';
-    }).join('');
-}
 
 </script>
 </body>
