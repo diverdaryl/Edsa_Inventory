@@ -1883,8 +1883,6 @@
 <title>OOHPhilippines.com - Billboard Advertising Platform</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bcryptjs/2.4.3/bcrypt.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script>emailjs.init("Q1mCYPTXh0omKhAec");</script>
 </head>
 <body>
 
@@ -1894,7 +1892,7 @@
     <div class="nav-links">
         <button class="nav-link" onclick="showPage('home')">🔍 Search</button>
         <button class="nav-link" onclick="showPage('promos')" id="promosNavBtn">🎉 Promos <span id="promosBadge" style="display:none;background:#e65100;color:white;font-size:10px;font-weight:700;padding:2px 7px;border-radius:10px;margin-left:4px;vertical-align:middle;"></span></button>
-        <button class="nav-link" onclick="showPage('inquiries')" id="inquiriesNavBtn">Looking For Sites? <span id="inquiriesBadge" style="display:none;background:#e65100;color:white;font-size:10px;font-weight:700;padding:2px 7px;border-radius:10px;margin-left:4px;vertical-align:middle;"></span></button>
+        <button class="nav-link" onclick="showPage('inquiries')">Looking For Sites?</button>
         <button class="nav-link" onclick="showPage('pricing')">💎 Pricing</button>
         <a href="/guides.html" class="nav-link">📖 Guides</a>
         <button class="nav-link" onclick="showPage('about')">About Us</button>
@@ -1927,7 +1925,7 @@
 <div class="mobile-dropdown" id="mobileDropdown">
     <button onclick="showPage('home'); closeMobileMenu()">🔍 Search</button>
     <button onclick="showPage('promos'); closeMobileMenu()">🎉 Promos <span id="promosBadgeMobile" style="display:none;background:#e65100;color:white;font-size:10px;font-weight:700;padding:2px 7px;border-radius:10px;margin-left:4px;vertical-align:middle;"></span></button>
-    <button onclick="showPage('inquiries'); closeMobileMenu()">Looking For Sites? <span id="inquiriesBadgeMobile" style="display:none;background:#e65100;color:white;font-size:10px;font-weight:700;padding:2px 7px;border-radius:10px;margin-left:4px;vertical-align:middle;"></span></button>
+    <button onclick="showPage('inquiries'); closeMobileMenu()">Looking For Sites?</button>
     <button onclick="showPage('pricing'); closeMobileMenu()">💎 Pricing</button>
     <a href="/guides.html" class="nav-link" style="display:block;text-align:left;">📖 Guides</a>
     <button onclick="showPage('about'); closeMobileMenu()">About Us</button>
@@ -2060,12 +2058,6 @@
                 </div>
 </div>
 
-
-<!-- Promos Display -->
-<div id="promosDisplay" style="display:none;max-width:900px;margin:0 auto;padding:0 20px 40px;">
-    <div id="promosList"></div>
-</div>
-
 <!-- Advertiser Inquiries Page -->
 <div id="inquiriesPage" class="page">
     <div class="promos-container">
@@ -2146,38 +2138,6 @@
                     <label>Campaign Details *</label>
                     <textarea name="details" id="details" required placeholder="Tell us about your campaign, timeline, specific requirements, etc."></textarea>
                 </div>
-                <div class="form-group">
-                    <label>Campaign Start Date *</label>
-                    <input type="date" name="start_date" id="startDate" required>
-                </div>
-                <div class="form-group">
-                    <label>Number of Sites Needed</label>
-                    <select name="num_sites" id="numSites">
-                        <option value="">Select number</option>
-                        <option value="1">1 site</option>
-                        <option value="2-3">2-3 sites</option>
-                        <option value="4-5">4-5 sites</option>
-                        <option value="6-10">6-10 sites</option>
-                        <option value="10+">10+ sites</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Specific Billboard Site Codes</label>
-                    <input type="text" name="site_codes" id="siteCodes" placeholder="e.g. EDSA-A311, C5-B22, SLEX-C01 (optional)">
-                    <small style="color:#888;font-size:12px;margin-top:4px;display:block;">📍 Find site codes on billboard cards in our directory. Operators respond faster when specific sites are mentioned.</small>
-                </div>
-                <div class="form-group">
-                    <label>Target Audience</label>
-                    <select name="target_audience" id="targetAudience">
-                        <option value="">Select target audience</option>
-                        <option value="Commuters">Commuters</option>
-                        <option value="Motorists">Motorists</option>
-                        <option value="Mall Shoppers">Mall Shoppers</option>
-                        <option value="General Public">General Public</option>
-                        <option value="Business District">Business District Workers</option>
-                        <option value="Mixed">Mixed Audience</option>
-                    </select>
-                </div>
                 <div style="display: flex; gap: 10px;">
                     <button type="button" class="submit-btn" id="submitBtn" style="flex: 1;" onclick="submitInquiry()">Submit Requirements</button>
                     <button type="button" class="submit-btn" onclick="toggleInquiryForm()" style="flex: 1; background: #666;">Cancel</button>
@@ -2187,16 +2147,6 @@
     </div>
 </div>
                     </div>
-</div>
-
-
-<!-- Inquiries Display -->
-<div id="inquiriesDisplay" style="display:none;max-width:900px;margin:0 auto;padding:0 20px 40px;">
-    <div style="text-align:center;margin:40px 0 24px;">
-        <h2 style="color:#1565c0;font-size:28px;margin-bottom:8px;">Recent Advertiser Requirements</h2>
-        <p style="color:#666;font-size:15px;">Billboard operators: Connect with advertisers looking for your sites</p>
-    </div>
-    <div id="inquiriesList"></div>
 </div>
 
 <!-- Upload Site Page -->
@@ -2929,38 +2879,6 @@
                     <label>Campaign Details *</label>
                     <textarea name="details" id="details" required placeholder="Tell us about your campaign, timeline, specific requirements, etc."></textarea>
                 </div>
-                <div class="form-group">
-                    <label>Campaign Start Date *</label>
-                    <input type="date" name="start_date" id="startDate" required>
-                </div>
-                <div class="form-group">
-                    <label>Number of Sites Needed</label>
-                    <select name="num_sites" id="numSites">
-                        <option value="">Select number</option>
-                        <option value="1">1 site</option>
-                        <option value="2-3">2-3 sites</option>
-                        <option value="4-5">4-5 sites</option>
-                        <option value="6-10">6-10 sites</option>
-                        <option value="10+">10+ sites</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Specific Billboard Site Codes</label>
-                    <input type="text" name="site_codes" id="siteCodes" placeholder="e.g. EDSA-A311, C5-B22, SLEX-C01 (optional)">
-                    <small style="color:#888;font-size:12px;margin-top:4px;display:block;">📍 Find site codes on billboard cards in our directory. Operators respond faster when specific sites are mentioned.</small>
-                </div>
-                <div class="form-group">
-                    <label>Target Audience</label>
-                    <select name="target_audience" id="targetAudience">
-                        <option value="">Select target audience</option>
-                        <option value="Commuters">Commuters</option>
-                        <option value="Motorists">Motorists</option>
-                        <option value="Mall Shoppers">Mall Shoppers</option>
-                        <option value="General Public">General Public</option>
-                        <option value="Business District">Business District Workers</option>
-                        <option value="Mixed">Mixed Audience</option>
-                    </select>
-                </div>
                 <div style="display: flex; gap: 10px;">
                     <button type="button" class="submit-btn" id="submitBtn" style="flex: 1;" onclick="submitInquiry()">Submit Requirements</button>
                     <button type="button" class="submit-btn" onclick="toggleInquiryForm()" style="flex: 1; background: #666;">Cancel</button>
@@ -3685,22 +3603,15 @@
 <div id="pricingPage" class="page">
 
 <div class="pricing-wrap">
-    
+
     <div class="pricing-hero">
         <h1>Simple, transparent pricing</h1>
         <p>Find the perfect plan for your OOH advertising needs. Upgrade or cancel anytime.</p>
-        <div class="billing-toggle">
-            <button class="billing-btn active" id="btnMonthly" onclick="pricingSetBilling('monthly')">Monthly</button>
-            <button class="billing-btn" id="btnAnnual" onclick="pricingSetBilling('annual')">Annual <span class="save-badge">Save 17%</span></button>
-        </div>
-        <div style="font-size:13px;color:#e65100;font-weight:700;margin-bottom:4px;">⭐ Founding Member Offer: 17% off annual — for the first 10 subscribers only.</div>
-        <div style="font-size:12px;color:#888;font-weight:400;margin-bottom:16px;">Founding Members lock in a permanent 17% discount on their chosen plan. While we reserve the right to adjust pricing as the platform grows, your founding rate will always reflect 17% off the current standard rate.</div>
     </div>
 
-    
+    <h2 style="text-align:center;color:#1565c0;font-size:22px;margin:32px 0 20px;">📋 Subscriber Plans</h2>
     <div class="pricing-grid">
 
-        
         <div class="pricing-card">
             <span class="plan-icon">🔍</span>
             <div class="plan-name">Free</div>
@@ -3709,122 +3620,147 @@
                 <span class="currency">₱</span><span class="amount">0</span>
                 <div class="period">forever</div>
             </div>
-            <div class="annual-note">&nbsp;</div>
             <hr class="plan-divider">
             <ul class="plan-features">
-                <li><span class="check">✅</span> Search & browse all billboard sites</li>
-                <li><span class="check">✅</span> View location, size & type</li>
-                <li><span class="check">✅</span> View location, size &amp; type only</li>
+                <li><span class="check">✅</span> 5 searches per week</li>
+                <li><span class="check">✅</span> View location, size &amp; type</li>
                 <li><span class="check">✅</span> Browse active promos</li>
-                <li class="muted"><span class="check">🔒</span> Real-time availability status</li>
-                <li class="muted"><span class="check">🔒</span> Contact info (email, phone, Viber, WhatsApp)</li>
-                <li class="muted"><span class="check">🔒</span> Shortlist & save sites</li>
+                <li class="muted"><span class="check">🔒</span> Unlimited searches</li>
+                <li class="muted"><span class="check">🔒</span> Full contact info</li>
+                <li class="muted"><span class="check">🔒</span> Shortlist &amp; save sites</li>
                 <li class="muted"><span class="check">🔒</span> Export to PDF / Excel</li>
             </ul>
-            <button class="plan-cta ghost" disabled>Current Plan</button>
+            <button class="plan-cta ghost" onclick="openSignupModal()">Sign Up Free</button>
         </div>
 
-        
         <div class="pricing-card featured">
             <div class="featured-badge">⭐ MOST POPULAR</div>
             <span class="plan-icon">💼</span>
             <div class="plan-name">Pro</div>
-            <div class="plan-tagline">For brands & media buyers planning campaigns.</div>
-            <div class="plan-price" id="proPriceDisplay">
-                <span class="currency">₱</span><span class="amount" id="proAmount">5,000</span>
-                <div class="period" id="proPeriod">/ month</div>
+            <div class="plan-tagline">For brands &amp; media buyers planning campaigns.</div>
+            <div class="plan-price">
+                <span class="currency">₱</span><span class="amount">999</span>
+                <div class="period">/ month</div>
             </div>
-            <div class="annual-note" id="proAnnualNote">&nbsp;</div>
             <hr class="plan-divider">
             <ul class="plan-features">
                 <li><span class="check">✅</span> Everything in Free</li>
-                <li><span class="check">✅</span> <strong>Real-time availability status</strong></li>
+                <li><span class="check">✅</span> <strong>Unlimited searches</strong></li>
                 <li><span class="check">✅</span> Full contact info (phone, Viber, WhatsApp)</li>
-                <li><span class="check">✅</span> Shortlist & save favorite sites</li>
+                <li><span class="check">✅</span> Shortlist &amp; save favorite sites</li>
                 <li><span class="check">✅</span> Download site specs as PDF</li>
                 <li><span class="check">✅</span> Priority email support</li>
                 <li class="muted"><span class="check">🔒</span> Multiple user seats</li>
                 <li class="muted"><span class="check">🔒</span> Campaign planning tools</li>
             </ul>
-            <a href="/cdn-cgi/l/email-protection#ddb4b3bbb29db2b2b5adb5b4b1b4adadb4b3b8aef3beb2b0e2aea8bfb7b8bea9e08dafb2f8efed8ea8bfaebeafb4ada9b4b2b3f8efed94b3aca8b4afa4fbbfb2b9a4e095b4f8ef9ef8efed94f8efeab0f8efedb4b3a9b8afb8aea9b8b9f8efedb4b3f8efedaea8bfaebeafb4bfb4b3baf8efeda9b2f8efeda9b5b8f8efed8dafb2f8efedadb1bcb3f3" class="plan-cta primary">Get Pro Access →</a>
+            <button class="plan-cta primary" onclick="alert('Payment system coming soon! Email us at info@oohphilippines.com to subscribe.')">Get Pro Access →</button>
             <div style="text-align:center;margin-top:12px;">
-                <span style="font-size:13px;color:#90a4ae;">Already subscribed? </span>
-                <button onclick="showPage('subscriberLogin')" style="background:none;border:none;color:#1565c0;font-weight:700;font-size:13px;cursor:pointer;padding:0;font-family:'Segoe UI',sans-serif;">Log in →</button>
+                <button onclick="showPage('subscriberLogin')" style="background:none;border:none;color:#1565c0;font-weight:700;font-size:13px;cursor:pointer;padding:0;font-family:'Segoe UI',sans-serif;">Already subscribed? Log in →</button>
             </div>
         </div>
 
-        
         <div class="pricing-card">
             <span class="plan-icon">🏢</span>
             <div class="plan-name">Agency</div>
-            <div class="plan-tagline">For agencies managing multiple clients & campaigns.</div>
-            <div class="plan-price" id="agencyPriceDisplay">
-                <span class="currency">₱</span><span class="amount" id="agencyAmount">180,000</span>
-                <div class="period" id="agencyPeriod">/ year</div>
+            <div class="plan-tagline">For agencies managing multiple clients &amp; campaigns.</div>
+            <div class="plan-price">
+                <span class="currency">₱</span><span class="amount">2,999</span>
+                <div class="period">/ month</div>
             </div>
-            <div class="annual-note" id="agencyAnnualNote" style="color:#e65100;font-weight:700;font-size:13px;">⭐ Founding Rate: ₱149,400/yr (17% off)</div>
             <hr class="plan-divider">
             <ul class="plan-features">
                 <li><span class="check">✅</span> Everything in Pro</li>
                 <li><span class="check">✅</span> <strong>Up to 5 user seats</strong></li>
-                <li><span class="check">✅</span> Campaign planning & grouping</li>
+                <li><span class="check">✅</span> Campaign planning &amp; grouping</li>
                 <li><span class="check">✅</span> Export inventory to Excel / CSV</li>
                 <li><span class="check">✅</span> Branded site proposals</li>
                 <li><span class="check">✅</span> Dedicated account manager</li>
                 <li><span class="check">✅</span> Early access to new features</li>
-                <li><span class="check">✅</span> Phone & chat support</li>
+                <li><span class="check">✅</span> Phone &amp; chat support</li>
             </ul>
-            <a href="/cdn-cgi/l/email-protection#6f060109002f0000071f070603061f1f06010a1c410c0002501c1a0d050a0c1b523f1d004a5d5f3c1a0d1c0c1d061f1b0600014a5d5f26011e1a061d16490d000b165227064a5d2c4a5d5f264a5d58024a5d5f06011b0a1d0a1c1b0a0b4a5d5f06014a5d5f1c1a0d1c0c1d060d0601084a5d5f1b004a5d5f1b070a4a5d5f3f1d004a5d5f1f030e0141" class="plan-cta primary">Get Pro Access →</a>
+            <button class="plan-cta primary" onclick="alert('Payment system coming soon! Email us at info@oohphilippines.com to subscribe.')">Get Agency Access →</button>
             <div style="text-align:center;margin-top:12px;">
-                <span style="font-size:13px;color:#90a4ae;">Already subscribed? </span>
-                <button onclick="showPage('subscriberLogin')" style="background:none;border:none;color:#1565c0;font-weight:700;font-size:13px;cursor:pointer;padding:0;font-family:'Segoe UI',sans-serif;">Log in →</button>
+                <button onclick="showPage('subscriberLogin')" style="background:none;border:none;color:#1565c0;font-weight:700;font-size:13px;cursor:pointer;padding:0;font-family:'Segoe UI',sans-serif;">Already subscribed? Log in →</button>
             </div>
         </div>
 
     </div>
 
-    
+    <h2 style="text-align:center;color:#1565c0;font-size:22px;margin:48px 0 8px;">📍 Featured Billboard Listings</h2>
+    <p style="text-align:center;color:#666;font-size:15px;margin-bottom:24px;">For billboard operators who want maximum visibility on the platform</p>
+    <div class="pricing-grid" style="grid-template-columns:repeat(2,1fr);max-width:700px;margin:0 auto 40px;">
+
+        <div class="pricing-card">
+            <span class="plan-icon">🔥</span>
+            <div class="plan-name">Featured</div>
+            <div class="plan-tagline">Highlighted card, appears at top of search results.</div>
+            <div class="plan-price">
+                <span class="currency">₱</span><span class="amount">1,500</span>
+                <div class="period">/ month</div>
+            </div>
+            <hr class="plan-divider">
+            <ul class="plan-features">
+                <li><span class="check">✅</span> Highlighted card design</li>
+                <li><span class="check">✅</span> Appears at top of results</li>
+                <li><span class="check">✅</span> Visible to all users incl. guests</li>
+                <li><span class="check">✅</span> Featured badge on card</li>
+            </ul>
+            <button class="plan-cta primary" onclick="alert('Email us at info@oohphilippines.com to feature your site.')">Feature My Site →</button>
+        </div>
+
+        <div class="pricing-card featured">
+            <div class="featured-badge">⭐ BEST VALUE</div>
+            <span class="plan-icon">🏆</span>
+            <div class="plan-name">Sponsored</div>
+            <div class="plan-tagline">Banner placement and priority visibility across the platform.</div>
+            <div class="plan-price">
+                <span class="currency">₱</span><span class="amount">3,000</span>
+                <div class="period">/ month</div>
+            </div>
+            <hr class="plan-divider">
+            <ul class="plan-features">
+                <li><span class="check">✅</span> Everything in Featured</li>
+                <li><span class="check">✅</span> Banner placement on homepage</li>
+                <li><span class="check">✅</span> Priority visibility in all searches</li>
+                <li><span class="check">✅</span> Sponsored badge on card</li>
+            </ul>
+            <button class="plan-cta primary" onclick="alert('Email us at info@oohphilippines.com to sponsor your site.')">Sponsor My Site →</button>
+        </div>
+
+    </div>
+
     <div class="pricing-guarantee">
         <div style="font-size:36px;">🤝</div>
         <strong style="color:#1565c0;font-size:18px;">No contracts. No surprises.</strong>
-        <p>Pro plans available monthly or annually. Agency is annual only. All plans billed in Philippine Peso (₱).<br>
+        <p>All plans billed monthly in Philippine Peso (₱). Cancel anytime.<br>
         Questions? Email us at info&#64;oohphilippines.com</p>
     </div>
 
-    
     <div class="pricing-faq">
         <h2>Frequently Asked Questions</h2>
         <div class="faq-grid">
             <div class="faq-item">
                 <h3>How do I subscribe?</h3>
-                <p>Click "Get Pro Access" or "Contact Us" and send us an email. We'll send you payment details via GCash, bank transfer, or PayMaya. Your account is activated within 24 hours.</p>
+                <p>Click any plan button above. Our payment system via GCash, Maya, and cards is coming soon. For now email us at info@oohphilippines.com and we'll activate your account within 24 hours.</p>
             </div>
             <div class="faq-item">
                 <h3>Can I cancel anytime?</h3>
-                <p>Yes. There are no long-term contracts. You can cancel at any time and you won't be billed for the next period. Annual plans are non-refundable once paid.</p>
+                <p>Yes. There are no long-term contracts. You can cancel at any time and you won't be billed for the next period.</p>
             </div>
             <div class="faq-item">
                 <h3>What payment methods do you accept?</h3>
-                <p>We accept GCash, Maya, BPI, BDO, and other major Philippine banks via bank transfer. We'll send an invoice upon subscription.</p>
+                <p>We accept GCash, Maya, and major Philippine bank transfers. Online card payment via PayMongo coming soon.</p>
             </div>
             <div class="faq-item">
-                <h3>Can I upgrade from Pro to Agency?</h3>
-                <p>Absolutely. Just email us and we'll prorate the difference. Upgrading takes effect immediately with no downtime.</p>
-            </div>
-            <div class="faq-item">
-                <h3>Is the Free plan really free forever?</h3>
-                <p>Yes. You can search and browse all billboard sites for free, forever. Paid plans unlock real-time availability status, full contact details, and more.</p>
-            </div>
-            <div class="faq-item">
-                <h3>Do you offer discounts for NGOs or startups?</h3>
-                <p>Yes! We support the local advertising industry. Contact us at info&#64;oohphilippines.com and we'll work something out.</p>
+                <h3>How do I feature my billboard site?</h3>
+                <p>Email us at info@oohphilippines.com with your site details. We'll set up your featured or sponsored listing within 24 hours.</p>
             </div>
         </div>
     </div>
-</div>
 
 </div>
 
+</div>
 <!-- OPERATOR LOGIN PAGE -->
 <div id="operatorLoginPage" class="page">
     <div class="op-login-wrap">
@@ -4285,8 +4221,6 @@ function loadBillboards() {
             if (typeof sortFeaturedFirst === 'function' && allMatches.length > 0) {
                 sortFeaturedFirst();
             }
-            if(typeof updatePromosBadge==='function') updatePromosBadge();
-            if(typeof updateInquiriesBadge==='function') updateInquiriesBadge();
         })
         .catch(function(err){
             var loading = document.getElementById('loadingIndicator');
@@ -4330,121 +4264,22 @@ function submitSiteUpload() {
     var body = 'Company/Operator: ' + operator + '\nContact Person: ' + contact + '\nEmail: ' + email + '\nPhone: ' + phone + '\nBillboard Location: ' + location + '\nBillboard Size: ' + size + '\nBillboard Type: ' + type + '\nIllumination: ' + illumination + '\nRate: ' + rate + '\nAdditional Details: ' + details + '\n\nPlease see attached photos of the billboard site.';
     window.location.href = 'mailto:info@oohphilippines.com?subject=Billboard Site Upload - ' + encodeURIComponent(operator) + '&body=' + encodeURIComponent(body);
 }
-async function submitPromo() {
-    var operator=(document.getElementById('promoOperator').value||'').trim();
-    var contact=(document.getElementById('promoContact').value||'').trim();
-    var email=(document.getElementById('promoEmail').value||'').trim();
-    var phone=(document.getElementById('promoPhone').value||'').trim();
-    var title=(document.getElementById('promoTitle').value||'').trim();
-    var badge=(document.getElementById('promoBadge').value||'').trim();
-    var discount=(document.getElementById('promoDiscount').value||'').trim();
-    var discountDesc=(document.getElementById('promoDiscountDesc').value||'').trim();
-    var validity=(document.getElementById('promoValidity').value||'').trim();
-    var description=(document.getElementById('promoDescription').value||'').trim();
-    var inclusions=(document.getElementById('promoInclusions').value||'').trim();
-    var website=(document.getElementById('promoWebsite').value||'').trim();
-    if(!operator||!contact||!email||!phone||!title||!badge||!discount||!discountDesc||!validity||!description){alert('Please fill in all required fields.');return;}
-    var exp=new Date();exp.setFullYear(exp.getFullYear()+1);
-    var {data,error}=await _supabase.from('promos').insert([{
-        operator:operator,contact:contact,email:email,phone:phone,
-        title:title,badge:badge,discount:discount,discount_desc:discountDesc,
-        validity:validity,description:description,inclusions:inclusions,
-        website:website,status:'pending',expires_at:exp.toISOString()
-    }]);
-    if(error){alert('Submission failed. Please try again.');console.error(error);return;}
-    sendEmailNotification('New Promo Submission',operator,email,
-        'Operator: '+operator+'\nTitle: '+title+'\nBadge: '+badge+'\nDiscount: '+discount+'\nValid Until: '+validity+'\nDescription: '+description);
-    alert('Your promo has been submitted for review. It will go live once approved.');
-    document.getElementById('submitPromoForm').reset();
-    showPage('promos');
-    loadPromos();
-    updatePromosBadge();
-}
-async function submitInquiry() {
-    var company=(document.getElementById('companyName').value||'').trim();
-    var contact=(document.getElementById('contactPerson').value||'').trim();
-    var email=(document.getElementById('email').value||'').trim();
-    var phone=(document.getElementById('phone').value||'').trim();
-    var location=(document.getElementById('location').value||'').trim();
-    var type=(document.getElementById('billboardType').value||'').trim();
-    var budget=(document.getElementById('budget').value||'').trim();
-    var details=(document.getElementById('details').value||'').trim();
-    var startDate=(document.getElementById('startDate')?document.getElementById('startDate').value:'');
-    var numSites=(document.getElementById('numSites')?document.getElementById('numSites').value:'');
-    var siteCodes=(document.getElementById('siteCodes')?document.getElementById('siteCodes').value:'');
-    var targetAudience=(document.getElementById('targetAudience')?document.getElementById('targetAudience').value:'');
-    if(!company||!contact||!email||!phone||!location||!type||!details||!startDate){alert('Please fill in all required fields.');return;}
-    var btn=document.getElementById('submitBtn');
-    if(btn){btn.textContent='Submitting...';btn.disabled=true;}
-    var exp=new Date();exp.setDate(exp.getDate()+30);
-    var fullDetails=details+(siteCodes?'\nSpecific Sites: '+siteCodes:'')+(numSites?'\nNumber of Sites: '+numSites:'')+(targetAudience?'\nTarget Audience: '+targetAudience:'')+(startDate?'\nCampaign Start: '+startDate:'');
-    var {data,error}=await _supabase.from('inquiries').insert([{
-        company:company,title:'Looking for '+type+' Billboard in '+location,
-        location:location,type:type,budget:budget,duration:'',
-        description:fullDetails,contact_email:email,contact_phone:phone,
-        expires_at:exp.toISOString(),status:'active'
-    }]);
-    if(error){alert('Submission failed. Please try again.');console.error(error);if(btn){btn.textContent='Submit Requirements';btn.disabled=false;}return;}
-    sendEmailNotification('New Looking For Sites Inquiry',company,email,
-        'Company: '+company+'\nLocation: '+location+'\nType: '+type+'\nBudget: '+budget+'\nDetails: '+fullDetails);
-    alert('Your requirements have been posted! Billboard operators will reach out to you directly.');
-    document.getElementById('inquiryForm').reset();
-    toggleInquiryForm();
-    if(btn){btn.textContent='Submit Requirements';btn.disabled=false;}
-    loadInquiries();
-    updateInquiriesBadge();
-}
-async function loadPromos(){
-    var display=document.getElementById('promosDisplay');
-    var container=document.getElementById('promosList');
-    if(!container)return;
-    if(display)display.style.display='block';
-    container.innerHTML='<p style="text-align:center;color:#888;padding:30px;">Loading promos...</p>';
-    var {data,error}=await _supabase.from('promos').select('*').eq('status','active').order('created_at',{ascending:false});
-    if(error||!data||data.length===0){container.innerHTML='<p style="text-align:center;color:#888;padding:20px;">No active promos yet.</p>';return;}
-    container.innerHTML=data.map(function(p){
-        var inclList='';
-        if(p.inclusions){var items=p.inclusions.split('\n').filter(function(s){return s.trim();});inclList='<div class="promo-features"><h3>Package Includes:</h3><ul>'+items.map(function(item){return '<li>'+item.trim()+'</li>';}).join('')+'</ul></div>';}
-        return '<div class="promo-card"><div class="promo-badge">'+(p.badge||'PROMO')+'</div>'+
-            '<div class="promo-header"><div class="promo-operator">'+(p.operator||'')+'</div><div class="promo-title">'+(p.title||'')+'</div><div class="promo-validity">Valid until: '+(p.validity||'')+'</div></div>'+
-            '<div class="promo-body"><div class="promo-description">'+(p.description||'')+'</div>'+
-            '<div class="promo-discount"><div class="discount-amount">'+(p.discount||'')+'</div><div class="discount-text">'+(p.discount_desc||'')+'</div></div>'+
-            inclList+'<div class="promo-contact">'+
-            (p.email?'<a href="mailto:'+p.email+'" class="promo-btn promo-btn-primary">📧 Get This Deal</a>':'')+
-            (p.phone?'<a href="tel:'+p.phone+'" class="promo-btn promo-btn-secondary">📱 Call Now</a>':'')+
-            (p.website?'<a href="'+p.website+'" target="_blank" class="promo-btn promo-btn-secondary">🌐 Visit Website</a>':'')+
-            '</div></div></div>';
-    }).join('');
-}
-async function loadInquiries(){
-    var display=document.getElementById('inquiriesDisplay');
-    var container=document.getElementById('inquiriesList');
-    if(!container)return;
-    if(display)display.style.display='block';
-    container.innerHTML='<p style="text-align:center;color:#888;padding:30px;">Loading requirements...</p>';
-    var now=new Date().toISOString();
-    var {data,error}=await _supabase.from('inquiries').select('*').eq('status','active').gt('expires_at',now).order('created_at',{ascending:false});
-    if(error||!data||data.length===0){container.innerHTML='<p style="text-align:center;color:#888;padding:20px;">No active inquiries yet.</p>';return;}
-    container.innerHTML=data.map(function(q){
-        var posted=new Date(q.created_at).toLocaleDateString('en-PH',{year:'numeric',month:'short',day:'numeric'});
-        return '<div class="promo-card"><div class="promo-badge" style="background:linear-gradient(135deg,#4caf50,#66bb6a);">ACTIVE</div>'+
-            '<div class="promo-header" style="background:linear-gradient(135deg,#1565c0,#0d47a1);">'+
-            '<div class="promo-operator">'+(q.company||'')+'</div><div class="promo-title">'+(q.title||'')+'</div><div class="promo-validity">Posted: '+posted+'</div></div>'+
-            '<div class="promo-body"><div class="promo-description">'+(q.description||'').replace(/\n/g,'<br>')+'</div>'+
-            '<div style="background:#f8f9fa;border-radius:10px;padding:20px;margin-bottom:25px;">'+
-            '<h3 style="color:#1565c0;font-size:16px;margin-bottom:15px;">Requirements:</h3>'+
-            '<div style="display:grid;grid-template-columns:1fr 1fr;gap:15px;color:#455a64;font-size:14px;">'+
-            '<div><strong>Location:</strong> '+(q.location||'N/A')+'</div><div><strong>Type:</strong> '+(q.type||'N/A')+'</div>'+
-            '<div><strong>Budget:</strong> '+(q.budget||'To Discuss')+'</div><div><strong>Duration:</strong> '+(q.duration||'To Discuss')+'</div>'+
-            '</div></div><div class="promo-contact">'+
-            (q.contact_email?'<a href="mailto:'+q.contact_email+'" class="promo-btn">📧 Email Advertiser</a>':'')+
-            (q.contact_phone?'<a href="tel:'+q.contact_phone+'" class="promo-btn promo-btn-secondary">📱 Call Advertiser</a>':'')+
-            '</div></div></div>';
-    }).join('');
-}
-function sendEmailNotification(type,name,email,message){
-    emailjs.send('service_zmd0y16','template_ojqve59',{type:type,name:name,email:email,message:message})
-    .then(function(){console.log('Email sent!');},function(err){console.log('Email failed:',err);});
+function submitPromo() {
+    var operator = document.getElementById('promoOperator').value;
+    var contact = document.getElementById('promoContact').value;
+    var email = document.getElementById('promoEmail').value;
+    var phone = document.getElementById('promoPhone').value;
+    var title = document.getElementById('promoTitle').value;
+    var badge = document.getElementById('promoBadge').value;
+    var discount = document.getElementById('promoDiscount').value;
+    var discountDesc = document.getElementById('promoDiscountDesc').value;
+    var validity = document.getElementById('promoValidity').value;
+    var description = document.getElementById('promoDescription').value;
+    var inclusions = document.getElementById('promoInclusions').value;
+    var website = document.getElementById('promoWebsite').value;
+    if (!operator || !contact || !email || !phone || !title || !badge || !discount || !discountDesc || !validity || !description) { alert('Please fill in all required fields.'); return; }
+    var body = 'Company/Operator: ' + operator + '\nContact Person: ' + contact + '\nEmail: ' + email + '\nPhone: ' + phone + '\nPromo Title: ' + title + '\nPromo Badge: ' + badge + '\nDiscount: ' + discount + '\nDiscount Description: ' + discountDesc + '\nValid Until: ' + validity + '\nPromo Description: ' + description + '\nPackage Inclusions: ' + inclusions + '\nWebsite: ' + website;
+    window.location.href = 'mailto:info@oohphilippines.com?subject=Promo Submission - ' + encodeURIComponent(operator) + '&body=' + encodeURIComponent(body);
 }
 function toggleLoginMenu() {
     var menu = document.getElementById('navLoginMenu');
@@ -4946,12 +4781,6 @@ function opSetFilter(f) {
 // --- Patch showPage ---
 var _origShowPage = showPage;
 showPage = function(pageId) {
-    var promosDisp=document.getElementById('promosDisplay');
-    var inqDisp=document.getElementById('inquiriesDisplay');
-    if(promosDisp)promosDisp.style.display='none';
-    if(inqDisp)inqDisp.style.display='none';
-    if(pageId==='promos'){_origShowPage(pageId);setTimeout(function(){loadPromos();},200);return;}
-    if(pageId==='inquiries'){_origShowPage(pageId);setTimeout(function(){loadInquiries();},200);return;}
     if (pageId === 'operatorLogin') {
         if (opCurrentUser) { showPage('operatorDash'); return; }
     }
