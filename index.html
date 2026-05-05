@@ -5775,7 +5775,7 @@ async function doFreeLogin() {
     var { data: sub } = await _supabase
         .from('subscriptions')
         .select('plan, expires_at, status')
-        .eq('email', email)
+        .eq('user_email', email)
         .eq('status', 'active')
         .gt('expires_at', now)
         .maybeSingle();
