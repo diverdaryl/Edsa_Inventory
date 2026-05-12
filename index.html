@@ -3876,7 +3876,7 @@ function buildCard(b) {
                 '<span style="color:#1565c0;font-weight:600;font-size:14px;">View Photos (PDF)</span>' +
                 '</div>';
         } else {
-            var mapsBtn = b['Maps URL'] ? '<a href="' + b['Maps URL'] + '" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:8px;padding:7px 14px;background:#e8f0fe;color:#1565c0;border-radius:20px;font-size:12px;font-weight:700;text-decoration:none;border:1px solid #c5d8fb;">&#x1F5FA; View in Google Maps</a>' : '';
+            var mapsBtn = b['Maps URL'] ? '<a href="' + b['Maps URL'].replace('/maps/embed?', '/maps?') + '" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:8px;padding:7px 14px;background:#e8f0fe;color:#1565c0;border-radius:20px;font-size:12px;font-weight:700;text-decoration:none;border:1px solid #c5d8fb;">&#x1F5FA; View in Google Maps</a>' : '';
             photoOrMap = '<img class="map-window" src="' + photo + '" alt="' + b['Site Name'] + '" style="width:100%;height:100%;object-fit:cover;display:block;cursor:pointer;" onclick="openLightbox(\'' + photo + '\')">' + mapsBtn;
         }
     } else if (b['Maps URL']) {
