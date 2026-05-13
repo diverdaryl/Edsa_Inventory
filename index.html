@@ -3885,20 +3885,14 @@ function buildCard(b) {
                 '<span style="color:#1565c0;font-weight:600;font-size:14px;">View Photos (PDF)</span>' +
                 '</div>';
         } else if (b['Maps URL']) {
-            // Photo exists + Maps URL: show embed with "View Photo" button overlay
-            var viewPhotoBtn = '<button onclick="openLightbox(\'' + photo.replace(/'/g, "\\'") + '\')" style="position:absolute;bottom:10px;right:10px;padding:7px 14px;background:rgba(255,255,255,0.95);color:#1565c0;border:none;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.2);font-family:\'Segoe UI\',sans-serif;display:flex;align-items:center;gap:5px;">&#x1F4F7; View Photo</button>';
-            if (isMobile) {
-                photoOrMap = '<div style="position:relative;">' +
-                    '<div class="map-window" style="background:#e8f0fe;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;cursor:pointer;" onclick="window.open(\'' + b['Maps URL'].replace(/'/g, "\\'") + '\', \'_blank\')">' +
-                    '<span style="font-size:40px;">📍</span>' +
-                    '<span style="color:#1565c0;font-weight:600;font-size:14px;">View Street View</span>' +
-                    '</div>' + viewPhotoBtn + '</div>';
-            } else {
-                photoOrMap = '<div style="position:relative;">' +
-                    '<iframe class="map-window" src="' + b['Maps URL'] + '" allowfullscreen="" loading="lazy"></iframe>' +
-                    viewPhotoBtn + '</div>';
-            }
-        } else {
+            // Photo + Maps URL: split 50/50, photo on top, embed below
+            photoOrMap = '<div style="display:flex;flex-direction:column;width:100%;height:500px;">' +
+                '<img src="' + photo.replace(/'/g, "\\'") + '" alt="' + b['Site Name'] + '" style="width:100%;height:50%;object-fit:cover;display:block;cursor:pointer;border-bottom:2px solid #e3f2fd;" onclick="openLightbox(\'' + photo.replace(/'/g, "\\'") + '\')">' +
+                (isMobile
+                    ? '<div style="height:50%;background:#e8f0fe;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;cursor:pointer;" onclick="window.open(\'' + b['Maps URL'].replace(/'/g, "\\'") + '\', \'_blank\')"><span style="font-size:32px;">📍</span><span style="color:#1565c0;font-weight:600;font-size:13px;">View Street View</span></div>'
+                    : '<iframe src="' + b['Maps URL'] + '" allowfullscreen="" loading="lazy" style="width:100%;height:50%;border:none;"></iframe>'
+                ) +
+                '</div>'; else {
             // Photo exists, no Maps URL: just show the photo
             photoOrMap = '<img class="map-window" src="' + photo + '" alt="' + b['Site Name'] + '" style="width:100%;height:100%;object-fit:cover;display:block;cursor:pointer;" onclick="openLightbox(\'' + photo.replace(/'/g, "\\'") + '\')">';
         }
