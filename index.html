@@ -2107,7 +2107,7 @@
         </div>
 
         <div style="text-align:center; margin-bottom:30px;">
-        <button class="add-promo-btn" onclick="showPage('submitPromo')">🎉 Submit Your Promo</button>
+        <a href="submit-promo.html" class="add-promo-btn" style="text-decoration:none;">🎉 Submit Your Promo</a>
         </div>
 
         
@@ -2242,114 +2242,8 @@
         <div class="add-promo-section">
             <h2>Advertiser?</h2>
             <p>Post your billboard requirements and let operators reach out to you</p>
-            <button class="add-promo-btn" onclick="toggleInquiryForm()">
-                ➕ Post Your Requirements
-            </button>
+            <a href="looking-for-billboard.html" class="add-promo-btn" style="text-decoration:none;">📢 Post Your Requirements</a>
         </div>
-
-       
-<div id="inquiryFormSection" style="display: none;">
-    <div class="promo-card" style="max-width: 700px; margin: 0 auto 40px auto;">
-        <div class="promo-header" style="background: linear-gradient(135deg, #1565c0 0%, #0d47a1 100%);">
-            <div class="promo-operator">Post Your Requirements</div>
-            <div class="promo-title">Fill out the form below to connect with billboard operators</div>
-        </div>
-        <div class="promo-body">
-            <form id="inquiryForm">   
-                <div class="form-group">
-                    <label>Company/Brand Name *</label>
-                    <input type="text" name="company" id="companyName" required placeholder="Enter your company name">
-                </div>
-                <div class="form-group">
-                    <label>Contact Person *</label>
-                    <input type="text" name="contact_person" id="contactPerson" required placeholder="Your name">
-                </div>
-                <div class="form-group">
-                    <label>Email *</label>
-                    <input type="email" name="email" id="email" required placeholder="your@email.com">
-                </div>
-                <div class="form-group">
-                    <label>Phone Number *</label>
-                    <input type="tel" name="phone" id="phone" required placeholder="+63 XXX XXX XXXX">
-                </div>
-                <div class="form-group">
-                    <label>Preferred Location *</label>
-                    <select name="location" id="location" required>
-                        <option value="">Select location</option>
-                        <option value="Metro Manila">Metro Manila</option>
-                        <option value="EDSA">EDSA</option>
-                        <option value="C5">C5 Road</option>
-                        <option value="SLEX">SLEX</option>
-                        <option value="NLEX">NLEX</option>
-                        <option value="Provincial">Provincial</option>
-                        <option value="Nationwide">Nationwide</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Billboard Type *</label>
-                    <select name="billboard_type" id="billboardType" required>
-                        <option value="">Select type</option>
-                        <option value="Static">Static Billboard</option>
-                        <option value="Digital">Digital Billboard</option>
-                        <option value="Both">Both Static & Digital</option>
-                        <option value="Any">Any Type</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Budget Range</label>
-                    <select name="budget" id="budget">
-                        <option value="">Select budget range</option>
-                        <option value="Under 100K">Under ₱100,000/month</option>
-                        <option value="100K-300K">₱100,000 - ₱300,000/month</option>
-                        <option value="300K-500K">₱300,000 - ₱500,000/month</option>
-                        <option value="500K+">₱500,000+/month</option>
-                        <option value="To Discuss">Prefer to Discuss</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Campaign Details *</label>
-                    <textarea name="details" id="details" required placeholder="Tell us about your campaign, timeline, specific requirements, etc."></textarea>
-                </div>
-                <div class="form-group">
-                    <label>Campaign Start Date *</label>
-                    <input type="date" name="start_date" id="startDate" required>
-                </div>
-                <div class="form-group">
-                    <label>Number of Sites Needed</label>
-                    <select name="num_sites" id="numSites">
-                        <option value="">Select number</option>
-                        <option value="1">1 site</option>
-                        <option value="2-3">2-3 sites</option>
-                        <option value="4-5">4-5 sites</option>
-                        <option value="6-10">6-10 sites</option>
-                        <option value="10+">10+ sites</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Specific Billboard Site Codes</label>
-                    <input type="text" name="site_codes" id="siteCodes" placeholder="e.g. EDSA-A311, C5-B22, SLEX-C01 (optional)">
-                    <small style="color:#888;font-size:12px;margin-top:4px;display:block;">📍 Find site codes on billboard cards in our directory. Operators respond faster when specific sites are mentioned.</small>
-                </div>
-                <div class="form-group">
-                    <label>Target Audience</label>
-                    <select name="target_audience" id="targetAudience">
-                        <option value="">Select target audience</option>
-                        <option value="Commuters">Commuters</option>
-                        <option value="Motorists">Motorists</option>
-                        <option value="Mall Shoppers">Mall Shoppers</option>
-                        <option value="General Public">General Public</option>
-                        <option value="Business District">Business District Workers</option>
-                        <option value="Mixed">Mixed Audience</option>
-                    </select>
-                </div>
-                <div style="display: flex; gap: 10px;">
-                    <button type="button" class="submit-btn" id="submitBtn" style="flex: 1;" onclick="submitInquiry()">Submit Requirements</button>
-                    <button type="button" class="submit-btn" onclick="toggleInquiryForm()" style="flex: 1; background: #666;">Cancel</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
 
         
         <div style="text-align: center; margin: 40px 0 30px 0;">
@@ -2465,101 +2359,6 @@
 <!-- Upload Site Page -->
 
 <!-- Submit Promo Page -->
-<div id="submitPromoPage" class="page">
-    <div class="promos-container">
-        <div class="promos-header">
-            <h1>🎉 Submit Your Promo</h1>
-            <p>Reach hundreds of advertisers by posting your billboard promo on OOHPhilippines.com</p>
-        </div>
-
-        <div class="promo-card" style="max-width: 700px; margin: 0 auto 40px auto;">
-            <div class="promo-header" style="background: linear-gradient(135deg, #1565c0 0%, #0d47a1 100%);">
-                <div class="promo-operator">Billboard Operator?</div>
-                <div class="promo-title">Fill out the form below to submit your promo</div>
-            </div>
-            <div class="promo-body">
-                <form id="submitPromoForm">
-                    <div class="form-group">
-                        <label>Company/Operator Name *</label>
-                        <input type="text" id="promoOperator" required placeholder="e.g. HD Digital Signs">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Contact Person *</label>
-                        <input type="text" id="promoContact" required placeholder="Your name">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Email *</label>
-                        <input type="email" id="promoEmail" required placeholder="your@email.com">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Phone Number *</label>
-                        <input type="tel" id="promoPhone" required placeholder="+63 XXX XXX XXXX">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Promo Title *</label>
-                        <input type="text" id="promoTitle" required placeholder="e.g. New Year Special - Digital Billboard Package">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Promo Badge *</label>
-                        <select id="promoBadge" required>
-                            <option value="">Select badge type</option>
-                            <option value="FLASH SALE">🔥 Flash Sale</option>
-                            <option value="HOT DEAL">⭐ Hot Deal</option>
-                            <option value="LIMITED TIME">⏰ Limited Time</option>
-                            <option value="SPECIAL OFFER">🎯 Special Offer</option>
-                            <option value="NEW">🆕 New</option>
-                            <option value="EXCLUSIVE">💎 Exclusive</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Discount Amount *</label>
-                        <input type="text" id="promoDiscount" required placeholder="e.g. 30% OFF or ₱50,000 OFF">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Discount Description *</label>
-                        <input type="text" id="promoDiscountDesc" required placeholder="e.g. On 3-month digital billboard contracts">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Valid Until *</label>
-                        <input type="date" id="promoValidity" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Promo Description *</label>
-                        <textarea id="promoDescription" required placeholder="Describe your promo offer in detail..."></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Package Inclusions</label>
-                        <textarea id="promoInclusions" placeholder="List what's included in the promo (one per line)"></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Website (optional)</label>
-                        <input type="text" id="promoWebsite" placeholder="e.g. www.yourcompany.com">
-                    </div>
-
-                    <div style="background:#e3f2fd; border-radius:10px; padding:15px; margin-bottom:20px; font-size:14px; color:#1565c0;">
-                        📎 <strong>Note:</strong> After clicking Submit, your email app will open with all details pre-filled. Our team will review and post your promo within 24-48 hours.
-                    </div>
-
-                    <div style="display: flex; gap: 10px;">
-                        <button type="button" class="submit-btn" style="flex: 1;" onclick="submitPromo()">🎉 Submit Promo</button>
-                        <button type="button" class="submit-btn" onclick="showPage('promos')" style="flex: 1; background: #666;">Cancel</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
 
 <!-- TERMS & CONDITIONS PAGE -->
 <div id="termsPage" class="page">
@@ -3489,87 +3288,8 @@ function openLightbox(src) {
     document.getElementById('lightboxImg').src = src;
     document.getElementById('lightbox').style.display = 'flex';
 }
-function toggleInquiryForm() {
-    var form = document.getElementById('inquiryFormSection');
-    if (form) { form.style.display = form.style.display === 'none' ? 'block' : 'none'; }
-}
-function submitInquiry() {
-    var company = document.getElementById('companyName').value;
-    var contact = document.getElementById('contactPerson').value;
-    var email = document.getElementById('email').value;
-    var phone = document.getElementById('phone').value;
-    var location = document.getElementById('location').value;
-    var type = document.getElementById('billboardType').value;
-    var budget = document.getElementById('budget').value;
-    var details = document.getElementById('details').value;
-    if (!company || !contact || !email || !phone || !location || !type || !details) { alert('Please fill in all required fields.'); return; }
-    var body = 'Company: ' + company + '\nContact Person: ' + contact + '\nEmail: ' + email + '\nPhone: ' + phone + '\nLocation: ' + location + '\nBillboard Type: ' + type + '\nBudget: ' + budget + '\nCampaign Details: ' + details;
-    window.location.href = 'mailto:info@oohphilippines.com?subject=Request to Post: Looking for OOH Site/s - ' + encodeURIComponent(company) + '&body=' + encodeURIComponent(body);
-}
-async function submitPromo() {
-    var operator=(document.getElementById('promoOperator').value||'').trim();
-    var contact=(document.getElementById('promoContact').value||'').trim();
-    var email=(document.getElementById('promoEmail').value||'').trim();
-    var phone=(document.getElementById('promoPhone').value||'').trim();
-    var title=(document.getElementById('promoTitle').value||'').trim();
-    var badge=(document.getElementById('promoBadge').value||'').trim();
-    var discount=(document.getElementById('promoDiscount').value||'').trim();
-    var discountDesc=(document.getElementById('promoDiscountDesc').value||'').trim();
-    var validity=(document.getElementById('promoValidity').value||'').trim();
-    var description=(document.getElementById('promoDescription').value||'').trim();
-    var inclusions=(document.getElementById('promoInclusions').value||'').trim();
-    var website=(document.getElementById('promoWebsite').value||'').trim();
-    if(!operator||!contact||!email||!phone||!title||!badge||!discount||!discountDesc||!validity||!description){alert('Please fill in all required fields.');return;}
-    var exp=new Date();exp.setFullYear(exp.getFullYear()+1);
-    var {data,error}=await _supabase.from('promos').insert([{
-        operator:operator,contact:contact,email:email,phone:phone,
-        title:title,badge:badge,discount:discount,discount_desc:discountDesc,
-        validity:validity,description:description,inclusions:inclusions,
-        website:website,status:'pending',expires_at:exp.toISOString()
-    }]);
-    if(error){alert('Submission failed. Please try again.');console.error(error);return;}
-    sendEmailNotification('New Promo Submission',operator,email,
-        'Operator: '+operator+'\nTitle: '+title+'\nBadge: '+badge+'\nDiscount: '+discount+'\nValid Until: '+validity+'\nDescription: '+description);
-    alert('Your promo has been submitted for review. It will go live once approved.');
-    document.getElementById('submitPromoForm').reset();
-    showPage('promos');
-    loadPromos();
-    updatePromosBadge();
-}
-async function submitInquiry() {
-    var company=(document.getElementById('companyName').value||'').trim();
-    var contact=(document.getElementById('contactPerson').value||'').trim();
-    var email=(document.getElementById('email').value||'').trim();
-    var phone=(document.getElementById('phone').value||'').trim();
-    var location=(document.getElementById('location').value||'').trim();
-    var type=(document.getElementById('billboardType').value||'').trim();
-    var budget=(document.getElementById('budget').value||'').trim();
-    var details=(document.getElementById('details').value||'').trim();
-    var startDate=(document.getElementById('startDate')?document.getElementById('startDate').value:'');
-    var numSites=(document.getElementById('numSites')?document.getElementById('numSites').value:'');
-    var siteCodes=(document.getElementById('siteCodes')?document.getElementById('siteCodes').value:'');
-    var targetAudience=(document.getElementById('targetAudience')?document.getElementById('targetAudience').value:'');
-    if(!company||!contact||!email||!phone||!location||!type||!details||!startDate){alert('Please fill in all required fields.');return;}
-    var btn=document.getElementById('submitBtn');
-    if(btn){btn.textContent='Submitting...';btn.disabled=true;}
-    var exp=new Date();exp.setDate(exp.getDate()+30);
-    var fullDetails=details+(siteCodes?'\nSpecific Sites: '+siteCodes:'')+(numSites?'\nNumber of Sites: '+numSites:'')+(targetAudience?'\nTarget Audience: '+targetAudience:'')+(startDate?'\nCampaign Start: '+startDate:'');
-    var {data,error}=await _supabase.from('inquiries').insert([{
-        company:company,title:'Looking for '+type+' Billboard in '+location,
-        location:location,type:type,budget:budget,duration:'',
-        description:fullDetails,contact_email:email,contact_phone:phone,
-        expires_at:exp.toISOString(),status:'active'
-    }]);
-    if(error){alert('Submission failed. Please try again.');console.error(error);if(btn){btn.textContent='Submit Requirements';btn.disabled=false;}return;}
-    sendEmailNotification('New Looking For Sites Inquiry',company,email,
-        'Company: '+company+'\nLocation: '+location+'\nType: '+type+'\nBudget: '+budget+'\nDetails: '+fullDetails);
-    alert('Your requirements have been posted! Billboard operators will reach out to you directly.');
-    document.getElementById('inquiryForm').reset();
-    toggleInquiryForm();
-    if(btn){btn.textContent='Submit Requirements';btn.disabled=false;}
-    loadInquiries();
-    updateInquiriesBadge();
-}
+async
+async
 async function loadPromos(){
     var display=document.getElementById('promosDisplay');
     var container=document.getElementById('promosList');
