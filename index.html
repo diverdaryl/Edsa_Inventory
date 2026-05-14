@@ -2110,123 +2110,91 @@
         <a href="submit-promo.html" class="add-promo-btn" style="text-decoration:none;">🎉 Submit Your Promo</a>
         </div>
 
+
+
+
+<!-- Advertiser Inquiries Page -->
+
+<!-- Inquiries Display -->
+<div id="inquiriesDisplay" style="display:none;max-width:900px;margin:0 auto;padding:0 20px 40px;">
+    <div style="text-align:center;margin:40px 0 24px;">
+        <h2 style="color:#1565c0;font-size:28px;margin-bottom:8px;">Recent Advertiser Requirements</h2>
+        <p style="color:#666;font-size:15px;">Billboard operators: Connect with advertisers looking for your sites</p>
+    </div>
+    <div id="inquiriesList"></div>
+</div>
+
+<!-- Upload Site Page -->
+
+<!-- Submit Promo Page -->
+
+<!-- TERMS & CONDITIONS PAGE -->
+
+<!-- PRIVACY POLICY PAGE -->
+
+<!-- ABOUT US PAGE -->
+
+<div class="cookie-banner" id="cookieBanner">
+    <div class="cookie-content">
+        <p>🍪 This website uses cookies to improve your experience. By using this site, you agree to our <button class="cookie-link" onclick="showPage('privacy'); closeCookieBanner();">Privacy Policy</button>.</p>
+        <button class="cookie-accept" onclick="closeCookieBanner()">Accept</button>
+    </div>
+</div>
+
+<div class="feedback-float">
+    <button class="feedback-btn" onclick="openFeedbackModal()">
+        💬 Feedback
+    </button>
+</div>
+
+<div class="feedback-modal" id="feedbackModal">
+    <div class="feedback-content">
+        <div class="feedback-header">
+            <h3>💡 Help Us Improve</h3>
+            <button class="close-btn" onclick="closeFeedbackModal()">×</button>
+        </div>
+        <form class="feedback-form">
+            <textarea id="modalFeedback" placeholder="Share your thoughts, suggestions, or report any issues..."></textarea>
+            <button type="button" onclick="submitModalFeedback()">Send Feedback</button>
+        </form>
+    </div>
+</div>
+     
+<!-- Inventory Page -->
+<div id="inventoryPage" class="page">
+    <div class="inventory-container">
+        <h1 class="inventory-title">Billboard Inventory</h1>
+        <div style="text-align:center; margin-bottom: 20px;">
+            <button onclick="goToSearch()" style="padding: 12px 28px; background: #1565c0; color: white; border: none; border-radius: 50px; font-size: 15px; font-weight: 600; cursor: pointer; box-shadow: 0 4px 14px rgba(21,101,192,0.3); transition: all 0.3s;" onmouseover="this.style.background='#0d47a1';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#1565c0';this.style.transform='translateY(0)'">🔍 Search Billboards</button>
+        </div>
+        <div style="text-align:center; background:#fff3cd; border:1px solid #ffc107; border-radius:10px; padding:12px 20px; margin-bottom:20px; font-size:14px; color:#856404;">
+            💡 <strong>Best viewed on a desktop or laptop browser</strong> for the full Google Street View experience.
+        </div>
+        <p id="searchPrompt" style="text-align:center;color:#1565c0;font-size:16px;margin-bottom:30px;">Use the search bar on the home page to find billboard sites.</p>
+        <div id="resultCount" style="text-align:center;color:#1565c0;font-weight:600;font-size:14px;margin-bottom:12px;"></div>
+        <div id="refreshAvailBtn" style="display:none;text-align:center;margin-bottom:16px;">
+            <button onclick="subRefreshAvailability()" id="refreshAvailBtnEl"
+                style="padding:9px 22px;background:#e8f5e9;color:#2e7d32;border:1px solid #a5d6a7;
+                border-radius:50px;font-size:13px;font-weight:700;cursor:pointer;
+                font-family:'Segoe UI',sans-serif;transition:all 0.2s;"
+                onmouseover="this.style.background='#4caf50';this.style.color='white';"
+                onmouseout="this.style.background='#e8f5e9';this.style.color='#2e7d32';">
+                &#x1F504; Refresh Availability
+            </button>
+        </div>
         
-        <div class="promo-card">
-            <div class="promo-badge">LIMITED TIME</div>
-            <div class="promo-header">
-                <div class="promo-operator">HD Digital Signs</div>
-                <div class="promo-title">New Year Special - Digital Billboard Package</div>
-                <div class="promo-validity">⏰ Valid until March 31, 2026</div>
-            </div>
-            <div class="promo-body">
-                <div class="promo-description">
-                    Kick off your 2026 campaigns with our exclusive digital billboard package! Get premium visibility across Metro Manila's busiest routes with our state-of-the-art LED displays.
-                </div>
-                
-                <div class="promo-discount">
-                    <div class="discount-amount">30% OFF</div>
-                    <div class="discount-text">On 3-month digital billboard contracts</div>
-                </div>
+        <div id="billboardContainer"></div>
 
-                <div class="promo-features">
-                    <h3>Package Includes:</h3>
-                    <ul>
-                        <li>Premium digital billboard slots on EDSA and C5</li>
-                        <li>15-second ad rotation every 2 minutes</li>
-                        <li>Free creative design assistance</li>
-                        <li>Real-time campaign monitoring</li>
-                        <li>Flexible payment terms available</li>
-                    </ul>
-                </div>
-
-                <div class="promo-contact">
-                    info&#64;oohphilippines.com
-                    <a href="tel:+639178316041" class="promo-btn promo-btn-secondary">
-                        📱 Call Now
-                    </a>
-                    <a href="https://hddigitalsigns.com/" target="_blank" class="promo-btn promo-btn-secondary">
-                        🌐 Visit Website
-                    </a>
-                </div>
-            </div>
+        
+        <div style="text-align:center; margin:20px 0 40px 0;">
+            <button id="loadMoreBtn" onclick="showMore()" style="display:none; padding:12px 35px; background:#1565c0; color:white; border:none; border-radius:50px; font-size:15px; font-weight:600; cursor:pointer; box-shadow:0 4px 14px rgba(21,101,192,0.3);">Load More ↓</button>
         </div>
 
         
-        <div class="promo-card">
-            <div class="promo-badge">HOT DEAL</div>
-            <div class="promo-header">
-                <div class="promo-operator">Metro Billboard Network</div>
-                <div class="promo-title">Provincial Expansion Package</div>
-                <div class="promo-validity">⏰ Valid until April 15, 2026</div>
-            </div>
-            <div class="promo-body">
-                <div class="promo-description">
-                    Expand your brand presence beyond Metro Manila! Special rates for advertisers looking to reach provincial markets with our strategic billboard placements.
-                </div>
-                
-                <div class="promo-discount">
-                    <div class="discount-amount">25% OFF</div>
-                    <div class="discount-text">Bundle of 5+ provincial sites</div>
-                </div>
-
-                <div class="promo-features">
-                    <h3>Special Offer Details:</h3>
-                    <ul>
-                        <li>Coverage in Cebu, Davao, and Iloilo</li>
-                        <li>High-traffic locations near malls and highways</li>
-                        <li>6-month minimum contract</li>
-                        <li>Free installation and printing for static billboards</li>
-                        <li>Monthly performance reports included</li>
-                    </ul>
-                </div>
-
-                <div class="promo-contact">
-                    info&#64;oohphilippines.com
-                    <a href="tel:+639171234567" class="promo-btn promo-btn-secondary">
-                        📱 Contact Us
-                    </a>
-                </div>
-            </div>
+        <div id="loadingIndicator" style="text-align:center; padding:40px; color:#1565c0; font-size:16px;">
+            ⏳ Loading billboards...
         </div>
 
-        
-        <div class="promo-card">
-            <div class="promo-badge">FLASH SALE</div>
-            <div class="promo-header">
-                <div class="promo-operator">SkyHigh Advertising</div>
-                <div class="promo-title">NLEX & SLEX Highway Super Bundle</div>
-                <div class="promo-validity">⏰ Valid until February 28, 2026</div>
-            </div>
-            <div class="promo-body">
-                <div class="promo-description">
-                    Maximize your highway visibility! Book both NLEX and SLEX billboard packages together and save big on your expressway advertising campaign.
-                </div>
-                
-                <div class="promo-discount">
-                    <div class="discount-amount">40% OFF</div>
-                    <div class="discount-text">When you book both NLEX + SLEX</div>
-                </div>
-
-                <div class="promo-features">
-                    <h3>Bundle Benefits:</h3>
-                    <ul>
-                        <li>Strategic locations at major exits and toll gates</li>
-                        <li>Large format billboards (up to 20ft x 60ft)</li>
-                        <li>Both northbound and southbound visibility</li>
-                        <li>LED illumination included</li>
-                        <li>Minimum 12-month contract required</li>
-                        <li>Free quarterly billboard maintenance</li>
-                    </ul>
-                </div>
-
-                <div class="promo-contact">
-                    info&#64;oohphilippines.com
-                    <a href="https://wa.me/639189876543" target="_blank" class="promo-btn promo-btn-secondary">
-                        💬 WhatsApp Us
-                    </a>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 
@@ -2256,103 +2224,7 @@
         </div>
 
         
-        <div class="static-inquiries">
-            
-            <div class="promo-card">
-                <div class="promo-badge" style="background: linear-gradient(135deg, #4caf50, #66bb6a);">ACTIVE</div>
-                <div class="promo-header" style="background: linear-gradient(135deg, #1565c0 0%, #0d47a1 100%);">
-                    <div class="promo-operator">ABC Corporation</div>
-                    <div class="promo-title">Looking for EDSA Digital Billboards</div>
-                    <div class="promo-validity">📅 Posted: Feb 4, 2026</div>
-                </div>
-                <div class="promo-body">
-                    <div class="promo-description">
-                        Seeking digital billboard placements along EDSA for a 3-month campaign launching in March. Prefer southbound traffic visibility with high-resolution LED displays.
-                    </div>
-                    
-                    <div style="background: #f8f9fa; border-radius: 10px; padding: 20px; margin-bottom: 25px;">
-                        <h3 style="color: #1565c0; font-size: 16px; margin-bottom: 15px;">📋 Requirements:</h3>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; color: #455a64; font-size: 14px;">
-                            <div><strong style="color: #202124; display: block; margin-bottom: 3px;">📍 Location:</strong> EDSA</div>
-                            <div><strong style="color: #202124; display: block; margin-bottom: 3px;">🎯 Type:</strong> Digital Billboard</div>
-                            <div><strong style="color: #202124; display: block; margin-bottom: 3px;">💰 Budget:</strong> ₱300K - ₱500K/month</div>
-                            <div><strong style="color: #202124; display: block; margin-bottom: 3px;">⏱️ Duration:</strong> 3 months</div>
-                        </div>
-                    </div>
 
-                    <div class="promo-contact">
-                        info&#64;oohphilippines.com
-                        <a href="tel:+639171234567" class="promo-btn promo-btn-secondary">
-                            📱 Call Advertiser
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            
-            <div class="promo-card">
-                <div class="promo-badge" style="background: linear-gradient(135deg, #4caf50, #66bb6a);">ACTIVE</div>
-                <div class="promo-header" style="background: linear-gradient(135deg, #1565c0 0%, #0d47a1 100%);">
-                    <div class="promo-operator">XYZ Retail Inc</div>
-                    <div class="promo-title">Metro Manila Multi-Site Campaign</div>
-                    <div class="promo-validity">📅 Posted: Feb 3, 2026</div>
-                </div>
-                <div class="promo-body">
-                    <div class="promo-description">
-                        Planning a major product launch requiring multiple billboard locations across Metro Manila. Looking for a mix of static and digital billboards in high-traffic areas.
-                    </div>
-                    
-                    <div style="background: #f8f9fa; border-radius: 10px; padding: 20px; margin-bottom: 25px;">
-                        <h3 style="color: #1565c0; font-size: 16px; margin-bottom: 15px;">📋 Requirements:</h3>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; color: #455a64; font-size: 14px;">
-                            <div><strong style="color: #202124; display: block; margin-bottom: 3px;">📍 Location:</strong> Metro Manila</div>
-                            <div><strong style="color: #202124; display: block; margin-bottom: 3px;">🎯 Type:</strong> Static & Digital</div>
-                            <div><strong style="color: #202124; display: block; margin-bottom: 3px;">💰 Budget:</strong> ₱100K - ₱300K/month</div>
-                            <div><strong style="color: #202124; display: block; margin-bottom: 3px;">⏱️ Duration:</strong> 6+ months</div>
-                        </div>
-                    </div>
-
-                    <div class="promo-contact">
-                        info&#64;oohphilippines.com
-                        <a href="tel:+639189876543" class="promo-btn promo-btn-secondary">
-                            📱 Call Advertiser
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            
-            <div class="promo-card">
-                <div class="promo-badge" style="background: linear-gradient(135deg, #4caf50, #66bb6a);">ACTIVE</div>
-                <div class="promo-header" style="background: linear-gradient(135deg, #1565c0 0%, #0d47a1 100%);">
-                    <div class="promo-operator">Premium Motors</div>
-                    <div class="promo-title">NLEX Highway Billboard Campaign</div>
-                    <div class="promo-validity">📅 Posted: Feb 2, 2026</div>
-                </div>
-                <div class="promo-body">
-                    <div class="promo-description">
-                        Luxury vehicle brand seeking premium billboard locations along NLEX. Interested in large format static billboards with excellent visibility. Long-term partnership opportunity.
-                    </div>
-                    
-                    <div style="background: #f8f9fa; border-radius: 10px; padding: 20px; margin-bottom: 25px;">
-                        <h3 style="color: #1565c0; font-size: 16px; margin-bottom: 15px;">📋 Requirements:</h3>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; color: #455a64; font-size: 14px;">
-                            <div><strong style="color: #202124; display: block; margin-bottom: 3px;">📍 Location:</strong> NLEX</div>
-                            <div><strong style="color: #202124; display: block; margin-bottom: 3px;">🎯 Type:</strong> Static Billboard</div>
-                            <div><strong style="color: #202124; display: block; margin-bottom: 3px;">💰 Budget:</strong> ₱500K+/month</div>
-                            <div><strong style="color: #202124; display: block; margin-bottom: 3px;">⏱️ Duration:</strong> 12+ months</div>
-                        </div>
-                    </div>
-
-                    <div class="promo-contact">
-                        info&#64;oohphilippines.com
-                        <a href="tel:+639123456789" class="promo-btn promo-btn-secondary">
-                            📱 Call Advertiser
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 
