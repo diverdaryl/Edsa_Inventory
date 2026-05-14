@@ -454,7 +454,7 @@
                 '&mapsUrl='     + encodeURIComponent(mapsUrl) +
                 '&photoUrl='    + encodeURIComponent(photoUrl) +
                 '&details='     + encodeURIComponent(details);
-            await fetch(notifyUrl, { redirect: 'follow' });
+            await fetch(notifyUrl, { method: 'GET', mode: 'no-cors' });
 
             // 4. Show success
             document.getElementById('uploadForm').style.display = 'none';
