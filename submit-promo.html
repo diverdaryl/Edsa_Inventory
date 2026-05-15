@@ -9,100 +9,113 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Segoe UI', sans-serif; background: #f0f7ff; color: #202124; min-height: 100vh; }
-        .nav { background: white; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 10px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 100; }
-        .nav-logo { font-size: 20px; font-weight: 800; color: #1565c0; text-decoration: none; }
-        .nav-back { font-size: 14px; color: #1565c0; text-decoration: none; font-weight: 600; }
-        .nav-back:hover { text-decoration: underline; }
-        .hero { background: linear-gradient(135deg, #6a1b9a 0%, #4a148c 100%); color: white; text-align: center; padding: 48px 24px 40px; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); min-height: 100vh; }
+        .nav-wrapper { position: sticky; top: 0; z-index: 1000; background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .nav-bar { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 12px 24px; gap: 8px; }
+        .nav-logo { font-size: 24px; font-weight: 700; color: #1565c0; letter-spacing: -0.5px; text-decoration: none; }
+        .nav-links { display: flex; gap: 4px; align-items: center; flex-wrap: nowrap; }
+        .nav-link { color: #1565c0; text-decoration: none; font-weight: 600; padding: 7px 13px; border-radius: 7px; background: rgba(255,255,255,0.75); transition: all 0.3s; white-space: nowrap; font-size: 13px; border: none; font-family: inherit; cursor: pointer; }
+        .nav-link:hover { background: white; transform: translateY(-2px); }
+        .nav-link.primary { background: #1565c0; color: white; }
+        .nav-link.primary:hover { background: #0d47a1; }
+        @media (max-width: 768px) { .nav-links { display: none; } }
+        .hero { background: linear-gradient(135deg, #1565c0 0%, #0d47a1 100%); color: white; text-align: center; padding: 48px 24px 40px; }
         .hero h1 { font-size: 28px; font-weight: 800; margin-bottom: 10px; }
         .hero p { font-size: 15px; opacity: 0.85; max-width: 500px; margin: 0 auto; }
-        .form-wrap { max-width: 680px; margin: 40px auto 60px; padding: 0 20px; }
-        .form-card { background: white; border-radius: 16px; padding: 36px; box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
-        .section-label { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; color: #6a1b9a; margin: 28px 0 16px; }
+        .wrap { max-width: 680px; margin: 40px auto 60px; padding: 0 20px; }
+        .card { background: white; border-radius: 16px; padding: 36px; box-shadow: 0 8px 30px rgba(0,0,0,0.08); margin-bottom: 32px; }
+        .section-label { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; color: #1565c0; margin: 28px 0 16px; }
         .section-label:first-child { margin-top: 0; }
         .form-group { margin-bottom: 18px; }
         .form-group label { display: block; font-size: 13px; font-weight: 700; color: #444; margin-bottom: 6px; }
-        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px 14px; border: 1.5px solid #e0e0e0; border-radius: 8px; font-size: 14px; font-family: 'Segoe UI', sans-serif; color: #202124; background: #fafafa; transition: border-color 0.2s; outline: none; }
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: #6a1b9a; background: white; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px 14px; border: 1.5px solid #e0e0e0; border-radius: 8px; font-size: 14px; font-family: inherit; color: #202124; background: #fafafa; outline: none; transition: border-color 0.2s; }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: #1565c0; background: white; }
         .form-group textarea { min-height: 100px; resize: vertical; }
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
         @media (max-width: 540px) { .form-row { grid-template-columns: 1fr; } }
         .divider { border: none; border-top: 1px solid #f0f0f0; margin: 24px 0; }
-        .info-box { background: #f3e5f5; border-radius: 10px; padding: 14px 16px; font-size: 13px; color: #6a1b9a; margin-bottom: 24px; line-height: 1.6; }
+        .info-box { background: #e3f2fd; border-radius: 10px; padding: 14px 16px; font-size: 13px; color: #1565c0; margin-bottom: 24px; line-height: 1.6; }
         #errorMsg { color: #c62828; font-size: 13px; margin-bottom: 12px; display: none; background: #fdecea; padding: 10px 14px; border-radius: 8px; }
-        #progressMsg { color: #6a1b9a; font-size: 13px; margin-bottom: 12px; display: none; }
-        .btn-submit { width: 100%; padding: 15px; background: #6a1b9a; color: white; border: none; border-radius: 10px; font-size: 16px; font-weight: 700; cursor: pointer; font-family: 'Segoe UI', sans-serif; transition: background 0.2s; }
-        .btn-submit:hover { background: #4a148c; }
+        #progressMsg { color: #1565c0; font-size: 13px; margin-bottom: 12px; display: none; }
+        .btn-submit { width: 100%; padding: 15px; background: #1565c0; color: white; border: none; border-radius: 10px; font-size: 16px; font-weight: 700; cursor: pointer; font-family: inherit; transition: background 0.2s; }
+        .btn-submit:hover { background: #0d47a1; }
         .btn-submit:disabled { background: #90a4ae; cursor: not-allowed; }
         .btn-cancel { display: block; text-align: center; margin-top: 12px; color: #888; font-size: 13px; text-decoration: none; }
-        .btn-cancel:hover { color: #6a1b9a; }
         #successWrap { display: none; text-align: center; padding: 20px 0; }
-        #successWrap .check { font-size: 56px; margin-bottom: 16px; }
         #successWrap h2 { color: #2e7d32; font-size: 22px; margin-bottom: 10px; }
         #successWrap p { color: #555; font-size: 15px; line-height: 1.6; margin-bottom: 24px; }
-        .btn-home { display: inline-block; padding: 12px 28px; background: #6a1b9a; color: white; border-radius: 50px; font-weight: 700; text-decoration: none; font-size: 14px; }
+        .btn-home { display: inline-block; padding: 12px 28px; background: #1565c0; color: white; border-radius: 50px; font-weight: 700; text-decoration: none; font-size: 14px; }
+        /* Promos listing */
+        .promo-card { background: white; border-radius: 14px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 24px; }
+        .promo-hdr { background: linear-gradient(135deg, #1565c0, #0d47a1); padding: 20px 24px; position: relative; }
+        .promo-badge { position: absolute; top: 16px; right: 16px; background: #e65100; color: white; font-size: 11px; font-weight: 800; padding: 4px 12px; border-radius: 20px; letter-spacing: 1px; }
+        .promo-op { color: rgba(255,255,255,0.8); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+        .promo-ttl { color: white; font-size: 18px; font-weight: 700; margin-top: 4px; }
+        .promo-val { color: rgba(255,255,255,0.7); font-size: 12px; margin-top: 8px; }
+        .promo-bdy { padding: 20px 24px; }
+        .promo-disc { background: linear-gradient(135deg, #e65100, #ff8f00); border-radius: 10px; padding: 16px; text-align: center; margin-bottom: 16px; }
+        .promo-disc-amt { color: white; font-size: 28px; font-weight: 800; }
+        .promo-disc-dsc { color: rgba(255,255,255,0.85); font-size: 13px; }
+        .promo-desc { color: #555; font-size: 14px; line-height: 1.6; }
+        .promo-contact { margin-top: 14px; padding-top: 14px; border-top: 1px solid #f0f0f0; font-size: 13px; color: #888; }
     </style>
 </head>
 <body>
 
-<nav class="nav">
+<div class="nav-wrapper">
+<div class="nav-bar">
     <a href="index.html" class="nav-logo">OOHPhilippines.com</a>
-    <a href="index.html" class="nav-back">← Back to Directory</a>
-</nav>
-
-<div class="hero">
-    <h1>🎉 Submit Your Billboard Promo</h1>
-    <p>Reach hundreds of advertisers by posting your exclusive billboard deals on OOHPhilippines.com</p>
+    <div class="nav-links">
+        <a href="index.html" class="nav-link">🔍 Search</a>
+        <a href="submit-promo.html" class="nav-link">🎉 Promos</a>
+        <a href="looking-for-billboard.html" class="nav-link">Looking For Sites?</a>
+        <a href="pricing.html" class="nav-link">💎 Pricing</a>
+        <a href="guides.html" class="nav-link">📖 Guides</a>
+        <a href="upload.html" class="nav-link primary" style="padding:6px 12px;">📍 Upload Your Site</a>
+    </div>
+</div>
 </div>
 
-<div class="form-wrap">
-    <div class="form-card">
+<div class="hero">
+    <h1>🎉 Billboard Promos</h1>
+    <p>Exclusive deals from billboard operators across the Philippines</p>
+</div>
 
+<!-- Active Promos -->
+<div class="wrap" style="margin-top:40px;">
+    <h2 style="font-size:22px;font-weight:800;color:#1565c0;text-align:center;margin-bottom:6px;">Active Promotions</h2>
+    <p style="text-align:center;color:#888;font-size:14px;margin-bottom:24px;">Special offers from verified billboard operators</p>
+    <div id="promosContainer"><p style="text-align:center;color:#999;padding:30px;">⏳ Loading promos…</p></div>
+</div>
+
+<!-- Submit Form -->
+<div class="wrap">
+    <div class="card">
         <div id="successWrap">
-            <div class="check">✅</div>
+            <div style="font-size:56px;margin-bottom:16px;">✅</div>
             <h2>Promo Submitted!</h2>
-            <p>Thank you! We've received your promo and will review it within 24-48 hours. It will go live on the platform once approved.</p>
+            <p>Thank you! We'll review your promo within 24-48 hours and notify you once it's live.</p>
             <a href="index.html" class="btn-home">🔍 Browse Directory</a>
         </div>
-
         <form id="promoForm">
-            <div class="info-box">
-                📋 All promos are reviewed by our team before going live. We'll notify you by email once your promo is published.
-            </div>
-
+            <div class="info-box">📋 All promos are reviewed before going live. We'll email you once published.</div>
             <div class="section-label">Operator Details</div>
             <div class="form-group">
                 <label>Company / Operator Name *</label>
                 <input type="text" id="promoOperator" required placeholder="e.g. HD Digital Signs Corporation">
             </div>
             <div class="form-row">
-                <div class="form-group">
-                    <label>Contact Person *</label>
-                    <input type="text" id="promoContact" required placeholder="Your full name">
-                </div>
-                <div class="form-group">
-                    <label>Phone Number *</label>
-                    <input type="tel" id="promoPhone" required placeholder="+63 XXX XXX XXXX">
-                </div>
+                <div class="form-group"><label>Contact Person *</label><input type="text" id="promoContact" required placeholder="Your full name"></div>
+                <div class="form-group"><label>Phone Number *</label><input type="tel" id="promoPhone" required placeholder="+63 XXX XXX XXXX"></div>
             </div>
-            <div class="form-group">
-                <label>Email Address *</label>
-                <input type="email" id="promoEmail" required placeholder="your@email.com">
+            <div class="form-row">
+                <div class="form-group"><label>Email Address *</label><input type="email" id="promoEmail" required placeholder="your@email.com"></div>
+                <div class="form-group"><label>Website</label><input type="text" id="promoWebsite" placeholder="www.yourcompany.com"></div>
             </div>
-            <div class="form-group">
-                <label>Website (optional)</label>
-                <input type="text" id="promoWebsite" placeholder="e.g. www.yourcompany.com">
-            </div>
-
             <hr class="divider">
             <div class="section-label">Promo Details</div>
-
-            <div class="form-group">
-                <label>Promo Title *</label>
-                <input type="text" id="promoTitle" required placeholder="e.g. New Year Special — Digital Billboard Package">
-            </div>
+            <div class="form-group"><label>Promo Title *</label><input type="text" id="promoTitle" required placeholder="e.g. New Year Special — Digital Billboard Package"></div>
             <div class="form-row">
                 <div class="form-group">
                     <label>Promo Badge *</label>
@@ -116,31 +129,15 @@
                         <option value="EXCLUSIVE">💎 Exclusive</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label>Valid Until *</label>
-                    <input type="date" id="promoValidity" required>
-                </div>
+                <div class="form-group"><label>Valid Until *</label><input type="date" id="promoValidity" required></div>
             </div>
             <div class="form-row">
-                <div class="form-group">
-                    <label>Discount Amount *</label>
-                    <input type="text" id="promoDiscount" required placeholder="e.g. 30% OFF or ₱50,000 OFF">
-                </div>
-                <div class="form-group">
-                    <label>Discount Description *</label>
-                    <input type="text" id="promoDiscountDesc" required placeholder="e.g. On 3-month contracts">
-                </div>
+                <div class="form-group"><label>Discount Amount *</label><input type="text" id="promoDiscount" required placeholder="e.g. 30% OFF"></div>
+                <div class="form-group"><label>Discount Description *</label><input type="text" id="promoDiscountDesc" required placeholder="e.g. On 3-month contracts"></div>
             </div>
-            <div class="form-group">
-                <label>Promo Description *</label>
-                <textarea id="promoDescription" required placeholder="Describe your promo offer in detail — what's included, specific sites, terms, etc."></textarea>
-            </div>
-            <div class="form-group">
-                <label>Package Inclusions</label>
-                <textarea id="promoInclusions" placeholder="List what's included (one item per line)"></textarea>
-            </div>
-
-            <div style="margin-top: 28px;">
+            <div class="form-group"><label>Promo Description *</label><textarea id="promoDescription" required placeholder="Describe your promo — sites, terms, inclusions, etc."></textarea></div>
+            <div class="form-group"><label>Package Inclusions</label><textarea id="promoInclusions" placeholder="List what's included (one per line)"></textarea></div>
+            <div style="margin-top:28px;">
                 <p id="errorMsg"></p>
                 <p id="progressMsg"></p>
                 <button type="button" class="btn-submit" id="submitBtn" onclick="submitPromo()">🎉 Submit Promo</button>
@@ -156,102 +153,65 @@
     const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
     emailjs.init('Q1mCYPTXh0omKhAec');
 
-    // Load active promos
     async function loadPromos() {
         var container = document.getElementById('promosContainer');
-        var { data, error } = await _supabase.from('promos').select('*').eq('status','active').order('created_at', { ascending: false });
+        var { data, error } = await _supabase.from('promos').select('*').eq('status','active').order('created_at',{ascending:false});
         if (error || !data || data.length === 0) {
-            container.innerHTML = '<p style="text-align:center;color:#999;padding:30px;">No active promos yet. Be the first to submit!</p>';
+            container.innerHTML = '<p style="text-align:center;color:#999;padding:30px 0;">No active promos yet. Be the first to submit!</p>';
             return;
         }
         container.innerHTML = data.map(function(p) {
-            return '<div style="background:white;border-radius:14px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.08);margin-bottom:24px;">' +
-                '<div style="background:linear-gradient(135deg,#6a1b9a,#4a148c);padding:20px 24px;position:relative;">' +
-                '<span style="position:absolute;top:16px;right:16px;background:#ff6f00;color:white;font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;letter-spacing:1px;">' + (p.badge||'PROMO') + '</span>' +
-                '<div style="color:rgba(255,255,255,0.8);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;">' + (p.operator||'') + '</div>' +
-                '<div style="color:white;font-size:18px;font-weight:700;margin-top:4px;">' + (p.title||'') + '</div>' +
-                '<div style="color:rgba(255,255,255,0.7);font-size:12px;margin-top:8px;">🗓 Valid until ' + (p.validity||'') + '</div>' +
-                '</div>' +
-                '<div style="padding:20px 24px;">' +
-                '<div style="background:linear-gradient(135deg,#ff6f00,#ff8f00);border-radius:10px;padding:16px;text-align:center;margin-bottom:16px;">' +
-                '<div style="color:white;font-size:28px;font-weight:800;">' + (p.discount||'') + '</div>' +
-                '<div style="color:rgba(255,255,255,0.85);font-size:13px;">' + (p.discount_desc||'') + '</div>' +
-                '</div>' +
-                '<p style="color:#555;font-size:14px;line-height:1.6;">' + (p.description||'') + '</p>' +
-                (p.contact ? '<div style="margin-top:14px;padding-top:14px;border-top:1px solid #f0f0f0;font-size:13px;color:#888;">📞 ' + p.contact + (p.email ? ' &nbsp;|&nbsp; ✉️ ' + p.email : '') + '</div>' : '') +
+            return '<div class="promo-card">' +
+                '<div class="promo-hdr"><span class="promo-badge">'+(p.badge||'PROMO')+'</span>' +
+                '<div class="promo-op">'+(p.operator||'')+'</div>' +
+                '<div class="promo-ttl">'+(p.title||'')+'</div>' +
+                '<div class="promo-val">🗓 Valid until '+(p.validity||'')+'</div></div>' +
+                '<div class="promo-bdy"><div class="promo-disc">' +
+                '<div class="promo-disc-amt">'+(p.discount||'')+'</div>' +
+                '<div class="promo-disc-dsc">'+(p.discount_desc||'')+'</div></div>' +
+                '<p class="promo-desc">'+(p.description||'')+'</p>' +
+                (p.contact||p.email?'<div class="promo-contact">'+(p.contact?'📞 '+p.contact:'')+(p.contact&&p.email?' &nbsp;|&nbsp; ':'')+(p.email?'✉️ '+p.email:'')+'</div>':'') +
                 '</div></div>';
         }).join('');
     }
     loadPromos();
 
     async function submitPromo() {
-        var errEl  = document.getElementById('errorMsg');
-        var progEl = document.getElementById('progressMsg');
-        var btn    = document.getElementById('submitBtn');
-        errEl.style.display = 'none';
-
-        var operator    = document.getElementById('promoOperator').value.trim();
-        var contact     = document.getElementById('promoContact').value.trim();
-        var email       = document.getElementById('promoEmail').value.trim();
-        var phone       = document.getElementById('promoPhone').value.trim();
-        var website     = document.getElementById('promoWebsite').value.trim();
-        var title       = document.getElementById('promoTitle').value.trim();
-        var badge       = document.getElementById('promoBadge').value.trim();
-        var validity    = document.getElementById('promoValidity').value.trim();
-        var discount    = document.getElementById('promoDiscount').value.trim();
-        var discountDesc= document.getElementById('promoDiscountDesc').value.trim();
-        var description = document.getElementById('promoDescription').value.trim();
-        var inclusions  = document.getElementById('promoInclusions').value.trim();
-
-        if (!operator || !contact || !email || !phone || !title || !badge || !discount || !discountDesc || !validity || !description) {
-            errEl.textContent = 'Please fill in all required fields marked with *.';
-            errEl.style.display = 'block';
-            return;
+        var errEl=document.getElementById('errorMsg'), progEl=document.getElementById('progressMsg'), btn=document.getElementById('submitBtn');
+        errEl.style.display='none';
+        var operator=document.getElementById('promoOperator').value.trim(),
+            contact=document.getElementById('promoContact').value.trim(),
+            email=document.getElementById('promoEmail').value.trim(),
+            phone=document.getElementById('promoPhone').value.trim(),
+            website=document.getElementById('promoWebsite').value.trim(),
+            title=document.getElementById('promoTitle').value.trim(),
+            badge=document.getElementById('promoBadge').value.trim(),
+            validity=document.getElementById('promoValidity').value.trim(),
+            discount=document.getElementById('promoDiscount').value.trim(),
+            discountDesc=document.getElementById('promoDiscountDesc').value.trim(),
+            description=document.getElementById('promoDescription').value.trim(),
+            inclusions=document.getElementById('promoInclusions').value.trim();
+        if (!operator||!contact||!email||!phone||!title||!badge||!discount||!discountDesc||!validity||!description) {
+            errEl.textContent='Please fill in all required fields marked with *.'; errEl.style.display='block'; return;
         }
-
-        progEl.textContent = '⏳ Submitting your promo…';
-        progEl.style.display = 'block';
-        btn.disabled = true;
-
+        progEl.textContent='⏳ Submitting…'; progEl.style.display='block'; btn.disabled=true;
         try {
-            var exp = new Date(); exp.setFullYear(exp.getFullYear() + 1);
-            var { error } = await _supabase.from('promos').insert([{
-                operator: operator, contact: contact, email: email, phone: phone,
-                title: title, badge: badge, discount: discount, discount_desc: discountDesc,
-                validity: validity, description: description, inclusions: inclusions,
-                website: website, status: 'pending', expires_at: exp.toISOString()
+            var exp=new Date(); exp.setFullYear(exp.getFullYear()+1);
+            var {error}=await _supabase.from('promos').insert([{
+                operator,contact,email,phone,title,badge,discount,discount_desc:discountDesc,
+                validity,description,inclusions,website,status:'pending',expires_at:exp.toISOString()
             }]);
-            if (error) throw new Error('Submission failed: ' + error.message);
-
-            // Email notification
-            emailjs.send('service_zmd0y16', 'template_ojqve59', {
-                type: 'New Promo Submission',
-                name: operator,
-                email: email,
-                message: 'Operator: ' + operator + '\nTitle: ' + title + '\nBadge: ' + badge +
-                         '\nDiscount: ' + discount + '\nValid Until: ' + validity +
-                         '\nDescription: ' + description
-            });
-
-            document.getElementById('promoForm').style.display = 'none';
-            document.getElementById('successWrap').style.display = 'block';
-            progEl.style.display = 'none';
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-
+            if (error) throw new Error(error.message);
+            emailjs.send('service_zmd0y16','template_ojqve59',{type:'New Promo',name:operator,email,message:'Title: '+title+'\nDiscount: '+discount+'\nValid: '+validity});
+            document.getElementById('promoForm').style.display='none';
+            document.getElementById('successWrap').style.display='block';
+            progEl.style.display='none';
+            window.scrollTo({top:0,behavior:'smooth'});
         } catch(err) {
-            progEl.style.display = 'none';
-            btn.disabled = false;
-            errEl.textContent = '❌ ' + (err.message || 'Something went wrong. Please try again.');
-            errEl.style.display = 'block';
+            progEl.style.display='none'; btn.disabled=false;
+            errEl.textContent='❌ '+(err.message||'Something went wrong.'); errEl.style.display='block';
         }
     }
 </script>
-<!-- Active Promos Listing -->
-<div style="max-width:680px;margin:0 auto 60px;padding:0 20px;">
-    <h2 style="font-size:22px;font-weight:800;color:#6a1b9a;margin-bottom:6px;text-align:center;">🎉 Active Promotions</h2>
-    <p style="text-align:center;color:#888;font-size:14px;margin-bottom:24px;">Exclusive deals from billboard operators across the Philippines</p>
-    <div id="promosContainer"><p style="text-align:center;color:#999;padding:30px;">⏳ Loading promos…</p></div>
-</div>
-
 </body>
 </html>

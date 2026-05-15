@@ -3620,12 +3620,6 @@ function opSetFilter(f) {
 // --- Patch showPage ---
 var _origShowPage = showPage;
 showPage = function(pageId) {
-    var promosDisp=document.getElementById('promosDisplay');
-    var inqDisp=document.getElementById('inquiriesDisplay');
-    if(promosDisp)promosDisp.style.display='none';
-    if(inqDisp)inqDisp.style.display='none';
-    if(pageId==='promos'){_origShowPage(pageId);setTimeout(function(){loadPromos();},200);return;}
-    if(pageId==='inquiries'){_origShowPage(pageId);setTimeout(function(){loadInquiries();},200);return;}
     if (pageId === 'operatorLogin') {
         if (opCurrentUser) { showPage('operatorDash'); return; }
     }

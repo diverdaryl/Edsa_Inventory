@@ -4,98 +4,111 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Looking for Billboard / OOH — OOHPhilippines.com</title>
-    <meta name="description" content="Post your billboard requirements and connect with operators across the Philippines on OOHPhilippines.com.">
+    <meta name="description" content="Post your billboard requirements and connect with operators across the Philippines.">
     <link rel="icon" href="favicon.ico">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Segoe UI', sans-serif; background: #f0f7ff; color: #202124; min-height: 100vh; }
-        .nav { background: white; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 10px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 100; }
-        .nav-logo { font-size: 20px; font-weight: 800; color: #1565c0; text-decoration: none; }
-        .nav-back { font-size: 14px; color: #1565c0; text-decoration: none; font-weight: 600; }
-        .nav-back:hover { text-decoration: underline; }
-        .hero { background: linear-gradient(135deg, #e65100 0%, #bf360c 100%); color: white; text-align: center; padding: 48px 24px 40px; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); min-height: 100vh; }
+        .nav-wrapper { position: sticky; top: 0; z-index: 1000; background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .nav-bar { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 12px 24px; gap: 8px; }
+        .nav-logo { font-size: 24px; font-weight: 700; color: #1565c0; letter-spacing: -0.5px; text-decoration: none; }
+        .nav-links { display: flex; gap: 4px; align-items: center; flex-wrap: nowrap; }
+        .nav-link { color: #1565c0; text-decoration: none; font-weight: 600; padding: 7px 13px; border-radius: 7px; background: rgba(255,255,255,0.75); transition: all 0.3s; white-space: nowrap; font-size: 13px; border: none; font-family: inherit; cursor: pointer; }
+        .nav-link:hover { background: white; transform: translateY(-2px); }
+        .nav-link.primary { background: #1565c0; color: white; }
+        .nav-link.primary:hover { background: #0d47a1; }
+        @media (max-width: 768px) { .nav-links { display: none; } }
+        .hero { background: linear-gradient(135deg, #1565c0 0%, #0d47a1 100%); color: white; text-align: center; padding: 48px 24px 40px; }
         .hero h1 { font-size: 28px; font-weight: 800; margin-bottom: 10px; }
         .hero p { font-size: 15px; opacity: 0.85; max-width: 500px; margin: 0 auto; }
-        .form-wrap { max-width: 680px; margin: 40px auto 60px; padding: 0 20px; }
-        .form-card { background: white; border-radius: 16px; padding: 36px; box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
-        .section-label { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; color: #e65100; margin: 28px 0 16px; }
+        .wrap { max-width: 680px; margin: 40px auto 60px; padding: 0 20px; }
+        .card { background: white; border-radius: 16px; padding: 36px; box-shadow: 0 8px 30px rgba(0,0,0,0.08); margin-bottom: 32px; }
+        .section-label { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; color: #1565c0; margin: 28px 0 16px; }
         .section-label:first-child { margin-top: 0; }
         .form-group { margin-bottom: 18px; }
         .form-group label { display: block; font-size: 13px; font-weight: 700; color: #444; margin-bottom: 6px; }
-        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px 14px; border: 1.5px solid #e0e0e0; border-radius: 8px; font-size: 14px; font-family: 'Segoe UI', sans-serif; color: #202124; background: #fafafa; transition: border-color 0.2s; outline: none; }
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: #e65100; background: white; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px 14px; border: 1.5px solid #e0e0e0; border-radius: 8px; font-size: 14px; font-family: inherit; color: #202124; background: #fafafa; outline: none; transition: border-color 0.2s; }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: #1565c0; background: white; }
         .form-group textarea { min-height: 100px; resize: vertical; }
         .form-group small { display: block; color: #999; font-size: 12px; margin-top: 5px; }
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
         @media (max-width: 540px) { .form-row { grid-template-columns: 1fr; } }
         .divider { border: none; border-top: 1px solid #f0f0f0; margin: 24px 0; }
-        .info-box { background: #fff3e0; border-radius: 10px; padding: 14px 16px; font-size: 13px; color: #e65100; margin-bottom: 24px; line-height: 1.6; }
+        .info-box { background: #e3f2fd; border-radius: 10px; padding: 14px 16px; font-size: 13px; color: #1565c0; margin-bottom: 24px; line-height: 1.6; }
         #errorMsg { color: #c62828; font-size: 13px; margin-bottom: 12px; display: none; background: #fdecea; padding: 10px 14px; border-radius: 8px; }
-        #progressMsg { color: #e65100; font-size: 13px; margin-bottom: 12px; display: none; }
-        .btn-submit { width: 100%; padding: 15px; background: #e65100; color: white; border: none; border-radius: 10px; font-size: 16px; font-weight: 700; cursor: pointer; font-family: 'Segoe UI', sans-serif; transition: background 0.2s; }
-        .btn-submit:hover { background: #bf360c; }
+        #progressMsg { color: #1565c0; font-size: 13px; margin-bottom: 12px; display: none; }
+        .btn-submit { width: 100%; padding: 15px; background: #1565c0; color: white; border: none; border-radius: 10px; font-size: 16px; font-weight: 700; cursor: pointer; font-family: inherit; transition: background 0.2s; }
+        .btn-submit:hover { background: #0d47a1; }
         .btn-submit:disabled { background: #90a4ae; cursor: not-allowed; }
         .btn-cancel { display: block; text-align: center; margin-top: 12px; color: #888; font-size: 13px; text-decoration: none; }
-        .btn-cancel:hover { color: #e65100; }
         #successWrap { display: none; text-align: center; padding: 20px 0; }
-        #successWrap .check { font-size: 56px; margin-bottom: 16px; }
         #successWrap h2 { color: #2e7d32; font-size: 22px; margin-bottom: 10px; }
         #successWrap p { color: #555; font-size: 15px; line-height: 1.6; margin-bottom: 24px; }
-        .btn-home { display: inline-block; padding: 12px 28px; background: #e65100; color: white; border-radius: 50px; font-weight: 700; text-decoration: none; font-size: 14px; }
+        .btn-home { display: inline-block; padding: 12px 28px; background: #1565c0; color: white; border-radius: 50px; font-weight: 700; text-decoration: none; font-size: 14px; }
+        /* Inquiries listing */
+        .inq-card { background: white; border-radius: 14px; padding: 22px 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 20px; }
+        .inq-company { font-size: 17px; font-weight: 800; color: #1a237e; }
+        .inq-title { font-size: 14px; color: #e65100; font-weight: 600; margin-top: 2px; }
+        .inq-desc { color: #555; font-size: 13px; margin-top: 12px; line-height: 1.6; }
+        .inq-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+        .inq-tag { font-size: 12px; padding: 4px 10px; border-radius: 20px; }
+        .inq-tag.loc { background: #e3f2fd; color: #1565c0; }
+        .inq-tag.type { background: #e8f5e9; color: #2e7d32; }
+        .inq-tag.bud { background: #fff3e0; color: #e65100; }
+        .inq-date { margin-top: 12px; font-size: 12px; color: #aaa; }
+        .inq-status { background: #e8f5e9; color: #2e7d32; font-size: 11px; font-weight: 800; padding: 4px 12px; border-radius: 20px; white-space: nowrap; }
     </style>
 </head>
 <body>
 
-<nav class="nav">
+<div class="nav-wrapper">
+<div class="nav-bar">
     <a href="index.html" class="nav-logo">OOHPhilippines.com</a>
-    <a href="index.html" class="nav-back">← Back to Directory</a>
-</nav>
+    <div class="nav-links">
+        <a href="index.html" class="nav-link">🔍 Search</a>
+        <a href="submit-promo.html" class="nav-link">🎉 Promos</a>
+        <a href="looking-for-billboard.html" class="nav-link">Looking For Sites?</a>
+        <a href="pricing.html" class="nav-link">💎 Pricing</a>
+        <a href="guides.html" class="nav-link">📖 Guides</a>
+        <a href="upload.html" class="nav-link primary" style="padding:6px 12px;">📍 Upload Your Site</a>
+    </div>
+</div>
+</div>
 
 <div class="hero">
     <h1>📢 Looking for Billboard / OOH?</h1>
-    <p>Post your requirements and let billboard operators across the Philippines reach out to you</p>
+    <p>Post your requirements and let operators across the Philippines reach out to you</p>
 </div>
 
-<div class="form-wrap">
-    <div class="form-card">
+<!-- Active Inquiries -->
+<div class="wrap" style="margin-top:40px;">
+    <h2 style="font-size:22px;font-weight:800;color:#1565c0;text-align:center;margin-bottom:6px;">Recent Advertiser Requirements</h2>
+    <p style="text-align:center;color:#888;font-size:14px;margin-bottom:24px;">Billboard operators: Connect with advertisers looking for your sites</p>
+    <div id="inquiriesContainer"><p style="text-align:center;color:#999;padding:30px;">⏳ Loading requirements…</p></div>
+</div>
 
+<!-- Post Requirements Form -->
+<div class="wrap">
+    <div class="card">
         <div id="successWrap">
-            <div class="check">✅</div>
+            <div style="font-size:56px;margin-bottom:16px;">✅</div>
             <h2>Requirements Posted!</h2>
-            <p>Your billboard requirements are now live on OOHPhilippines.com. Billboard operators will see your post and reach out to you directly via email or phone.</p>
+            <p>Your requirements are now live. Billboard operators will see your post and reach out directly via email or phone.</p>
             <a href="index.html" class="btn-home">🔍 Browse Directory</a>
         </div>
-
         <form id="inquiryForm">
-            <div class="info-box">
-                📢 Your requirements will be posted publicly on OOHPhilippines.com so billboard operators can contact you directly. Posts are active for 30 days.
-            </div>
-
+            <div class="info-box">📢 Your post will be live immediately and visible to all registered billboard operators for 30 days.</div>
             <div class="section-label">Your Details</div>
-            <div class="form-group">
-                <label>Company / Brand Name *</label>
-                <input type="text" id="companyName" required placeholder="e.g. Jollibee Foods Corporation">
-            </div>
+            <div class="form-group"><label>Company / Brand Name *</label><input type="text" id="companyName" required placeholder="e.g. Jollibee Foods Corporation"></div>
             <div class="form-row">
-                <div class="form-group">
-                    <label>Contact Person *</label>
-                    <input type="text" id="contactPerson" required placeholder="Your full name">
-                </div>
-                <div class="form-group">
-                    <label>Phone Number *</label>
-                    <input type="tel" id="phone" required placeholder="+63 XXX XXX XXXX">
-                </div>
+                <div class="form-group"><label>Contact Person *</label><input type="text" id="contactPerson" required placeholder="Your full name"></div>
+                <div class="form-group"><label>Phone Number *</label><input type="tel" id="phone" required placeholder="+63 XXX XXX XXXX"></div>
             </div>
-            <div class="form-group">
-                <label>Email Address *</label>
-                <input type="email" id="email" required placeholder="your@email.com">
-            </div>
-
+            <div class="form-group"><label>Email Address *</label><input type="email" id="email" required placeholder="your@email.com"></div>
             <hr class="divider">
             <div class="section-label">Billboard Requirements</div>
-
             <div class="form-row">
                 <div class="form-group">
                     <label>Preferred Location *</label>
@@ -136,47 +149,15 @@
                         <option value="To Discuss">Prefer to Discuss</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label>Number of Sites Needed</label>
-                    <select id="numSites">
-                        <option value="">Select number</option>
-                        <option value="1">1 site</option>
-                        <option value="2-3">2–3 sites</option>
-                        <option value="4-5">4–5 sites</option>
-                        <option value="6-10">6–10 sites</option>
-                        <option value="10+">10+ sites</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group">
-                    <label>Campaign Start Date *</label>
-                    <input type="date" id="startDate" required>
-                </div>
-                <div class="form-group">
-                    <label>Target Audience</label>
-                    <select id="targetAudience">
-                        <option value="">Select target audience</option>
-                        <option value="Commuters">Commuters</option>
-                        <option value="Motorists">Motorists</option>
-                        <option value="Mall Shoppers">Mall Shoppers</option>
-                        <option value="General Public">General Public</option>
-                        <option value="Business District">Business District Workers</option>
-                        <option value="Mixed">Mixed Audience</option>
-                    </select>
-                </div>
+                <div class="form-group"><label>Campaign Start Date *</label><input type="date" id="startDate" required></div>
             </div>
             <div class="form-group">
                 <label>Specific Billboard Site Codes</label>
                 <input type="text" id="siteCodes" placeholder="e.g. G1096-B, C5-B417 (optional)">
-                <small>📍 Find site codes on billboard cards in our directory. Operators respond faster when specific sites are mentioned.</small>
+                <small>📍 Find site codes on billboard cards in the directory.</small>
             </div>
-            <div class="form-group">
-                <label>Campaign Details *</label>
-                <textarea id="details" required placeholder="Tell us about your campaign — product, timeline, specific requirements, any other details that will help operators respond accurately."></textarea>
-            </div>
-
-            <div style="margin-top: 28px;">
+            <div class="form-group"><label>Campaign Details *</label><textarea id="details" required placeholder="Tell us about your campaign — product, timeline, specific requirements, etc."></textarea></div>
+            <div style="margin-top:28px;">
                 <p id="errorMsg"></p>
                 <p id="progressMsg"></p>
                 <button type="button" class="btn-submit" id="submitBtn" onclick="submitInquiry()">📢 Post My Requirements</button>
@@ -192,113 +173,72 @@
     const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
     emailjs.init('Q1mCYPTXh0omKhAec');
 
-    // Load active inquiries
     async function loadInquiries() {
         var container = document.getElementById('inquiriesContainer');
-        var { data, error } = await _supabase.from('inquiries').select('*').eq('status','active').order('created_at', { ascending: false });
+        var { data, error } = await _supabase.from('inquiries').select('*').eq('status','active').order('created_at',{ascending:false});
         if (error || !data || data.length === 0) {
-            container.innerHTML = '<p style="text-align:center;color:#999;padding:30px;">No active requirements yet. Be the first to post!</p>';
+            container.innerHTML = '<p style="text-align:center;color:#999;padding:30px 0;">No active requirements yet. Be the first to post!</p>';
             return;
         }
         container.innerHTML = data.map(function(inq) {
-            var posted = new Date(inq.created_at).toLocaleDateString('en-PH', { month:'short', day:'numeric', year:'numeric' });
-            return '<div style="background:white;border-radius:14px;padding:22px 24px;box-shadow:0 4px 20px rgba(0,0,0,0.08);margin-bottom:20px;">' +
+            var posted = new Date(inq.created_at).toLocaleDateString('en-PH',{month:'short',day:'numeric',year:'numeric'});
+            return '<div class="inq-card">' +
                 '<div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">' +
-                '<div>' +
-                '<div style="font-size:17px;font-weight:800;color:#1a237e;">' + (inq.company||'') + '</div>' +
-                '<div style="font-size:14px;color:#e65100;font-weight:600;margin-top:2px;">' + (inq.title||'') + '</div>' +
+                '<div><div class="inq-company">'+(inq.company||'')+'</div>' +
+                '<div class="inq-title">'+(inq.title||'')+'</div></div>' +
+                '<span class="inq-status">ACTIVE</span></div>' +
+                '<p class="inq-desc">'+(inq.description||'')+'</p>' +
+                '<div class="inq-tags">' +
+                (inq.location?'<span class="inq-tag loc">📍 '+inq.location+'</span>':'') +
+                (inq.type?'<span class="inq-tag type">📺 '+inq.type+'</span>':'') +
+                (inq.budget?'<span class="inq-tag bud">💰 '+inq.budget+'</span>':'') +
                 '</div>' +
-                '<span style="background:#e8f5e9;color:#2e7d32;font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;white-space:nowrap;">ACTIVE</span>' +
-                '</div>' +
-                '<p style="color:#555;font-size:13px;margin-top:12px;line-height:1.6;">' + (inq.description||'') + '</p>' +
-                '<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;">' +
-                (inq.location ? '<span style="background:#e3f2fd;color:#1565c0;font-size:12px;padding:4px 10px;border-radius:20px;">📍 ' + inq.location + '</span>' : '') +
-                (inq.type ? '<span style="background:#f3e5f5;color:#6a1b9a;font-size:12px;padding:4px 10px;border-radius:20px;">📺 ' + inq.type + '</span>' : '') +
-                (inq.budget ? '<span style="background:#e8f5e9;color:#2e7d32;font-size:12px;padding:4px 10px;border-radius:20px;">💰 ' + inq.budget + '</span>' : '') +
-                '</div>' +
-                '<div style="margin-top:12px;font-size:12px;color:#aaa;">🗓 Posted: ' + posted + '</div>' +
+                '<div class="inq-date">🗓 Posted: '+posted+'</div>' +
                 '</div>';
         }).join('');
     }
     loadInquiries();
 
     async function submitInquiry() {
-        var errEl  = document.getElementById('errorMsg');
-        var progEl = document.getElementById('progressMsg');
-        var btn    = document.getElementById('submitBtn');
-        errEl.style.display = 'none';
-
-        var company       = document.getElementById('companyName').value.trim();
-        var contact       = document.getElementById('contactPerson').value.trim();
-        var email         = document.getElementById('email').value.trim();
-        var phone         = document.getElementById('phone').value.trim();
-        var location      = document.getElementById('location').value.trim();
-        var type          = document.getElementById('billboardType').value.trim();
-        var budget        = document.getElementById('budget').value.trim();
-        var numSites      = document.getElementById('numSites').value.trim();
-        var startDate     = document.getElementById('startDate').value.trim();
-        var targetAudience= document.getElementById('targetAudience').value.trim();
-        var siteCodes     = document.getElementById('siteCodes').value.trim();
-        var details       = document.getElementById('details').value.trim();
-
-        if (!company || !contact || !email || !phone || !location || !type || !details || !startDate) {
-            errEl.textContent = 'Please fill in all required fields marked with *.';
-            errEl.style.display = 'block';
-            return;
+        var errEl=document.getElementById('errorMsg'), progEl=document.getElementById('progressMsg'), btn=document.getElementById('submitBtn');
+        errEl.style.display='none';
+        var company=document.getElementById('companyName').value.trim(),
+            contact=document.getElementById('contactPerson').value.trim(),
+            email=document.getElementById('email').value.trim(),
+            phone=document.getElementById('phone').value.trim(),
+            location=document.getElementById('location').value.trim(),
+            type=document.getElementById('billboardType').value.trim(),
+            budget=document.getElementById('budget').value.trim(),
+            startDate=document.getElementById('startDate').value.trim(),
+            siteCodes=document.getElementById('siteCodes').value.trim(),
+            details=document.getElementById('details').value.trim();
+        if (!company||!contact||!email||!phone||!location||!type||!details||!startDate) {
+            errEl.textContent='Please fill in all required fields marked with *.'; errEl.style.display='block'; return;
         }
-
-        progEl.textContent = '⏳ Posting your requirements…';
-        progEl.style.display = 'block';
-        btn.disabled = true;
-
+        progEl.textContent='⏳ Posting your requirements…'; progEl.style.display='block'; btn.disabled=true;
         try {
-            var exp = new Date(); exp.setDate(exp.getDate() + 30);
-            var fullDetails = details +
-                (siteCodes     ? '\nSpecific Sites: '    + siteCodes     : '') +
-                (numSites      ? '\nNumber of Sites: '   + numSites      : '') +
-                (targetAudience? '\nTarget Audience: '   + targetAudience: '') +
-                (startDate     ? '\nCampaign Start: '    + startDate     : '');
-
-            var { error } = await _supabase.from('inquiries').insert([{
-                company: company,
-                title: 'Looking for ' + type + ' Billboard in ' + location,
-                location: location, type: type, budget: budget,
-                duration: '', description: fullDetails,
-                contact_email: email, contact_phone: phone,
-                expires_at: exp.toISOString(), status: 'active'
+            var exp=new Date(); exp.setDate(exp.getDate()+30);
+            var fullDetails = details + (siteCodes?'\nSpecific Sites: '+siteCodes:'') + (startDate?'\nCampaign Start: '+startDate:'');
+            var {error}=await _supabase.from('inquiries').insert([{
+                company, title:'Looking for '+type+' Billboard in '+location,
+                location, type, budget, description:fullDetails,
+                contact_email:email, contact_phone:phone,
+                expires_at:exp.toISOString(), status:'active'
             }]);
-            if (error) throw new Error('Submission failed: ' + error.message);
-
-            // Email notification
-            emailjs.send('service_zmd0y16', 'template_ojqve59', {
-                type: 'New Looking for Billboard Inquiry',
-                name: company,
-                email: email,
-                message: 'Company: ' + company + '\nContact: ' + contact +
-                         '\nPhone: ' + phone + '\nLocation: ' + location +
-                         '\nType: ' + type + '\nBudget: ' + budget +
-                         '\nDetails: ' + fullDetails
+            if (error) throw new Error(error.message);
+            emailjs.send('service_zmd0y16','template_ojqve59',{
+                type:'New Billboard Inquiry',name:company,email,
+                message:'Company: '+company+'\nContact: '+contact+'\nPhone: '+phone+'\nLocation: '+location+'\nType: '+type+'\nBudget: '+budget
             });
-
-            document.getElementById('inquiryForm').style.display = 'none';
-            document.getElementById('successWrap').style.display = 'block';
-            progEl.style.display = 'none';
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-
+            document.getElementById('inquiryForm').style.display='none';
+            document.getElementById('successWrap').style.display='block';
+            progEl.style.display='none';
+            window.scrollTo({top:0,behavior:'smooth'});
         } catch(err) {
-            progEl.style.display = 'none';
-            btn.disabled = false;
-            errEl.textContent = '❌ ' + (err.message || 'Something went wrong. Please try again.');
-            errEl.style.display = 'block';
+            progEl.style.display='none'; btn.disabled=false;
+            errEl.textContent='❌ '+(err.message||'Something went wrong.'); errEl.style.display='block';
         }
     }
 </script>
-<!-- Active Inquiries Listing -->
-<div style="max-width:680px;margin:0 auto 60px;padding:0 20px;">
-    <h2 style="font-size:22px;font-weight:800;color:#e65100;margin-bottom:6px;text-align:center;">📢 Recent Advertiser Requirements</h2>
-    <p style="text-align:center;color:#888;font-size:14px;margin-bottom:24px;">Billboard operators: Connect with advertisers looking for your sites</p>
-    <div id="inquiriesContainer"><p style="text-align:center;color:#999;padding:30px;">⏳ Loading requirements…</p></div>
-</div>
-
 </body>
 </html>
