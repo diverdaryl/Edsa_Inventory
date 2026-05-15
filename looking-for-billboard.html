@@ -192,6 +192,36 @@
     const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
     emailjs.init('Q1mCYPTXh0omKhAec');
 
+    // Load active inquiries
+    async function loadInquiries() {
+        var container = document.getElementById('inquiriesContainer');
+        var { data, error } = await _supabase.from('inquiries').select('*').eq('status','active').order('created_at', { ascending: false });
+        if (error || !data || data.length === 0) {
+            container.innerHTML = '<p style="text-align:center;color:#999;padding:30px;">No active requirements yet. Be the first to post!</p>';
+            return;
+        }
+        container.innerHTML = data.map(function(inq) {
+            var posted = new Date(inq.created_at).toLocaleDateString('en-PH', { month:'short', day:'numeric', year:'numeric' });
+            return '<div style="background:white;border-radius:14px;padding:22px 24px;box-shadow:0 4px 20px rgba(0,0,0,0.08);margin-bottom:20px;">' +
+                '<div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">' +
+                '<div>' +
+                '<div style="font-size:17px;font-weight:800;color:#1a237e;">' + (inq.company||'') + '</div>' +
+                '<div style="font-size:14px;color:#e65100;font-weight:600;margin-top:2px;">' + (inq.title||'') + '</div>' +
+                '</div>' +
+                '<span style="background:#e8f5e9;color:#2e7d32;font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;white-space:nowrap;">ACTIVE</span>' +
+                '</div>' +
+                '<p style="color:#555;font-size:13px;margin-top:12px;line-height:1.6;">' + (inq.description||'') + '</p>' +
+                '<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;">' +
+                (inq.location ? '<span style="background:#e3f2fd;color:#1565c0;font-size:12px;padding:4px 10px;border-radius:20px;">📍 ' + inq.location + '</span>' : '') +
+                (inq.type ? '<span style="background:#f3e5f5;color:#6a1b9a;font-size:12px;padding:4px 10px;border-radius:20px;">📺 ' + inq.type + '</span>' : '') +
+                (inq.budget ? '<span style="background:#e8f5e9;color:#2e7d32;font-size:12px;padding:4px 10px;border-radius:20px;">💰 ' + inq.budget + '</span>' : '') +
+                '</div>' +
+                '<div style="margin-top:12px;font-size:12px;color:#aaa;">🗓 Posted: ' + posted + '</div>' +
+                '</div>';
+        }).join('');
+    }
+    loadInquiries();
+
     async function submitInquiry() {
         var errEl  = document.getElementById('errorMsg');
         var progEl = document.getElementById('progressMsg');
@@ -263,5 +293,12 @@
         }
     }
 </script>
+<!-- Active Inquiries Listing -->
+<div style="max-width:680px;margin:0 auto 60px;padding:0 20px;">
+    <h2 style="font-size:22px;font-weight:800;color:#e65100;margin-bottom:6px;text-align:center;">📢 Recent Advertiser Requirements</h2>
+    <p style="text-align:center;color:#888;font-size:14px;margin-bottom:24px;">Billboard operators: Connect with advertisers looking for your sites</p>
+    <div id="inquiriesContainer"><p style="text-align:center;color:#999;padding:30px;">⏳ Loading requirements…</p></div>
+</div>
+
 </body>
 </html>

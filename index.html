@@ -1854,8 +1854,8 @@
     <div class="nav-logo" onclick="showPage('home')" style="display:flex;align-items:center;gap:8px;">OOHPhilippines.com</div>
     <div class="nav-links">
         <button class="nav-link" onclick="showPage('home')">🔍 Search</button>
-        <button class="nav-link" onclick="showPage('promos')" id="promosNavBtn">🎉 Promos <span id="promosBadge" style="display:none;background:#e65100;color:white;font-size:10px;font-weight:700;padding:2px 7px;border-radius:10px;margin-left:4px;vertical-align:middle;"></span></button>
-        <button class="nav-link" onclick="showPage('inquiries')" id="inquiriesNavBtn">Looking For Sites? <span id="inquiriesBadge" style="display:none;background:#e65100;color:white;font-size:10px;font-weight:700;padding:2px 7px;border-radius:10px;margin-left:4px;vertical-align:middle;"></span></button>
+        <a href="submit-promo.html" class="nav-link" style="text-decoration:none;">🎉 Promos</a>
+        <a href="looking-for-billboard.html" class="nav-link" style="text-decoration:none;">Looking For Sites?</a>
         <a href="pricing.html" class="nav-link">💎 Pricing</a>
         <a href="/guides.html" class="nav-link">📖 Guides</a>
         <button class="nav-link" onclick="showPage('about')">About Us</button>
@@ -1887,8 +1887,8 @@
 </div>
 <div class="mobile-dropdown" id="mobileDropdown">
     <button onclick="showPage('home'); closeMobileMenu()">🔍 Search</button>
-    <button onclick="showPage('promos'); closeMobileMenu()">🎉 Promos <span id="promosBadgeMobile" style="display:none;background:#e65100;color:white;font-size:10px;font-weight:700;padding:2px 7px;border-radius:10px;margin-left:4px;vertical-align:middle;"></span></button>
-    <button onclick="showPage('inquiries'); closeMobileMenu()">Looking For Sites? <span id="inquiriesBadgeMobile" style="display:none;background:#e65100;color:white;font-size:10px;font-weight:700;padding:2px 7px;border-radius:10px;margin-left:4px;vertical-align:middle;"></span></button>
+    <a href="submit-promo.html" style="display:block;padding:12px 20px;color:#333;text-decoration:none;font-weight:600;">🎉 Promos</a>
+    <a href="looking-for-billboard.html" style="display:block;padding:12px 20px;color:#333;text-decoration:none;font-weight:600;">Looking For Sites?</a>
     <a href="pricing.html" class="nav-link" style="display:block;text-align:left;">💎 Pricing</a>
     <a href="/guides.html" class="nav-link" style="display:block;text-align:left;">📖 Guides</a>
     <button onclick="showPage('about'); closeMobileMenu()">About Us</button>
@@ -2008,30 +2008,10 @@
 </div>
 
 <!-- Promos Page -->
-<div id="promosPage" class="page">
-    <div class="promos-container">
-        <div class="promos-header">
-            <h1>🎉 Special Promotions</h1>
-            <p>Exclusive deals from billboard operators across the Philippines</p>
-        </div>
-        <div style="text-align:center; margin-bottom:30px;">
-            <a href="submit-promo.html" class="add-promo-btn" style="text-decoration:none;">🎉 Submit Your Promo</a>
-        </div>
-        <div id="promosList"></div>
-    </div>
-</div>
 
 <!-- Promos Display (outside page for dynamic loading) -->
-<div id="promosDisplay" style="display:none;max-width:900px;margin:0 auto;padding:0 20px 40px;"></div>
 
 <!-- Inquiries Display (outside page for dynamic loading) -->
-<div id="inquiriesDisplay" style="display:none;max-width:900px;margin:0 auto;padding:0 20px 40px;">
-    <div style="text-align:center;margin:40px 0 24px;">
-        <h2 style="color:#1565c0;font-size:28px;margin-bottom:8px;">Recent Advertiser Requirements</h2>
-        <p style="color:#666;font-size:15px;">Billboard operators: Connect with advertisers looking for your sites</p>
-    </div>
-    <div id="inquiriesList"></div>
-</div>
 
 <div class="cookie-banner" id="cookieBanner">
     <div class="cookie-content">
@@ -2134,66 +2114,8 @@
 </div>
      
 <!-- Inventory Page -->
-<div id="inventoryPage" class="page">
-    <div class="inventory-container">
-        <h1 class="inventory-title">Billboard Inventory</h1>
-        <div style="text-align:center; margin-bottom: 20px;">
-            <button onclick="goToSearch()" style="padding: 12px 28px; background: #1565c0; color: white; border: none; border-radius: 50px; font-size: 15px; font-weight: 600; cursor: pointer; box-shadow: 0 4px 14px rgba(21,101,192,0.3); transition: all 0.3s;" onmouseover="this.style.background='#0d47a1';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#1565c0';this.style.transform='translateY(0)'">🔍 Search Billboards</button>
-        </div>
-        <div style="text-align:center; background:#fff3cd; border:1px solid #ffc107; border-radius:10px; padding:12px 20px; margin-bottom:20px; font-size:14px; color:#856404;">
-            💡 <strong>Best viewed on a desktop or laptop browser</strong> for the full Google Street View experience.
-        </div>
-        <p id="searchPrompt" style="text-align:center;color:#1565c0;font-size:16px;margin-bottom:30px;">Use the search bar on the home page to find billboard sites.</p>
-        <div id="resultCount" style="text-align:center;color:#1565c0;font-weight:600;font-size:14px;margin-bottom:12px;"></div>
-        <div id="refreshAvailBtn" style="display:none;text-align:center;margin-bottom:16px;">
-            <button onclick="subRefreshAvailability()" id="refreshAvailBtnEl"
-                style="padding:9px 22px;background:#e8f5e9;color:#2e7d32;border:1px solid #a5d6a7;
-                border-radius:50px;font-size:13px;font-weight:700;cursor:pointer;
-                font-family:'Segoe UI',sans-serif;transition:all 0.2s;"
-                onmouseover="this.style.background='#4caf50';this.style.color='white';"
-                onmouseout="this.style.background='#e8f5e9';this.style.color='#2e7d32';">
-                &#x1F504; Refresh Availability
-            </button>
-        </div>
-        
-        <div id="billboardContainer"></div>
-
-        
-        <div style="text-align:center; margin:20px 0 40px 0;">
-            <button id="loadMoreBtn" onclick="showMore()" style="display:none; padding:12px 35px; background:#1565c0; color:white; border:none; border-radius:50px; font-size:15px; font-weight:600; cursor:pointer; box-shadow:0 4px 14px rgba(21,101,192,0.3);">Load More ↓</button>
-        </div>
-
-        
-        <div id="loadingIndicator" style="text-align:center; padding:40px; color:#1565c0; font-size:16px;">
-            ⏳ Loading billboards...
-        </div>
-
-    </div>
-</div>
 
 <!-- Advertiser Inquiries Page -->
-<div id="inquiriesPage" class="page">
-    <div class="promos-container">
-        <div class="promos-header">
-            <h1>📢 Looking for Billboard Sites?</h1>
-            <p>Post your requirements and connect with billboard operators across the Philippines</p>
-        </div>
-
-        
-        <div class="add-promo-section">
-            <h2>Advertiser?</h2>
-            <p>Post your billboard requirements and let operators reach out to you</p>
-            <a href="looking-for-billboard.html" class="add-promo-btn" style="text-decoration:none;">📢 Post Your Requirements</a>
-        </div>
-
-        
-        <div style="text-align: center; margin: 40px 0 30px 0;">
-            <h2 style="color: #1565c0; font-size: 32px; margin-bottom: 10px;">Recent Advertiser Requirements</h2>
-            <p style="color: #666; font-size: 16px;">Billboard operators: Connect with advertisers looking for your sites</p>
-        </div>
-
-    </div>
-</div>
 
 <!-- Upload Site Page -->
 
@@ -2458,9 +2380,9 @@
                     <button onclick="showPage('inventory')" style="padding: 15px 30px; background: #1565c0; color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 16px;">
                         Search
                     </button>
-                    <button onclick="showPage('inquiries')" style="padding: 15px 30px; background: white; color: #1565c0; border: 2px solid #1565c0; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 16px;">
+                    <a href="looking-for-billboard.html" style="padding: 15px 30px; background: white; color: #1565c0; border: 2px solid #1565c0; border-radius: 8px; font-weight: 600; font-size: 16px; text-decoration:none; display:inline-block;">
                         Post Requirements
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>
@@ -3096,8 +3018,6 @@ function loadBillboards() {
             if (typeof sortFeaturedFirst === 'function' && allMatches.length > 0) {
                 sortFeaturedFirst();
             }
-            if(typeof updatePromosBadge==='function') updatePromosBadge();
-            if(typeof updateInquiriesBadge==='function') updateInquiriesBadge();
 
             // Check for ?signup=1 or ?login=1 URL param
             var urlParams2 = new URLSearchParams(window.location.search);
@@ -3129,58 +3049,6 @@ function openLightbox(src) {
 }
 async
 async
-async function loadPromos(){
-    var display=document.getElementById('promosDisplay');
-    var container=document.getElementById('promosList');
-    if(!container)return;
-    if(display)display.style.display='block';
-    container.innerHTML='<p style="text-align:center;color:#888;padding:30px;">Loading promos...</p>';
-    var {data,error}=await _supabase.from('promos').select('*').eq('status','active').order('created_at',{ascending:false});
-    if(error||!data||data.length===0){container.innerHTML='<p style="text-align:center;color:#888;padding:20px;">No active promos yet.</p>';return;}
-    container.innerHTML=data.map(function(p){
-        var inclList='';
-        if(p.inclusions){var items=p.inclusions.split('\n').filter(function(s){return s.trim();});inclList='<div class="promo-features"><h3>Package Includes:</h3><ul>'+items.map(function(item){return '<li>'+item.trim()+'</li>';}).join('')+'</ul></div>';}
-        return '<div class="promo-card"><div class="promo-badge">'+(p.badge||'PROMO')+'</div>'+
-            '<div class="promo-header"><div class="promo-operator">'+(p.operator||'')+'</div><div class="promo-title">'+(p.title||'')+'</div><div class="promo-validity">Valid until: '+(p.validity||'')+'</div></div>'+
-            '<div class="promo-body"><div class="promo-description">'+(p.description||'')+'</div>'+
-            '<div class="promo-discount"><div class="discount-amount">'+(p.discount||'')+'</div><div class="discount-text">'+(p.discount_desc||'')+'</div></div>'+
-            inclList+'<div class="promo-contact">'+
-            (p.email?'<a href="mailto:'+p.email+'" class="promo-btn promo-btn-primary">📧 Get This Deal</a>':'')+
-            (p.phone?'<a href="tel:'+p.phone+'" class="promo-btn promo-btn-secondary">📱 Call Now</a>':'')+
-            (p.website?'<a href="'+p.website+'" target="_blank" class="promo-btn promo-btn-secondary">🌐 Visit Website</a>':'')+
-            '</div></div></div>';
-    }).join('');
-}
-async function loadInquiries(){
-    var display=document.getElementById('inquiriesDisplay');
-    var container=document.getElementById('inquiriesList');
-    if(!container)return;
-    if(display)display.style.display='block';
-    container.innerHTML='<p style="text-align:center;color:#888;padding:30px;">Loading requirements...</p>';
-    var now=new Date().toISOString();
-    var {data,error}=await _supabase.from('inquiries').select('*').eq('status','active').gt('expires_at',now).order('created_at',{ascending:false});
-    if(error||!data||data.length===0){container.innerHTML='<p style="text-align:center;color:#888;padding:20px;">No active inquiries yet.</p>';return;}
-    container.innerHTML=data.map(function(q){
-        var posted=new Date(q.created_at).toLocaleDateString('en-PH',{year:'numeric',month:'short',day:'numeric'});
-        return '<div class="promo-card"><div class="promo-badge" style="background:linear-gradient(135deg,#4caf50,#66bb6a);">ACTIVE</div>'+
-            '<div class="promo-header" style="background:linear-gradient(135deg,#1565c0,#0d47a1);">'+
-            '<div class="promo-operator">'+(q.company||'')+'</div><div class="promo-title">'+(q.title||'')+'</div><div class="promo-validity">Posted: '+posted+'</div></div>'+
-            '<div class="promo-body"><div class="promo-description">'+(q.description||'').replace(/\n/g,'<br>')+'</div>'+
-            '<div style="background:#f8f9fa;border-radius:10px;padding:20px;margin-bottom:25px;">'+
-            '<h3 style="color:#1565c0;font-size:16px;margin-bottom:15px;">Requirements:</h3>'+
-            '<div style="display:grid;grid-template-columns:1fr 1fr;gap:15px;color:#455a64;font-size:14px;">'+
-            '<div><strong>Location:</strong> '+(q.location||'N/A')+'</div><div><strong>Type:</strong> '+(q.type||'N/A')+'</div>'+
-            '<div><strong>Budget:</strong> '+(q.budget||'To Discuss')+'</div><div><strong>Duration:</strong> '+(q.duration||'To Discuss')+'</div>'+
-            '</div></div><div class="promo-contact">'+
-            (q.contact_email?'<a href="mailto:'+q.contact_email+'" class="promo-btn">📧 Email Advertiser</a>':'')+
-            (q.contact_phone?'<a href="tel:'+q.contact_phone+'" class="promo-btn promo-btn-secondary">📱 Call Advertiser</a>':'')+
-            '</div></div></div>';
-    }).join('');
-}
-function sendEmailNotification(type,name,email,message){
-    emailjs.send('service_zmd0y16','template_ojqve59',{type:type,name:name,email:email,message:message})
-    .then(function(){console.log('Email sent!');},function(err){console.log('Email failed:',err);});
-}
 function toggleLoginMenu() {
     var menu = document.getElementById('navLoginMenu');
     if (menu) menu.classList.toggle('open');
@@ -4967,37 +4835,6 @@ function showUpgradePrompt() {
     var counter = document.getElementById('resultCount');
     if (counter) counter.textContent = '';
 }
-
-async function updatePromosBadge() {
-    var {data, error} = await _supabase.from('promos').select('id').eq('status','active');
-    if (error || !data) return;
-    var count = data.length;
-    var badge = document.getElementById('promosBadge');
-    var badgeMobile = document.getElementById('promosBadgeMobile');
-    if (count > 0) {
-        if (badge) { badge.textContent = count; badge.style.display = 'inline-block'; }
-        if (badgeMobile) { badgeMobile.textContent = count; badgeMobile.style.display = 'inline-block'; }
-    } else {
-        if (badge) badge.style.display = 'none';
-        if (badgeMobile) badgeMobile.style.display = 'none';
-    }
-}
-async function updateInquiriesBadge() {
-    var now = new Date().toISOString();
-    var {data, error} = await _supabase.from('inquiries').select('id').eq('status','active').gt('expires_at',now);
-    if (error || !data) return;
-    var count = data.length;
-    var badge = document.getElementById('inquiriesBadge');
-    var badgeMobile = document.getElementById('inquiriesBadgeMobile');
-    if (count > 0) {
-        if (badge) { badge.textContent = count; badge.style.display = 'inline-block'; }
-        if (badgeMobile) { badgeMobile.textContent = count; badgeMobile.style.display = 'inline-block'; }
-    } else {
-        if (badge) badge.style.display = 'none';
-        if (badgeMobile) badgeMobile.style.display = 'none';
-    }
-}
-
 </script>
 
 <!-- ═══════════════════════════════════════════════════════ -->

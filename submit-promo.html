@@ -156,6 +156,34 @@
     const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
     emailjs.init('Q1mCYPTXh0omKhAec');
 
+    // Load active promos
+    async function loadPromos() {
+        var container = document.getElementById('promosContainer');
+        var { data, error } = await _supabase.from('promos').select('*').eq('status','active').order('created_at', { ascending: false });
+        if (error || !data || data.length === 0) {
+            container.innerHTML = '<p style="text-align:center;color:#999;padding:30px;">No active promos yet. Be the first to submit!</p>';
+            return;
+        }
+        container.innerHTML = data.map(function(p) {
+            return '<div style="background:white;border-radius:14px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.08);margin-bottom:24px;">' +
+                '<div style="background:linear-gradient(135deg,#6a1b9a,#4a148c);padding:20px 24px;position:relative;">' +
+                '<span style="position:absolute;top:16px;right:16px;background:#ff6f00;color:white;font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;letter-spacing:1px;">' + (p.badge||'PROMO') + '</span>' +
+                '<div style="color:rgba(255,255,255,0.8);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;">' + (p.operator||'') + '</div>' +
+                '<div style="color:white;font-size:18px;font-weight:700;margin-top:4px;">' + (p.title||'') + '</div>' +
+                '<div style="color:rgba(255,255,255,0.7);font-size:12px;margin-top:8px;">🗓 Valid until ' + (p.validity||'') + '</div>' +
+                '</div>' +
+                '<div style="padding:20px 24px;">' +
+                '<div style="background:linear-gradient(135deg,#ff6f00,#ff8f00);border-radius:10px;padding:16px;text-align:center;margin-bottom:16px;">' +
+                '<div style="color:white;font-size:28px;font-weight:800;">' + (p.discount||'') + '</div>' +
+                '<div style="color:rgba(255,255,255,0.85);font-size:13px;">' + (p.discount_desc||'') + '</div>' +
+                '</div>' +
+                '<p style="color:#555;font-size:14px;line-height:1.6;">' + (p.description||'') + '</p>' +
+                (p.contact ? '<div style="margin-top:14px;padding-top:14px;border-top:1px solid #f0f0f0;font-size:13px;color:#888;">📞 ' + p.contact + (p.email ? ' &nbsp;|&nbsp; ✉️ ' + p.email : '') + '</div>' : '') +
+                '</div></div>';
+        }).join('');
+    }
+    loadPromos();
+
     async function submitPromo() {
         var errEl  = document.getElementById('errorMsg');
         var progEl = document.getElementById('progressMsg');
@@ -218,5 +246,12 @@
         }
     }
 </script>
+<!-- Active Promos Listing -->
+<div style="max-width:680px;margin:0 auto 60px;padding:0 20px;">
+    <h2 style="font-size:22px;font-weight:800;color:#6a1b9a;margin-bottom:6px;text-align:center;">🎉 Active Promotions</h2>
+    <p style="text-align:center;color:#888;font-size:14px;margin-bottom:24px;">Exclusive deals from billboard operators across the Philippines</p>
+    <div id="promosContainer"><p style="text-align:center;color:#999;padding:30px;">⏳ Loading promos…</p></div>
+</div>
+
 </body>
 </html>
