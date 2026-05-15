@@ -182,6 +182,14 @@
         }
         container.innerHTML = data.map(function(inq) {
             var posted = new Date(inq.created_at).toLocaleDateString('en-PH',{month:'short',day:'numeric',year:'numeric'});
+            var contactBtns = '';
+            if (inq.contact_phone) {
+                contactBtns += '<a href="sms:' + inq.contact_phone + '" style="display:inline-flex;align-items:center;gap:5px;padding:7px 14px;background:#e3f2fd;color:#1565c0;border-radius:20px;font-size:12px;font-weight:700;text-decoration:none;">💬 SMS</a>';
+                contactBtns += '<a href="https://viber.com/+' + inq.contact_phone.replace(/[^0-9]/g,'') + '" target="_blank" style="display:inline-flex;align-items:center;gap:5px;padding:7px 14px;background:#f3e5f5;color:#7b1fa2;border-radius:20px;font-size:12px;font-weight:700;text-decoration:none;">📲 Viber</a>';
+            }
+            if (inq.contact_email) {
+                contactBtns += '<a href="mailto:' + inq.contact_email + '" style="display:inline-flex;align-items:center;gap:5px;padding:7px 14px;background:#e8f5e9;color:#2e7d32;border-radius:20px;font-size:12px;font-weight:700;text-decoration:none;">✉️ Email</a>';
+            }
             return '<div class="inq-card">' +
                 '<div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">' +
                 '<div><div class="inq-company">'+(inq.company||'')+'</div>' +
@@ -193,6 +201,7 @@
                 (inq.type?'<span class="inq-tag type">📺 '+inq.type+'</span>':'') +
                 (inq.budget?'<span class="inq-tag bud">💰 '+inq.budget+'</span>':'') +
                 '</div>' +
+                (contactBtns ? '<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;padding-top:14px;border-top:1px solid #f0f0f0;">' + contactBtns + '</div>' : '') +
                 '<div class="inq-date">🗓 Posted: '+posted+'</div>' +
                 '</div>';
         }).join('');
