@@ -184,26 +184,36 @@
             var posted = new Date(inq.created_at).toLocaleDateString('en-PH',{month:'short',day:'numeric',year:'numeric'});
             var contactBtns = '';
             if (inq.contact_phone) {
-                contactBtns += '<a href="sms:' + inq.contact_phone + '" style="display:inline-flex;align-items:center;gap:5px;padding:7px 14px;background:#e3f2fd;color:#1565c0;border-radius:20px;font-size:12px;font-weight:700;text-decoration:none;">💬 SMS</a>';
-                contactBtns += '<a href="https://viber.com/+' + inq.contact_phone.replace(/[^0-9]/g,'') + '" target="_blank" style="display:inline-flex;align-items:center;gap:5px;padding:7px 14px;background:#f3e5f5;color:#7b1fa2;border-radius:20px;font-size:12px;font-weight:700;text-decoration:none;">📲 Viber</a>';
+                contactBtns += '<a href="sms:' + inq.contact_phone + '" style="display:inline-flex;align-items:center;gap:5px;padding:8px 16px;background:#e3f2fd;color:#1565c0;border-radius:20px;font-size:13px;font-weight:700;text-decoration:none;">💬 SMS</a>';
+                contactBtns += '<a href="viber://chat?number=' + inq.contact_phone.replace(/[^0-9+]/g,'') + '" style="display:inline-flex;align-items:center;gap:5px;padding:8px 16px;background:#f3e5f5;color:#7b1fa2;border-radius:20px;font-size:13px;font-weight:700;text-decoration:none;">📲 Viber</a>';
             }
             if (inq.contact_email) {
-                contactBtns += '<a href="mailto:' + inq.contact_email + '" style="display:inline-flex;align-items:center;gap:5px;padding:7px 14px;background:#e8f5e9;color:#2e7d32;border-radius:20px;font-size:12px;font-weight:700;text-decoration:none;">✉️ Email</a>';
+                contactBtns += '<a href="mailto:' + inq.contact_email + '" style="display:inline-flex;align-items:center;gap:5px;padding:8px 16px;background:#e8f5e9;color:#2e7d32;border-radius:20px;font-size:13px;font-weight:700;text-decoration:none;">✉️ Email</a>';
             }
-            return '<div class="inq-card">' +
-                '<div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">' +
-                '<div><div class="inq-company">'+(inq.company||'')+'</div>' +
-                '<div class="inq-title">'+(inq.title||'')+'</div></div>' +
-                '<span class="inq-status">ACTIVE</span></div>' +
-                '<p class="inq-desc">'+(inq.description||'')+'</p>' +
-                '<div class="inq-tags">' +
-                (inq.location?'<span class="inq-tag loc">📍 '+inq.location+'</span>':'') +
-                (inq.type?'<span class="inq-tag type">📺 '+inq.type+'</span>':'') +
-                (inq.budget?'<span class="inq-tag bud">💰 '+inq.budget+'</span>':'') +
+            return '<div style="background:white;border-radius:14px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.08);margin-bottom:24px;position:relative;">' +
+                // Badge
+                '<div style="position:absolute;top:16px;right:16px;background:linear-gradient(135deg,#4caf50,#66bb6a);color:white;font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;letter-spacing:1px;">ACTIVE</div>' +
+                // Header
+                '<div style="background:linear-gradient(135deg,#1565c0,#0d47a1);padding:20px 24px;">' +
+                '<div style="color:rgba(255,255,255,0.8);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;">' + (inq.company||'') + '</div>' +
+                '<div style="color:white;font-size:18px;font-weight:700;margin-top:4px;padding-right:80px;">' + (inq.title||'Looking for Billboard') + '</div>' +
+                '<div style="color:rgba(255,255,255,0.7);font-size:12px;margin-top:8px;">📅 Posted: ' + posted + '</div>' +
                 '</div>' +
-                (contactBtns ? '<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;padding-top:14px;border-top:1px solid #f0f0f0;">' + contactBtns + '</div>' : '') +
-                '<div class="inq-date">🗓 Posted: '+posted+'</div>' +
-                '</div>';
+                // Body
+                '<div style="padding:20px 24px;">' +
+                '<p style="color:#555;font-size:14px;line-height:1.6;margin-bottom:20px;">' + (inq.description||'') + '</p>' +
+                // Requirements grid
+                '<div style="background:#f8f9fa;border-radius:10px;padding:16px;margin-bottom:20px;">' +
+                '<h3 style="color:#1565c0;font-size:14px;font-weight:700;margin-bottom:12px;">📋 Requirements:</h3>' +
+                '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;color:#455a64;font-size:13px;">' +
+                (inq.location ? '<div><strong style="color:#202124;display:block;margin-bottom:2px;">📍 Location:</strong>' + inq.location + '</div>' : '') +
+                (inq.type ? '<div><strong style="color:#202124;display:block;margin-bottom:2px;">🎯 Type:</strong>' + inq.type + '</div>' : '') +
+                (inq.budget ? '<div><strong style="color:#202124;display:block;margin-bottom:2px;">💰 Budget:</strong>' + inq.budget + '</div>' : '') +
+                (inq.duration ? '<div><strong style="color:#202124;display:block;margin-bottom:2px;">⏱️ Duration:</strong>' + inq.duration + '</div>' : '') +
+                '</div></div>' +
+                // Contact buttons
+                (contactBtns ? '<div style="display:flex;flex-wrap:wrap;gap:8px;">' + contactBtns + '</div>' : '') +
+                '</div></div>';
         }).join('');
     }
     loadInquiries();
