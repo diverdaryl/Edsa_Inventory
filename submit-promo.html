@@ -161,16 +161,37 @@
             return;
         }
         container.innerHTML = data.map(function(p) {
+            var inclusionsList = '';
+            if (p.inclusions) {
+                var items = p.inclusions.split('\n').filter(function(l){ return l.trim(); });
+                if (items.length > 0) {
+                    inclusionsList = '<div style="margin-bottom:20px;">' +
+                        '<h3 style="color:#1565c0;font-size:15px;font-weight:700;margin-bottom:10px;">Package Includes:</h3>' +
+                        '<ul style="list-style:none;padding:0;margin:0;">' +
+                        items.map(function(item){ return '<li style="padding:5px 0;color:#555;font-size:14px;display:flex;gap:8px;"><span style="color:#1565c0;">✓</span>' + item.trim() + '</li>'; }).join('') +
+                        '</ul></div>';
+                }
+            }
+            var contactBtns = '';
+            if (p.email) contactBtns += '<a href="mailto:' + p.email + '" style="display:inline-flex;align-items:center;gap:6px;padding:10px 18px;background:#e8f5e9;color:#2e7d32;border-radius:8px;font-size:13px;font-weight:700;text-decoration:none;">✉️ Email</a>';
+            if (p.phone) {
+                contactBtns += '<a href="sms:' + p.phone + '" style="display:inline-flex;align-items:center;gap:6px;padding:10px 18px;background:#e3f2fd;color:#1565c0;border-radius:8px;font-size:13px;font-weight:700;text-decoration:none;">💬 SMS</a>';
+                contactBtns += '<a href="viber://chat?number=' + p.phone.replace(/[^0-9+]/g,'') + '" style="display:inline-flex;align-items:center;gap:6px;padding:10px 18px;background:#f3e5f5;color:#7b1fa2;border-radius:8px;font-size:13px;font-weight:700;text-decoration:none;">📲 Viber</a>';
+                contactBtns += '<a href="tel:' + p.phone + '" style="display:inline-flex;align-items:center;gap:6px;padding:10px 18px;background:#f5f5f5;color:#333;border-radius:8px;font-size:13px;font-weight:700;text-decoration:none;">📱 Call</a>';
+            }
+            if (p.website) contactBtns += '<a href="' + (p.website.startsWith('http')?p.website:'https://'+p.website) + '" target="_blank" style="display:inline-flex;align-items:center;gap:6px;padding:10px 18px;background:#fff3e0;color:#e65100;border-radius:8px;font-size:13px;font-weight:700;text-decoration:none;">🌐 Website</a>';
+
             return '<div class="promo-card">' +
                 '<div class="promo-hdr"><span class="promo-badge">'+(p.badge||'PROMO')+'</span>' +
                 '<div class="promo-op">'+(p.operator||'')+'</div>' +
                 '<div class="promo-ttl">'+(p.title||'')+'</div>' +
-                '<div class="promo-val">🗓 Valid until '+(p.validity||'')+'</div></div>' +
-                '<div class="promo-bdy"><div class="promo-disc">' +
-                '<div class="promo-disc-amt">'+(p.discount||'')+'</div>' +
+                '<div class="promo-val">⏰ Valid until '+(p.validity||'')+'</div></div>' +
+                '<div class="promo-bdy">' +
+                '<p class="promo-desc" style="margin-bottom:20px;">'+(p.description||'')+'</p>' +
+                '<div class="promo-disc"><div class="promo-disc-amt">'+(p.discount||'')+'</div>' +
                 '<div class="promo-disc-dsc">'+(p.discount_desc||'')+'</div></div>' +
-                '<p class="promo-desc">'+(p.description||'')+'</p>' +
-                (p.contact||p.email?'<div class="promo-contact">'+(p.contact?'📞 '+p.contact:'')+(p.contact&&p.email?' &nbsp;|&nbsp; ':'')+(p.email?'✉️ '+p.email:'')+'</div>':'') +
+                inclusionsList +
+                (contactBtns ? '<div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;padding-top:20px;border-top:1px solid #f0f0f0;">' + contactBtns + '</div>' : '') +
                 '</div></div>';
         }).join('');
     }
