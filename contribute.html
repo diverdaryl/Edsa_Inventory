@@ -129,7 +129,7 @@
             </div>
             <div class="form-group">
                 <label>Article Content *</label>
-                <textarea id="articleContent" required placeholder="Write your article here. Minimum 300 words recommended. You can use line breaks to separate paragraphs."></textarea>
+                <textarea id="articleContent" placeholder="Write your article here. If submitting photos or a video, a short caption or description is fine."></textarea>
                 <small>💡 Tip: You can also submit a Google Docs link below if you prefer writing there.</small>
             </div>
             <div class="form-group">
@@ -251,10 +251,25 @@
         var googleDocUrl  = document.getElementById('googleDocUrl').value.trim();
         var videoUrl      = document.getElementById('videoUrl').value.trim();
 
-        if (!authorName || !authorTitle || !authorEmail || !title || !category || (!content && !googleDocUrl)) {
-            errEl.textContent = 'Please fill in all required fields. At minimum provide article content or a Google Docs link.';
-            errEl.style.display = 'block';
-            return;
+        if (!authorName || !authorTitle || !authorEmail || !title || !category) {
+            errEl.textContent = 'Please fill in all required fields marked with *.';
+            errEl.style.display = 'block'; return;
+        }
+
+        // Smart content validation (Option B)
+        var hasMedia = (selectedPhotos.filter(Boolean).length > 0) || !!videoUrl;
+        var hasGoogleDoc = !!googleDocUrl;
+        var wordCount = content ? content.split(/\s+/).filter(Boolean).length : 0;
+
+        if (!hasGoogleDoc) {
+            if (!hasMedia && wordCount < 100) {
+                errEl.textContent = 'Please provide at least 100 words of content, or include a video/photos with a short caption.';
+                errEl.style.display = 'block'; return;
+            }
+            if (hasMedia && wordCount === 0) {
+                errEl.textContent = 'Please add at least a short caption or description for your media.';
+                errEl.style.display = 'block'; return;
+            }
         }
 
         progEl.textContent = '⏳ Submitting your article…';
