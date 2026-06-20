@@ -2830,42 +2830,6 @@
     </div>
 </div>
 
-<!-- OPERATOR STREET VIEW MODAL -->
-<div id="opStreetViewModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:3000;justify-content:center;align-items:center;padding:20px;" onclick="if(event.target===this)opCloseStreetViewModal()">
-    <div style="background:white;border-radius:16px;padding:28px;width:100%;max-width:520px;box-shadow:0 20px 60px rgba(0,0,0,0.22);">
-        <h3 style="font-size:18px;color:#1565c0;margin-bottom:4px;">🗺️ Set Street View</h3>
-        <p id="opSvModalSite" style="font-size:13px;color:#888;margin-bottom:18px;"></p>
-        <input type="hidden" id="opSvSiteName">
-
-        <label style="display:block;font-size:12px;font-weight:700;color:#555;margin-bottom:6px;">Paste your Google Maps Street View link</label>
-        <textarea id="opSvUrlInput" rows="3" placeholder="Paste a Google Maps URL here — e.g. https://www.google.com/maps/@14.5547,121.0244,3a,75y,90h,90t/..."
-            style="width:100%;padding:10px 14px;border:2px solid #e0e0e0;border-radius:8px;font-size:13px;font-family:'Segoe UI',sans-serif;outline:none;box-sizing:border-box;resize:vertical;transition:border-color 0.2s;"
-            onfocus="this.style.borderColor='#1565c0'" onblur="this.style.borderColor='#e0e0e0'"
-            oninput="opSvPreview()"></textarea>
-
-        <div style="background:#e8f0fe;border-radius:8px;padding:11px 14px;margin:10px 0;font-size:12px;color:#1565c0;line-height:1.6;">
-            <strong>How to get the Street View link:</strong><br>
-            1. Open <a href="https://maps.google.com" target="_blank" style="color:#1565c0;">Google Maps</a> and navigate to your billboard location<br>
-            2. Drag the yellow Street View person onto the road near your billboard<br>
-            3. Angle the view toward your billboard<br>
-            4. Click <strong>Share</strong> → copy the link and paste it above
-        </div>
-
-        <div style="font-size:12px;font-weight:700;color:#555;margin-bottom:8px;">Preview</div>
-        <div id="opSvPreviewWrap" style="width:100%;height:160px;border-radius:10px;overflow:hidden;background:#f0f7ff;display:flex;align-items:center;justify-content:center;margin-bottom:6px;border:1px solid #e3f2fd;">
-            <img id="opSvPreviewImg" src="" alt="" style="width:100%;height:100%;object-fit:cover;display:none;" onerror="opSvPreviewError()">
-            <span id="opSvPreviewPlaceholder" style="color:#90a4ae;font-size:13px;text-align:center;padding:0 16px;">Paste a Google Maps URL above to preview the Street View thumbnail</span>
-        </div>
-        <p id="opSvError" style="color:#c62828;font-size:12px;display:none;margin-bottom:8px;"></p>
-        <p id="opSvNote" style="color:#888;font-size:11px;margin-bottom:16px;">The Street View thumbnail is generated from Google Maps. It shows on your listing when no photo is uploaded.</p>
-
-        <div style="display:flex;gap:10px;">
-            <button onclick="opCloseStreetViewModal()" style="flex:1;padding:12px;background:#f5f5f5;color:#666;border:none;border-radius:8px;font-weight:700;font-size:14px;cursor:pointer;font-family:'Segoe UI',sans-serif;">Cancel</button>
-            <button id="opSvSaveBtn" onclick="opSaveStreetView()" style="flex:2;padding:12px;background:#1565c0;color:white;border:none;border-radius:8px;font-weight:700;font-size:14px;cursor:pointer;font-family:'Segoe UI',sans-serif;">💾 Save Street View</button>
-        </div>
-    </div>
-</div>
-
 <!-- ADD SITE MODAL -->
 <div id="opAddSiteModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:3000;justify-content:center;align-items:center;padding:20px;overflow-y:auto;" onclick="if(event.target===this)opCloseAddSiteModal()">
     <div style="background:white;border-radius:18px;width:100%;max-width:560px;box-shadow:0 24px 64px rgba(0,0,0,0.22);overflow:hidden;margin:auto;">
@@ -3920,10 +3884,7 @@ function opRenderCards() {
             + '<div class="bc-main-img-wrap" style="height:210px;position:relative;">'
             +   imgHtml
             +   '<div class="op-img-overlay">'
-            +     '<div style="display:flex;flex-direction:column;gap:6px;">'
-            +       '<button class="op-photo-upload-btn op-photo-btn" data-sn="' + sn.replace(/"/g,'&quot;') + '">📷 Upload Photo</button>'
-            +       '<button class="op-photo-upload-btn op-sv-btn" data-sn="' + sn.replace(/"/g,'&quot;') + '" style="background:' + (b['Maps URL'] ? 'rgba(21,101,192,0.82)' : 'rgba(0,0,0,0.62)') + ';">🗺️ ' + (b['Maps URL'] ? 'Edit Street View' : 'Set Street View') + '</button>'
-            +     '</div>'
+            +     '<button class="op-photo-upload-btn op-photo-btn" data-sn="' + sn.replace(/"/g,'&quot;') + '">📷 Upload Photo</button>'
             +     '<button class="op-avail-overlay-pill ' + (avail ? 'avail' : 'unavail') + '" '
             +         'id="opBadge_' + snId + '" data-sn="' + sn.replace(/"/g,'&quot;') + '" data-snid="' + snId + '">'
             +         (avail ? '✅ Available' : '🔴 Unavailable')
@@ -4004,13 +3965,6 @@ function opRenderCards() {
     for (var pi = 0; pi < photoBtns.length; pi++) {
         photoBtns[pi].addEventListener('click', function() {
             opOpenPhotoModal(this.getAttribute('data-sn'));
-        });
-    }
-    // Bind street view buttons
-    var svBtns = grid.querySelectorAll('.op-sv-btn');
-    for (var vi = 0; vi < svBtns.length; vi++) {
-        svBtns[vi].addEventListener('click', function() {
-            opOpenStreetViewModal(this.getAttribute('data-sn'));
         });
     }
     // Bind contact edit buttons
@@ -4814,97 +4768,6 @@ function opSaveContactInfo() {
 
     opCloseContactModal();
     alert('\u2705 Contact info saved! Changes will reflect on the site shortly.');
-}
-
-// ── OPERATOR STREET VIEW ───────────────────────────────
-function opOpenStreetViewModal(siteName) {
-    var b = allBillboards.filter(function(x){ return x['Site Name'] === siteName; })[0];
-    if (!b) return;
-    document.getElementById('opSvSiteName').value = siteName;
-    document.getElementById('opSvModalSite').textContent = b['Display Name'] || siteName;
-    document.getElementById('opSvUrlInput').value = b['Maps URL'] || '';
-    document.getElementById('opSvError').style.display = 'none';
-    var saveBtn = document.getElementById('opSvSaveBtn');
-    if (saveBtn) { saveBtn.textContent = '💾 Save Street View'; saveBtn.disabled = false; }
-    // Trigger preview with existing URL if present
-    opSvPreview();
-    document.getElementById('opStreetViewModal').style.display = 'flex';
-}
-
-function opCloseStreetViewModal() {
-    document.getElementById('opStreetViewModal').style.display = 'none';
-}
-
-function opSvPreview() {
-    var url = (document.getElementById('opSvUrlInput').value || '').trim();
-    var img = document.getElementById('opSvPreviewImg');
-    var placeholder = document.getElementById('opSvPreviewPlaceholder');
-    var errEl = document.getElementById('opSvError');
-    errEl.style.display = 'none';
-
-    if (!url) {
-        img.style.display = 'none';
-        img.src = '';
-        placeholder.textContent = 'Paste a Google Maps URL above to preview the Street View thumbnail';
-        placeholder.style.display = 'block';
-        return;
-    }
-    var thumb = getStreetViewThumb(url);
-    if (thumb) {
-        img.src = thumb;
-        img.style.display = 'block';
-        placeholder.style.display = 'none';
-    } else {
-        img.style.display = 'none';
-        img.src = '';
-        // May be a plain Maps link without pano — still accept it
-        placeholder.textContent = '⚠️ No Street View thumbnail found for this URL. Make sure you copied a Street View link (not just a map location). You can still save it.';
-        placeholder.style.display = 'block';
-    }
-}
-
-function opSvPreviewError() {
-    var img = document.getElementById('opSvPreviewImg');
-    var placeholder = document.getElementById('opSvPreviewPlaceholder');
-    img.style.display = 'none';
-    placeholder.textContent = '⚠️ Could not load thumbnail — check the URL and try again.';
-    placeholder.style.display = 'block';
-}
-
-function opSaveStreetView() {
-    var siteName = document.getElementById('opSvSiteName').value;
-    var url = (document.getElementById('opSvUrlInput').value || '').trim();
-    var errEl = document.getElementById('opSvError');
-    var saveBtn = document.getElementById('opSvSaveBtn');
-    errEl.style.display = 'none';
-
-    if (!url) {
-        errEl.textContent = 'Please paste a Google Maps URL first.';
-        errEl.style.display = 'block';
-        return;
-    }
-    if (!url.startsWith('http')) {
-        errEl.textContent = 'That doesn\'t look like a valid URL. Please paste the full Google Maps link.';
-        errEl.style.display = 'block';
-        return;
-    }
-
-    saveBtn.textContent = '⏳ Saving…'; saveBtn.disabled = true;
-
-    // Update in local allBillboards
-    for (var i = 0; i < allBillboards.length; i++) {
-        if (allBillboards[i]['Site Name'] === siteName) {
-            allBillboards[i]['Maps URL'] = url;
-            break;
-        }
-    }
-
-    // Send to sheet
-    opWriteToSheet({ site: siteName, mapsUrl: url });
-
-    opCloseStreetViewModal();
-    opRenderDash();
-    opShowToast('🗺️ Street View saved!');
 }
 
 // ── OPERATOR PHOTO UPLOAD ──────────────────────────────
